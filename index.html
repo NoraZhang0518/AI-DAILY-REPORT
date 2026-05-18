@@ -15,69 +15,87 @@
         
         body {
             font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            background: #0f0f23;
             min-height: 100vh;
             color: #fff;
             line-height: 1.6;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* Top Bar */
+        .top-bar {
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
         }
         
-        /* Date Selector */
+        .top-bar-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
         .date-selector {
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+            gap: 12px;
         }
         
         .date-selector label {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
         }
         
         .date-selector select {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 12px 24px;
-            font-size: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            padding: 8px 16px;
+            font-size: 14px;
             font-weight: 500;
             color: #fff;
             cursor: pointer;
-            min-width: 200px;
             font-family: 'Noto Sans SC', sans-serif;
             transition: all 0.3s ease;
+            min-width: 180px;
         }
         
         .date-selector select:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.12);
             border-color: rgba(255, 255, 255, 0.3);
         }
         
         .date-selector select:focus {
             outline: none;
             border-color: #00aaff;
-            box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
         }
         
         .date-selector select option {
             background: #1a1a2e;
             color: #fff;
-            padding: 10px;
         }
         
         .go-btn {
             background: linear-gradient(135deg, #0066ff, #00aaff);
             border: none;
-            border-radius: 12px;
-            padding: 12px 28px;
+            border-radius: 10px;
+            padding: 8px 20px;
             font-size: 14px;
             font-weight: 600;
             color: #fff;
@@ -87,430 +105,79 @@
         }
         
         .go-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.4);
         }
         
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 60px;
-            position: relative;
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
-            pointer-events: none;
+        .iframe-container {
+            width: 100%;
+            min-height: calc(100vh - 80px);
+            border: none;
         }
         
-        .date-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #0066ff, #00aaff);
-            padding: 8px 24px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+        .iframe-container iframe {
+            width: 100%;
+            min-height: calc(100vh - 80px);
+            border: none;
+            background: transparent;
         }
         
-        .header h1 {
-            font-size: 56px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 16px;
-            letter-spacing: 4px;
-        }
-        
-        .header .subtitle {
-            font-size: 18px;
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 300;
-        }
-        
-        /* Section Layout */
-        .sections {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-        
-        @media (max-width: 900px) {
-            .sections {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 32px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .section:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-        
-        .section-ai-coding {
-            border-top: 4px solid #0066ff;
-        }
-        
-        .section-robotics {
-            border-top: 4px solid #ff6b35;
-        }
-        
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 28px;
-        }
-        
-        .section-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-        
-        .section-ai-coding .section-icon {
-            background: linear-gradient(135deg, #0066ff, #00aaff);
-        }
-        
-        .section-robotics .section-icon {
-            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
-        }
-        
-        .section-title {
-            font-size: 24px;
-            font-weight: 700;
-        }
-        
-        .section-count {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        
-        /* News Cards */
-        .news-card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 24px;
-            margin-bottom: 20px;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-        
-        .news-card:last-child {
-            margin-bottom: 0;
-        }
-        
-        .news-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-        
-        .news-number {
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            width: 28px;
-            height: 28px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 14px;
-        }
-        
-        .section-ai-coding .news-number {
-            background: linear-gradient(135deg, #0066ff, #00aaff);
-        }
-        
-        .section-robotics .news-number {
-            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
-        }
-        
-        .news-title {
-            font-size: 17px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #fff;
-            line-height: 1.4;
-        }
-        
-        .news-content {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-        }
-        
-        .news-content p {
-            margin-bottom: 10px;
-        }
-        
-        .news-content p:last-child {
-            margin-bottom: 0;
-        }
-        
-        .highlight {
-            color: #00aaff;
-            font-weight: 500;
-        }
-        
-        .highlight-orange {
-            color: #ff9f6b;
-            font-weight: 500;
-        }
-        
-        .highlight-bold {
-            color: #fff;
-            font-weight: 600;
-        }
-        
-        /* Key Points */
-        .key-points {
-            margin-top: 14px;
-            padding-top: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        .key-point {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 6px;
-        }
-        
-        .key-point:last-child {
-            margin-bottom: 0;
-        }
-        
-        .key-point::before {
-            content: '→';
-            color: #00aaff;
-            font-weight: bold;
-        }
-        
-        .section-robotics .key-point::before {
-            color: #ff9f6b;
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        
-        .footer-sources {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 16px;
-        }
-        
-        .footer-meta {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.3);
-        }
-        
-        /* Trend Summary */
-        .trend-section {
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            margin-top: 40px;
-        }
-        
-        .trend-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-        
-        .trend-header h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .trend-header p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
-        }
-        
-        .trends-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-        
-        @media (max-width: 768px) {
-            .trends-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .header h1 {
-                font-size: 36px;
-            }
-            
-            .sections {
-                gap: 24px;
-            }
-            
-            .section {
-                padding: 24px;
-            }
-        }
-        
-        .trend-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 24px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .trend-card:hover {
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-4px);
-        }
-        
-        .trend-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
-        }
-        
-        .trend-card h3 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-        
-        .trend-card p {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.6;
-        }
-        
-        /* Loading state */
-        .loading {
+        /* Error message */
+        .error-msg {
             text-align: center;
             padding: 100px 20px;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
         }
         
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            border-top-color: #00aaff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
+        .error-msg h2 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #fff;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .error-msg p {
+            font-size: 14px;
+        }
+        
+        @media (max-width: 600px) {
+            .top-bar-inner {
+                justify-content: center;
+            }
+            
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Date Selector -->
-        <div class="date-selector">
-            <label>选择日期：</label>
-            <select id="dateSelect">
-                <!-- 日期选项将由JavaScript动态生成 -->
-            </select>
-            <button class="go-btn" onclick="loadReport()">查看日报</button>
-        </div>
-        
-        <!-- Header -->
-        <header class="header">
-            <div class="date-badge" id="currentDate">加载中...</div>
-            <h1>AI 日报</h1>
-            <p class="subtitle">每日 AI Coding 与具身智能领域重要资讯</p>
-        </header>
-        
-        <!-- Main Sections -->
-        <div class="sections">
-            <!-- AI Coding Section -->
-            <section class="section section-ai-coding">
-                <div class="section-header">
-                    <div class="section-icon">💻</div>
-                    <h2 class="section-title">AI Coding</h2>
-                    <span class="section-count" id="aiCodingCount">0 条资讯</span>
-                </div>
-                <div id="aiCodingContent">
-                    <!-- AI Coding news will be loaded here -->
-                </div>
-            </section>
-            
-            <!-- Robotics Section -->
-            <section class="section section-robotics">
-                <div class="section-header">
-                    <div class="section-icon">🦾</div>
-                    <h2 class="section-title">具身智能</h2>
-                    <span class="section-count" id="roboticsCount">0 条资讯</span>
-                </div>
-                <div id="roboticsContent">
-                    <!-- Robotics news will be loaded here -->
-                </div>
-            </section>
-        </div>
-        
-        <!-- Trend Summary -->
-        <section class="trend-section" id="trendSection">
-            <div class="trend-header">
-                <h2>📊 今日核心趋势</h2>
-                <p>洞察 AI 领域最新风向</p>
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="logo">🤖 AI 日报</div>
+            <div class="date-selector">
+                <label>📅</label>
+                <select id="dateSelect"></select>
+                <button class="go-btn" onclick="loadReport()">查看</button>
             </div>
-            <div class="trends-grid" id="trendsContent">
-                <!-- Trends will be loaded here -->
-            </div>
-        </section>
-        
-        <!-- Footer -->
-        <footer class="footer">
-            <p class="footer-sources" id="sourcesText">数据来源：量子位 · 36氪 · 腾讯新闻</p>
-            <p class="footer-meta" id="metaText">整理时间：2026-05-18 | AI 日报自动化推送</p>
-        </footer>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div id="contentArea" class="iframe-container">
+            <!-- 日报将通过iframe加载 -->
+        </div>
     </div>
     
     <script>
-        // 从URL参数获取日期，默认为今天
-        function getSelectedDate() {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get('date') || getTodayDate();
-        }
-        
-        // 获取今天的日期格式 YYYY-MM-DD
+        // 获取今天日期 YYYY-MM-DD
         function getTodayDate() {
             const today = new Date();
             const year = today.getFullYear();
@@ -519,7 +186,13 @@
             return `${year}-${month}-${day}`;
         }
         
-        // 生成日期选项列表（最近30天）
+        // 从URL获取日期
+        function getDateFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('date') || getTodayDate();
+        }
+        
+        // 生成日期选项（最近30天）
         function generateDateOptions() {
             const select = document.getElementById('dateSelect');
             const today = new Date();
@@ -535,120 +208,39 @@
                 
                 const option = document.createElement('option');
                 option.value = dateStr;
-                
-                // 显示格式：2026年5月18日
                 const displayDate = `${year}年${month}月${day}日`;
-                option.textContent = displayDate;
-                
-                if (i === 0) {
-                    option.textContent = displayDate + ' (今日)';
-                }
-                
+                option.textContent = i === 0 ? `${displayDate} (今日)` : displayDate;
                 select.appendChild(option);
             }
         }
         
-        // 加载日报内容
-        async function loadReport() {
+        // 加载日报
+        function loadReport() {
             const date = document.getElementById('dateSelect').value;
+            const contentArea = document.getElementById('contentArea');
             
-            // 更新URL参数
+            // 更新URL
             const url = new URL(window.location.href);
             url.searchParams.set('date', date);
             window.history.pushState({}, '', url);
             
-            // 显示加载状态
-            document.getElementById('currentDate').textContent = date;
-            document.getElementById('aiCodingContent').innerHTML = '<div class="loading"><div class="loading-spinner"></div>加载中...</div>';
-            document.getElementById('roboticsContent').innerHTML = '<div class="loading"><div class="loading-spinner"></div>加载中...</div>';
-            
-            try {
-                // 尝试加载对应日期的日报
-                const reportUrl = `reports/${date}.html`;
-                const response = await fetch(reportUrl);
-                
-                if (response.ok) {
-                    const html = await response.text();
-                    parseAndDisplayReport(html);
-                } else {
-                    // 如果文件不存在，显示提示
-                    showNoReport(date);
-                }
-            } catch (error) {
-                console.error('加载日报失败:', error);
-                showNoReport(date);
-            }
-        }
-        
-        // 解析并显示日报内容
-        function parseAndDisplayReport(html) {
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            
-            // 更新日期
-            const dateMatch = html.match(/(\d{4}-\d{2}-\d{2})/);
-            if (dateMatch) {
-                document.getElementById('currentDate').textContent = dateMatch[1];
-            }
-            
-            // 提取并显示AI Coding内容
-            const aiCodingSection = doc.querySelector('.section-ai-coding');
-            if (aiCodingSection) {
-                const newsCards = aiCodingSection.querySelectorAll('.news-card');
-                document.getElementById('aiCodingCount').textContent = `${newsCards.length} 条资讯`;
-                document.getElementById('aiCodingContent').innerHTML = '';
-                newsCards.forEach(card => {
-                    document.getElementById('aiCodingContent').appendChild(card);
-                });
-            }
-            
-            // 提取并显示具身智能内容
-            const roboticsSection = doc.querySelector('.section-robotics');
-            if (roboticsSection) {
-                const newsCards = roboticsSection.querySelectorAll('.news-card');
-                document.getElementById('roboticsCount').textContent = `${newsCards.length} 条资讯`;
-                document.getElementById('roboticsContent').innerHTML = '';
-                newsCards.forEach(card => {
-                    document.getElementById('roboticsContent').appendChild(card);
-                });
-            }
-            
-            // 提取并显示趋势总结
-            const trendSection = doc.getElementById('trendSection');
-            if (trendSection) {
-                const trendsGrid = trendSection.querySelector('.trends-grid');
-                if (trendsGrid) {
-                    document.getElementById('trendsContent').innerHTML = trendsGrid.innerHTML;
-                }
-            }
-            
-            // 更新页脚
-            const footerMeta = doc.querySelector('.footer-meta');
-            if (footerMeta) {
-                document.getElementById('metaText').textContent = footerMeta.textContent;
-            }
-        }
-        
-        // 显示无日报提示
-        function showNoReport(date) {
-            document.getElementById('aiCodingContent').innerHTML = `
-                <div class="news-card" style="text-align: center; padding: 40px;">
-                    <p style="color: rgba(255,255,255,0.5); margin-bottom: 10px;">暂无 ${date} 的日报数据</p>
-                    <p style="color: rgba(255,255,255,0.3); font-size: 12px;">日报从2026年5月18日开始</p>
-                </div>
+            // 加载日报（使用iframe确保HTML正确渲染）
+            contentArea.innerHTML = `
+                <iframe src="reports/${date}.html" 
+                        onload="this.style.opacity='1'" 
+                        style="opacity:0; transition: opacity 0.5s ease;"
+                        frameborder="0" 
+                        scrolling="auto">
+                </iframe>
             `;
-            document.getElementById('roboticsContent').innerHTML = '';
-            document.getElementById('aiCodingCount').textContent = '0 条资讯';
-            document.getElementById('roboticsCount').textContent = '0 条资讯';
-            document.getElementById('trendsContent').innerHTML = '';
         }
         
         // 初始化
         document.addEventListener('DOMContentLoaded', function() {
             generateDateOptions();
             
-            // 设置下拉框选中当前日期
-            const selectedDate = getSelectedDate();
+            // 设置选中当前日期
+            const selectedDate = getDateFromUrl();
             document.getElementById('dateSelect').value = selectedDate;
             
             // 加载日报
