@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 日报 | 2026-05-18</title>
+    <title>AI 日报</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
         
@@ -27,6 +27,71 @@
             padding: 40px 20px;
         }
         
+        /* Date Selector */
+        .date-selector {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .date-selector label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .date-selector select {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            cursor: pointer;
+            min-width: 200px;
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .date-selector select:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .date-selector select:focus {
+            outline: none;
+            border-color: #00aaff;
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.3);
+        }
+        
+        .date-selector select option {
+            background: #1a1a2e;
+            color: #fff;
+            padding: 10px;
+        }
+        
+        .go-btn {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            border: none;
+            border-radius: 12px;
+            padding: 12px 28px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            cursor: pointer;
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .go-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 255, 0.4);
+        }
+        
+        /* Header */
         .header {
             text-align: center;
             margin-bottom: 60px;
@@ -73,6 +138,7 @@
             font-weight: 300;
         }
         
+        /* Section Layout */
         .sections {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -146,6 +212,7 @@
             font-weight: 500;
         }
         
+        /* News Cards */
         .news-card {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -224,6 +291,7 @@
             font-weight: 600;
         }
         
+        /* Key Points */
         .key-points {
             margin-top: 14px;
             padding-top: 14px;
@@ -253,6 +321,7 @@
             color: #ff9f6b;
         }
         
+        /* Footer */
         .footer {
             text-align: center;
             padding: 40px;
@@ -270,6 +339,7 @@
             color: rgba(255, 255, 255, 0.3);
         }
         
+        /* Trend Summary */
         .trend-section {
             background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -347,137 +417,243 @@
             color: rgba(255, 255, 255, 0.6);
             line-height: 1.6;
         }
+        
+        /* Loading state */
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #00aaff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Date Selector -->
+        <div class="date-selector">
+            <label>选择日期：</label>
+            <select id="dateSelect">
+                <!-- 日期选项将由JavaScript动态生成 -->
+            </select>
+            <button class="go-btn" onclick="loadReport()">查看日报</button>
+        </div>
+        
+        <!-- Header -->
         <header class="header">
-            <div class="date-badge">2026-05-18</div>
+            <div class="date-badge" id="currentDate">加载中...</div>
             <h1>AI 日报</h1>
             <p class="subtitle">每日 AI Coding 与具身智能领域重要资讯</p>
         </header>
         
+        <!-- Main Sections -->
         <div class="sections">
+            <!-- AI Coding Section -->
             <section class="section section-ai-coding">
                 <div class="section-header">
                     <div class="section-icon">💻</div>
                     <h2 class="section-title">AI Coding</h2>
-                    <span class="section-count">3 条资讯</span>
+                    <span class="section-count" id="aiCodingCount">0 条资讯</span>
                 </div>
-                
-                <article class="news-card">
-                    <span class="news-number">1</span>
-                    <h3 class="news-title">Anthropic CEO 专访：Claude 新功能几乎完全由 AI 自主开发</h3>
-                    <div class="news-content">
-                        <p>Anthropic CEO Dario Amodei 在达沃斯论坛接受专访，透露 Claude 的最新功能「Claude Co-work」<span class="highlight-bold">几乎完全由 Claude Opus 自主开发</span>，整个开发周期仅用了一周半时间。</p>
-                        <p>这一里程碑式的突破意味着 AI 编程正式进入「AI 制造 AI」的新阶段。上线首日，该功能的各项指标就达到同类产品的 <span class="highlight">4 倍</span>，成为 Anthropic 发布史上最成功的产品。</p>
-                        <p>Amodei 预警：「我们将进入 GDP 极高增长但潜在失业率也极高的社会。软件将变得廉价甚至基本免费，未来的核心挑战将不再是经济总量增长，而是财富分配。」</p>
-                    </div>
-                    <div class="key-points">
-                        <div class="key-point">Anthropic ARR 年化收入已达 440 亿美元，估值超 9000 亿美元</div>
-                        <div class="key-point">Claude Code 拿下开发者市场超过 50% 份额</div>
-                        <div class="key-point">AI 正在改写软件行业的底层逻辑</div>
-                    </div>
-                </article>
-                
-                <article class="news-card">
-                    <span class="news-number">2</span>
-                    <h3 class="news-title">OpenClaw 实验：3 人团队 + 100 个 AI Agent，月烧 130 万美元</h3>
-                    <div class="news-content">
-                        <p>开源团队 OpenClaw 展示了「极限编程」实验：一个仅 <span class="highlight-bold">3 人</span>的核心团队，带领 <span class="highlight-bold">100 个自主编程 AI Agent</span>，在 30 天内完成了惊人的工作量——消耗 6030 亿 Token，API 请求超过 760 万次。</p>
-                        <p>这笔约 <span class="highlight">130 万美元</span>的账单目前由 OpenAI 全额赞助。实验验证了「百人 AI Agent 军团」的可行性：微型团队可以达到过去需要数百人才能实现的产出效率。</p>
-                        <p>OpenAI 同期宣布将 ChatGPT、Codex、API 三大产品线合并，由联合创始人 Greg Brockman 统一主导，标志着 AI 助手与 AI 编程工具的边界正式打破。</p>
-                    </div>
-                    <div class="key-points">
-                        <div class="key-point">Token 成为新的生产资料，成本不再是瓶颈</div>
-                        <div class="key-point">软件开发进入「超人效能」时代</div>
-                        <div class="key-point">AI Agent 规模化生产从理论走向实践</div>
-                    </div>
-                </article>
-                
-                <article class="news-card">
-                    <span class="news-number">3</span>
-                    <h3 class="news-title">xAI 发布首个 Coding Agent「Grok Build」</h3>
-                    <div class="news-content">
-                        <p>马斯克旗下 xAI 正式推出首个 AI 编程智能体 <span class="highlight-bold">Grok Build</span>，这标志着 xAI 正式进军高利润的 AI 编程市场，与 Anthropic 的 Claude Code、微软的 GitHub Copilot 形成直接竞争。</p>
-                        <p>Grok Build 专为软件工程与复杂编程任务设计，<span class="highlight">直接在终端环境中运行</span>，支持通过自然语言生成代码并完成各类编程与自动化任务。目前以早期测试版形式向 SuperGrok Heavy（$300/月）订阅层级的用户开放。</p>
-                        <p>值得注意的是，马斯克近期经历 xAI 内部动荡后仍快速发布新品，显示 AI 编程市场已成为科技巨头的必争之地。</p>
-                    </div>
-                    <div class="key-points">
-                        <div class="key-point">AI 编程赛道再添重量级玩家</div>
-                        <div class="key-point">xAI 试图追赶 Anthropic 在编程工具领域的领先优势</div>
-                        <div class="key-point">市场竞争加速推动技术迭代</div>
-                    </div>
-                </article>
+                <div id="aiCodingContent">
+                    <!-- AI Coding news will be loaded here -->
+                </div>
             </section>
             
+            <!-- Robotics Section -->
             <section class="section section-robotics">
                 <div class="section-header">
                     <div class="section-icon">🦾</div>
                     <h2 class="section-title">具身智能</h2>
-                    <span class="section-count">2 条资讯</span>
+                    <span class="section-count" id="roboticsCount">0 条资讯</span>
                 </div>
-                
-                <article class="news-card">
-                    <span class="news-number">4</span>
-                    <h3 class="news-title">机器狗算力突破，可与英伟达数据中心方案抗衡</h3>
-                    <div class="news-content">
-                        <p>据量子位报道，一款 <span class="highlight-orange">机器狗</span>的算力表现已可与<span class="highlight-orange"> 英伟达顶级数据中心方案</span>抗衡，这意味着人形机器人走进普通家庭的目标又近了一步。</p>
-                        <p>具身智能的「大脑」（AI 算法）与「小脑」（实时控制）正在同步进化。曾经困扰机器人行业的算力瓶颈正在被突破，为更复杂的家庭应用场景奠定基础。</p>
-                        <p>同时，特斯拉 Optimus 人形机器人第三代预计将于 2026 年年中亮相，机器人概念股近期持续爆发。</p>
-                    </div>
-                    <div class="key-points">
-                        <div class="key-point">具身智能硬件层面进入新阶段</div>
-                        <div class="key-point">消费级机器人「进家庭」时间表缩短</div>
-                        <div class="key-point">国产具身智能产业链加速成熟</div>
-                    </div>
-                </article>
-                
-                <article class="news-card">
-                    <span class="news-number">5</span>
-                    <h3 class="news-title">国内具身公司完成数亿元融资，「人类学习」路线成新赛道</h3>
-                    <div class="news-content">
-                        <p>国内最早布局<span class="highlight-orange">「人类学习」路线</span>的具身智能公司完成数亿元新一轮融资。该路线的核心思路是让机器人像人类一样通过身体经验学习，而非单纯依赖大规模数据训练。</p>
-                        <p>2026 年 Q1，国内具身智能赛道披露融资超 <span class="highlight-orange">50 起</span>，累计融资规模持续火热。理想汽车董事长李想提出：「自动驾驶是具身智能的上半场，通用人形机器人是具身智能的下半场。」</p>
-                        <p>「十五五」规划已将具身智能列为与量子科技、脑机接口并列的未来产业，政策红利持续释放。</p>
-                    </div>
-                    <div class="key-points">
-                        <div class="key-point">区别于传统大数据训练范式的创新路线获资本青睐</div>
-                        <div class="key-point">人形机器人从实验室走向商业化落地的关键期</div>
-                        <div class="key-point">政策+资本+技术三重共振，产业进入快车道</div>
-                    </div>
-                </article>
+                <div id="roboticsContent">
+                    <!-- Robotics news will be loaded here -->
+                </div>
             </section>
         </div>
         
-        <section class="trend-section">
+        <!-- Trend Summary -->
+        <section class="trend-section" id="trendSection">
             <div class="trend-header">
                 <h2>📊 今日核心趋势</h2>
                 <p>洞察 AI 领域最新风向</p>
             </div>
-            <div class="trends-grid">
-                <div class="trend-card">
-                    <div class="trend-icon">🚀</div>
-                    <h3>AI Coding 进入「超规模化」阶段</h3>
-                    <p>从个人开发工具到百人 Agent 军团，成本门槛正在被打破。Token 成为新的生产资料，小团队也能实现过去数百人的产出效率。</p>
-                </div>
-                <div class="trend-card">
-                    <div class="trend-icon">🧠</div>
-                    <h3>AI 正在开发 AI</h3>
-                    <p>Anthropic 展示 AI 自我迭代能力，Claude Co-work 由 AI 自主开发仅用一周半。软件行业的底层逻辑正在被彻底改写。</p>
-                </div>
-                <div class="trend-card">
-                    <div class="trend-icon">🤖</div>
-                    <h3>具身智能加速商业化</h3>
-                    <p>算力突破 + 资本涌入 + 政策支持三重共振。机器狗算力比肩数据中心，「进家庭」时间表正在缩短。</p>
-                </div>
+            <div class="trends-grid" id="trendsContent">
+                <!-- Trends will be loaded here -->
             </div>
         </section>
         
+        <!-- Footer -->
         <footer class="footer">
-            <p class="footer-sources">数据来源：量子位 · 36氪 · 腾讯新闻 · ITBear · AgentUpdate.ai</p>
-            <p class="footer-meta">整理时间：2026-05-18 15:52 | AI 日报自动化推送</p>
+            <p class="footer-sources" id="sourcesText">数据来源：量子位 · 36氪 · 腾讯新闻</p>
+            <p class="footer-meta" id="metaText">整理时间：2026-05-18 | AI 日报自动化推送</p>
         </footer>
     </div>
+    
+    <script>
+        // 从URL参数获取日期，默认为今天
+        function getSelectedDate() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('date') || getTodayDate();
+        }
+        
+        // 获取今天的日期格式 YYYY-MM-DD
+        function getTodayDate() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+        
+        // 生成日期选项列表（最近30天）
+        function generateDateOptions() {
+            const select = document.getElementById('dateSelect');
+            const today = new Date();
+            
+            for (let i = 0; i < 30; i++) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const dateStr = `${year}-${month}-${day}`;
+                
+                const option = document.createElement('option');
+                option.value = dateStr;
+                
+                // 显示格式：2026年5月18日
+                const displayDate = `${year}年${month}月${day}日`;
+                option.textContent = displayDate;
+                
+                if (i === 0) {
+                    option.textContent = displayDate + ' (今日)';
+                }
+                
+                select.appendChild(option);
+            }
+        }
+        
+        // 加载日报内容
+        async function loadReport() {
+            const date = document.getElementById('dateSelect').value;
+            
+            // 更新URL参数
+            const url = new URL(window.location.href);
+            url.searchParams.set('date', date);
+            window.history.pushState({}, '', url);
+            
+            // 显示加载状态
+            document.getElementById('currentDate').textContent = date;
+            document.getElementById('aiCodingContent').innerHTML = '<div class="loading"><div class="loading-spinner"></div>加载中...</div>';
+            document.getElementById('roboticsContent').innerHTML = '<div class="loading"><div class="loading-spinner"></div>加载中...</div>';
+            
+            try {
+                // 尝试加载对应日期的日报
+                const reportUrl = `reports/${date}.html`;
+                const response = await fetch(reportUrl);
+                
+                if (response.ok) {
+                    const html = await response.text();
+                    parseAndDisplayReport(html);
+                } else {
+                    // 如果文件不存在，显示提示
+                    showNoReport(date);
+                }
+            } catch (error) {
+                console.error('加载日报失败:', error);
+                showNoReport(date);
+            }
+        }
+        
+        // 解析并显示日报内容
+        function parseAndDisplayReport(html) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            // 更新日期
+            const dateMatch = html.match(/(\d{4}-\d{2}-\d{2})/);
+            if (dateMatch) {
+                document.getElementById('currentDate').textContent = dateMatch[1];
+            }
+            
+            // 提取并显示AI Coding内容
+            const aiCodingSection = doc.querySelector('.section-ai-coding');
+            if (aiCodingSection) {
+                const newsCards = aiCodingSection.querySelectorAll('.news-card');
+                document.getElementById('aiCodingCount').textContent = `${newsCards.length} 条资讯`;
+                document.getElementById('aiCodingContent').innerHTML = '';
+                newsCards.forEach(card => {
+                    document.getElementById('aiCodingContent').appendChild(card);
+                });
+            }
+            
+            // 提取并显示具身智能内容
+            const roboticsSection = doc.querySelector('.section-robotics');
+            if (roboticsSection) {
+                const newsCards = roboticsSection.querySelectorAll('.news-card');
+                document.getElementById('roboticsCount').textContent = `${newsCards.length} 条资讯`;
+                document.getElementById('roboticsContent').innerHTML = '';
+                newsCards.forEach(card => {
+                    document.getElementById('roboticsContent').appendChild(card);
+                });
+            }
+            
+            // 提取并显示趋势总结
+            const trendSection = doc.getElementById('trendSection');
+            if (trendSection) {
+                const trendsGrid = trendSection.querySelector('.trends-grid');
+                if (trendsGrid) {
+                    document.getElementById('trendsContent').innerHTML = trendsGrid.innerHTML;
+                }
+            }
+            
+            // 更新页脚
+            const footerMeta = doc.querySelector('.footer-meta');
+            if (footerMeta) {
+                document.getElementById('metaText').textContent = footerMeta.textContent;
+            }
+        }
+        
+        // 显示无日报提示
+        function showNoReport(date) {
+            document.getElementById('aiCodingContent').innerHTML = `
+                <div class="news-card" style="text-align: center; padding: 40px;">
+                    <p style="color: rgba(255,255,255,0.5); margin-bottom: 10px;">暂无 ${date} 的日报数据</p>
+                    <p style="color: rgba(255,255,255,0.3); font-size: 12px;">日报从2026年5月18日开始</p>
+                </div>
+            `;
+            document.getElementById('roboticsContent').innerHTML = '';
+            document.getElementById('aiCodingCount').textContent = '0 条资讯';
+            document.getElementById('roboticsCount').textContent = '0 条资讯';
+            document.getElementById('trendsContent').innerHTML = '';
+        }
+        
+        // 初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            generateDateOptions();
+            
+            // 设置下拉框选中当前日期
+            const selectedDate = getSelectedDate();
+            document.getElementById('dateSelect').value = selectedDate;
+            
+            // 加载日报
+            loadReport();
+        });
+    </script>
 </body>
 </html>
