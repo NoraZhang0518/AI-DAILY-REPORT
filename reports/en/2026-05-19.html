@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Daily | 2026-05-19</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-05-19</div>
+            <h1>AI Daily</h1>
+            <p class="subtitle">Daily AI Coding &amp; Embodied Intelligence Insights</p>
+        </header>
+
+        <!-- Main Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <!-- News 1 -->
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Google I/O 2026 Kicks Off Today: Gemini Updates + Android XR Glasses + On-Device AI Integration</h3>
+                    <div class="news-content">
+                        <p>Google I/O 2026 officially opened today (May 19) in California. This year's conference centers on "AI &amp; Mobile Ecosystem," with key highlights including: <span class="highlight-bold">Gemini 3.2/3.5 lightweight updates</span> (optimized for on-device performance and lower power consumption), <span class="highlight-bold">Android 17 deeply integrated with Gemini at the system level</span>, and the official debut of <span class="highlight-bold">Android XR smart glasses</span> (partners include Samsung, XREAL, etc.; Samsung's model codenamed "Jinju" weighs ~50g).</p>
+                        <p>Google is also launching a new agentic AI product called <span class="highlight">Gemini Spark</span> (auto-organizing inbox, preparing meeting briefs, etc.) and a video generation model <span class="highlight">Gemini Omni</span>.</p>
+                        <p>This I/O is positioned as Google's "largest AI push ever," with AI upgrading from a standalone app to Android's native capability. Chrome will also ship with a built-in native AI assistant.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Android XR marks the official start of the battle for the next AI entry point — after smartphones, glasses may become the next primary battleground</div>
+                        <div class="key-point">The on-device AI supply chain will benefit significantly; even mid-to-low-end Android devices can run local AI smoothly</div>
+                        <div class="key-point">Chrome, the world's largest browser, completes its AI transformation — user browsing habits will be reshaped</div>
+                    </div>
+                </article>
+
+                <!-- News 2 -->
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">OpenAI vs Anthropic Coding Tool War Heats Up: 2-Month Free Trial vs 50% Increase</h3>
+                    <div class="news-content">
+                        <p>The battle for users in AI coding has entered a cutthroat phase. OpenAI struck first: <span class="highlight-bold">enterprises switching from Claude Code to Codex get 2 months free</span>. Anthropic counterattacked within an hour: <span class="highlight-bold">Claude Code weekly usage limit increased by 50%</span>, valid through mid-July.</p>
+                        <p>Meanwhile, xAI President Michael Nicolls publicly stated that Grok Build's near-term goal is to <span class="highlight">match Claude's task performance</span>. According to the Wall Street Journal, <span class="highlight">Anthropic's growth rate has surpassed OpenAI</span>, with valuation poised to overtake.</p>
+                        <p>On the surface it's about developer perks — but look deeper: this signals that AI coding tools have entered the <span class="highlight-bold">"workflow lock-in"</span> phase. Whoever gets programmers hooked on their tool first controls the future of software development.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Three giants fighting simultaneously on coding tools proves AI Coding is the most commercially certain AI segment right now</div>
+                        <div class="key-point">The competition core has shifted from feature comparison to developer ecosystem and workflow lock-in</div>
+                        <div class="key-point">Anthropic's leading position in the coding tools market faces a comprehensive encirclement</div>
+                    </div>
+                </article>
+
+                <!-- News 3 -->
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">China's "April Legion" Open-Source Coding Models Launch in Concert: Four Labs Release Within 12 Days</h3>
+                    <div class="news-content">
+                        <p>From late April through early May, four Chinese AI labs released open-source coding models within <span class="highlight-bold">12 days</span>: <span class="highlight-bold">Zhipu GLM-5.1, MiniMax M2.7, Moonshot Kimi K2.6, DeepSeek V4</span>.</p>
+                        <p>All these models target Western frontier capabilities (GPT-5.5 / Claude Opus 4.7), with inference costs <span class="highlight">under one-third of Claude Opus 4.7</span> — offering compelling cost-effectiveness.</p>
+                        <p>More critically, all models have completed inference adaptation for domestic Chinese chips (Huawei Ascend, Moore Threads, etc.), with a clear path to autonomous control. The open-source strategy means global developers can use them at low cost.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Chinese LLMs are rapidly catching up in coding capabilities, with highly competitive price-performance ratios</div>
+                        <div class="key-point">Open source + domestic chip adaptation could reshape the global AI coding tool competitive landscape</div>
+                        <div class="key-point">From "usable" to "good" to "autonomous," China's AI coding ecosystem is accelerating toward maturity</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">2 stories</span>
+                </div>
+
+                <!-- News 4 -->
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">GPT-5.6 Internal Test Revealed — OpenAI Accelerates Coding Model Iteration</h3>
+                    <div class="news-content">
+                        <p>Mere <span class="highlight-orange">three weeks</span> after GPT-5.5's release, GPT-5.6 internal test code has been leaked, with initial test nodes already running internal validation. Insiders expect the model to launch <span class="highlight-orange">next month</span>.</p>
+                        <p>Simultaneously, OpenAI announced merging ChatGPT, Codex, and API into a unified product line led by co-founder Greg Brockman. This means AI coding capabilities will shift from scattered products to <span class="highlight-orange">unified delivery</span>.</p>
+                        <p>Happening in the same week as Google I/O, the AI giants' arms race in coding continues to heat up, with iteration cycles continuously compressing.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">From 5.5 to 5.6 in just weeks — OpenAI's coding model iteration speed is unprecedented</div>
+                        <div class="key-point">Three product lines merging signals AI coding entering a unified experience era</div>
+                        <div class="key-point">The coding arena has become the main battlefield of the AI giants' arms race</div>
+                    </div>
+                </article>
+
+                <!-- News 5 -->
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">China's Q1 2026 Embodied Intelligence Funding Exceeds 20 Billion Yuan — 30+ Companies Valued Over 10B</h3>
+                    <div class="news-content">
+                        <p>According to ITJuzi and CENTI statistics, China's embodied intelligence sector disclosed over <span class="highlight-orange">50 funding rounds</span> in Q1 2026, involving 30+ funded companies, totaling approximately <span class="highlight-orange">20 billion yuan</span> (~$2.8B USD), up nearly 60% YoY — a record high.</p>
+                        <p>Diguang Robotics (general underlying tech) secured $150M in Series B2 financing; Galaxy General Robotics completed over $300M, setting a new record. <span class="highlight-orange">Li Auto founder Li Xiang stated: "Autonomous driving is the first half of embodied intelligence; general humanoid robots are the second half."</span></p>
+                        <p>Meta acquired Assisted Robot Intelligence to accelerate humanoid robot development; Tesla AI5 chip paves the way for Optimus mass production. Global competition intensifies in parallel. The <span class="highlight-orange">"human learning" paradigm</span> (robots learning through physical experience) has emerged as a new hotspot.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Capital votes with real money: embodied intelligence moves from concept phase to critical commercialization stage</div>
+                        <div class="key-point">After 20 billion yuan comes mass production — "ability to deliver" becomes the second-half entry ticket</div>
+                        <div class="key-point">Policy + capital + technology + international competition: four resonances driving full industry acceleration</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128241;</div>
+                        <div class="trend-desc">
+                            <h3>On-Device AI Becomes the Main Theme</h3>
+                            <p>Google I/O sends a clear signal: AI moves from cloud to device-native. Phones/glasses/PC converge on unified AI architecture. Even budget devices can run local AI.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9876;&#65039;</div>
+                        <div class="trend-desc">
+                            <h3>Coding Tools Enter "Land Grab" Phase</h3>
+                            <p>Three giants battle simultaneously. What they're really fighting for is developer workflow and habits. Free trials, quota bumps, subsidies deployed in rotation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127981;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied AI: From Funding Frenzy to Delivery Race</h3>
+                            <p>Post-20-billion-yuan, the focus shifts to mass production delivery. "Human learning" paradigm gains favor. Meta/Tesla/Chinese firms scale up in sync.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127468;&#127463;</div>
+                        <div class="trend-desc">
+                            <h3>China's Open-Source Force Cannot Be Ignored</h3>
+                            <p>Four models launching together + domestic chip adaptation shapes a multi-polar competitive landscape. Costs as low as one-third of competitors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Sina Finance &middot; ITBear &middot; Tencent News &middot; 36Kr &middot; Analytics Insight &middot; Zhitong Finance &middot; ITJuzi</p>
+            <p class="footer-meta">Compiled: 2026-05-19 09:40 | AI Daily Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
