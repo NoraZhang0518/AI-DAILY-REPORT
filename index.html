@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 日报</title>
+    <title>AI 日报 | AI Daily</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #0f0f23;
@@ -20,7 +20,7 @@
             color: #fff;
             line-height: 1.6;
         }
-        
+
         /* Top Bar */
         .top-bar {
             background: rgba(255, 255, 255, 0.03);
@@ -31,7 +31,7 @@
             z-index: 100;
             backdrop-filter: blur(20px);
         }
-        
+
         .top-bar-inner {
             max-width: 1200px;
             margin: 0 auto;
@@ -41,7 +41,7 @@
             flex-wrap: wrap;
             gap: 12px;
         }
-        
+
         .logo {
             font-size: 20px;
             font-weight: 700;
@@ -50,18 +50,25 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
+        .top-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
         .date-selector {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        
+
         .date-selector label {
             font-size: 14px;
             color: rgba(255, 255, 255, 0.5);
         }
-        
+
         .date-selector select {
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -75,22 +82,22 @@
             transition: all 0.3s ease;
             min-width: 180px;
         }
-        
+
         .date-selector select:hover {
             background: rgba(255, 255, 255, 0.12);
             border-color: rgba(255, 255, 255, 0.3);
         }
-        
+
         .date-selector select:focus {
             outline: none;
             border-color: #00aaff;
         }
-        
+
         .date-selector select option {
             background: #1a1a2e;
             color: #fff;
         }
-        
+
         .go-btn {
             background: linear-gradient(135deg, #0066ff, #00aaff);
             border: none;
@@ -103,57 +110,96 @@
             font-family: 'Noto Sans SC', sans-serif;
             transition: all 0.3s ease;
         }
-        
+
         .go-btn:hover {
             transform: translateY(-1px);
             box-shadow: 0 4px 15px rgba(0, 102, 255, 0.4);
         }
-        
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            padding: 4px;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            padding: 6px 14px;
+            border: none;
+            border-radius: 7px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Noto Sans SC', sans-serif;
+            transition: all 0.25s ease;
+            color: rgba(255, 255, 255, 0.5);
+            background: transparent;
+        }
+
+        .lang-btn:hover {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 102, 255, 0.3);
+        }
+
         /* Main Content */
         .main-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         .iframe-container {
             width: 100%;
             min-height: calc(100vh - 80px);
             border: none;
         }
-        
+
         .iframe-container iframe {
             width: 100%;
             min-height: calc(100vh - 80px);
             border: none;
             background: transparent;
         }
-        
+
         /* Error message */
         .error-msg {
             text-align: center;
             padding: 100px 20px;
             color: rgba(255, 255, 255, 0.5);
         }
-        
+
         .error-msg h2 {
             font-size: 24px;
             margin-bottom: 16px;
             color: #fff;
         }
-        
+
         .error-msg p {
             font-size: 14px;
         }
-        
-        @media (max-width: 600px) {
+
+        @media (max-width: 768px) {
             .top-bar-inner {
                 justify-content: center;
             }
-            
+
             .logo {
                 width: 100%;
                 text-align: center;
+            }
+
+            .top-controls {
+                width: 100%;
+                justify-content: center;
             }
         }
     </style>
@@ -161,22 +207,51 @@
 <body>
     <div class="top-bar">
         <div class="top-bar-inner">
-            <div class="logo">🤖 AI 日报</div>
-            <div class="date-selector">
-                <label>📅</label>
-                <select id="dateSelect"></select>
-                <button class="go-btn" onclick="loadReport()">查看</button>
+            <div class="logo" id="logoText">🤖 AI 日报</div>
+            <div class="top-controls">
+                <div class="date-selector">
+                    <label id="dateLabel">📅</label>
+                    <select id="dateSelect"></select>
+                    <button class="go-btn" id="goBtn" onclick="loadReport()">查看</button>
+                </div>
+                <div class="lang-toggle">
+                    <button class="lang-btn active" id="btnZh" onclick="switchLang('zh')">中文</button>
+                    <button class="lang-btn" id="btnEn" onclick="switchLang('en')">EN</button>
+                </div>
             </div>
         </div>
     </div>
-    
+
     <div class="main-content">
         <div id="contentArea" class="iframe-container">
             <!-- 日报将通过iframe加载 -->
         </div>
     </div>
-    
+
     <script>
+        // ========== i18n 文本字典 ==========
+        const i18n = {
+            zh: {
+                logo: '🤖 AI 日报',
+                goBtn: '查看',
+                dateToday: '(今日)',
+                errorTitle: '该日期暂无日报',
+                errorMsg: '请选择其他日期查看',
+                fallbackMsg: 'English version is not available for this date yet.'
+            },
+            en: {
+                logo: '🤖 AI Daily',
+                goBtn: 'View',
+                dateToday: '(Today)',
+                errorTitle: 'No report available for this date',
+                errorMsg: 'Please select another date',
+                fallbackMsg: '该日期暂无英文版日报，请切换至中文查看。'
+            }
+        };
+
+        // 当前语言（默认中文）
+        let currentLang = 'zh';
+
         // 获取今天日期 YYYY-MM-DD
         function getTodayDate() {
             const today = new Date();
@@ -185,64 +260,176 @@
             const day = String(today.getDate()).padStart(2, '0');
             return `${year}-${month}-${day}`;
         }
-        
-        // 从URL获取日期
+
+        // 从URL获取参数
         function getDateFromUrl() {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get('date') || getTodayDate();
         }
-        
-        // 生成日期选项（最近30天）
+
+        function getLangFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('lang') || localStorage.getItem('ai_daily_lang') || 'zh';
+        }
+
+        // 切换语言
+        function switchLang(lang) {
+            if (lang === currentLang) return;
+            currentLang = lang;
+
+            // 更新按钮状态
+            document.getElementById('btnZh').classList.toggle('active', lang === 'zh');
+            document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+
+            // 更新界面文字
+            updateUIText();
+
+            // 持久化：URL + localStorage
+            const url = new URL(window.location.href);
+            if (lang === 'en') {
+                url.searchParams.set('lang', 'en');
+            } else {
+                url.searchParams.delete('lang');
+            }
+            window.history.pushState({}, '', url);
+            localStorage.setItem('ai_daily_lang', lang);
+
+            // 更新日期选项显示格式 + 重新加载日报
+            regenerateDateOptions();
+            loadReport();
+        }
+
+        // 更新界面文字
+        function updateUIText() {
+            const t = i18n[currentLang];
+            document.getElementById('logoText').textContent = t.logo;
+            document.getElementById('goBtn').textContent = t.goBtn;
+        }
+
+        // 生成日期选项
         function generateDateOptions() {
             const select = document.getElementById('dateSelect');
+            select.innerHTML = '';
             const today = new Date();
-            
+            const t = i18n[currentLang];
+
             for (let i = 0; i < 30; i++) {
                 const date = new Date(today);
                 date.setDate(date.getDate() - i);
-                
+
                 const year = date.getFullYear();
                 const month = String(date.getMonth() + 1).padStart(2, '0');
                 const day = String(date.getDate()).padStart(2, '0');
                 const dateStr = `${year}-${month}-${day}`;
-                
+
                 const option = document.createElement('option');
                 option.value = dateStr;
-                const displayDate = `${year}年${month}月${day}日`;
-                option.textContent = i === 0 ? `${displayDate} (今日)` : displayDate;
+
+                if (currentLang === 'en') {
+                    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                    const displayDate = `${months[date.getMonth()]} ${date.getDate()}, ${year}`;
+                    option.textContent = i === 0 ? `${displayDate} ${t.dateToday}` : displayDate;
+                } else {
+                    const displayDate = `${year}年${month}月${day}日`;
+                    option.textContent = i === 0 ? `${displayDate} ${t.dateToday}` : displayDate;
+                }
+
                 select.appendChild(option);
             }
         }
-        
+
+        // 重新生成日期选项（语言切换时用）
+        function regenerateDateOptions() {
+            const selectedDate = document.getElementById('dateSelect').value;
+            generateDateOptions();
+            // 保持之前选中的日期
+            if (document.querySelector(`option[value="${selectedDate}"]`)) {
+                document.getElementById('dateSelect').value = selectedDate;
+            }
+        }
+
+        // 获取报告路径
+        function getReportPath(date) {
+            if (currentLang === 'en') {
+                return `reports/en/${date}.html`;
+            }
+            return `reports/${date}.html`;
+        }
+
         // 加载日报
         function loadReport() {
             const date = document.getElementById('dateSelect').value;
             const contentArea = document.getElementById('contentArea');
-            
-            // 更新URL
+            const t = i18n[currentLang];
+
+            // 更新URL中的日期参数（保留语言参数）
             const url = new URL(window.location.href);
             url.searchParams.set('date', date);
             window.history.pushState({}, '', url);
-            
-            // 加载日报（使用iframe确保HTML正确渲染）
+
+            const reportPath = getReportPath(date);
+
+            // 加载日报（使用iframe）
             contentArea.innerHTML = `
-                <iframe src="reports/${date}.html" 
-                        onload="this.style.opacity='1'" 
+                <iframe src="${reportPath}"
+                        onload="onIframeLoad(this)"
+                        onerror="onIframeError(this, '${date}')"
                         style="opacity:0; transition: opacity 0.5s ease;"
-                        frameborder="0" 
+                        frameborder="0"
                         scrolling="auto">
                 </iframe>
             `;
         }
-        
+
+        // iframe 加载成功
+        function onIframeLoad(iframe) {
+            iframe.style.opacity = '1';
+        }
+
+        // iframe 加载失败（404等）
+        function onIframeError(iframe, date) {
+            const t = i18n[currentLang];
+            const container = iframe.parentElement;
+            // 如果是英文模式且文件不存在，给出提示
+            if (currentLang === 'en') {
+                container.innerHTML = `
+                    <div class="error-msg">
+                        <h2>🌐 ${t.fallbackMsg}</h2>
+                        <p><button class="go-btn" style="margin-top:16px" onclick="switchLang('zh')">切换到中文版 Switch to Chinese</button></p>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div class="error-msg">
+                        <h2>${t.errorTitle}</h2>
+                        <p>${t.errorMsg}</p>
+                    </div>
+                `;
+            }
+        }
+
         // 初始化
         document.addEventListener('DOMContentLoaded', function() {
+            // 从 URL 或 localStorage 恢复语言设置
+            currentLang = getLangFromUrl();
+            if (currentLang !== 'zh' && currentLang !== 'en') {
+                currentLang = 'zh';
+            }
+
+            // 设置语言按钮状态
+            document.getElementById('btnZh').classList.toggle('active', currentLang === 'zh');
+            document.getElementById('btnEn').classList.toggle('active', currentLang === 'en');
+
+            // 更新界面文字
+            updateUIText();
+
+            // 生成日期选项
             generateDateOptions();
-            
+
             // 设置选中当前日期
             const selectedDate = getDateFromUrl();
             document.getElementById('dateSelect').value = selectedDate;
-            
+
             // 加载日报
             loadReport();
         });
