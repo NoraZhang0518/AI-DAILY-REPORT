@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-05-21</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections { grid-template-columns: 1fr; }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count { background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .key-point { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '→'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(255,107,53,0.1));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255,255,255,0.5); font-size: 14px; }
+
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+
+        .trend-card { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 24px; transition: all 0.3s ease; }
+        .trend-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-4px); }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-icon { font-size: 32px; }
+        .trend-desc { flex: 1; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-05-21</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Xi-Putin Summit: Treaty Extension & "New Stage" in Bilateral Ties</h3>
+                    <div class="news-content">
+                        <p>On May 20, President Xi Jinping held talks with Russian President Putin at the Great Hall of the People in Beijing. Both leaders agreed to <span class="highlight-bold">extend the Sino-Russian Treaty of Good-Neighborliness and Friendly Cooperation</span> and jointly opened the "China-Russia Education Year." This year marks the 30th anniversary of the bilateral strategic partnership, with a joint declaration heralding a "new stage" in relations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Putin arrived in Beijing on May 19; reunion with the "Chinese boy" he once held went viral</div>
+                        <div class="key-point">Joint declaration covers deeper cooperation in trade, energy, technology, and education</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">MATRIX-3 Humanoid Robot Launched: 58万元 (~$80K) Starting Price, Mass Production Begins</h3>
+                    <div class="news-content">
+                        <p>Shanghai-based Matrix Superintelligence released its flagship humanoid robot <span class="highlight-bold">MATRIX-3</span> at AI DAY 2026. Standing 170cm tall, weighing 65kg, with a 27-DOF dexterous hand capable of "micrometer-level" manipulation. Powered by NVIDIA AGX and the WAVE physical foundation model. Standard edition starts at 580K RMB, first-phase annual capacity: 10,000 units.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">A milestone for China's humanoid robot industry: from concept to mass production</div>
+                        <div class="key-point">CEO Zhang Haixing: costs dropping 30-40% annually; consumer version "will be very affordable"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Social Media Buzz: School Umbrella Incident & Tourism Slogan Backlash</h3>
+                    <div class="news-content">
+                        <p>A story about a school returning a damaged umbrella and the parent committee apologizing topped Baidu's hot search. Separately, a tourist attraction's slogan <span class="highlight-bold">"throw away your wife and kids"</span> sparked public outrage, raising questions about marketing ethics in China's tourism industry.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Xinhua Dictionary Pirated Sales Surpass Legitimate Copies</h3>
+                    <div class="news-content">
+                        <p>The revelation that <span class="highlight-bold">pirated editions of Xinhua Dictionary outsell authentic copies</span> ignited debate about intellectual property protection. As China's most authoritative reference book, the piracy problem highlights challenges facing traditional publishing in the digital age.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">"Robots Wearing Skin" Goes Viral: Embodied AI Enters Public Consciousness</h3>
+                    <div class="news-content">
+                        <p>The search trend <span class="highlight-bold">"robots wearing skin are on the eve of an explosion"</span> dominated Baidu's hot list, echoing the MATRIX-3 launch. Embodied intelligence is transitioning from an industry topic to mainstream public awareness — a prerequisite for consumer market adoption.</p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Google I/O 2026: Gemini 3.5, Omni, Spark & Antigravity 2.0 — Agent-First Everything</h3>
+                    <div class="news-content">
+                        <p>Google I/O 2026 delivered a barrage of AI announcements: <span class="highlight-bold">Gemini 3.5 Flash</span> (4x faster, half the cost), <span class="highlight-bold">Gemini Omni</span> (video generation world model), <span class="highlight-bold">Spark</span> (24/7 cloud personal Agent), and <span class="highlight-bold">Antigravity 2.0</span> (multi-Agent orchestration — 93 Agents built an OS from scratch for under $1,000). Gemini MAU surged from 400M to 900M.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Google pivots to "Agent-first" strategy, directly targeting Claude Code and OpenAI Codex</div>
+                        <div class="key-point">Annual capex projected at $180-190B; monthly token processing hits 3.2 quadrillion</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Fed Hawkishness Surges: Treasury Yields Hit 20-Year High, Rate Hike Odds Above 80%</h3>
+                    <div class="news-content">
+                        <p>On May 20, the <span class="highlight-bold">10-year Treasury yield rose to 4.682%</span>, while the 30-year breached 5.20% — the highest since 2007. Philadelphia Fed President Paulson stated "it's appropriate to consider rate hikes." Traders now price an 80%+ probability of a rate hike by year-end under new Fed Chair Kevin Warsh.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">62% of global fund managers expect 30-year yield to approach 6%</div>
+                        <div class="key-point">Rising global risk-free rates putting pressure on growth asset valuations</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Middle East: Lebanon-Israel Ceasefire Extended 45 Days, but Clashes Continue</h3>
+                    <div class="news-content">
+                        <p>On May 14-15, Lebanon, the US, and Israel held a third round of talks in Washington, agreeing to extend the ceasefire by 45 days. However, <span class="highlight-bold">Israel has conducted near-daily airstrikes in southern Lebanon</span> since the truce began. Meanwhile, explosions were heard on Iran's Qeshm Island on May 19, keeping Strait of Hormuz tensions elevated.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Musk Announces Grok V9 Training Complete, Shipping in 3-4 Weeks</h3>
+                    <div class="news-content">
+                        <p>On May 17, Elon Musk confirmed that xAI has completed training of <span class="highlight-bold">Grok V9</span> with 1.5 trillion parameters — 3x the previous generation. Expected launch in 3-4 weeks. Meanwhile, a US federal court dismissed Musk's lawsuit against OpenAI, ruling it was "filed too late."</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Dow Recovers 50,000 as Oil Plunges 6%, Markets Whipsaw Between Geopolitics & Policy</h3>
+                    <div class="news-content">
+                        <p>US stocks rallied on May 21 with the <span class="highlight-bold">Dow reclaiming 50,000</span> as Middle East ceasefire optimism drove oil prices down ~6%. The previous session saw three consecutive declines with the 30-year yield breaching 5.19%, reflecting heightened inflation anxieties.</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Antigravity 2.0: 93 Agents Built an OS from Scratch for Under $1,000</h3>
+                    <div class="news-content">
+                        <p>Google's <span class="highlight-bold">Antigravity 2.0</span> evolves from "AI IDE" to "multi-Agent orchestration platform" with three layers: Desktop App (central hub for multi-Agent interaction), CLI (for terminal developers), and SDK (programmatic access). In a live demo, 93 Agents consumed 2.6 billion tokens to build a working OS from scratch for under $1,000.</p>
+                        <p>New security Agent <span class="highlight">CodeMender</span> auto-detects and patches code vulnerabilities. Version 1.0 already has "millions of developers"; 2.0 directly challenges Claude Code and OpenAI Codex.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Multi-Agent collaboration paradigm moves from research to production</div>
+                        <div class="key-point">Gemini 3.5 Flash optimized for Agent tasks: 4x speed, half the cost</div>
+                        <div class="key-point">Google processes 3 trillion tokens daily, doubling every few weeks</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">AI Coding Landscape Solidifies: Seven Major Contenders with Distinct Strategies</h3>
+                    <div class="news-content">
+                        <p>As of May 2026, seven serious players dominate: <span class="highlight-bold">Claude Code</span> (terminal workflow benchmark), <span class="highlight-bold">Google Antigravity 2.0</span> (multi-Agent orchestration), <span class="highlight-bold">OpenAI Codex</span> (ChatGPT distribution), Cursor, Kiro, GitHub Copilot (enterprise), and Windsurf. Selection has shifted from "which is strongest" to "which fits your workflow."</p>
+                        <p><span class="highlight">MCP ecosystem</span> emerges as the critical unifying integration layer across all tools.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Gemini 3.5 Flash: Agent-Optimized Model Saves Enterprises $1B+ Annually</h3>
+                    <div class="news-content">
+                        <p>Designed specifically for Agent workloads, Gemini 3.5 Flash outperforms Gemini 3.1 Pro on nearly all benchmarks. Output speed is <span class="highlight-bold">4x faster</span> than frontier competitors (up to <span class="highlight-bold">12x</span> with Antigravity 2.0), at under half the cost. Enterprises migrating 80% of workloads could save <span class="highlight">over $1 billion annually</span>.</p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">2 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">MATRIX-3 Mass Production: 27-DOF Dexterous Hand + Bionic Joints, 10K Units/Year</h3>
+                    <div class="news-content">
+                        <p>Matrix Superintelligence's <span class="highlight-orange">MATRIX-3</span> features a 27-DOF dexterous hand for micrometer precision, proprietary bionic linear joints (5,000N peak force), and 3D biomimetic fabric "humanoid skin." Standard edition at 580K RMB, PRO at 680K RMB. First-phase capacity: 10,000 units annually.</p>
+                        <p>Long-term business model: <span class="highlight-orange">"exchange tokens for labor"</span> — hardware revenue will drop below 50% as operations and inference fees become primary income streams.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Critical leap from "demo showcase" to "mass production delivery"</div>
+                        <div class="key-point">Over 60% of investment in algorithms/AI, competitiveness in software over hardware</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">CEO Zhang: Industry "Like the Auto Industry 100 Years Ago," Targeting L3 by 2028</h3>
+                    <div class="news-content">
+                        <p>CEO Zhang Haixing stated the industry is transitioning from <span class="highlight-orange">L1 to L2</span> (some products at L1.5), expected to reach L2 by end of 2026 and L3 autonomy by 2028. He likened the current state to <span class="highlight-orange">"the automobile industry over 100 years ago"</span> — far from an inflection point.</p>
+                        <p>Key assessment: China leads in hardware manufacturing, while North America maintains ~3 months of advantage in models. Consumer companion robots could launch within <span class="highlight-orange">2-3 years</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">L2 (manual to autonomous transition) is the watershed for robots becoming "assistants"</div>
+                        <div class="key-point">Costs dropping 30-40% annually; a single screw costs more than a MacBook</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Key Trends Today</h2>
+                <p>Insights across sectors</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>"Agent" Becomes the Core Keyword of AI</h3>
+                            <p>Google I/O 2026: full-stack Agent layout from models to products to infrastructure.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🇨🇳</div>
+                        <div class="trend-desc">
+                            <h3>China-Russia Deepen Strategic Partnership</h3>
+                            <p>Putin's state visit, treaty extension, education year launch — bilateral ties enter "new stage."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">📉</div>
+                        <div class="trend-desc">
+                            <h3>Global Financial Turbulence Intensifies</h3>
+                            <p>Treasury yields at 20-year highs, oil plunges 6%, Dow V-shaped recovery amid geopolitics & policy shifts.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🦾</div>
+                        <div class="trend-desc">
+                            <h3>Embodied AI Moves from Concept to Production</h3>
+                            <p>MATRIX-3 mass delivery, L2 roadmap set, steep cost decline curve — industry accelerating toward commercialization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua · The Paper · Sina Finance · 36Kr · Sohu Tech · Baidu Trends · Xueqiu · CSDN</p>
+            <p class="footer-meta">Compiled: 2026-05-21 10:00 | NEWS DAILY Automated Push</p>
+        </footer>
+    </div>
+</body>
+</html>
