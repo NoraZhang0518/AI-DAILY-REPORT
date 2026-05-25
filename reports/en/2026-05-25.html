@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-05-25</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+        .header .subtitle { font-size: 18px; color: rgba(255, 255, 255, 0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count {
+            background: rgba(255, 255, 255, 0.1); padding: 4px 12px;
+            border-radius: 20px; font-size: 12px; font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px;
+            position: relative; transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255, 255, 255, 0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '\2192'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255, 255, 255, 0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255, 255, 255, 0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px;
+            padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03); border-radius: 16px;
+            padding: 24px; transition: all 0.3s ease;
+        }
+        .trend-card:hover { background: rgba(255, 255, 255, 0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255, 255, 255, 0.6); line-height: 1.6; }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-desc { flex: 1; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-05-25</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Row 1: Hot News on Top -->
+        <div class="sections">
+            <!-- China Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Shenzhou-23 Successfully Docks with Space Station, 8th Crew Rendezvous Achieved</h3>
+                    <div class="news-content">
+                        <p>The Shenzhou-23 crewed spacecraft successfully launched and completed autonomous rapid rendezvous and docking with China's space station, with three taikonauts entering the Tianhe core module, marking the <span class="highlight-bold">8th crew rendezvous</span> in China's crewed spaceflight history. Hong Kong citizens cheered passionately while watching the launch broadcast.</p>
+                        <p>The China Manned Space Agency stated the space station has entered routine operational phase, with ongoing space science experiments and technology tests.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Shenzhou-23 autonomously docked, achieving the 8th space crew rendezvous</div>
+                        <div class="key-point">Space topics dominated trending charts (#1, #7, #15), Hong Kong thrilled</div>
+                        <div class="key-point">Space station enters routine operations, science experiments continue</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Torrential Rain Batters Southern China, Warnings Issued as Floods Threaten</h3>
+                    <div class="news-content">
+                        <p>China's National Meteorological Center issued consecutive yellow alerts for heavy rain, with severe downpours hitting Jiangxi, Guizhou, and surrounding regions. Cumulative precipitation exceeded <span class="highlight-bold">100mm</span> in some areas. This year's rain has been described as "both early and intense," linked to climate change-driven extreme weather.</p>
+                        <p>Multiple southern provinces activated flood emergency responses, with 40 firefighters successfully rescuing trapped residents in Guizhou. The national flood control authority urged heightened vigilance.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Jiangxi and Guizhou hit by heavy rain and flooding, over 100mm locally</div>
+                        <div class="key-point">Rain "both early and intense" this year as climate extremes intensify</div>
+                        <div class="key-point">Firefighters deploy for rescues, national flood response activated</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Seven Semiconductor Stocks Plan 12.7 Billion Yuan Share Sell-Off</h3>
+                    <div class="news-content">
+                        <p>China's A-share semiconductor sector faces a concentrated wave of share reductions, with <span class="highlight-bold">seven popular stocks planning combined sell-offs of 12.7 billion yuan</span>, driven by the National IC Fund Phase I exit, executive and institutional profit-taking.</p>
+                        <p>While short-term sentiment faces pressure, analysts note that domestic substitution and AI computing demand remain the sector's core long-term drivers.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Seven semiconductor heavyweights plan combined 12.7B yuan sell-off</div>
+                        <div class="key-point">National IC Fund Phase I exit and institutional profit-taking are key drivers</div>
+                        <div class="key-point">Domestic substitution and AI computing demand remain long-term growth themes</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">People's Daily Exposes Commercialization of School Vision Screening Programs</h3>
+                    <div class="news-content">
+                        <p>People's Daily revealed that some school vision screening programs have become <span class="highlight-bold">commercial lead-generation tools</span>, with agencies collecting student personal data under the guise of "free testing" to sell products, sparking widespread public concern.</p>
+                        <p>Simultaneously, cyber police issued a flood-season online civility initiative urging citizens not to spread unverified disaster information. The boundary between public services and commercial interests has emerged as a key social concern.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">School vision screenings commercialized as agencies harvest data to sell products</div>
+                        <div class="key-point">Cyber police issue flood season online civility initiative</div>
+                        <div class="key-point">Public service commercialization and information governance in focus</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Archaeological Discovery: Chinese Used Knives and Forks Over 5,000 Years Ago</h3>
+                    <div class="news-content">
+                        <p>New archaeological research reveals that <span class="highlight-bold">as early as 5,000 years ago during the late Neolithic period</span>, ancient Chinese people were already using bone knives and forks as eating utensils. This finding dramatically predates previous assumptions and challenges the notion that "knives and forks are Western dining culture."</p>
+                        <p>Excavation teams discovered finely crafted bone forks and knives at multiple Yellow River basin sites, remarkably similar in form to modern Western cutlery.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Ancient Chinese used bone knives and forks 5,000+ years ago</div>
+                        <div class="key-point">Discovery challenges "knives and forks are Western" assumption</div>
+                        <div class="key-point">Fine bone utensils unearthed at multiple Yellow River basin sites</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Study Suggests Kimchi May Help Remove Microplastics from the Body</h3>
+                    <div class="news-content">
+                        <p>South Korean researchers found that <span class="highlight-bold">lactic acid bacteria in kimchi may help the body expel microplastic particles</span>. Animal experiments showed kimchi consumption promoted intestinal peristalsis and accelerated microplastic excretion through feces.</p>
+                        <p>Microplastic pollution has become a global environmental health crisis, with prior studies detecting particles in human blood, lungs, and placenta. However, experts caution that kimchi's high salt content warrants moderation, and further clinical trials are needed.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Study suggests kimchi lactobacilli may help expel microplastics from the body</div>
+                        <div class="key-point">Microplastic pollution is a recognized global health concern</div>
+                        <div class="key-point">Experts warn about high salt content, further clinical validation needed</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International Affairs -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US-Iran Peace Deal Framework Nears Completion: Strait of Hormuz to Reopen, Oil Plunges</h3>
+                    <div class="news-content">
+                        <p>On May 24, US-Iran peace negotiations achieved major breakthroughs. Trump stated the <span class="highlight-bold">draft framework is approaching "final wording"</span>. The Strait of Hormuz will resume navigation, potentially easing the transport of roughly one-fifth of global oil supplies.</p>
+                        <p>Key disputes persist: the US wants Iran to suspend its nuclear program for up to 20 years, while Iran insists nuclear issues be deferred and sanctions fully lifted in parallel. Pakistan played a crucial mediating role. Oil prices fell sharply on the positive signals.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">US-Iran framework near finalization, Strait of Hormuz to reopen</div>
+                        <div class="key-point">Oil prices plunge on positive signals, Pakistan key mediator</div>
+                        <div class="key-point">Nuclear and sanctions disputes unresolved, 30-60 days to final terms</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Angola Gold Mine Collapse Kills at Least 28; Africa Mining Safety Crisis Deepens</h3>
+                    <div class="news-content">
+                        <p>A <span class="highlight-bold">severe gold mine collapse in Angola</span> killed at least 28 people, with rescue operations ongoing. Preliminary assessments point to structural instability combined with recent heavy rainfall triggering geological loosening.</p>
+                        <p>On the same day, a building under construction collapsed in Abidjan, Cote d'Ivoire, killing at least 8. Africa's infrastructure development and mining safety oversight have drawn international attention.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Angola gold mine collapse kills at least 28, rescue ongoing</div>
+                        <div class="key-point">Same-day Cote d'Ivoire building collapse kills 8</div>
+                        <div class="key-point">Africa's mining and construction safety oversight draws global concern</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">California Toxic Chemical Tank Faces Explosion Risk, Governor Declares Emergency</h3>
+                    <div class="news-content">
+                        <p>A toxic chemical storage tank in Orange County, California continues to heat up, posing a <span class="highlight-bold">serious explosion risk</span>. Experts believe the tank may have developed cracks that partially relieved internal pressure, but the danger level remains extremely high.</p>
+                        <p>Governor Newsom declared a state of emergency as nearby residents were evacuated. Emergency teams are developing cooling plans, but the chemical properties make mitigation extremely challenging. A potential explosion could affect hundreds of thousands of residents.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">California toxic chemical tank heating up, explosion risk looms</div>
+                        <div class="key-point">Possible cracks partially relieve pressure but danger remains extreme</div>
+                        <div class="key-point">Governor declares emergency, residents evacuated immediately</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Bitcoin Surges Past $77,000 as Crypto Market Recovery Gains Momentum</h3>
+                    <div class="news-content">
+                        <p>The cryptocurrency market continued its rally with <span class="highlight-bold">Bitcoin breaking above $77,000</span>, up 2.01% on the day. Ethereum rose in tandem past $2,100, gaining 1.86%.</p>
+                        <p>Global geopolitical uncertainties, inflation pressures, and rising Treasury yields are jointly driving capital into crypto assets as safe havens. Mainstream financial institutions are increasingly accepting digital assets, though regulatory risks from the SEC remain.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Bitcoin breaks above $77,000, daily gain over 2%</div>
+                        <div class="key-point">Ethereum rises past $2,100, crypto market broadly recovering</div>
+                        <div class="key-point">Geopolitical uncertainty fuels crypto safe-haven demand</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Senegal National Assembly Speaker Resigns, West African Politics in Flux</h3>
+                    <div class="news-content">
+                        <p>The Speaker of Senegal's National Assembly formally announced his resignation. Senegal has long been regarded as a <span class="highlight-bold">stable democratic anchor in West Africa</span>, and this high-level change has sparked concern about the region's political trajectory.</p>
+                        <p>West Africa has experienced mounting political instability in recent years, with coups in Mali, Burkina Faso, and elsewhere. The AU and ECOWAS have called on all parties to remain calm and resolve differences through constitutional processes.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Senegal National Assembly Speaker resigns unexpectedly</div>
+                        <div class="key-point">West African stability faces test amid recent coups in region</div>
+                        <div class="key-point">AU and ECOWAS urge constitutional resolution</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">China's Global Favorability Steadily Rising, International Image Continues to Improve</h3>
+                    <div class="news-content">
+                        <p>Multiple international polls show <span class="highlight-bold">China's global favorability steadily rising</span>. China's active role in providing international public goods, advancing global development initiatives, and multilateral diplomacy are key drivers behind its improving international image.</p>
+                        <p>On the same day, Pakistan's Prime Minister arrived in Beijing for a state visit, deepening CPEC cooperation. China's influence among Global South nations has grown notably, with Belt and Road infrastructure cooperation continuing to bear fruit.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Multiple polls show China's global favorability steadily rising</div>
+                        <div class="key-point">China's role in global governance increasingly important</div>
+                        <div class="key-point">Pakistan PM visits Beijing concurrently, bilateral cooperation deepens</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI & Embodied Below -->
+        <div class="sections">
+            <!-- AI Coding -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Claude Opus 4.7 Tops Coding Leaderboard: 1,350 Points in LMArena Blind Test</h3>
+                    <div class="news-content">
+                        <p>Anthropic's Claude Opus 4.7 scored <span class="highlight-bold">1,350 points in the LMArena Coding Arena blind test to rank #1 globally</span>, with a composite score of 1,503 points setting a new industry record. It supports a <span class="highlight">1 million token context window</span> (roughly 7.5 million English words), dominating in complex architecture design and long-context analysis.</p>
+                        <p>Priced at $5/MT input and $25/MT output, it targets high-end coding scenarios. Multiple organizations confirmed Opus 4.7 comprehensively outperforms GPT-5.5 and DeepSeek V4 in coding benchmarks. The AI coding model race has evolved from "can it write code" to "million-token context + end-to-end agent automation."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">LMArena blind test 1,350 points #1 globally, 1M token context dominates</div>
+                        <div class="key-point">Programming benchmarks comprehensively ahead of GPT-5.5 and DeepSeek V4</div>
+                        <div class="key-point">1M token window can hold 7x the entire Harry Potter series</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">DeepSeek V4 Stuns: 90% of Top Model Performance at 1% of the Cost</h3>
+                    <div class="news-content">
+                        <p>DeepSeek launched V4 on April 24 with a <span class="highlight-bold">SWE-bench score of 80.6%</span>, shaking up the AI coding landscape with extraordinary cost efficiency. Input pricing as low as $0.0028/MT (cache hit) &#8212; just <span class="highlight">1/432 the cost of Claude Sonnet 4.7</span>.</p>
+                        <p>Individual developers can code daily for under 50 RMB per month, earning it the community title "price-performance king." While comprehensive coding capability trails top models, it has become the go-to economic choice for daily coding and simpler tasks.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">SWE-bench 80.6%, cost only 1/432 of Claude Sonnet 4.7</div>
+                        <div class="key-point">Individual developer monthly coding costs under 50 RMB</div>
+                        <div class="key-point">Best price-performance for daily coding and simpler tasks</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">GPT-5.5 Officially Ships, Full-Stack Agent Automation Becomes OpenAI's New Moat</h3>
+                    <div class="news-content">
+                        <p>OpenAI officially shipped <span class="highlight-bold">GPT-5.5 (codename Spud)</span> on April 24, with a core breakthrough moving from "writing code" to "completing entire workflows." The new model not only generates code but operates software to complete end-to-end task chains, hailed as the "full-stack agent automation warrior."</p>
+                        <p>GPT-5.5 shows marked strengths in multi-step tasks, tool calling, and workflow orchestration, launching alongside an Agent development framework for custom toolchains. Premium pricing limits individual developer appeal but targets enterprise-level agent deployment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">From "write code" to "complete workflows," agent automation leaps forward</div>
+                        <div class="key-point">Multi-step task and tool-calling capabilities lead, enterprise-focused</div>
+                        <div class="key-point">Companion Agent framework signals transition to platform company</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">GLM-5.1 Becomes China's Go-To Full-Stack Coding Model, Top Choice for Enterprise Projects</h3>
+                    <div class="news-content">
+                        <p>Zhipu AI released <span class="highlight-bold">GLM-5.1</span> on March 28, upgrading from "single-point strength" to "full-stack capability," becoming the benchmark Chinese coding model. It offers clear advantages in Chinese-language coding scenarios, domestic ecosystem adaptation, and network stability.</p>
+                        <p>In recent evaluations, GLM-5.1 was recommended as the "top choice for domestic enterprise and government projects," forming a differentiated pairing with DeepSeek V4 &#8212; one prioritizing reliability, the other extreme cost efficiency.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Upgraded from strength-in-one to full-stack capability, excellent Chinese adaptation</div>
+                        <div class="key-point">Preferred for enterprise/government projects, stable network, low friction</div>
+                        <div class="key-point">Differentiated positioning vs DeepSeek V4 in the Chinese market</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">AI Coding Tools Enter Cutthroat Competition: Claude Code/Cursor/Copilot/Codex Battle</h3>
+                    <div class="news-content">
+                        <p>May 2026: <span class="highlight-bold">AI coding tool competition has reached fever pitch</span>. Claude Code, Cursor, GitHub Copilot, and OpenAI Codex fiercely compete across code completion, agent capabilities, and multi-file refactoring.</p>
+                        <p>Cursor has evolved from tool vendor to model vendor with its in-house Composer 2.5; Claude Code leads in complex engineering via Opus 4.7; Copilot maintains broad coverage through GitHub's ecosystem. Developer consensus: no single tool dominates all scenarios &#8212; the optimal strategy is flexible model combination. Agent automation is the next battleground.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude Code/Cursor/Copilot/Codex in cutthroat four-way battle</div>
+                        <div class="key-point">Cursor evolves into model vendor, competition moves up the value chain</div>
+                        <div class="key-point">"Flexible combination" is the consensus, agent automation is the next frontier</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Embodied Intelligence -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Humanoid Robot Mass Production Inflection: Unitree IPO Seeks $4.2B, $6.5B Capital Inflow</h3>
+                    <div class="news-content">
+                        <p>May 2026: <span class="highlight-orange">Unitree Technology's STAR Market IPO seeks 4.202 billion yuan</span> (valuation ~42B yuan), Leju Robot concurrently filed for ChiNext listing (2.6B yuan target), and Deep Robotics' STAR Market application was also accepted (2.503B yuan). Three leading candidates advancing simultaneously.</p>
+                        <p>Friday's close saw the humanoid robot sector record <span class="highlight-orange">over 6.5 billion yuan in net institutional inflows</span>. By May 20, at least 38 robotics supply chain companies were in IPO pipeline. Hangzhou enacted its Embodied Intelligence Robot Industry Development Regulation; Shanghai targets 100,000 robots by 2027.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Unitree + Leju + Deep Robotics triple IPO push, combined fundraising over 9.3B yuan</div>
+                        <div class="key-point">Humanoid robot sector sees 6.5B yuan single-day net capital inflow</div>
+                        <div class="key-point">38 robotics companies in IPO pipeline, policy and capital twin drivers</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Tesla Optimus Gen3 Mass Production Begins: Fremont Factory Targets 1M Annual Capacity</h3>
+                    <div class="news-content">
+                        <p>Tesla Optimus Gen3 <span class="highlight-orange">officially began mass production in Q2 2026</span>, with the first units rolling off lines at Fremont, California. The factory has a designed annual capacity of <span class="highlight-orange">up to 1 million units</span>, transitioning from decommissioned Model S/X lines to robot production in just ~4 months.</p>
+                        <p>Specs: 173cm, 57kg, 20kg max payload, 4680 battery for 10-hour continuous operation, FSD pure-vision AI with HW4.0 chip. Enterprise deliveries start H2 2026. Shanghai Gigafactory has already deployed 50 units. Musk also plans to send Optimus to Mars via Starship by end-2026.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Q2 mass production launch, Fremont designed for 1M annual capacity</div>
+                        <div class="key-point">H2 2026 enterprise deliveries, 50 units already at Shanghai factory</div>
+                        <div class="key-point">Planned Starship launch to Mars by end-2026</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Figure 03 Production Speed Explodes: 1/Day to 1/Hour in Just 120 Days</h3>
+                    <div class="news-content">
+                        <p>American humanoid robot company Figure AI achieved a stunning production ramp: <span class="highlight-orange">Figure 03 manufacturing speed jumped from 1 per day to 1 per hour</span> in just 120 days. Cumulative deliveries have exceeded 350 units as of May, with BMW among key industrial clients.</p>
+                        <p>Through end-to-end data accumulation and "lights-out factory" model (robots building robots), Figure is rapidly catching Tesla in production efficiency. Real-world industrial deployment experience is becoming its core competitive moat. The humanoid robot "iPhone moment" is accelerating.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">1/day to 1/hour production in 120 days &#8212; staggering manufacturing acceleration</div>
+                        <div class="key-point">350+ units delivered, BMW and industrial giants among key customers</div>
+                        <div class="key-point">"Lights-out factory" model accelerates humanoid robot industrial deployment</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI and global landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128640;</div>
+                        <div class="trend-desc">
+                            <h3>Space Tech Dominates Trending Charts</h3>
+                            <p>Shenzhou-23's 8th crew rendezvous ignites nationwide space enthusiasm, dominating top trending positions.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9774;</div>
+                        <div class="trend-desc">
+                            <h3>US-Iran Peace Reshapes Geopolitics</h3>
+                            <p>Peace deal framework nears completion, Strait of Hormuz to reopen, global energy markets face restructuring.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128161;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Enters "Agent + Affordability" Dual Track</h3>
+                            <p>Opus 4.7 dominates on capability vs DeepSeek V4 dominates on cost &#8212; developers must flexibly combine tools.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robots Shift from Capital Stories to Production Reality</h3>
+                            <p>Triple IPOs + Tesla production launch + Figure speed explosion &#8212; the industry inflection point has arrived.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua &middot; Baidu Trends &middot; Sina Finance &middot; CSDN &middot; Leaderobot &middot; The Paper</p>
+            <p class="footer-meta">Compiled: 2026-05-25 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
