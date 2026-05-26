@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-05-26</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: '';
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px;
+            font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px; letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px; color: rgba(255, 255, 255, 0.6); font-weight: 300;
+        }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px; padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count { background: rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px;
+            position: relative; transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px;
+            width: 28px; height: 28px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255, 255, 255, 0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '\2192'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255, 255, 255, 0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255, 255, 255, 0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px; padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03); border-radius: 16px;
+            padding: 24px; transition: all 0.3s ease;
+        }
+        .trend-card:hover { background: rgba(255, 255, 255, 0.06); transform: translateY(-4px); }
+
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-desc { flex: 1; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255, 255, 255, 0.6); line-height: 1.6; }
+
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-05-26</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Hema "Pink Fungus" Label Controversy Tops Weibo Trending, Official Apology and Full Product Recall</h3>
+                    <div class="news-content">
+                        <p>Hema's pink wood ear mushroom product sparked massive controversy over its packaging label design, with users accusing it of vulgarity and sexual innuendo. The hashtag <span class="highlight-bold">"Hema Formal Apology" topped Weibo's trending chart</span> at #1 with 1.16 million heat index. Hema responded overnight, issuing a formal apology and pulling all related products, pledging to strengthen label review processes.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">#1 trending topic ignites public debate as brand tolerance for vulgar marketing continues to decline</div>
+                        <div class="key-point">Multiple food label controversies this year signal mounting pressure on corporate compliance systems</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Severe Rainstorms Flood Multiple Provinces, Insurance Claims Exceed ¥750M, Weather Topics Dominate Trending Charts</h3>
+                    <div class="news-content">
+                        <p>Anomalous weather systems have battered southern China, with Hubei, Hunan, Guizhou, Guangdong, and other provinces hit by torrential rain and flooding. <span class="highlight-bold">"This year's weather system is abnormal" and "Use public transit during heavy rain" ranked #2 and #3</span> on Weibo trending. Financial regulators reported 33,000 insurance claims with estimated losses of ¥750 million (¥210M already paid).</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Two of the top three trending topics directly related to extreme weather, reflecting intense public concern</div>
+                        <div class="key-point">Earlier and more severe flood season significantly increases disaster response pressure</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">A-Share Chip &amp; Semiconductor Stocks Surge, Multiple Names Hit Record Highs Amid Structural Divergence</h3>
+                    <div class="news-content">
+                        <p>China's A-share semiconductor and robotics sectors continue their powerful rally as the market's dominant themes. Estun hit its daily limit up while Haozhi electromechanical surged over 14%. Both <span class="highlight-bold">"chip semiconductor surge" and "A-share anomalies"</span> trended on social media. However, cautionary voices warn about cyclical risks, as 7 semiconductor firms including AMEC have already disclosed shareholder reduction plans.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Semiconductor + robotics form the strongest dual-theme in A-shares, but shareholder selling raises structural concerns</div>
+                        <div class="key-point">National Big Fund Phase III + domestic substitution acceleration provide long-term support</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">16-Year-Old Girl Attacked by Stranger on Xi'an Street, Father Refuses Mediation, Demands Criminal Prosecution</h3>
+                    <div class="news-content">
+                        <p>A 16-year-old girl in Xi'an was violently assaulted by a stranger on the street, <span class="highlight-bold">her hair grabbed and head kicked until bleeding</span>, triggering nationwide outrage. Police have opened an administrative case, but the father has firmly refused mediation, demanding "picking quarrels and provoking trouble" charges. Separately, a man was penalized for using AI to fabricate a cable car accident video.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Violent attack on a minor in public space reignites public safety concerns for women and youth</div>
+                        <div class="key-point">AI-generated fake news crackdown intensifies as multiple individuals face penalties</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Female Village Official Cyberbullied for Wearing Gold Earrings During Flood Relief: "They Cost Only a Few Dozen Yuan"</h3>
+                    <div class="news-content">
+                        <p>Xiang Jinyuan, a village Party secretary in Shimen County, Hunan, worked around the clock on flood relief and was <span class="highlight-bold">cyberbullied for wearing gold earrings</span> during a tearful interview. She responded that they cost only a few dozen yuan: "I have no time for the internet... as long as the people approve of me, that's enough." The incident highlights the toxic gap between grassroots sacrifice and online vitriol.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Cyberbullying extends from celebrities to grassroots public servants, demanding urgent governance</div>
+                        <div class="key-point">The stark contrast between frontline dedication and online hostility sparks reflection on public discourse</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">M6.9 Earthquake Hits Northern Chile; Missing Chinese Student in Germany Found Deceased</h3>
+                    <div class="news-content">
+                        <p>A <span class="highlight-bold">magnitude 6.9 earthquake</span> struck northern Chile on May 26 at 5:52 AM Beijing time, at a depth of 100 km. The body of a 23-year-old Chinese student missing in Germany has been found, raising overseas student safety concerns. Meanwhile, mutated "super pigs" in Fukushima's nuclear zone continue to draw international attention.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Chile quake causes no mass casualties; Pacific Ring of Fire activity remains elevated</div>
+                        <div class="key-point">Overseas student safety incidents continue to resonate deeply with Chinese public opinion</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US-Iran Ceasefire Deal Nears Completion: Trump Says "Good Deal or No Deal," Oil Drops Below $100</h3>
+                    <div class="news-content">
+                        <p>US-Iran negotiations in Doha have made significant progress, with <span class="highlight-bold">both sides close to a deal to end the Middle East war and reopen the Strait of Hormuz</span>. Trump stated on May 26: "Either a great and meaningful deal, or no deal at all," while pressing Saudi Arabia and others to commit to recognizing Israel. Iran praised China's role in mediation but warned US "frequent position changes" hinder progress. Oil dropped below $100/barrel, and global equities rallied on peace expectations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Months-long US-Iran war may end soon; Strait of Hormuz reopening would be transformative for global energy</div>
+                        <div class="key-point">China's mediation role receives positive acknowledgement from Iran</div>
+                        <div class="key-point">Oil below $100 + global stock rally = markets pricing in peace</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Netanyahu Admits Israel Has "Little Ability" to Influence US-Iran Talks, US-Israel Alliance Fractures</h3>
+                    <div class="news-content">
+                        <p>Israeli PM Netanyahu privately conceded that <span class="highlight-bold">Israel has almost no influence over the Trump administration's Iran policy decisions</span>. This rare admission signals deepening cracks in the US-Israel alliance. Israel had jointly conducted military strikes on Iran with the US, but Washington's pivot to negotiations has left Israel's strategic interests visibly sidelined.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Public US-Israel fracture marks a structural shift in Middle East power dynamics</div>
+                        <div class="key-point">Saudi-Israel normalization bundled into Iran deal — the entire regional order is being reshuffled</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Russia Demands US Evacuate Diplomats from Kyiv, Escalating US-Russia Tensions</h3>
+                    <div class="news-content">
+                        <p>Russian Foreign Minister Lavrov formally demanded that US Secretary of State Rubio <span class="highlight-bold">evacuate American diplomatic personnel and citizens from Kyiv</span>. This marks a sharp escalation in Russian rhetoric on Ukraine, reigniting conflict risks. The US now faces the growing strain of a "two-front" posture — pursuing peace in the Middle East while sustaining confrontation with Russia over Ukraine.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Rarely escalatory Russian diplomatic language signals heightened US-Russia friction over Ukraine</div>
+                        <div class="key-point">America's two-front strategic posture (Middle East + Ukraine) faces resource allocation pressure</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Gold Falls to $4,531; Pakistan Train Attack Kills 47; Global Markets Await US-Iran Deal</h3>
+                    <div class="news-content">
+                        <p>US markets closed for Memorial Day. <span class="highlight-bold">Gold traded at $4,531/oz, down 3.25% month-over-month</span> but still 37% higher year-over-year. A bomb attack on a passenger train in Baluchistan, Pakistan killed 47 (including 20 security personnel) and injured 98. A Japan domestic flight made an emergency return after a tire burst — all 169 aboard safe.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">US-Iran peace expectations dominate global asset pricing, pressuring safe havens</div>
+                        <div class="key-point">Major Pakistan terrorist attack raises regional security alarm</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Trump to Undergo 4th Term Medical Exam Ahead of 80th Birthday, Global Attention on Leadership Health</h3>
+                    <div class="news-content">
+                        <p>President Trump is scheduled for his <span class="highlight-bold">fourth medical examination of his second term</span> at Walter Reed on Tuesday. With his 80th birthday approaching, his health status draws global scrutiny. Amid concurrent Iran negotiations, Ukraine tensions, and China relations, the health of the US president is a key variable for global markets and geopolitical stability.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Pre-80th-birthday exam triggers global discussion on succession and decision-making stability</div>
+                        <div class="key-point">EU reportedly preparing multi-hundred-million-euro fine against Google, US-EU tech friction continues</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic Closes $30B Round at $900B+ Valuation: First-Ever $559M Operating Profit, Claude Code Hits $2.5B ARR</h3>
+                    <div class="news-content">
+                        <p>Anthropic announced on May 25 the closing of a <span class="highlight-bold">$30 billion funding round co-led by Sequoia and Dragoneer, valuing the company above $900 billion</span> — surpassing OpenAI's March valuation for the first time. The Q2 revenue forecast of $10.9B (up 130% QoQ) delivered <span class="highlight">Anthropic's first quarterly operating profit of $559M</span>. The primary driver: Claude Code enterprise deployments at $2.5B annualized revenue. SpaceX's IPO filing also revealed Anthropic's $45B compute contract.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Anthropic breaks the "AI companies don't make money" myth — the business model is now market-validated</div>
+                        <div class="key-point">Claude Code at $2.5B ARR confirms the unprecedented commercial value of AI-powered developer tools</div>
+                        <div class="key-point">$45B compute contract reveals the true nature of AI competition: "compute is the moat"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Claude Code Official Plugins Directory + Chrome DevTools MCP: AI Coding Enters the "Full-Stack Automation" Era</h3>
+                    <div class="news-content">
+                        <p>Anthropic launched the <span class="highlight-bold">official Claude Code plugins directory</span>, curating high-quality extensions and marking the evolution from tool to platform ecosystem. The Chrome DevTools team simultaneously released chrome-devtools-mcp, enabling AI coding agents to directly control browser developer tools. Microsoft's .NET team also released a "skills" repository. Together, these signal a paradigm shift: <span class="highlight">AI coding is moving from code completion to full-stack development automation</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI coding evolves from "assisted completion" to "full-stack automation" — plugins + browser debugging + language skills form the holy trinity</div>
+                        <div class="key-point">Claude Code's plugin ecosystem marks the "App Store moment" for AI developer tools</div>
+                        <div class="key-point">MCP protocol is becoming the de facto standard for AI tool interoperability</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Andrej Karpathy Joins Anthropic; Chinese Models Capture 60% of OpenRouter Usage</h3>
+                    <div class="news-content">
+                        <p>OpenAI co-founder and former Tesla Autopilot chief <span class="highlight-bold">Andrej Karpathy has officially joined Anthropic</span> to rebuild its pretraining research team — the most significant AI talent move of 2026. Meanwhile, OpenRouter data shows Chinese open-source models (Kimi K2.6, DeepSeek V4, GLM-5.1, Qwen 3) <span class="highlight">now account for 60% of total platform usage</span>, as Meta's Avocado project has gone silent.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Karpathy's move is the biggest AI talent story of 2026, signaling a power-center shift in the industry</div>
+                        <div class="key-point">Chinese models dominate 60% of open-source ecosystem; US faces an "absence" in open-weight leadership</div>
+                        <div class="key-point">Talent + open source + commercialization — Anthropic delivers on all three fronts simultaneously</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Google Unveils Gemini for Science with Dual Nature Papers; AI Scientific Discovery Crosses Key Threshold</h3>
+                    <div class="news-content">
+                        <p>Google published two papers in Nature simultaneously, introducing the <span class="highlight-bold">Gemini for Science AI toolkit</span>. Its ERA system autonomously generates scientific code outperforming human experts, while the Co-Scientist multi-agent debate system produces verifiable scientific hypotheses. Netflix also announced its INKubator AI Studio for AI-native animation production. AI's penetration has upgraded from assistance to core productivity.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI scientific discovery crosses a key milestone — dual Nature papers mark a landmark moment</div>
+                        <div class="key-point">SaaS-Bench evaluation reveals AI agents have extremely low success rates on real office tasks — reliability remains the bottleneck</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Claude to Gain Permanent Memory; Pope Issues First AI Encyclical, Choosing Anthropic as Partner</h3>
+                    <div class="news-content">
+                        <p>Anthropic is building a <span class="highlight-bold">filesystem-based "permanent brain" memory feature for Claude</span>, along with a sleep-simulating "dream" function for memory consolidation. Claude Mythos preview scanned over 1,000 open-source projects and found 6,202 severe vulnerabilities. Pope Leo XIV issued the first-ever papal AI encyclical, <em>Magnifica Humanitas</em>, co-presented with Anthropic — seen as the highest-level "moral endorsement" of the safety-first AI approach.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude's "memory + dream" architecture points toward next-gen AI agents capable of continuous learning</div>
+                        <div class="key-point">The Vatican choosing Anthropic for the AI encyclical gives the safety-first approach unprecedented moral authority</div>
+                        <div class="key-point">ECB urges faster bank patching — AI discovers vulnerabilities in minutes, fundamentally changing the security landscape</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics / Embodied Intelligence Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Humanoid Robot Q1 Funding Hits ¥68.1B — Surpassing All of 2025; China's 2026 Shipments Projected at 62,500 Units</h3>
+                    <div class="news-content">
+                        <p>According to CCTV Finance, China's humanoid robot sector raised <span class="highlight-orange">¥68.1 billion in Q1 2026 alone — exceeding the full-year 2025 total</span>, with 50 funding rounds in March alone. 2025 domestic shipments were 18,000 units; 2026 is projected to surge to <span class="highlight-orange">62,500 units</span>. Global market size reached ¥8.7B (up 680% YoY), with China commanding over 65% share. A Foshan factory now assembles one humanoid robot every 30 minutes.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Q1 funding exceeding full-year 2025 — capital enthusiasm for humanoid robots at boiling point</div>
+                        <div class="key-point">2026 shipments 3.5x 2025 levels — the industry has officially entered the "mass-production second half"</div>
+                        <div class="key-point">China is "far ahead" in robot body and hardware manufacturing</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Hangzhou Deploys World's First Humanoid Robot Traffic Police Brigade; China Holds ~80% Global Market Share</h3>
+                    <div class="news-content">
+                        <p>The Hangzhou Traffic Police deployed the <span class="highlight-orange">world's first humanoid robot traffic management brigade</span> — 15 AI-equipped humanoid robots directing traffic alongside human officers. China now holds approximately 80% of the global humanoid robot market, with over 140 manufacturers and 330+ models. Deutsche Bank projects 35,000+ Chinese shipments in 2026 — nearly triple all US OEMs combined. China has released its first national standard system for humanoid robots.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">World's first robot traffic police on duty — public service deployment validates real-world utility</div>
+                        <div class="key-point">China's 80% global share is no accident — supply chain + manufacturing base + state policy form a unified force</div>
+                        <div class="key-point">National standards already established — China seizes the initiative in embodied intelligence rule-making</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Matrix Ultra MATRIX-3 Launches at ¥580K; Tesla Optimus Targets 1M Annual Units — Global "Humanoid War" Intensifies</h3>
+                    <div class="news-content">
+                        <p>Matrix Ultra unveiled its flagship MATRIX-3 humanoid robot: <span class="highlight-orange">starting at ¥580,000 (~$80K)</span>, powered by Nvidia AGX with a 27-DOF dexterous hand, targeting 100,000-unit capacity by 2027. Tesla's Optimus Gen3 mass production at Fremont targets 1M units/year. The industry is now in a "mass production + commercialization" dual drive, with prices falling 30-40% annually. Shanghai's humanoid robot innovation center has launched an AI simulation platform.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">MATRIX-3 at ¥580K — consumer-grade pricing within 3 years as costs plummet</div>
+                        <div class="key-point">Tesla 1M/year vs 140+ Chinese manufacturers — global competition reaching fever pitch</div>
+                        <div class="key-point">China is replicating its EV playbook in robotics; the West has yet to mount an effective counter-strategy</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Goes "Platform"</h3>
+                            <p>Claude Code plugin ecosystem + Chrome DevTools MCP + Microsoft Skills — developer tools evolve from single assistants to full-stack automation platforms.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128176;</div>
+                        <div class="trend-desc">
+                            <h3>AI Business Model Validated</h3>
+                            <p>Anthropic's $559M Q2 profit + Claude Code at $2.5B ARR proves AI companies can make real money — the path to profitability is now proven.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127468;&#127463;</div>
+                        <div class="trend-desc">
+                            <h3>China Leads on Two Fronts</h3>
+                            <p>Chinese open-source models hold 60% of OpenRouter usage + 80% global humanoid robot market share — dominating both AI and embodied intelligence.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9774;</div>
+                        <div class="trend-desc">
+                            <h3>US-Iran Peace Drives Global Markets</h3>
+                            <p>Oil below $100, gold under pressure, equities rallying — geopolitical turning point becomes the biggest macro variable.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: Sina Finance &middot; Weibo Trending &middot; CCTV Finance &middot; IT Home &middot; 36Kr &middot; AIToolly &middot; BuildFastWithAI &middot; LiveMint &middot; CBS News &middot; Reuters</p>
+            <p class="footer-meta">Compiled: 2026-05-26 09:40 | AI Daily Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
