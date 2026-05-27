@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-05-27</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-05-27</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <div class="sections">
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Huawei Unveils "Tao (τ) Law": First Chinese-Led Semiconductor Principle to Guide Global Chip Industry</h3>
+                    <div class="news-content">
+                        <p>On May 25, Huawei Board Director and Semiconductor Business President He Tingbo introduced the <span class="highlight-bold">"Tao (τ) Law"</span> at ISCAS 2026 — replacing traditional "geometric scaling" with "temporal scaling." This marks the first time a Chinese enterprise has proposed a new guiding principle for the global semiconductor industry, triggering seismic waves across the chip world.</p>
+                        <p>Based on this law, Huawei has designed and mass-produced <span class="highlight">381 chips</span> over the past six years. This autumn, the new Kirin 2026 mobile chip will fully adopt LogicFolding technology — delivering a 53.5% transistor density boost and peak frequency exceeding 3GHz for the first time. By 2031, Huawei expects transistor density to reach parity with the 1.4nm process node.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Tao Law replaces Moore's Law's geometric scaling with temporal scaling, opening a new paradigm for chips</div>
+                        <div class="key-point">Kirin 2026 debuts on Mate 90 series, marking a new era for China's semiconductor self-reliance</div>
+                        <div class="key-point">A-share semiconductor sector surges as China shifts from "follower" to "rule-maker" in global chips</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Six Major Chinese AI Platforms to Restrict Features During 2026 College Entrance Exam</h3>
+                    <div class="news-content">
+                        <p>On May 26, under a joint directive from China's Ministry of Education and four other departments, mainstream AI platforms — including <span class="highlight-bold">Doubao, Tongyi Qianwen, Tencent Yuanbao, Kimi, DeepSeek, and Baidu ERNIE</span> — will collectively restrict certain features during the 2026 Gaokao (College Entrance Exam) period. Functions such as photo-based problem solving and essay assistance will be suspended.</p>
+                        <p>Surveys show approximately 70% of primary and secondary students already use AI for writing assistance, posing unprecedented challenges to traditional examination integrity. This marks a landmark move toward safeguarding educational fairness in the AI era.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Five government departments jointly issued the directive — first-ever collective AI restriction for Gaokao</div>
+                        <div class="key-point">70% of students use AI for writing — AI governance shifts from reactive regulation to proactive compliance</div>
+                        <div class="key-point">Sets a global precedent for AI governance during high-stakes national examinations</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">A-Share Tech Stocks Surge as Huawei Tao Law Ignites Semiconductor Sector Revaluation</h3>
+                    <div class="news-content">
+                        <p>Driven by Huawei's Tao Law announcement and surging global AI compute demand, China's A-share semiconductor and tech sectors posted strong gains this week. On Wall Street, the Nasdaq and S&P 500 hit fresh all-time highs, with <span class="highlight-bold">Micron Technology surpassing $1 trillion market cap</span>, lifting the entire memory-chip sector.</p>
+                        <p>The Tao Law ignited not just a technological breakthrough, but a <span class="highlight">systematic revaluation</span> of China's semiconductor industry. Samsung concurrently completed its 900-layer 3D NAND prototype, signaling an all-out global chip competition.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Nasdaq and S&P 500 hit record highs; Micron joins the trillion-dollar club</div>
+                        <div class="key-point">Huawei ecosystem concept stocks rally across the board</div>
+                        <div class="key-point">Samsung 900-layer NAND and Huawei Tao Law emerge in the same week — a "China Moment" in semiconductor innovation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Beijing Regulators Summon 17 Major Platforms to Curb Irrational "618" Subsidy Wars</h3>
+                    <div class="news-content">
+                        <p>Beijing's Market Regulation Administration, together with multiple departments, <span class="highlight-bold">summoned 17 major platform enterprises</span>, demanding an end to irrational large-scale subsidy promotions during the "618" shopping festival. The meeting emphasized fair competition, food safety, and content compliance.</p>
+                        <p>This follows recent food safety scandals — including "one merchant, multiple virtual stores" on delivery platforms and leftover food recycling in Wuhan — prompting regulators to tighten oversight across the entire internet consumer ecosystem.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">17 platforms summoned simultaneously — unprecedented regulatory scale</div>
+                        <div class="key-point">Crackdown on "burning cash" subsidy wars to prevent vicious platform competition</div>
+                        <div class="key-point">Food safety and fair competition as dual regulatory priorities</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Dreame Signs Cristiano Ronaldo as Global Brand Ambassador, Accelerating Chinese Tech Going Global</h3>
+                    <div class="news-content">
+                        <p>Dreame Technology officially announced football superstar <span class="highlight-bold">Cristiano Ronaldo</span> as its global brand ambassador, joining actress Liu Yifei in a star-studded global endorsement portfolio. With overseas revenue accounting for nearly <span class="highlight">80%</span> of total sales, Dreame has been actively expanding its global presence through Super Bowl ads and international exhibitions.</p>
+                        <p>This move reflects the strategic upgrade of Chinese tech brands — from "product export" to "brand globalization" — with the cleaning appliance sector emerging as a flagship of high-quality Chinese manufacturing going global.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">~80% overseas revenue makes Dreame a benchmark for Chinese tech globalization</div>
+                        <div class="key-point">Ronaldo's endorsement elevates international brand recognition and consumer trust</div>
+                        <div class="key-point">Cleaning tech enters the "superstar endorsement" era of global competition</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Sleeper Hit Film "A Love Letter to Grandma" Scores 9.2 on Douban, Surpasses ¥1 Billion Box Office</h3>
+                    <div class="news-content">
+                        <p>The May Day dark horse "A Love Letter to Grandma" has ridden word-of-mouth to a <span class="highlight">9.2 Douban rating</span> and over <span class="highlight-bold">¥1 billion</span> at the box office. The Taiwanese film tells the story of a grandson searching for his grandmother's long-lost love, unearthing a secret spanning half a century. Its theatrical run has been extended through June 30.</p>
+                        <p>This low-budget Taiwanese production has become a 2026 cultural phenomenon — reflecting Chinese audiences' strong appetite for "small but beautiful" realist storytelling.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Douban 9.2 — among the highest-rated Chinese-language films of all time</div>
+                        <div class="key-point">A low-budget film surpassing ¥1 billion proves content is king</div>
+                        <div class="key-point">Extended theatrical run signals enduring long-tail audience demand</div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US-Iran Ceasefire on the Brink: Both Sides Accuse Each Other of "Gross Violations"</h3>
+                    <div class="news-content">
+                        <p>The fragile US-Iran ceasefire faces severe strain. On May 26, Iran's Foreign Ministry formally accused the US of <span class="highlight-bold">"gross violations of the ceasefire agreement" over the past 48 hours</span> with strikes in Hormozgan province. The US countered that these were "self-defense" operations targeting Iranian missile launch sites.</p>
+                        <p>In a paradoxical twist, Iran simultaneously allowed 25 oil tankers through the Strait of Hormuz and partially restored internet access after an 88-day nationwide blackout. Turkey and Pakistan intensified shuttle diplomacy, with Pakistan offering to host the next round of peace talks.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First ceasefire since full-scale US-Iran conflict hangs by a thread</div>
+                        <div class="key-point">Strait of Hormuz — passage for 1/3 of global seaborne oil — remains at high military risk</div>
+                        <div class="key-point">Diplomatic efforts continue but ceasefire foundation is severely shaken</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Israel Escalates Lebanon Offensive: Ground Forces Cross "Yellow Line," Over 3,200 Dead</h3>
+                    <div class="news-content">
+                        <p>On May 27, the Israeli military deployed <span class="highlight-bold">"significant ground forces"</span> into southern Lebanon, seizing multiple "strategic areas" and crossing Israel's self-declared "yellow line." The IDF also issued new evacuation warnings to residents of 19 villages, directing them north beyond the Zahrani River.</p>
+                        <p>Lebanon's Health Ministry reports <span class="highlight">3,213 deaths and 9,737 injuries</span> since the offensive began on March 2. Netanyahu ordered an escalation to "crush" Hezbollah, while the group's suicide drone threat persists — prompting Israel to accelerate development of laser defense systems.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Largest Israeli ground operation in Lebanon in 2026</div>
+                        <div class="key-point">WHO: at least 608 killed by Israeli attacks even after ceasefire declarations</div>
+                        <div class="key-point">Conflict deepens — risk of broader Middle East war continues to expand</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Iran Partially Restores Internet After 88-Day Nationwide Blackout</h3>
+                    <div class="news-content">
+                        <p>After <span class="highlight-bold">88 days of total nationwide internet blockade</span> — a global record — Iran partially restored international connectivity on May 26. Fixed broadband services resumed, though mobile networks remain frozen and VPNs are still required. The Vice President called it "the first step toward a free and regulated cyberspace."</p>
+                        <p>The restoration is seen as a cautious positive signal amid US-Iran negotiations, though information controls remain largely intact. The unprecedented blackout had drawn condemnation from international human rights organizations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">88-day blackout sets a global record; internet restoration signals easing tensions</div>
+                        <div class="key-point">Fixed broadband restored but mobile networks still frozen</div>
+                        <div class="key-point">Internet connectivity has become a significant bargaining chip in geopolitical negotiations</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Global Markets Diverge: Wall Street Hits Records, Bond Yields Spike, Oil Prices Tremble</h3>
+                    <div class="news-content">
+                        <p>Fueled by US-Iran ceasefire hopes and tech stock momentum, the S&P 500 and Nasdaq both hit fresh all-time highs, with Micron crossing the trillion-dollar mark. But the bond market tells a different story — <span class="highlight-bold">the 30-year Treasury yield breached 5.19%</span>, the 10-year climbed to 4.66%, and traders now price in an 80%+ probability of a Fed rate hike by year-end.</p>
+                        <p>In commodities, the UKMTO reported an "external explosion" damaging an oil tanker 60 nautical miles off Muscat, causing hull damage and a fuel leak. The Strait of Hormuz remains the epicenter of global oil supply anxiety, with gold hovering near $4,500/oz.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Stark market divergence: tech stocks rally to records while rate-hike fears loom</div>
+                        <div class="key-point">30-year Treasury yield nears 20-year high — global assets face repricing</div>
+                        <div class="key-point">Oil tanker explosion near Hormuz Strait intensifies crude supply fears</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">UN Security Council Condemns Attack on UAE Nuclear Plant, Nuclear Risks Soar in the Middle East</h3>
+                    <div class="news-content">
+                        <p>The UN Security Council <span class="highlight-bold">formally condemned the attack on the UAE's Barakah nuclear power plant</span>. The UAE asserts the attack originated from Iraq and involved Iran-backed militia groups. This marks the first time the Middle East conflict has directly touched a nuclear facility — escalating security risks to their highest level.</p>
+                        <p>The attack occurred against the backdrop of US-Iran ceasefire talks and Israel's multi-front military operations, highlighting the grave danger of regional conflict spilling into the nuclear safety domain. The IAEA has activated emergency response protocols.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Middle East conflict reaches nuclear facilities for the first time — risk elevated to maximum</div>
+                        <div class="key-point">UAE accuses Iraq-based Iran-linked militias; Iran denies involvement</div>
+                        <div class="key-point">International community urgently focuses on nuclear safety to prevent secondary catastrophe</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Gold Holds Near $4,500 as US-Iran Conflict Spillover Hits South Asia</h3>
+                    <div class="news-content">
+                        <p>Driven by geopolitical tension, soaring bond yields, and persistent inflation, spot gold remains elevated near <span class="highlight-bold">$4,500/oz</span> as global investors accelerate safe-haven allocations. Bangladesh has formally requested a new IMF assistance program, citing economic shockwaves from the Iran war.</p>
+                        <p>The economic spillover of the US-Iran conflict is now spreading globally across two dimensions — inflation pressure and supply chain disruption — from oil price volatility to food security, from rising insurance costs to shipping route diversions.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Gold holds firmly above $4,500 as global safe-haven demand remains elevated</div>
+                        <div class="key-point">US-Iran conflict spillover reaches South Asia — Bangladesh first to seek IMF help</div>
+                        <div class="key-point">Global supply chains, energy prices, and food security face cascading shocks</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <div class="sections">
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">OpenAI GPT-5.6 Leaked: 1.5M Token Context Window, Codenamed iris-alpha, Expected June Release</h3>
+                    <div class="news-content">
+                        <p>Multiple developers have discovered an unannounced model — <span class="highlight-bold">GPT-5.6</span> — in OpenAI Codex backend logs, internally codenamed <span class="highlight">iris-alpha</span>. According to the leak, the model will support a <span class="highlight">1.5 million token context window</span> (roughly 1 million English words or 750,000 Chinese characters), with a potential June launch.</p>
+                        <p>This would enable developers to input entire large codebases, thousands of pages of technical documentation, or complete project histories in a single context — fundamentally transforming how code understanding and refactoring work. If confirmed, GPT-5.6 would shatter every existing public model's context limit.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">1.5M token context window makes codebase-level understanding a reality</div>
+                        <div class="key-point">Leaked from Codex backend logs; internal codename iris-alpha</div>
+                        <div class="key-point">Expected June release — OpenAI continues to lead the ultra-long-context race</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Alibaba Launches Qwen3.7-Max: Positioned as an Agent-First Frontier Model</h3>
+                    <div class="news-content">
+                        <p>On May 20, Alibaba's Tongyi Qianwen released <span class="highlight-bold">Qwen3.7-Max</span>, explicitly positioned as an "Agent-First Frontier Model." The new model delivers major improvements in agentic task planning, tool calling, and multi-step reasoning — earning community comparisons to top-tier models from OpenAI and Anthropic.</p>
+                        <p>Qwen3.7-Max's launch marks a significant breakthrough for Chinese open-source models in agent capabilities. With DeepSeek V4 and Kimi K2.6 having repeatedly outperformed international rivals in coding benchmarks, Chinese models are rapidly transitioning from "catching up" to "keeping pace."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Qwen3.7-Max focuses on agent capabilities, becoming Alibaba's new AI flagship</div>
+                        <div class="key-point">Multi-step reasoning and tool calling significantly enhanced for complex automation workflows</div>
+                        <div class="key-point">Chinese open-source models collectively advance in the agent track, accelerating global competition</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Forge Open-Source Project: 8B Small Model Agent Success Rate Jumps from 53% to 99%</h3>
+                    <div class="news-content">
+                        <p>The open-source project <span class="highlight-bold">Forge</span> achieved a stunning breakthrough — using innovative "guardrails" mechanisms, it boosted an 8B-parameter small model's agent task success rate from <span class="highlight">53% to 99%</span>, earning 583 points on Hacker News. This proves that agent capability doesn't necessarily require massive models — clever system design can push small models to production-ready reliability.</p>
+                        <p>Forge could fundamentally reshape the economics of agent deployment: enterprises may no longer need costly GPT-5.5 or Claude Opus API bills to obtain reliable agent performance. This is a critical step toward agent democratization.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Guardrails prove that "small model + good design" can approach large model agent performance</div>
+                        <div class="key-point">53% → 99% leap redefines the reliability ceiling for AI agents</div>
+                        <div class="key-point">Dramatically lowers the compute and cost barrier for enterprise agent deployment</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Gemini CLI to Shut Down June 18, Users Migrate to Antigravity CLI</h3>
+                    <div class="news-content">
+                        <p>Google announced that <span class="highlight-bold">Gemini CLI will cease operations on June 18, 2026</span>, with existing users redirected to the new "Antigravity CLI." The move is widely seen as part of Google's AI developer tools consolidation strategy, but a product lifecycle of less than one year has drawn developer frustration (Hacker News: 315 points / 163 comments).</p>
+                        <p>With competitors like Claude Code and OpenAI Codex CLI continuously iterating, Google's brand-consolidation-over-product-iteration strategy faces a critical test of developer loyalty.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Gemini CLI retires after less than one year in service</div>
+                        <div class="key-point">Antigravity CLI as successor — capabilities and experience unproven</div>
+                        <div class="key-point">Google's CLI strategy under community scrutiny</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">DeepClaude: Claude Code Orchestrates DeepSeek V4 Pro — Multi-Model Collaboration Becomes the New Trend</h3>
+                    <div class="news-content">
+                        <p>A new open-source tool <span class="highlight-bold">DeepClaude</span> introduces an innovative architecture: Claude Code serves as the agent orchestration layer, dispatching multi-step coding tasks to DeepSeek V4 Pro for execution. This "orchestration-execution separation" model leverages Claude's planning strengths and DeepSeek's cost-efficient inference — earning 567 points on Hacker News.</p>
+                        <p>This signals that the future of AI coding may not be about picking the "best model," but rather <span class="highlight">flexibly combining the "most suitable models"</span> for different subtasks. The "model federation" concept is gaining widespread developer acceptance.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude Code (orchestrate) + DeepSeek V4 (execute) = Pareto-optimal cost-performance</div>
+                        <div class="key-point">567 Hacker News points — "model federation" gains broad developer endorsement</div>
+                        <div class="key-point">Future coding tools will shift from "single model" to "multi-model collaborative" paradigm</div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Humanoid Robot Mass Production Era Begins: Tesla Optimus Gen-3 Targets 1 Million Annual Capacity</h3>
+                    <div class="news-content">
+                        <p>May 2026 marks the official entry of the humanoid robot industry into the "mass production era": <span class="highlight-orange">Tesla Optimus Gen-3</span> rolled off the Fremont factory line on May 1, repurposing the original Model S/X production lines for an annual capacity target of <span class="highlight-orange">1 million units</span>. The Shanghai factory has already deployed 50 Optimus units, each completing single-station operations in just 47 seconds — equivalent to four human workers daily.</p>
+                        <p>Meanwhile, XPeng IRON targets monthly production of 1,000 units by year-end, UBTECH industrial humanoid robots approach 10,000-unit capacity, and Figure 03 has demonstrated 30+ hours of continuous operation handling 45,000 parcels without interruption. Industry forecasts project 62,500–200,000 global humanoid robot shipments in 2026, crossing 100,000 in 2027. China now hosts 230+ embodied intelligence companies with approximately 50% global market share.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Tesla Optimus targets 1M annual capacity — humanoid robots leap from "lab" to "factory assembly line"</div>
+                        <div class="key-point">Q1 2026 humanoid robot funding hits ¥68.1B, exceeding all of 2025</div>
+                        <div class="key-point">Unitree full-size humanoid robot priced at just ¥29,900 — 80-90% cheaper than Western equivalents</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">"Zhi Hui Jun" Peng Zhihui, 33, Appointed Chairman of Swancor — AgiBot CTO's Cross-Industry Leap</h3>
+                    <div class="news-content">
+                        <p>On May 26, 33-year-old <span class="highlight-orange">Peng Zhihui</span> — AgiBot (Zhiyuan Robot) CTO and famed tech influencer "Zhi Hui Jun" — was formally appointed Chairman of Swancor New Materials. As one of China's youngest humanoid robot company technical leaders, Peng's cross-industry appointment has generated widespread attention and discussion.</p>
+                        <p>AgiBot is one of China's largest humanoid robot manufacturers, having delivered its <span class="highlight-orange">5,000th unit</span> by December 2025. Peng's move is seen as a strategic signal of embodied intelligence talent accelerating penetration into traditional manufacturing.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">33-year-old appointed chairman of a listed company — embodied AI talent rapidly permeates industry</div>
+                        <div class="key-point">AgiBot has delivered 5,000+ units, ranking among the top in humanoid robot mass production</div>
+                        <div class="key-point">"Zhi Hui Jun" IP continues expanding, injecting public attention into the embodied intelligence sector</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Lingxin Dextrous Hand Completes ¥1.5B Series B, Global Market Share Exceeds 80%</h3>
+                    <div class="news-content">
+                        <p>Lingxin Qiaoshou (Dextrous Hand) announced the closing of nearly <span class="highlight-orange">¥1.5 billion in Series B funding</span>, reaching a valuation of $6 billion. The company commands over <span class="highlight-orange">80%</span> of the global high-DOF dexterous hand market and targets 50,000–100,000 unit deliveries in 2026. As the core component enabling humanoid robots to "go from walking to working," dexterous hand breakthroughs directly determine commercialization timelines.</p>
+                        <p>Simultaneously, core component localization is accelerating across the board: Paxini touch sensors dropped from tens of thousands of yuan to just ¥199, and high-load joints from Haihe Lab achieved 100kg payload capacity. China now has 25 dexterous hand suppliers vs. just 7 in the US — supply chain density dominance is sweeping away the last barriers to mass adoption.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">¥1.5B funding + 80%+ global share — Lingxin solidifies "hand" track leadership</div>
+                        <div class="key-point">China's dexterous hand suppliers outnumber US 3.6:1 — overwhelming supply chain advantage</div>
+                        <div class="key-point">Core component costs in free-fall (touch sensors: ¥10,000s → ¥199) — the industry crosses the tipping point</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Today's Key Trends</h2>
+                <p>Insights into the latest global technology and geopolitical currents</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">💎</div>
+                        <div class="trend-desc">
+                            <h3>A New Chip Paradigm</h3>
+                            <p>Huawei's "Tao Law" catapults China's semiconductor industry from follower to rule-maker, triggering a sector-wide rally.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">⚔️</div>
+                        <div class="trend-desc">
+                            <h3>Middle East Crisis Escalates</h3>
+                            <p>US-Iran ceasefire teeters, Israel surges into Lebanon, and a nuclear plant is attacked — the gravest geopolitical test of 2026.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>The Agent Era Arrives</h3>
+                            <p>GPT-5.6 (1.5M context) + Qwen3.7-Max + Forge (8B→99%) — AI agent capability and affordability both achieve breakthroughs.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🦾</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robots Define 2026</h3>
+                            <p>Tesla's 1M-unit capacity + Lingxin's ¥1.5B funding + plunging component costs — embodied intelligence transforms from "topic" into "infrastructure."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: Sina Finance · ITHome · Yicai · France 24 · tl;dr · The Paper · AINChina · Sohu</p>
+            <p class="footer-meta">Compiled: 2026-05-27 09:40 | NEWS DAILY Automated Push</p>
+        </footer>
+    </div>
+</body>
+</html>
