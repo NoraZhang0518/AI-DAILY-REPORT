@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-05-28</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-05-28</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Underground Surrogacy Lab Exposed in Hangzhou Villa; Female Journalist Assaulted During Investigation</h3>
+                    <div class="news-content">
+                        <p>On May 26, a whistleblower revealed an <span class="highlight-bold">illegal IVF embryo laboratory</span> hidden in a villa complex in Hangzhou's Linping District. Operating without proper medical licenses, the lab conducted egg donation and embryo transfer services. When journalists from Elephant News attempted an undercover investigation, they were violently dragged by staff &#8212; a female journalist suffered a leg fracture. The incident triggered widespread public outrage.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Illegal surrogacy lab in villa area conducting high-risk medical procedures without licenses</div>
+                        <div class="key-point">Journalist violently assaulted and suffered fracture during undercover investigation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">China's Market Watchdog Launches Crackdown on "Involutionary" Competition in E-Commerce</h3>
+                    <div class="news-content">
+                        <p>China's State Administration for Market Regulation announced a <span class="highlight-bold">special campaign from May to December</span> targeting cutthroat competition in livestream e-commerce and food delivery platforms. The crackdown aims to curb unfair competitive practices that squeeze out smaller businesses and harm consumer interests.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Crackdown targets livestream e-commerce and food delivery sectors</div>
+                        <div class="key-point">Seven-month campaign reflects regulators' heightened focus on destructive competition</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">RMB Breaks Through 6.78 Against USD, Strongest in Over Three Years</h3>
+                    <div class="news-content">
+                        <p>The Chinese yuan continued its rally against the US dollar, breaking through the <span class="highlight-bold">6.78 threshold</span> to reach its strongest level since February 2023. Amid global geopolitical turbulence and dollar weakness, RMB-denominated assets are attracting increasing foreign investment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">RMB at 6.78 signals accelerating internationalization of the yuan</div>
+                        <div class="key-point">Dual drivers: weakening USD and solid Chinese economic fundamentals</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Multiple Chinese Provinces End 40-Year Fixed Time-of-Use Electricity Pricing</h3>
+                    <div class="news-content">
+                        <p>Several regions announced the end of a <span class="highlight-bold">four-decade-old fixed time-of-use electricity pricing system</span>, moving toward market-driven pricing. This marks a significant step in China's electricity market reform, using price signals to guide consumption and improve energy efficiency.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Shenzhou-21 Astronaut Crew to Return to Earth Aboard Shenzhou-22</h3>
+                    <div class="news-content">
+                        <p>The <span class="highlight-bold">Shenzhou-21 crew</span> will soon return to Earth aboard the Shenzhou-22 spacecraft. The crew completed multiple scientific experiments and technical verifications during their mission, demonstrating China's growing capability in routine space station operations.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Xiaohongshu Secures 2026 FIFA World Cup Broadcasting Rights</h3>
+                    <div class="news-content">
+                        <p>Social media platform Xiaohongshu officially obtained <span class="highlight-bold">broadcasting rights for the 2026 FIFA World Cup</span> in the US, Canada, and Mexico, becoming the third rights-holder alongside CCTV and Migu. This marks the first time a social media platform has entered the core broadcasting lineup for the World Cup.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US Launches New Strikes on Iran; Trump Postpones Major Military Operation</h3>
+                    <div class="news-content">
+                        <p>On May 27, the US military struck an <span class="highlight-bold">Iranian ground control station near Bandar Abbas</span>, downing four Iranian drones. President Trump stated he originally planned a "very significant" military strike the following day but agreed to <span class="highlight-bold">postpone it for 2-3 days</span> at the request of Saudi Arabia, Qatar, and the UAE. The Pentagon has prepared a target list codenamed <span class="highlight-bold">"Sledgehammer"</span>, including nuclear facilities at Natanz and Isfahan, plus strategic oil infrastructure on Kharg Island.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">New strikes combined with postponed major operation signal "negotiate through force" strategy</div>
+                        <div class="key-point">"Sledgehammer" plan targets nuclear facilities, oil infrastructure, and military command centers</div>
+                        <div class="key-point">Middle Eastern allies urgently mediating to prevent full-scale escalation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Israel Dramatically Expands Lebanon "War Zone"; Netanyahu Declares War on Hezbollah</h3>
+                    <div class="news-content">
+                        <p>On May 26, Prime Minister Netanyahu declared Israel is <span class="highlight-bold">"in a state of war with Hezbollah"</span> as IDF forces crossed the ceasefire "Blue Line" into southern Lebanon. On May 27, the IDF announced that <span class="highlight-bold">all areas south of the Zahrani River are now designated as a "war zone"</span>, issuing evacuation warnings to 13 villages. The escalation has caused 71 casualties in Lebanon.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">IDF crossed ceasefire "Blue Line," pushing deep into Lebanese territory</div>
+                        <div class="key-point">Entire region south of Zahrani River designated as war zone &#8212; conflict scale far exceeds previous expectations</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">US-Iran 60-Day Ceasefire Draft Emerges, But Major Gaps Remain</h3>
+                    <div class="news-content">
+                        <p>An Iranian National Security Council member revealed that under a preliminary US-Iran agreement draft, the US would commit to a <span class="highlight-bold">60-day comprehensive ceasefire across all fronts</span>, particularly in Lebanon. Iran's Foreign Ministry denied any imminent deal. Significant disagreements remain on nuclear issues and sanctions relief. Oil prices dropped 5% on the news.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">60-day ceasefire draft is the first substantive diplomatic framework in nearly three months of conflict</div>
+                        <div class="key-point">Iran denies imminent deal; peace prospects remain highly uncertain</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">US Stocks Hit Record Highs, Oil Slides on Iran Peace Signals</h3>
+                    <div class="news-content">
+                        <p>Buoyed by potential US-Iran peace, US stock markets set new closing highs while international oil prices touched two-week lows. Goldman Sachs warned of potential <span class="highlight-bold">month-end selling pressure</span> with tightening liquidity. Copper tariff tensions returned, squeezing global commodity markets.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Chemical Tank Explosion at Japanese-Owned Plant in US; 9 Missing, No Survivors Expected</h3>
+                    <div class="news-content">
+                        <p>A chemical storage tank exploded at a <span class="highlight-bold">Japanese-owned factory in the United States</span>, leaving 9 workers missing with no hope of survival. The incident has exposed safety management gaps in the US chemical industry, sparking discussions about industrial safety regulatory frameworks.</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">OpenAI Secretly Files for IPO Targeting $1 Trillion Valuation</h3>
+                    <div class="news-content">
+                        <p>OpenAI confidentially submitted an IPO filing to the US SEC on May 22, <span class="highlight-bold">targeting a $1 trillion valuation</span> &#8212; the largest AI industry IPO to date, marking the transition from venture capital to public markets. Anthropic previously closed a $30B round at a <span class="highlight">$900B+ valuation</span>. The two AI giants are racing to go public.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">$1T target makes this the largest IPO in AI history</div>
+                        <div class="key-point">AI industry transitioning from VC era to public markets</div>
+                        <div class="key-point">Anthropic at $900B + OpenAI at $1T &#8212; duopoly race intensifies</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">"Megalodon" Attack Sweeps GitHub: 5,500+ Repos Compromised in 6 Hours</h3>
+                    <div class="news-content">
+                        <p>On May 18, a massive automated supply chain attack codenamed <span class="highlight-bold">"Megalodon"</span> swept across GitHub, injecting malicious CI/CD backdoors into <span class="highlight">over 5,500 repositories in under six hours</span> &#8212; the fastest GitHub Actions poisoning attack on record. Attackers used info-stealer infections to harvest developer credentials and automatically hijack CI/CD pipelines to steal cloud keys and API tokens.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">5,500+ repos, 5,700+ malicious commits &#8212; largest GitHub supply chain attack ever</div>
+                        <div class="key-point">Exploited GitHub Actions CI/CD pipelines to steal cloud keys and API tokens</div>
+                        <div class="key-point">Developers must immediately audit GitHub Actions workflows for suspicious dependencies</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">DeepSeek V4-Pro API Permanently Slashed by 75%; Internal "Harness" Team Targets Claude Code</h3>
+                    <div class="news-content">
+                        <p>DeepSeek announced a <span class="highlight-bold">permanent 75% price cut</span> for V4-Pro API, locking the price at one-quarter of the original ($0.435/Mtok input). The company has reportedly assembled an internal team codenamed <span class="highlight-bold">"Harness"</span> focused on building code agents to compete with Claude Code, signaling China's push for indigenous AI coding tools.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Permanent 75% cut to $0.435/Mtok &#8212; AI coding API price war intensifies</div>
+                        <div class="key-point">"Harness" team targets Claude Code &#8212; Chinese AI coding tool sovereignty accelerates</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Anthropic Posts First Quarterly Profit of $559M; 3 of Big 4 Audit Firms Run on Claude</h3>
+                    <div class="news-content">
+                        <p>Anthropic reported Q2 results: revenue of <span class="highlight-bold">$10.9B</span> and first-ever quarterly operating profit of <span class="highlight-bold">$559M</span>, with ARR exceeding $44B. Three of the Big Four audit firms (PwC: 30K seats, KPMG: 276K seats, EY: $1B deal) now run on Claude. <span class="highlight">Andrej Karpathy officially joined</span> Anthropic's pre-training team on May 19.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">$10.9B revenue + $559M profit &#8212; first large-scale profitability in AI industry</div>
+                        <div class="key-point">3 of Big 4 running Claude &#8212; enterprise AI market dominance solidified</div>
+                        <div class="key-point">Karpathy hire + profitability milestone gives Anthropic narrative edge ahead of OpenAI IPO</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">2 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Humanoid Robot IPO Wave: Unitree, DeepRobotics, and Leju Simultaneously File for Public Listings</h3>
+                    <div class="news-content">
+                        <p>From May 18-19, China's top humanoid robot companies rushed to go public: <span class="highlight-orange">Unitree</span>'s IPO entered SSE review, <span class="highlight-orange">DeepRobotics</span> received STAR Market IPO acceptance, and <span class="highlight-orange">Leju Robotics</span> filed for ChiNext listing. On May 20, Hangzhou Kelin announced a <span class="highlight-orange">300M RMB acquisition of 41.57% of Kepler Robotics</span>. Industry projections show domestic shipments jumping from 18,000 units in 2025 to 62,500 in 2026.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Three leading companies simultaneously filing IPOs &#8212; humanoid robot capitalization accelerating</div>
+                        <div class="key-point">Unitree + DeepRobotics + Leju IPOs + Kelin's 300M RMB Kepler acquisition &#8212; industry consolidation</div>
+                        <div class="key-point">2026 shipment forecast: 247% growth from pilot batch to mass production scale</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Tesla Fremont Factory to Convert to Dedicated Robot Production Line by July-August</h3>
+                    <div class="news-content">
+                        <p>Tesla announced its Fremont factory will be <span class="highlight-orange">fully converted to an Optimus robot production line</span> after Model S/X production ends, with conversion expected by July-August 2026. Tesla completed <span class="highlight-orange">next-gen AI5 chip tape-out</span> in April, pivoting fully to Optimus edge computing and supercomputing training. Supervised FSD was added to China's available regions on May 21.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Fremont factory converting to Optimus &#8212; Tesla humanoid robot enters manufacturing readiness</div>
+                        <div class="key-point">AI5 chip + FSD China launch = "compute + algorithms + manufacturing" triple play</div>
+                        <div class="key-point">Million-unit-scale production line conversion &#8212; world's largest automaker goes all-in on humanoid robots</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128165;</div>
+                        <div class="trend-desc">
+                            <h3>US-Iran Enters "Force for Negotiation" Phase</h3>
+                            <p>Trump postpones major strikes while preparing "Sledgehammer" targets; 60-day ceasefire draft emerges but peace remains highly fragile.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127963;</div>
+                        <div class="trend-desc">
+                            <h3>AI Giants Race to Public Markets</h3>
+                            <p>OpenAI $1T IPO + Anthropic $900B funding &#8212; the AI industry's venture capital era is ending, public markets era begins.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robot IPO Wave</h3>
+                            <p>Unitree, DeepRobotics, Leju simultaneously file for listings; 2026 shipments projected to grow 247% as industry enters mass production year one.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128737;</div>
+                        <div class="trend-desc">
+                            <h3>Open Source Supply Chain Security Alert</h3>
+                            <p>"Megalodon" compromised 5,500+ repos in 6 hours via GitHub Actions &#8212; CI/CD pipelines are the new attack surface.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Elephant News &middot; SAMR &middot; Xinhua &middot; Sohu &middot; LiveMint &middot; The Hacker News &middot; Tencent News &middot; CCTV Finance &middot; East Money</p>
+            <p class="footer-meta">Compiled: 2026-05-28 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
