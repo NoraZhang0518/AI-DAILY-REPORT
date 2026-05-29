@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-05-29</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-05-29</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Overloaded Van Rear-End Crash Kills 13 in Henan; Illegal Rideshare Driver Had Been on Road for 8 Hours</h3>
+                    <div class="news-content">
+                        <p>At approximately 2:40 AM on May 28, a <span class="highlight-bold">severe rear-end collision</span> occurred on the G40 Shanghai-Xi'an Expressway in Nanyang, Henan Province. A passenger van (licensed for 9, carrying 16) crashed into a semi-trailer truck, resulting in 13 deaths and 3 injuries. The driver and 10 passengers died at the scene, while 2 victims succumbed after being transported to the hospital.</p>
+                        <p>According to sources, the vehicle was an <span class="highlight-bold">illegally operated "black rideshare"</span> and the driver had been driving continuously for over 8 hours, indicating severe fatigue driving. The Ministry of Public Security immediately dispatched a task force to Nanyang to oversee the investigation; the vehicle owner has been taken into custody.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Licensed for 9, carrying 16 — severe overloading by illegal rideshare operator</div>
+                        <div class="key-point">Driver had been on the road for 8+ hours; new fatigue driving regulations take effect June 1</div>
+                        <div class="key-point">Ministry of Public Security dispatched task force; vehicle owner in custody</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">ChangXin Memory Technologies' STAR Market IPO Approved — Raising ¥29.5B, the 2nd Largest in STAR Board History</h3>
+                    <div class="news-content">
+                        <p>On May 27, the Shanghai Stock Exchange announced that <span class="highlight-bold">ChangXin Memory Technologies</span>, China's largest DRAM chip manufacturer founded just 10 years ago, had its IPO application approved by the listing committee. The company plans to raise ¥29.5 billion, second only to SMIC (¥53.23 billion), making it the second-largest IPO in STAR Market history.</p>
+                        <p>According to the prospectus, ChangXin posted a Q1 2026 net profit of <span class="highlight">¥33.01 billion</span> — a dramatic turnaround after posting losses just one year ago. The company projects H1 2026 revenue of ¥110-120 billion, with net profit of ¥66-75 billion.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">From zero to the 2nd largest STAR IPO in 10 years — a milestone for China's DRAM independence</div>
+                        <div class="key-point">Q1 net profit ¥33B turnaround; projected market cap up to ¥3 trillion</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">BYD Unveils China's First 4nm Automotive-Grade AI Chip "Xuanji A3" — 2,100+ TOPS with Triple-Chip Configuration</h3>
+                    <div class="news-content">
+                        <p>On May 28, BYD held its "Dare to Be" intelligentization strategy conference, officially unveiling its self-developed <span class="highlight-bold">4nm automotive-grade AI chip, Xuanji A3</span>. Chairman Wang Chuanfu declared: "The first half of electrification was about batteries; the second half of intelligence is about chips." The triple-chip per-vehicle configuration delivers over 2,100 TOPS of computing power, enabling advanced city navigation autonomous driving.</p>
+                        <p>BYD also introduced a city navigation safety guarantee policy and opened high-level driver assistance options across all vehicle models, marking the world's largest NEV manufacturer's <span class="highlight">full entry into the AI chip race</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">China's first 4nm automotive-grade AI chip; triple-chip configuration exceeds 2,100 TOPS</div>
+                        <div class="key-point">City navigation safety guarantee + fleet-wide ADAS options across all models</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">SAIC Motor Delivers Its 100 Millionth Vehicle — China's First "100-Million-Unit Automaker" Is Born</h3>
+                    <div class="news-content">
+                        <p>On May 28, SAIC Motor held its "Global 100-Millionth Customer Delivery Ceremony" at the North Bund World Expo Center in Shanghai, officially becoming <span class="highlight-bold">the first Chinese automaker to surpass 100 million cumulative units produced and sold</span> in China's 70+ year automotive history. Previously, only the U.S., Japan, Germany, and South Korea had "100-million-unit automakers."</p>
+                        <p>Over ten SAIC brands and nineteen models completed this milestone through a global relay delivery. SAIC products and services now span 170+ countries and regions, with <span class="highlight">over 7 million overseas cumulative deliveries</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">China's first 100-million-unit milestone, joining the global "100M Club"</div>
+                        <div class="key-point">170+ country footprint, 7M+ overseas deliveries — a benchmark for China manufacturing</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Multiple New Regulations Taking Effect June 1: Food Delivery Safety, Fatigue Driving Standards, Online Prescription Drug Sales</h3>
+                    <div class="news-content">
+                        <p>Starting June 1, 2026, multiple new regulations will take effect. The <span class="highlight-bold">Online Food Service Safety Regulation</span> requires delivery platforms to substantively verify merchant qualifications every 6 months, blocking "ghost kitchens" from entering the platform. The public safety industry standard for fatigue driving determination also takes effect on the same day.</p>
+                        <p>Additionally, the <span class="highlight">Online Prescription Drug Retail Compliance Guide</span> bans AI-based prescription review and mandates real-name sales. On June 30, new liability rules for "dooring" accidents and other traffic incidents will also be enforced.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Food delivery platforms must substantively verify merchant qualifications every 6 months</div>
+                        <div class="key-point">Fatigue driving standards + ban on AI prescription review + dooring liability rules all rolling out</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">"Robotic Mastiff" Debuts at Military Tech Expo — Can Carry Machine Guns and Self-Destruct Payloads</h3>
+                    <div class="news-content">
+                        <p>At the 2026 Military Intelligent Technology and Equipment Expo, a <span class="highlight-bold">"Robotic Mastiff"</span> made its public debut to widespread attention. Its "ferocity" lies in an open-base design — the smaller "Shadow Mastiff" variant can mount machine guns, reconnaissance equipment, and self-destruct payloads, specializing in covert reconnaissance, behind-enemy-lines infiltration, and silent maneuvers with visible, infrared, and ultraviolet spectrum reconnaissance.</p>
+                        <p>Military experts noted that AI-powered robotic mastiffs will fundamentally transform infantry combat — the core paradigm being "machine-led combat, human-controlled command, human-machine coordination, air-ground integration."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Open-base design supports multiple weapon systems for covert reconnaissance and infiltration</div>
+                        <div class="key-point">Tri-spectrum reconnaissance + silent maneuver — set to revolutionize infantry combat</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">U.S. and Iran Reach Tentative 60-Day Ceasefire Extension Deal; Kuwait Still Hit by Missile and Drone Attacks</h3>
+                    <div class="news-content">
+                        <p>On May 28, U.S. and Iranian negotiators reached a <span class="highlight-bold">preliminary Memorandum of Understanding (MOU)</span> agreeing to extend the ceasefire by 60 days and restart negotiations on Iran's nuclear program. According to Axios, the draft still requires Trump's signature. Vice President Vance said the two sides are "very close" on wording, but Iran's Tasnim News Agency denied that a final MOU had been reached.</p>
+                        <p>The ceasefire remains fragile — Kuwait reported being struck by <span class="highlight">missile and drone attacks</span> the same day, which the U.S. blames on Iran-linked forces. Iranian state TV claimed a U.S. military aircraft was shot down near Bushehr, which the U.S. has not confirmed.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">60-day ceasefire MOU draft reached — first substantive diplomatic framework in three months</div>
+                        <div class="key-point">Kuwait attack undermines ceasefire credibility; peace prospects remain highly uncertain</div>
+                        <div class="key-point">Iran denies final agreement; Trump's signature is the key variable</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">EU Fines Temu €200 Million Under Digital Services Act — Largest DSA Penalty Yet</h3>
+                    <div class="news-content">
+                        <p>On May 28, the European Commission fined Chinese online retailer Temu <span class="highlight-bold">€200 million ($232 million)</span> under the Digital Services Act (DSA). Investigators found unsafe toys, electronics, and other illegal products on the platform, and determined Temu failed to adequately assess consumer risks.</p>
+                        <p>This marks one of the <span class="highlight">first major enforcement actions against an e-commerce platform</span> under the DSA framework. Temu has been ordered to rectify within a deadline or face steeper fines, signaling the EU's tightening grip on digital platform regulation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">€200M/$232M fine — first major DSA enforcement against an e-commerce platform</div>
+                        <div class="key-point">Unsafe toys and electronics cited; EU digital regulation continues to tighten</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">All Three Major U.S. Stock Indices Hit Record Highs; Gold Breaks Above $4,510</h3>
+                    <div class="news-content">
+                        <p>On May 28, all three major U.S. indices closed at record highs: Dow +0.05%, S&P 500 +0.58%, Nasdaq +0.91%. Among the "Magnificent Seven" tech stocks, <span class="highlight-bold">Microsoft led with a 3.46% gain</span>. The Nasdaq Golden Dragon China Index fell 0.38%.</p>
+                        <p>In commodities, spot gold surged past <span class="highlight">$4,510/oz</span> to a new all-time high, with NY gold futures breaking above $4,540. Silver also rallied sharply, with spot silver above $76/oz. Brent crude fell below $92/bbl on ceasefire news.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">All three indices at record highs; Microsoft leads tech with +3.46%</div>
+                        <div class="key-point">Gold breaks $4,500 to new record high; safe-haven demand driven by geopolitical risk + rate cut expectations</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">U.S. Plans $250 Bill Featuring Trump's Portrait, Sparking Widespread Controversy</h3>
+                    <div class="news-content">
+                        <p>Four current and former staffers revealed to the media that the Trump administration has directed the U.S. Mint to design a <span class="highlight-bold">new $250 denomination bill</span> featuring President Trump's portrait. The current highest-denomination U.S. bill is the $100 (featuring Benjamin Franklin), making this unprecedented move deeply controversial.</p>
+                        <p>Legal experts note that changing currency design <span class="highlight">requires Congressional approval</span>, and no living president has ever appeared on U.S. currency, meaning the plan faces significant legislative hurdles.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Proposed $250 bill featuring Trump portrait — unprecedented in U.S. history</div>
+                        <div class="key-point">Requires Congressional approval; critics call it a cult of personality</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Chinese Fighter Jets Armed with Air-to-Air Missiles Intercept Dutch Warship; Cyberattack on Chinese Universities Used 41 Types of Weapons</h3>
+                    <div class="news-content">
+                        <p>Chinese fighter jets carrying <span class="highlight-bold">air-to-air missiles</span> intercepted a Dutch warship and aircraft approaching Chinese territorial waters, defending national sovereignty. Concurrently, national security authorities disclosed that a foreign country used <span class="highlight">41 different cyber weapons</span> in attacks targeting Chinese universities, highlighting the severity of the cybersecurity landscape.</p>
+                        <p>Both incidents underscore the complex and multi-dimensional security challenges China faces in both conventional military and cyberspace domains.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Chinese jets armed with air-to-air missiles intercept Dutch warship in defense of sovereignty</div>
+                        <div class="key-point">Foreign cyberattack on Chinese universities deployed 41 types of weapons; university cybersecurity under severe threat</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">How Nokia Returned to the Top: 5G-Advanced and AI-Driven Transformation Draws Global Attention</h3>
+                    <div class="news-content">
+                        <p>"How did Nokia return to the top" trended on Baidu Hot Search. The former mobile phone giant, after hitting rock bottom, has staged a powerful comeback by focusing on <span class="highlight-bold">5G-Advanced network infrastructure</span>, AI-driven network automation, and enterprise private network solutions.</p>
+                        <p>Analysts note that Nokia seized the window of global 5G-Advanced deployment and AI-telecom convergence, now posing a serious challenge to Ericsson and Huawei in the new round of telecom equipment competition.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">5G-Advanced + AI dual-engine transformation; enterprise private networks as growth driver</div>
+                        <div class="key-point">Challenging Ericsson and Huawei in telecom equipment; back among industry leaders</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic Closes $65B Series H at $965B Valuation, Surpassing OpenAI as the World's Most Valuable AI Company</h3>
+                    <div class="news-content">
+                        <p>On May 28, Anthropic announced it had closed a <span class="highlight-bold">$65 billion Series H funding round</span> led by Altimeter Capital, Dragoneer, Greenoaks, and Sequoia Capital, at a post-money valuation of <span class="highlight">$965 billion</span> — officially surpassing OpenAI as the world's most valuable AI company. This is expected to be Anthropic's final private fundraise before its highly anticipated IPO.</p>
+                        <p>Anthropic's annualized revenue has exceeded $47 billion, and the company plans to launch a "Mythos-class" super-scale model within weeks. Investors include semiconductor giants Micron Technology, Samsung Electronics, and SK Hynix, underscoring the centrality of compute infrastructure in the AI race.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">$65B raise — largest single round in AI history; $965B valuation surpasses OpenAI</div>
+                        <div class="key-point">Annualized revenue over $47B; "Mythos-class" model launch imminent</div>
+                        <div class="key-point">Micron/Samsung/SK Hynix participation highlights strategic value of compute infrastructure</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Dell AI Server Revenue Surges 757% to $16.1B in Q1; Stock Rockets Over 30% After Hours</h3>
+                    <div class="news-content">
+                        <p>On May 28, Dell Technologies reported Q1 FY2027 earnings: total revenue of <span class="highlight-bold">$43.84 billion (+88% YoY)</span>, far exceeding the $35.5 billion consensus. AI server revenue alone reached <span class="highlight">$16.1 billion</span> for the quarter, up 757% year-over-year, with an AI server backlog of $51.3 billion.</p>
+                        <p>Driven by these results, Dell raised its full-year AI server revenue guidance from $50B to $60B, and total FY revenue guidance to $165-169 billion. Adjusted EPS of $4.86 crushed the $3.04 estimate, sending shares up over 30% in after-hours trading.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI server Q1 revenue $16.1B +757% YoY; $51.3B backlog</div>
+                        <div class="key-point">Full-year AI revenue guidance raised to $60B; stock surged 30%+ after hours</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">OpenAI Launches GPT-Realtime-2 and Two Other Real-Time Voice Models — First GPT-5-Class Reasoning Voice AI</h3>
+                    <div class="news-content">
+                        <p>On May 8, OpenAI released three audio models through its Realtime API: <span class="highlight-bold">GPT-Realtime-2</span> (voice agent reasoning), GPT-Realtime-Translate (real-time translation), and GPT-Realtime-Whisper (real-time transcription). GPT-Realtime-2 is the first voice model with GPT-5-class reasoning capability.</p>
+                        <p>GPT-Realtime-2 supports real-time interruption handling, tool calling within conversations, and multi-turn reasoning — executing complex tasks while maintaining natural, fluid dialogue. This marks <span class="highlight">a critical leap from "chatbot" to "voice agent"</span> in conversational AI.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Three real-time voice models launched; GPT-Realtime-2 with GPT-5-class reasoning</div>
+                        <div class="key-point">Supports interruption/tool calling/multi-turn reasoning — voice AI evolving into agent form</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">2026 AI Coding Landscape: 92% of Developers Use AI Tools, 74% Achieve Full Agent Automation</h3>
+                    <div class="news-content">
+                        <p>According to Stack Overflow's 2026 Global Developer Survey, <span class="highlight-bold">92% of professional developers</span> have integrated AI coding tools into their daily workflows, with <span class="highlight">74% achieving AI agent-driven full-flow automated development</span>, boosting code output efficiency by an average of 3-5x compared to manual coding.</p>
+                        <p>Across the 2026 AI coding landscape, 12 major tools — including Claude Code, GitHub Copilot, and Cursor — have formed a differentiated competitive landscape spanning code completion to end-to-end project development. Developers must balance reasoning capability, toolchain integration, and cost when choosing.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">92% of developers use AI coding tools; 74% achieve full agent automation</div>
+                        <div class="key-point">12 major tools in differentiated competition; selection requires balancing reasoning/integration/cost</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Unitree Restarts STAR Market IPO + Leju Files for ChiNext — Humanoid Robot Mass Production Inflection Point Confirmed</h3>
+                    <div class="news-content">
+                        <p>May 2026 marks a milestone for the humanoid robot industry: <span class="highlight-orange">Unitree Technology</span> has restarted its STAR Market IPO (targeting ¥4.2 billion, ~¥42 billion valuation), while <span class="highlight-orange">Leju Intelligence</span> simultaneously filed for ChiNext board listing (targeting ¥2.6 billion, the first under ChiNext Standard 4). The accelerated listing of two industry leaders signals that humanoid robot mass production is about to leap from "1-to-10" to "10-to-100" scale.</p>
+                        <p>Capital markets have reacted swiftly: the humanoid robot sector saw net inflows exceeding ¥6.5 billion. According to the industry white paper, the global humanoid robot market reached ¥8.7 billion in 2026 <span class="highlight-orange">(+680% YoY)</span>, with China accounting for over 65%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Unitree targeting ¥4.2B raise at ¥42B valuation; Leju targeting ¥2.6B — first under ChiNext Standard 4</div>
+                        <div class="key-point">Sector net inflows of ¥6.5B; global market ¥8.7B with China at 65% share</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">National Humanoid Robot "Digital ID" Platform Launched — Full Lifecycle Traceability Led by MIIT</h3>
+                    <div class="news-content">
+                        <p>On May 23, China's first national humanoid robot management platform went live. Every factory-produced humanoid robot will now receive a unique <span class="highlight-orange">"digital identity card"</span> enabling full traceability from production, sales, and usage through to decommissioning and recycling. The platform was established under the MIIT's Humanoid Robot and Embodied Intelligence Standardization Technical Committee.</p>
+                        <p>This follows China's February release of the world's first comprehensive national humanoid robot standard system (HEIS 2026). With China projected to ship <span class="highlight-orange">over 100,000 humanoid robots</span> in 2026 (up from just 1,800 in 2025), the platform provides institutional safeguards for large-scale commercialization.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Every robot receives a unique digital ID; full lifecycle traceability from production to recycling</div>
+                        <div class="key-point">Institutional safeguard for 100,000+ unit shipments in 2026; standardization accelerating</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Robotic Mastiff at Military Expo: Embodied Intelligence Moves from Industry to Battlefield, Set to Revolutionize Infantry Combat</h3>
+                    <div class="news-content">
+                        <p>At the 2026 Military Intelligent Technology and Equipment Expo, an AI-powered <span class="highlight-orange">"Robotic Mastiff"</span> made its first public appearance. Its open base can flexibly mount machine guns, reconnaissance equipment, and self-destruct payloads, supporting visible, infrared, and ultraviolet spectrum reconnaissance for covert infiltration and silent maneuvers.</p>
+                        <p>Military experts say this marks <span class="highlight-orange">a significant expansion of embodied intelligence from industrial and service scenarios into national defense</span>. The robotic mastiff enables a "machine-led combat, human-controlled command" paradigm of human-machine coordinated warfare, fundamentally reshaping future ground combat.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First public military application of embodied intelligence; open base supports flexible weapon mounting</div>
+                        <div class="key-point">From industry to defense — "machine-led combat, human-controlled command" as new paradigm</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Today's Key Trends</h2>
+                <p>Insights into the latest developments</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">💥</div>
+                        <div class="trend-desc">
+                            <h3>U.S.-Iran Ceasefire Extended but Remains Fragile</h3>
+                            <p>A 60-day ceasefire MOU draft has been reached, but the Kuwait attack and Iran's denial of a final deal keep peace prospects uncertain.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🏛️</div>
+                        <div class="trend-desc">
+                            <h3>AI Industry Sees Dual Explosion of Capital and Revenue</h3>
+                            <p>Anthropic's record $965B valuation + $65B raise; Dell AI server revenue up 757% — AI commercialization entering monetization phase.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robot Mass Production Inflection Point Confirmed</h3>
+                            <p>Unitree and Leju dual IPOs advancing; "Digital ID" platform launched; shipments projected to leap from 1,800 to 100,000+ in one year.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🇨🇳</div>
+                        <div class="trend-desc">
+                            <h3>China Manufacturing Milestones Cascade</h3>
+                            <p>SAIC 100M vehicles + BYD 4nm AI chip + ChangXin 2nd largest STAR IPO — a comprehensive upgrade of China's manufacturing sector.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Baidu Hot Search · Sina Finance · Xinhua · CCTV News · Reuters · Axios · Anthropic · CNBC · Stack Overflow</p>
+            <p class="footer-meta">Compiled: 2026-05-29 09:40 | NEWS DAILY Automated Delivery</p>
+        </footer>
+    </div>
+</body>
+</html>
