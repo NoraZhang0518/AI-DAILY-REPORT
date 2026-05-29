@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-05-29</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-05-29</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">河南南阳超载客车追尾致13死3伤，黑网约车连续驾驶8小时酿惨剧</h3>
+                    <div class="news-content">
+                        <p>5月28日凌晨2时40分许，G40沪陕高速河南省南阳市桐柏毛集段发生一起<span class="highlight-bold">严重交通事故</span>。一辆核载9人、实载16人的大通客车追尾前方半挂货车，造成13人死亡、3人受伤。司机与10名乘客当场死亡，2名伤者送医后死亡。</p>
+                        <p>据知情人士披露，该车辆为<span class="highlight-bold">非法运营的"黑网约车"</span>，司机已连续驾驶超过8小时，涉嫌严重疲劳驾驶。事故发生后，公安部迅速派出工作组赶赴南阳指导事故调查处置，车主已被警方控制。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">核载9人实载16人，严重超员；黑网约车无运营资质酿成惨剧</div>
+                        <div class="key-point">司机连续驾驶超8小时涉嫌疲劳驾驶，公安部已派工作组赴现场</div>
+                        <div class="key-point">6月1日起疲劳驾驶认定新规正式施行，事故或推动执法力度升级</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">长鑫科技科创板IPO过会，拟募资295亿元成科创板史上第二大IPO</h3>
+                    <div class="news-content">
+                        <p>5月27日，上交所官网显示，<span class="highlight-bold">长鑫科技集团股份有限公司</span>科创板IPO申请已通过上市委审议。这家成立仅10年的中国最大DRAM芯片制造商，拟募集资金295亿元，仅次于中芯国际（首发募资532.3亿元），成为科创板开板以来第二大IPO。</p>
+                        <p>招股书数据显示，2026年Q1长鑫科技单季净利润达到<span class="highlight">330.12亿元</span>，而一年前该公司仍在亏损。公司预计2026年上半年营收1100亿至1200亿元，净利润660亿至750亿元。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">10年从零到科创板第二大IPO，中国DRAM芯片自主化里程碑</div>
+                        <div class="key-point">Q1单季净利润330亿元扭亏为盈，预计市值将达3万亿元</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">比亚迪发布中国首款4nm制程智驾芯片"璇玑A3"，单车三颗算力超2100TOPS</h3>
+                    <div class="news-content">
+                        <p>5月28日，比亚迪举办"敢为"智能化战略发布会，正式发布自研<span class="highlight-bold">4nm制程智驾芯片璇玑A3</span>。董事长王传福表示："电动化上半场看电池，智能化下半场看芯片。"该芯片采用单车三颗配置，总算力超2100TOPS，可支持城市领航等高级别自动驾驶功能。</p>
+                        <p>比亚迪还同步推出城市领航安全兜底政策，开放全系车型高阶辅助驾驶选装，标志着这家全球最大新能源车企全面进军<span class="highlight">智驾核心芯片赛道</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">中国首款4nm制程智驾芯片，单车三颗合计2100+TOPS算力</div>
+                        <div class="key-point">配套城市领航安全兜底政策，全系车型开放高阶智驾选装</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">上汽集团交付第1亿辆车，中国首个"亿级车企"诞生</h3>
+                    <div class="news-content">
+                        <p>5月28日，上汽集团在上海北外滩世界会客厅举行"全球第一亿位用户交车仪式"，正式成为中国汽车工业70余年历史上<span class="highlight-bold">首个累计产销量突破1亿辆</span>的汽车集团。此前仅有美国、日本、德国、韩国拥有"亿级车企"。</p>
+                        <p>上汽旗下十余个整车品牌、十九款车型以全球接力交付方式完成里程碑。目前上汽产品和服务已遍布全球170多个国家和地区，<span class="highlight">海外累计交付超700万辆</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">中国汽车工业首个1亿辆里程碑，跻身全球"亿级车企俱乐部"</div>
+                        <div class="key-point">170+国家布局、海外700万辆，中国制造全球化标杆</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">6月起多项新规影响生活：外卖食品安全、疲劳驾驶认定、处方药网售</h3>
+                    <div class="news-content">
+                        <p>2026年6月1日起，多项新规正式施行。《网络餐饮服务经营者落实食品安全主体责任监督管理规定》要求外卖平台<span class="highlight-bold">实质性审查商家资质</span>，每6个月核验更新，阻断"幽灵外卖"入网。公共安全行业标准《机动车驾驶人疲劳驾驶认定规则》同日实施。</p>
+                        <p>此外，《处方药网络零售合规指南》<span class="highlight">严禁AI替代审方</span>，要求实名制销售。6月30日起，"开门杀"等交通事故判责新规也将施行。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">外卖平台须实质审查商家资质，每6个月核验阻断"幽灵外卖"</div>
+                        <div class="key-point">疲劳驾驶认定标准+处方药禁AI审方+开门杀判责新规全面落地</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">军事智能装备展机器獒亮相，可搭载机枪和自爆装备</h3>
+                    <div class="news-content">
+                        <p>2026年军事智能技术装备博览会上，一款<span class="highlight-bold">"机器獒"</span>首次亮相引发广泛关注。其"凶猛"之处在于开放式基座设计，体型较小的"影獒"可搭载机枪、侦察设备和自爆装备，主打隐蔽侦察、敌后渗透、静音机动，支持可见光、红外和紫外三光谱侦察。</p>
+                        <p>军事专家指出，AI赋能的机器獒将使步兵作战模式发生根本改变——核心是"机器主战、人类主控、人机协同、空地一体"。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">开放式基座可搭载多种武器系统，主打隐蔽侦察与敌后渗透</div>
+                        <div class="key-point">支持三光谱侦察+静音机动，将颠覆传统步兵作战模式</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">美伊达成停火延长60天初步协议，科威特仍遭导弹无人机袭击</h3>
+                    <div class="news-content">
+                        <p>5月28日，美国和伊朗谈判代表达成<span class="highlight-bold">初步谅解备忘录（MOU）</span>，同意将停火延长60天并重启伊朗核计划谈判。据Axios报道，该草案仍需特朗普签字批准。美国副总统万斯表示双方"非常接近"细节定稿，但伊朗Tasnim通讯社否认最终备忘录已达成。</p>
+                        <p>然而停火仍然脆弱——科威特同日报告遭受<span class="highlight">导弹和无人机袭击</span>，美方指责与伊朗有关的武装力量所为。伊朗国家电视台称一架美军飞机在布什尔附近被击落，美方未予证实。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">60天停火延长MOU草案达成，为三个月冲突后首个实质性外交框架</div>
+                        <div class="key-point">科威特遭袭削弱停火可信度，和平前景仍高度不确定</div>
+                        <div class="key-point">伊朗否认最终协议达成，特朗普签字是关键变量</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">欧盟以违反《数字服务法》对Temu罚款2亿欧元，史上最大DSA罚单</h3>
+                    <div class="news-content">
+                        <p>5月28日，欧盟委员会依据<span class="highlight-bold">《数字服务法》（DSA）</span>对中国在线零售商Temu处以2亿欧元（约2.32亿美元）罚款。调查发现，Temu平台存在不安全的玩具和电子产品等非法商品，且未能充分评估消费者风险。</p>
+                        <p>这是欧盟DSA框架下对电商平台的<span class="highlight">首批重大执法行动之一</span>。Temu被要求限期整改，否则将面临更高额罚款，标志着欧盟数字平台监管持续收紧。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">罚款2亿欧元/2.32亿美元，DSA框架下首批重大电商执法</div>
+                        <div class="key-point">不安全玩具和电子产品为主因，欧盟数字监管持续收紧</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">美股三大指数再创历史新高，黄金突破4510美元</h3>
+                    <div class="news-content">
+                        <p>5月28日，美股三大指数集体收涨再创历史新高：道指涨0.05%，标普500涨0.58%，纳指涨0.91%。"七姐妹"科技股中<span class="highlight-bold">微软领涨3.46%</span>。纳斯达克中国金龙指数则收跌0.38%。</p>
+                        <p>大宗商品方面，现货黄金突破<span class="highlight">4510美元/盎司</span>创历史新高，纽约期金同步突破4540美元。白银也大幅走高，现货白银突破76美元。布伦特原油跌至92美元/桶以下，受美伊停火消息影响。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">三大股指齐创新高，微软涨3.46%领涨科技七姐妹</div>
+                        <div class="key-point">黄金突破4500美元创历史新高，地缘风险+降息预期推升避险资产</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">美国拟设计$250面额纸币印特朗普肖像，引发广泛争议</h3>
+                    <div class="news-content">
+                        <p>四名现任和前任工作人员向媒体透露，特朗普政府已指示美国铸币局设计一款<span class="highlight-bold">250美元面额的新纸币</span>，上面将印有特朗普总统肖像。美国现行最高面额纸币为100美元（印有富兰克林），这一史无前例的举措引发广泛争议。</p>
+                        <p>法律专家指出，改变货币设计<span class="highlight">需经国会批准</span>，且美国历史上从未有在世总统肖像出现在货币上，该计划可能面临立法障碍。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">拟推$250面额新纸币印特朗普肖像，美国史上首次</div>
+                        <div class="key-point">需国会批准面临法律障碍，被指为个人崇拜之举</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">中方战机挂载空空导弹驱离荷兰舰机，网攻中国高校动用41种武器装备</h3>
+                    <div class="news-content">
+                        <p>中国战机挂载<span class="highlight-bold">空空导弹</span>驱离靠近中国领空的荷兰军舰和飞机，捍卫国家主权。同期，国家安全部门披露，某国针对中国高校发动网络攻击，动用了多达<span class="highlight">41种不同的网络武器装备</span>，网络安全形势严峻。</p>
+                        <p>两起事件凸显中国在传统军事安全和网络安全领域面临的多重挑战和复杂态势。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">中方战机挂载空空导弹驱离荷兰舰机，坚决捍卫主权</div>
+                        <div class="key-point">某国网攻中国高校动用41种武器，高校网络安全面临严峻挑战</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">诺基亚凭什么重回巅峰：5G-Advanced和AI驱动转型引关注</h3>
+                    <div class="news-content">
+                        <p>"诺基亚凭什么重回巅峰"冲上百度热搜第8位。这家曾经的手机巨头在经历低谷后，通过聚焦<span class="highlight-bold">5G-Advanced网络基础设施</span>、AI驱动的网络自动化和企业专网解决方案实现强势回归。</p>
+                        <p>分析师指出，诺基亚抓住了全球5G-Advanced部署和AI与通信网络融合的窗口期，在新一轮电信设备竞争中对爱立信和华为形成有力挑战。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">5G-Advanced+AI双驱动转型，聚焦企业专网解决方案</div>
+                        <div class="key-point">在电信设备市场挑战华为爱立信，重回行业一线阵营</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic完成$650亿H轮融资，估值$9650亿超越OpenAI成为全球最高估值AI公司</h3>
+                    <div class="news-content">
+                        <p>5月28日，Anthropic宣布完成<span class="highlight-bold">650亿美元H轮融资</span>，由Altimeter Capital、Dragoneer、Greenoaks和红杉资本领投，投后估值达到<span class="highlight">9650亿美元</span>，正式超越OpenAI成为全球估值最高的AI公司。这是Anthropic IPO前的最后一轮私募融资。</p>
+                        <p>Anthropic年化收入已超过470亿美元，计划在数周内推出一款"Mythos级"超大模型。投资者包括美光科技、三星电子和SK海力士等半导体巨头，凸显了算力基础设施在AI竞赛中的核心地位。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">$650亿融资创AI史上最大单轮纪录，估值$9650亿超越OpenAI</div>
+                        <div class="key-point">年化收入超$470亿，即将推出"Mythos级"大模型</div>
+                        <div class="key-point">美光/三星/SK海力士参投，算力基础设施战略价值凸显</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Dell AI服务器Q1营收$161亿暴增757%，股价盘后暴涨30%</h3>
+                    <div class="news-content">
+                        <p>5月28日，Dell Technologies公布2027财年Q1财报，总营收<span class="highlight-bold">$438.4亿（同比增长88%）</span>，大幅超越市场预期的$355亿。其中AI服务器单季营收<span class="highlight">$161亿</span>，同比增长757%，AI服务器积压订单高达$513亿。</p>
+                        <p>受此推动，Dell将全年AI服务器营收指引从$500亿上调至$600亿，全年总营收指引上调至$1650-$1690亿。调整后EPS $4.86远超预期的$3.04，股价盘后暴涨超30%。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI服务器Q1营收$161亿+757%YoY，积压订单$513亿</div>
+                        <div class="key-point">全年AI营收指引上调至$600亿，股价盘后涨30%+</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">OpenAI发布GPT-Realtime-2等三款实时语音模型，首款具GPT-5级推理的语音AI</h3>
+                    <div class="news-content">
+                        <p>5月8日，OpenAI在Realtime API中发布三款音频模型：<span class="highlight-bold">GPT-Realtime-2</span>（语音Agent推理）、GPT-Realtime-Translate（实时翻译）和GPT-Realtime-Whisper（实时语音转写）。GPT-Realtime-2是首款具备GPT-5级推理能力的语音模型。</p>
+                        <p>GPT-Realtime-2支持实时打断处理、对话中调用工具、多轮推理，可在保持自然流畅对话的同时执行复杂任务。这标志着<span class="highlight">语音AI从"对话机器人"向"语音Agent"的关键跃迁</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">三款实时语音模型齐发，GPT-Realtime-2具GPT-5级推理能力</div>
+                        <div class="key-point">支持打断/工具调用/多轮推理，语音AI向Agent形态进化</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">2026年AI编程工具全景：92%开发者使用AI编程，74%实现全流程Agent自动化</h3>
+                    <div class="news-content">
+                        <p>根据Stack Overflow《2026全球开发者调查报告》，<span class="highlight-bold">92%的专业开发者</span>已将AI编程工具纳入日常工作流，其中<span class="highlight">74%实现了AI Agent驱动的全流程自动化开发</span>，代码产出效率较纯人工开发平均提升3-5倍。</p>
+                        <p>2026年主流AI编程模型方面，Claude Code、GitHub Copilot、Cursor等12款工具形成差异化竞争格局，从代码补全到端到端项目开发各有侧重。开发者选型需考虑模型推理能力、工具链集成和成本三者平衡。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">92%开发者使用AI编程工具，74%实现Agent全流程自动化</div>
+                        <div class="key-point">12款主流工具差异化竞争，需平衡推理/集成/成本选型</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">3 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">宇树科技重启科创板IPO+乐聚智能递表创业板，人形机器人量产拐点确立</h3>
+                    <div class="news-content">
+                        <p>2026年5月，人形机器人产业迎来里程碑时刻：<span class="highlight-orange">宇树科技</span>重启科创板IPO（拟募资42.02亿元，估值约420亿元），<span class="highlight-orange">乐聚智能</span>同步递表创业板（拟募资26亿元，创创业板第四套标准首单）。两大产业龙头上市进程加速，标志着人形机器人量产即将从"1-10"跨越到"10-100"的规模化阶段。</p>
+                        <p>资本市场已率先反应：人形机器人板块主力净流入超65亿元。根据白皮书，2026年全球人形机器人市场规模87亿元<span class="highlight-orange">（同比+680%）</span>，中国占比超65%。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">宇树拟募资42亿估值420亿，乐聚拟募资26亿创创业板标准首单</div>
+                        <div class="key-point">板块主力净流入65亿，全球市场规模87亿中国占65%</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">人形机器人"数字身份证"平台上线，工信部牵头实现全程可追溯</h3>
+                    <div class="news-content">
+                        <p>5月23日，全国首个人形机器人管理平台正式上线。今后每一台出厂的人形机器人将拥有独一无二的<span class="highlight-orange">"数字身份证"</span>，从生产、销售、使用到报废回收全程可追溯。该平台由工信部人形机器人与具身智能标准化技术委员会牵头搭建。</p>
+                        <p>这是继2月中国发布全球首个国家级人形机器人标准体系（HEIS 2026）后，行业规范化管理的又一重要举措。2026年中国预计出货人形机器人<span class="highlight-orange">超10万台</span>（2025年仅1800台）。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">每台机器人获唯一"数字身份证"，生产到回收全程追溯</div>
+                        <div class="key-point">为2026年10万台+出货提供制度保障，规范化管理全面加速</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">机器獒亮相军事展：具身智能从工业走向战场，将颠覆步兵作战模式</h3>
+                    <div class="news-content">
+                        <p>在2026年军事智能技术装备博览会上，搭载AI的<span class="highlight-orange">"机器獒"</span>首次公开亮相。其开放基座可灵活搭载机枪、侦察设备和自爆装备，支持可见光/红外/紫外三光谱侦察，主打隐蔽渗透和静音机动。</p>
+                        <p>军事专家表示，这标志着<span class="highlight-orange">具身智能技术从工业和服务场景向国防安全领域的重要延伸</span>。机器獒可实现"机器主战、人类主控"的人机协同作战模式，将从根本上改变未来地面战争形态。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">具身智能首次公开军事化应用，开放基座灵活搭载武器系统</div>
+                        <div class="key-point">从工业到国防的场景跨越，"机器主战、人类主控"新范式</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">💥</div>
+                        <div class="trend-desc">
+                            <h3>美伊停火延长但仍脆弱</h3>
+                            <p>60天停火MOU草案达成，但科威特遭袭、伊朗否认协议最终敲定，和平前景高度不确定。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🏛️</div>
+                        <div class="trend-desc">
+                            <h3>AI行业资本与业绩双重爆发</h3>
+                            <p>Anthropic $9650亿估值+$650亿融资创纪录，Dell AI服务器$161亿暴增757%，AI商业化进入兑现期。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>人形机器人量产拐点确立</h3>
+                            <p>宇树、乐聚双龙头IPO推进，"数字身份证"平台上线，2026年出货量从1800台跃升至10万台+。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🇨🇳</div>
+                        <div class="trend-desc">
+                            <h3>中国制造里程碑密集出现</h3>
+                            <p>上汽1亿辆"亿级车企"+比亚迪4nm智驾芯片+长鑫科技科创板第二大IPO，制造业全面升级。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">数据来源：百度热搜 · 新浪财经 · 新华社 · 央视新闻 · 路透社 · Axios · Anthropic官网 · CNBC · Stack Overflow</p>
+            <p class="footer-meta">整理时间：2026-05-29 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
