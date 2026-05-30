@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-05-30</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-05-30</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <!-- Row 1: Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Shenzhou-21 Crew Returns Safely, Mission Complete</h3>
+                    <div class="news-content">
+                        <p>On May 30, the Shenzhou-21 crew successfully completed their return mission, with all astronauts arriving safely in Beijing. <span class="highlight-bold">The 10th batch of scientific experiment samples</span> was also returned and delivered to scientists, covering material science, life sciences, and more. The return coincides with China's National Science and Technology Workers Day.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">10th batch of space experiments returned, validating China Space Station's routine operations</div>
+                        <div class="key-point">Return coincides with National Science and Technology Workers Day, adding symbolic significance</div>
+                        <div class="key-point">Lays the groundwork for China's upcoming crewed lunar missions</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Major Financial Regulatory Reshuffle: Ding Xiangqun Appointed Party Chief of NFRA</h3>
+                    <div class="news-content">
+                        <p>Ding Xiangqun has been officially appointed Party Secretary of the National Financial Regulatory Administration (NFRA). <span class="highlight-bold">Zhang Yuzhuo was named Party Secretary of the Chinese Academy of Engineering</span>, while Bai Ying was appointed Vice Governor of Liaoning Province. This round of personnel changes spans finance, technology, and regional governance.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">NFRA leadership transition draws market attention to policy continuity</div>
+                        <div class="key-point">Multiple provincial/ministerial changes cover finance, tech, and governance</div>
+                        <div class="key-point">CSRC simultaneously advances comprehensive capital market reforms</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Foreign Holdings in A-Shares Surpass ¥4 Trillion, "Invest in China" Momentum Builds</h3>
+                    <div class="news-content">
+                        <p>The CSRC announced deepening reforms of capital markets. Foreign holdings of A-shares have surpassed <span class="highlight-bold">¥4 trillion</span>, setting a new record high. Global financial institutions are increasingly bullish, with many noting "<span class="highlight">now is the time to invest in China.</span>" The first 51 "AI + Energy" high-value scenarios were also released.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Foreign holdings in A-shares exceed ¥4 trillion — a new record</div>
+                        <div class="key-point">Capital market reforms target both investment and financing ends</div>
+                        <div class="key-point">"AI + Energy" scenarios mark next wave of AI-powered industrial transformation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">EU Debates New China Trade Restrictions; Beijing Warns Protectionism Hurts Europe</h3>
+                    <div class="news-content">
+                        <p>The European Commission convened on May 29 to discuss new import restrictions on Chinese goods. Foreign Ministry spokesperson Mao Ning responded that <span class="highlight-bold">China-EU trade relations are mutually beneficial</span>, and protectionism only harms European consumers and industrial competitiveness. Several EU member states have expressed reservations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Several EU nations cautious about new China restrictions, fearing economic blowback</div>
+                        <div class="key-point">Foreign Ministry: China-EU trade is mutually beneficial; protectionism hurts both sides</div>
+                        <div class="key-point">EU Cybersecurity Act revision draft flagged for unreasonable provisions</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">New Regulations Take Effect June 1: Battery Recycling, Food Safety, Transit Rules</h3>
+                    <div class="news-content">
+                        <p>Effective June 1, new regulations prohibit kindergartens from purchasing high-risk foods externally; repeat train fare evaders will face <span class="highlight-bold">ticketing restrictions</span>. MIIT announced EV batteries have entered large-scale decommissioning, with annual retirement projected to exceed 500,000 tons in 2026.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Food safety: kindergartens banned from external procurement of high-risk food items</div>
+                        <div class="key-point">Transit credit system upgrade: train fare evasion now triggers ticketing restrictions</div>
+                        <div class="key-point">Battery decommissioning management intensifies as "urban mining" strategy accelerates</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">CCTV Exposes 41 Cyber Weapons Targeting Chinese Universities</h3>
+                    <div class="news-content">
+                        <p>CCTV reported that a Western power has deployed <span class="highlight-bold">41 distinct cyber weapons</span> in organized attacks targeting Chinese universities, focusing on cutting-edge R&D data. China's National Security authorities have issued an alert on the "Four Pillars" of data crime: bribery, recruitment, enticement, and deception.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">41 cyber weapons used against universities — national security alert raised</div>
+                        <div class="key-point">National Security authorities warn of four data crime vectors</div>
+                        <div class="key-point">University research data security becomes a new frontier of national security</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International Affairs -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Trump Postpones Final Decision on Iran Deal; US Treasury Imposes New Sanctions</h3>
+                    <div class="news-content">
+                        <p>US media report that Trump has postponed the final decision on the Iran deal. Tehran responded that "communication with Washington continues, but no final consensus has been reached." <span class="highlight-bold">The US Treasury simultaneously imposed new sanctions on Iran</span>, while Iran and Oman discussed Strait of Hormuz management.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Trump delays final Iran decision as US-Iran standoff enters critical stretch</div>
+                        <div class="key-point">New US sanctions while negotiations continue — dual-track pressure intensifies</div>
+                        <div class="key-point">Strait of Hormuz management on diplomatic agenda; global energy security at stake</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Israeli Forces Cross Litani River; Lebanon-Israel Talks End Without Agreement</h3>
+                    <div class="news-content">
+                        <p>Israeli forces crossed the Litani River, expanding military presence in Lebanon. Lebanon-Israel military negotiations ended without progress, with Israel insisting on a security buffer zone and Lebanon refusing concessions. <span class="highlight-bold">UNIFIL has warned</span> the situation could further escalate.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Israeli forces cross the Litani River, reigniting sovereignty concerns</div>
+                        <div class="key-point">Lebanon-Israel talks collapse; the Middle East remains highly volatile</div>
+                        <div class="key-point">UN calls on all parties to exercise restraint and prevent further escalation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Putin Says Russia-Ukraine Conflict "Nearing Its End" in Major Peace Signal</h3>
+                    <div class="news-content">
+                        <p>President Putin publicly stated that the <span class="highlight-bold">Russia-Ukraine conflict is "nearing its end,"</span> marking the first explicit peace overture of this nature. Ukraine simultaneously reported new Russian airstrikes, with explosions heard near Kyiv. Analysts warn that a genuine ceasefire still requires resolving core disputes over territory and security guarantees.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Putin's first explicit "nearing its end" statement draws global attention</div>
+                        <div class="key-point">Ukraine reports simultaneous airstrikes — battlefield and diplomacy run in parallel</div>
+                        <div class="key-point">Real ceasefire still requires resolving territory and security guarantee disputes</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Wang Yi Addresses "Friends of Global Governance" at UN; China's Diplomatic Footprint Expands</h3>
+                    <div class="news-content">
+                        <p>Foreign Minister Wang Yi delivered a keynote address at the UN "Friends of Global Governance" high-level meeting. <span class="highlight-bold">President Xi Jinping exchanged congratulatory messages with Egyptian President el-Sisi on the 70th anniversary of China-Egypt diplomatic ties</span>. Serbian President Vucic also visited China, deepening the "iron-clad friendship."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Wang Yi's global governance speech draws widespread international attention</div>
+                        <div class="key-point">China-Egypt 70th anniversary, China-Serbia ties upgraded — diplomatic outreach accelerates</div>
+                        <div class="key-point">China's influence in global security governance continues to grow</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">US Judge Orders Trump Name Removed from Kennedy Center; Domestic Divisions Deepen</h3>
+                    <div class="news-content">
+                        <p>A federal judge ordered the removal of Trump's name from the Kennedy Center, overturning the board's prior naming decision. Republicans strongly condemned the move, and the White House signaled an appeal. Meanwhile, <span class="highlight-bold">US and Cuban military generals held a rare meeting</span>, suggesting potential shifts in bilateral relations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Kennedy Center naming dispute reflects America's deep political polarization</div>
+                        <div class="key-point">Rare US-Cuba military meeting signals subtle thaw in bilateral relations</div>
+                        <div class="key-point">France remains Europe's top FDI destination for a record 7th consecutive year</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">UN Warns: Conflict-Related Sexual Violence Cases Double vs 2025; Global Humanitarian Crisis Deepens</h3>
+                    <div class="news-content">
+                        <p>The latest UN report reveals that conflict-related sexual violence cases have <span class="highlight-bold">more than doubled</span> compared to 2025, with nearly 10,000 incidents across Africa, the Middle East, Europe, and the Caribbean. UNICEF also warns that children in Gaza are trapped in "an endless cycle of suffering" and urgently need humanitarian access.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Conflict-related sexual violence cases more than doubled — global humanitarian crisis deepens</div>
+                        <div class="key-point">Gaza children trapped in "endless cycle of suffering"; UNICEF demands urgent humanitarian access</div>
+                        <div class="key-point">Ebola outbreak in DRC: 906 suspected cases, 223 suspected deaths</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI & Robotics Sections (Bottom) -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic Closes $65B Series H at $965B Valuation, Surpassing OpenAI</h3>
+                    <div class="news-content">
+                        <p>Anthropic announced a <span class="highlight-bold">$65 billion Series H round</span> at a post-money valuation of $965 billion, officially surpassing OpenAI as the world's most valuable AI company. The round was led by KPCB, Lightspeed, and Temasek. Anthropic achieved its first operating profit of <span class="highlight">$5.59 billion</span> in Q2 2026, with annualized revenue exceeding $44 billion.</p>
+                        <p>Three of the Big Four accounting firms have already deployed Claude across their organizations. The SpaceX Colossus computing deal was also disclosed: Anthropic pays <span class="highlight">$1.25 billion/month</span> through May 2029, totaling $45 billion.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Anthropic at $965B valuation surpasses OpenAI as the world's most valuable AI company</div>
+                        <div class="key-point">First operating profit of $5.59B in Q2 — commercialization model validated by market</div>
+                        <div class="key-point">SpaceX computing deal disclosed: $1.25B/month, $45B total through 2029</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">NVIDIA CEO on Huawei's "Tao Law": "A Breakthrough, Not a Threat"</h3>
+                    <div class="news-content">
+                        <p>NVIDIA CEO Jensen Huang publicly commented on Huawei's "<span class="highlight-bold">Tao (τ) Law</span>" — China's first global semiconductor principle — calling it "a breakthrough, not a threat." The Tao Law posits that through system-level co-innovation, top-tier chip performance can be achieved without relying on cutting-edge process nodes.</p>
+                        <p>Huang noted this will <span class="highlight">reshape global semiconductor competition</span>, and NVIDIA has already adjusted its China strategy accordingly.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Jensen Huang offers rare positive assessment of Huawei's Tao Law</div>
+                        <div class="key-point">System-level co-innovation model: top performance without cutting-edge nodes</div>
+                        <div class="key-point">Semiconductor race pivots from "node arms race" to "system innovation"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Apple Reportedly Using Google AI to Train Its Own Models; Big Tech Arms Race Escalates</h3>
+                    <div class="news-content">
+                        <p>Multiple outlets report that <span class="highlight-bold">Apple leveraged Google's AI infrastructure and model capabilities</span> to train its proprietary models, filling gaps in reasoning performance. This marks a significant departure from Apple's long-standing vertically integrated approach, signaling a new phase in Big Tech's AI arms race.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Apple taps Google AI to train its own models, breaking the "fully in-house" orthodoxy</div>
+                        <div class="key-point">Big Tech AI arms race shifts from solo development to strategic alliances</div>
+                        <div class="key-point">Boundary between proprietary and external models is blurring — AI ecosystem restructuring accelerates</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">OpenAI Launches GPT-Realtime-2, First GPT-5-Level Real-Time Voice AI</h3>
+                    <div class="news-content">
+                        <p>OpenAI officially released <span class="highlight-bold">GPT-Realtime-2</span>, its first GPT-5 architecture-based real-time voice AI model, featuring ultra-low-latency multilingual conversation, voice cloning detection, and emotion recognition. OpenAI also launched a <span class="highlight">real-time translation model supporting 70+ languages</span>.</p>
+                        <p>GPT-Realtime-2 significantly surpasses predecessors in voice naturalness, contextual memory, and interruption handling — widely considered a milestone marking <span class="highlight">a new era for voice AI</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-Realtime-2: first GPT-5-level real-time voice AI — voice AI enters a new era</div>
+                        <div class="key-point">70+ language real-time translation expands OpenAI's global footprint</div>
+                        <div class="key-point">Voice naturalness and interruption handling dramatically improved — approaching human-level interaction</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Claude Opus 4.8 Accused of Distilling Chinese AI Models; US-China Tech Flow Under Scrutiny</h3>
+                    <div class="news-content">
+                        <p>Industry analysts note that Anthropic's latest <span class="highlight-bold">Claude Opus 4.8</span> exhibits output patterns strikingly similar to several Chinese open-source models across key benchmarks, sparking <span class="highlight">"model distillation" controversy</span>. Anthropic denies the allegations, claiming independent R&D. Chinese models now account for 60% of OpenRouter platform traffic.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude Opus 4.8 distillation allegations highlight murky US-China AI technology flows</div>
+                        <div class="key-point">Anthropic denies claims; model distillation forensic tools remain immature</div>
+                        <div class="key-point">Global AI IP protection in a gray zone — regulatory framework urgently needed</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Embodied Intelligence Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Li Auto Officially Launches Humanoid Robot Project; CEO: "Next 3-5 Years Are About Embodied Intelligence"</h3>
+                    <div class="news-content">
+                        <p>Li Auto CEO Li Xiang stated during the Q1 earnings call: <span class="highlight-orange">"In the next 3-5 years, competition in mid-to-high-end smart vehicles is fundamentally about embodied intelligence."</span> Li Auto has officially greenlit a general-purpose humanoid robot project with an R&D budget of <span class="highlight-orange">¥12 billion</span> for this year.</p>
+                        <p>The project will leverage Li Auto's existing investments in <span class="highlight-orange">self-developed chips, large models, perception systems, and control systems</span> — all shared with its autonomous driving platform.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Li Auto officially enters humanoid robotics — automakers' pivot to embodied AI accelerates</div>
+                        <div class="key-point">CEO: "next 3-5 years of car competition = embodied intelligence competition"</div>
+                        <div class="key-point">Autonomous driving and humanoid robots share a common tech stack — huge synergies</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Tesla Breaks Ground on Dedicated Optimus Factory; Musk Reaffirms 1M Annual Capacity Target</h3>
+                    <div class="news-content">
+                        <p>Tesla has broken ground on its dedicated <span class="highlight-orange">Optimus robot factory in Texas</span>, with Musk reaffirming the 2026 annual capacity target of 1 million units. The Fremont factory will complete production line conversion to Optimus in July-August.</p>
+                        <p>Domestically, <span class="highlight-orange">10 Chinese Tesla owners have filed an FSD fraud lawsuit</span> now in trial. Legal experts say the verdict could set a global precedent for autonomous driving liability.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Tesla Optimus dedicated factory breaks ground; 1M unit target sparks industry debate</div>
+                        <div class="key-point">Fremont factory converting to Optimus in July — Tesla's dual-track "cars + robots" strategy</div>
+                        <div class="key-point">FSD fraud trial underway; autonomous driving liability becomes a landmark legal issue</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Humanoid Robot Scale-Up Accelerates: Atlas for 2026 World Cup, Hyundai Targets 30K/Year by 2028</h3>
+                    <div class="news-content">
+                        <p>In 2026, humanoid robots are rapidly moving from lab prototypes to real-world deployment. Boston Dynamics' <span class="highlight-orange">Atlas is confirmed for the 2026 Robot World Cup</span>, while Hyundai announced plans to produce <span class="highlight-orange">30,000 humanoid robots annually by 2028</span>, already deploying 25,000 Atlas units at its Ulsan plant in South Korea.</p>
+                        <p>Last year's first-ever humanoid robot half-marathon in Beijing saw 20 teams; this year's event <span class="highlight-orange">doubled participation</span>. China's humanoid robot market is projected to reach ¥8.7 billion in 2026 — a 680% increase.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Hyundai targeting 30K units/year by 2028 — mass production inflection point approaches</div>
+                        <div class="key-point">Atlas enters Robot World Cup; humanoid "sports" become a new tech showcase</div>
+                        <div class="key-point">2026 marks a critical validation year for humanoid robots — from demo to real-world deployment</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">BYD Launches China's First 4nm ADAS Chip "Xuanji A3" with 2100+ TOPS Computing Power</h3>
+                    <div class="news-content">
+                        <p>BYD officially unveiled the "<span class="highlight-orange">Xuanji A3</span>," China's first 4nm-process autonomous driving chip, delivering <span class="highlight-orange">2100+ TOPS</span> of computing power — a historic breakthrough for Chinese automakers in advanced chip manufacturing. The Xuanji A3 will debut in the Yangwang U9 and gradually cascade to sub-¥200,000 models.</p>
+                        <p>BYD confirmed it has achieved <span class="highlight-orange">full-stack self-development from chip to algorithm</span> for its intelligent driving system, breaking the monopoly of overseas chip giants in the high-end ADAS segment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">BYD Xuanji A3: China's first 4nm ADAS chip, 2100+ TOPS — a historic semiconductor breakthrough</div>
+                        <div class="key-point">Full-stack self-development from chip to algorithm — BYD's intelligent strategy accelerates</div>
+                        <div class="key-point">4nm ADAS chip mass production breaks overseas monopoly in high-end automotive chips</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Today's Key Trends</h2>
+                <p>Insights into global developments</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>AI Commercialization Accelerates</h3>
+                            <p>Anthropic achieves profitability and surpasses OpenAI in valuation — the AI industry shifts from "burn rate" to "earn rate."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🦾</div>
+                        <div class="trend-desc">
+                            <h3>Embodied Intelligence Enters Auto Industry Mainstream</h3>
+                            <p>Li Auto, Tesla, and Hyundai all pushing into humanoid robotics. Autonomous driving and embodied AI share a converging tech stack.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🌏</div>
+                        <div class="trend-desc">
+                            <h3>US-China AI Dynamics Grow More Complex</h3>
+                            <p>Huawei's Tao Law praised by NVIDIA's CEO, while Claude faces distillation allegations — tech flows and competition boundaries blur.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🔥</div>
+                        <div class="trend-desc">
+                            <h3>Global Geopolitics at a Crossroads</h3>
+                            <p>Iran deal hangs in the balance, Lebanon-Israel conflict escalates, Russia-Ukraine peace signals remain mixed — a critical window for global order.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua · Sina Finance · ITHome · The Paper · Global Issues · CLS</p>
+            <p class="footer-meta">Generated: 2026-05-30 09:40 | NEWS DAILY Automated Delivery</p>
+        </footer>
+    </div>
+</body>
+</html>
