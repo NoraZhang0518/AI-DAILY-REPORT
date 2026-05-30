@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-05-30</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout - Two rows, two columns */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-05-30</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <!-- Row 1: Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">神舟二十一号航天员乘组返回任务圆满成功，乘组平安抵京</h3>
+                    <div class="news-content">
+                        <p>5月30日，神舟二十一号航天员乘组返回任务取得圆满成功，乘组平安抵达北京。第十批科学实验样品已同步返回并交付科学家，涵盖材料科学、生命科学等多个领域。<span class="highlight-bold">全国科技工作者日特别报道</span>同步推出，致敬航天科技工作者。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">第十批科学实验样品返回，中国空间站常态化运营能力持续验证</div>
+                        <div class="key-point">5月30日全国科技工作者日，返回任务具有特殊意义</div>
+                        <div class="key-point">为后续载人登月任务奠定关键技术基础</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">丁向群任国家金融监管总局党委书记，金融系统重大人事调整</h3>
+                    <div class="news-content">
+                        <p>丁向群正式出任国家金融监督管理总局党委书记，成为金融系统最高负责人之一。与此同时，<span class="highlight-bold">张玉卓任中国工程院党组书记</span>，白英任辽宁省副省长，湖北省委主要负责同志职务同步调整。本轮人事调整涉及金融、科技、地方治理多个关键岗位。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">金融监管总局主要负责人调整，政策连续性受市场高度关注</div>
+                        <div class="key-point">多位省部级干部同步调整，覆盖金融监管、科技、地方治理</div>
+                        <div class="key-point">证监会同步推进深化资本市场投融资综合改革</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">证监会深化资本市场改革，外资持有A股超4万亿元创历史新高</h3>
+                    <div class="news-content">
+                        <p>证监会宣布深化资本市场投融资综合改革，外资机构热议<span class="highlight">"投资中国正当时"</span>。数据显示，外资持有A股规模已超<span class="highlight-bold">4万亿元人民币</span>，刷新历史新高。首批51个"人工智能+"能源高价值场景同步发布，AI与实体经济融合提速。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">外资持有A股超4万亿元创历史新高，"投资中国"主题升温</div>
+                        <div class="key-point">资本市场改革聚焦投融资两端，提升市场韧性与吸引力</div>
+                        <div class="key-point">"人工智能+"能源场景发布，AI赋能实体经济进入规模化阶段</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">欧盟讨论对华新限制措施，外交部：保护主义损害欧洲利益</h3>
+                    <div class="news-content">
+                        <p>欧盟委员会5月29日举行会议讨论对中国进口商品实施新限制措施。外交部发言人毛宁表示，<span class="highlight-bold">中欧经贸关系本质是互利共赢</span>，中方从不刻意追求对欧贸易顺差，保护主义只会损害欧洲消费者利益、削弱欧洲产业竞争力。欧盟内部多国对此持谨慎态度。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">欧盟内部多国对对华新限制持谨慎态度，德法等国担忧反噬</div>
+                        <div class="key-point">外交部明确表态：中欧经贸互利，保护主义损人不利己</div>
+                        <div class="key-point">欧盟《网络安全法》修订草案被指存在明显不合理条款</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">6月起多项新规正式施行，动力电池退役管理升级</h3>
+                    <div class="news-content">
+                        <p>6月1日起，多项新规正式施行：禁止幼儿园从园外采购三明治等高风险食品；违规乘火车拒不补票将被<span class="highlight-bold">限制购票</span>；工信部宣布动力电池进入规模化退役阶段，预计2026年全年退役量突破50万吨，加速构建回收全产业链体系。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">食品安全新规：幼儿园外购高风险食品被明令禁止</div>
+                        <div class="key-point">交通信用体系升级：火车逃票将纳入限制购票名单</div>
+                        <div class="key-point">动力电池退役管理加码，"城市矿山"战略全面升级</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">央视曝光某国用41种网络武器攻击我高校，网络安全警示升级</h3>
+                    <div class="news-content">
+                        <p>央视报道称，某西方大国动用<span class="highlight-bold">41种网络武器</span>对中国高校实施有组织网络攻击，目标涉及尖端科技研发数据。相关部门已启动应急响应机制，国家安全部提示"数据犯罪"四大手段：买、聘、诱、骗。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">41种网络武器攻击高校，网络安全形势严峻</div>
+                        <div class="key-point">国家安全部提示"买、聘、诱、骗"四大数据犯罪手段</div>
+                        <div class="key-point">高校科研数据安全成为国家安全新前沿</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">特朗普推迟就伊朗协议作最终决定，美财政部同步实施新制裁</h3>
+                    <div class="news-content">
+                        <p>美媒报道称，特朗普推迟就美伊协议作最终决定，伊方回应称"仍在与美方沟通，尚未达成最终共识"。与此同时，<span class="highlight-bold">美国财政部对伊朗实施新一轮制裁</span>，霍尔木兹海峡紧张局势持续。伊朗和阿曼外长专门讨论霍尔木兹海峡管理问题。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">特朗普推迟伊美协议最终决定，美伊博弈进入"最后冲刺"阶段</div>
+                        <div class="key-point">美国财政部新一轮制裁同步落地，伊朗经济形势持续承压</div>
+                        <div class="key-point">霍尔木兹海峡管理问题被提上外交议程，全球能源运输安全受关注</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">以军主力越过利塔尼河，黎以军事谈判无果而终</h3>
+                    <div class="news-content">
+                        <p>以军主力越过利塔尼河，进一步扩大在黎巴嫩的军事存在。黎以军事谈判在多方斡旋下仍无实质进展，以方坚持安全缓冲区要求，黎方拒绝让步。<span class="highlight-bold">联合国驻黎巴嫩临时部队（UNIFIL）警告</span>局势可能进一步升级。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">以军越过利塔尼河，黎巴嫩主权问题再度引发国际社会关注</div>
+                        <div class="key-point">黎以谈判破裂，中东局势仍处高度不稳定状态</div>
+                        <div class="key-point">联合国呼吁各方克制，避免局势进一步升级</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">普京：俄乌冲突临近收尾，和谈进程现重大信号</h3>
+                    <div class="news-content">
+                        <p>俄罗斯总统普京公开表示，<span class="highlight-bold">俄乌冲突已临近收尾阶段</span>，这是俄方首次如此明确地释放和谈信号。乌方同期称俄军发动新一轮空袭，基辅州传出爆炸声。分析人士指出，真正停火协议仍需解决领土、安全保障等核心分歧。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">普京首次明确表态"冲突临近收尾"，国际社会高度关注</div>
+                        <div class="key-point">乌方同期报告俄军新一轮空袭，战场与谈判桌博弈同步进行</div>
+                        <div class="key-point">真正的停火协议仍需解决领土、安全保障等核心分歧</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">王毅在"全球治理之友小组"发表主旨发言，中国外交活跃度提升</h3>
+                    <div class="news-content">
+                        <p>中国外交部长王毅在联合国"全球治理之友小组"高级别会议上发表主旨发言，阐述中国在全球治理变革中的立场与方案。与此同时，<span class="highlight-bold">习近平同埃及总统塞西就中埃建交70周年互致贺电</span>；武契奇访华，中塞"铁杆友谊"增加新"成色"。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">王毅全球治理主旨发言，中国方案引发国际社会广泛关注</div>
+                        <div class="key-point">中埃建交70周年、中塞关系升级，中国外交"大周边"布局加速</div>
+                        <div class="key-point">中国在全球安全治理中的话语权持续提升</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">美国法官裁定将特朗普名字从肯尼迪中心移除，美国内政治持续撕裂</h3>
+                    <div class="news-content">
+                        <p>美国联邦法官裁定，将特朗普名字从肯尼迪表演艺术中心移除，推翻此前董事会的命名决定。此举引发共和党强烈反弹，白宫称将提起上诉。与此同时，<span class="highlight-bold">美国与古巴两军高级将领举行罕见会晤</span>，美古关系出现微妙变化信号。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">肯尼迪中心命名风波折射美国政治极度撕裂现状</div>
+                        <div class="key-point">美古两军高级将领罕见会晤，双边关系出现微妙缓和信号</div>
+                        <div class="key-point">法国连续七年成为外国直接投资在欧洲的首选地，欧美经济吸引力分化</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">联合国警告：冲突相关性暴力案件较2025年翻倍，全球人道主义危机加深</h3>
+                    <div class="news-content">
+                        <p>联合国最新报告显示，冲突相关性暴力案件较2025年<span class="highlight-bold">翻倍增长</span>，近1万起案件遍布非洲、中东、欧洲和加勒比地区。联合国儿基会（UNICEF）同时警告，加沙儿童被困"无尽痛苦循环"，人道准入亟待开放。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">冲突相关性暴力案件翻倍，全球人道主义危机持续加深</div>
+                        <div class="key-point">加沙儿童被困"无尽痛苦循环"，UNICEF紧急呼吁开放人道准入</div>
+                        <div class="key-point">刚果（金）埃博拉疫情持续：906例疑似病例，223例疑似死亡</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI & Robotics Sections (Bottom) -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic完成650亿美元H轮融资，估值9650亿美元反超OpenAI</h3>
+                    <div class="news-content">
+                        <p>Anthropic宣布完成<span class="highlight-bold">650亿美元H轮融资</span>，投后估值达到9650亿美元，正式超越OpenAI成为全球估值最高的AI公司。本轮由KPCB、Lightspeed、淡马锡等机构领投。Anthropic 2026年Q2首次实现运营盈利<span class="highlight">55.9亿美元</span>，年化收入突破440亿美元。</p>
+                        <p>四大审计所中有三家已全面部署Claude，"<span class="highlight">AI+专业服务</span>"赛道全面爆发。Anthropic与SpaceX的Colossus算力合作协议同步披露：每月支付12.5亿美元，合同延续至2029年5月，总金额达450亿美元。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Anthropic估值9650亿美元，超越OpenAI成为全球最高估值AI公司</div>
+                        <div class="key-point">Q2首次实现运营盈利55.9亿美元，商业化能力获市场验证</div>
+                        <div class="key-point">与SpaceX算力合作协议披露：每月12.5亿美元，总金额450亿美元</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">黄仁勋评华为"韬定律"：是突破而非威胁，全球半导体迎来新范式</h3>
+                    <div class="news-content">
+                        <p>英伟达CEO黄仁勋公开评论华为发布的"<span class="highlight-bold">韬(τ)定律</span>"——中国首个全球半导体新原则，称其是"突破而非威胁"。华为韬定律提出：通过系统级协同创新，可在不依赖最先进制程的前提下实现顶级芯片性能。</p>
+                        <p>黄仁勋表示，这将<span class="highlight">重塑全球半导体竞争格局</span>，英伟达已调整对华策略。华为同步披露：6年量产381款芯片，2031年达1.4nm水平。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">黄仁勋罕见正面评价华为"韬定律"，全球半导体竞争进入新范式</div>
+                        <div class="key-point">"系统级协同创新"路径：不依赖最先进制程也能实现顶级性能</div>
+                        <div class="key-point">英伟达对华策略调整，市场竞争从"制程军备竞赛"转向"系统创新"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">曝苹果用谷歌AI模型训练自研模型，科技巨头AI军备竞赛升级</h3>
+                    <div class="news-content">
+                        <p>多家媒体报道称，<span class="highlight-bold">苹果在自研AI模型训练过程中，使用谷歌的AI基础设施和模型能力</span>作为支撑，以弥补自研模型在推理能力上的短板。此举引发业界广泛关注——苹果长期奉行"软硬件一体化"战略，此次借助外部AI能力，标志着科技巨头AI军备竞赛进入新阶段。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">苹果借助谷歌AI能力训练自研模型，打破"全自研"执念</div>
+                        <div class="key-point">科技巨头AI军备竞赛升级：从"单打独斗"转向"合纵连横"</div>
+                        <div class="key-point">自研模型 vs 外部合作的边界正在模糊，AI生态重构加速</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">OpenAI推出GPT-Realtime-2，首款GPT-5级实时语音AI模型</h3>
+                    <div class="news-content">
+                        <p>OpenAI正式发布<span class="highlight-bold">GPT-Realtime-2</span>，这是其首款基于GPT-5架构的实时语音AI模型，支持超低延迟的多语言对话、语音克隆检测和情感识别。同期，OpenAI还推出了<span class="highlight">支持70+语言输入</span>的实时翻译模型，进一步拓展全球化布局。</p>
+                        <p>GPT-Realtime-2在语音自然度、上下文记忆和打断处理能力上均大幅超越前代，被业界视为<span class="highlight">语音AI进入新阶段</span>的里程碑式产品。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-Realtime-2发布：首款GPT-5级实时语音AI，语音AI进入新阶段</div>
+                        <div class="key-point">支持70+语言实时翻译，OpenAI全球化布局再下一城</div>
+                        <div class="key-point">语音自然度、打断处理能力大幅超越前代，AI语音助手体验逼近真人</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Claude Opus 4.8被指蒸馏中国AI模型，中美AI技术流动引发争议</h3>
+                    <div class="news-content">
+                        <p>业界分析指出，Anthropic最新发布的<span class="highlight-bold">Claude Opus 4.8</span>在若干基准测试中的表现特征，与部分中国开源AI模型的输出高度相似，引发"模型蒸馏"争议。Anthropic对此予以否认，称系独立研发成果。</p>
+                        <p>此事折射出<span class="highlight">中美AI技术流动的复杂现状</span>，以及全球AI知识产权保护的灰色地带。中国模型占OpenRouter平台流量已达60%，技术影响力持续扩大。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude Opus 4.8被指"蒸馏"中国AI模型，中美AI技术流动引发争议</div>
+                        <div class="key-point">Anthropic否认指控，称系独立研发，模型蒸馏鉴定技术仍不成熟</div>
+                        <div class="key-point">全球AI知识产权保护处于灰色地带，行业自律与监管亟待跟进</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">4 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">理想汽车人形机器人产品正式立项研发，李想：未来3-5年竞争本质是具身智能</h3>
+                    <div class="news-content">
+                        <p>理想汽车董事长兼CEO李想在Q1财报电话会上明确表示：<span class="highlight-orange">"未来3-5年，中高端智能汽车的竞争本质上就是具身智能的竞争。"</span>理想汽车已正式立项研发通用人形机器人产品，预计今年研发投入达<span class="highlight-orange">120亿元</span>，重点聚焦自动驾驶和通用人形机器人两大核心方向。</p>
+                        <p>自动驾驶所需的自研芯片、大模型、感知系统、控制系统与操作系统，将与人形机器人<span class="highlight-orange">共享技术底座</span>。李想判断：通用人形机器人的商业化落地将在3-5年内实现突破。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">理想汽车人形机器人正式立项，车企跨界具身智能成趋势</div>
+                        <div class="key-point">李想：未来3-5年汽车竞争本质是具身智能竞争，战略研判极具前瞻性</div>
+                        <div class="key-point">自动驾驶与人形机器人共享技术底座，算力/模型/芯片协同效应显著</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">特斯拉Optimus专属机器人工厂动工，马斯克：2026年产能目标100万台</h3>
+                    <div class="news-content">
+                        <p>特斯拉位于美国得克萨斯州的<span class="highlight-orange">Optimus专属机器人工厂正式动工</span>，马斯克在动工仪式上重申2026年Optimus产能目标为100万台。与此同时，特斯拉弗里蒙特工厂计划在7-8月完成产线转换，全面转产Optimus。</p>
+                        <p>国内方面，<span class="highlight-orange">10名车主诉特斯拉FSD欺诈案已在国内开庭</span>，自动驾驶法律责任边界问题引发广泛讨论。法律界人士指出，此案判决将对全球自动驾驶监管产生示范效应。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">特斯拉Optimus专属工厂动工，马斯克100万台年产能目标引发业界热议</div>
+                        <div class="key-point">弗里蒙特工厂7-8月转产Optimus，特斯拉"造车+造机器人"双线并进</div>
+                        <div class="key-point">FSD欺诈案开庭，自动驾驶法律责任边界成司法新课题</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">人形机器人加速规模化落地：Atlas备战2026世界杯，现代计划2028年量产3万台</h3>
+                    <div class="news-content">
+                        <p>2026年，人形机器人正从实验室加速走向现实应用场景。波士顿动力<span class="highlight-orange">Atlas已确认备战2026年机器人世界杯</span>；现代汽车宣布计划到2028年实现人形机器人<span class="highlight-orange">年产3万台</span>，并已在韩国蔚山工厂部署25000台Atlas机器人。</p>
+                        <p>去年4月北京亦庄举办了全球首场人形机器人半程马拉松，今年赛事规模进一步扩大，<span class="highlight-orange">参赛队伍较去年翻番</span>。行业数据显示，2026年中国人形机器人市场规模预计达87亿元，同比增长680%。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">现代汽车2028年年产3万台人形机器人目标，规模化量产拐点临近</div>
+                        <div class="key-point">Atlas备战2026机器人世界杯，人形机器人"体育竞技"成技术展示新舞台</div>
+                        <div class="key-point">2026年人形机器人行业进入"规模化验证关键期"，从Demo走向真实场景</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">比亚迪发布中国首款4nm智驾芯片璇玑A3，算力达2100+ TOPS</h3>
+                    <div class="news-content">
+                        <p>比亚迪正式发布中国首款4nm制程智能驾驶芯片"<span class="highlight-orange">璇玑A3</span>"，算力达到<span class="highlight-orange">2100+ TOPS</span>，这是中国车企首次在智驾芯片领域实现4nm级突破。璇玑A3将率先搭载于仰望U9等高端车型，并计划逐步下放至20万元级车型。</p>
+                        <p>比亚迪同步宣布，已实现智能驾驶系统<span class="highlight-orange">从芯片到算法的全栈自研</span>。4nm智驾芯片量产，标志着中国车企在半导体领域实现历史性突破，打破海外巨头在高端智驾芯片上的垄断。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">比亚迪璇玑A3：中国首款4nm智驾芯片，算力2100+ TOPS</div>
+                        <div class="key-point">全栈自研从芯片到算法，比亚迪智能化战略全面提速</div>
+                        <div class="key-point">4nm智驾芯片量产，中国车企在半导体领域实现历史性突破</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察全球最新动向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>AI 商业化提速</h3>
+                            <p>Anthropic实现盈利、估值反超OpenAI，AI产业从"烧钱"转向"造血"，商业化能力成为核心竞争力。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🦾</div>
+                        <div class="trend-desc">
+                            <h3>具身智能入车企主战场</h3>
+                            <p>理想、特斯拉、现代等车企全面布局人形机器人，自动驾驶与具身智能技术底座趋同，"车企+机器人"成最热赛道。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🌏</div>
+                        <div class="trend-desc">
+                            <h3>中美AI博弈复杂化</h3>
+                            <p>华为"韬定律"获英伟达CEO正面评价，Claude被指蒸馏中国模型，技术流动与竞争边界日益模糊。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🔥</div>
+                        <div class="trend-desc">
+                            <h3>全球地缘政治高度不确定</h3>
+                            <p>美伊协议悬而未决、黎以冲突升级、俄乌和谈信号混杂，国际秩序重构进入关键窗口期。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">数据来源：新华网 · 新浪财经 · IT之家 · 澎湃新闻 · Global Issues · 财联社</p>
+            <p class="footer-meta">整理时间：2026-05-30 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
