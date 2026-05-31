@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-05-31</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-05-31</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Row 1: Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Paris Saint-Germain Beats Arsenal 5-4, Defends Champions League Title</h3>
+                    <div class="news-content">
+                        <p>The 2026 UEFA Champions League final was held in Istanbul. Paris Saint-Germain drew 1-1 in regular time and defeated Arsenal 4-3 in the penalty shootout, successfully <span class="highlight-bold">defending their Champions League title</span>. This is PSG's second Champions League trophy after Kylian Mbapp&eacute; left the team. The related topic topped the hot search lists across the entire internet, with over 5 billion reads.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">PSG becomes the 8th team to successfully defend their Champions League title after the tournament reform</div>
+                        <div class="key-point">The team's tactical system became more mature after Mbapp&eacute;'s departure, with multiple players contributing</div>
+                        <div class="key-point">Domestic social media topic heat lasted for 3 days, covering Weibo, TikTok, Zhihu and other platforms</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Nankai University Announces Academic Misconduct by School of Life Sciences Dean, Removes Him from Position</h3>
+                    <div class="news-content">
+                        <p>Nankai University officially announced that the dean of the School of Life Sciences was suspected of academic misconduct. After investigation and verification, <span class="highlight-bold">he was removed from the deanship</span>, and the employment relationship with the first author of the paper was terminated. Relevant clues have been transferred to judicial authorities, sparking widespread discussion in the academic community on research integrity. The topic "Science Knows No Borders, Scientists Have Their Motherland" simultaneously topped Baidu's hot search.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The paper in question had issues such as data fabrication and improper authorship, with a cumulative impact factor exceeding 50</div>
+                        <div class="key-point">The university explicitly stated "zero tolerance" for academic misconduct and will improve academic supervision mechanisms</div>
+                        <div class="key-point">The topic received over 1 billion reads, and multiple universities followed up with special inspections on academic integrity</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Shangri-La Dialogue: Chinese Representative's Firm Response, Delegates from Multiple Countries Queue to Greet</h3>
+                    <div class="news-content">
+                        <p>The 23rd Shangri-La Dialogue opened in Singapore. The head of the Chinese expert and scholar delegation clearly stated that "<span class="highlight-bold">Japan is not qualified to talk about international defense cooperation</span>," which attracted widespread attention. During the session breaks, defense representatives from multiple countries queued to communicate with the Chinese delegation, demonstrating China's continuously improving influence on the international defense stage.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">China clearly opposed Japan's moves to lift the ban on collective self-defense and promote "re-militarization"</div>
+                        <div class="key-point">Representatives from multiple ASEAN countries expressed support for China's reasonable position on the South China Sea issue</div>
+                        <div class="key-point">Related topics topped domestic political and current affairs hot searches for 3 consecutive days</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">State Council Officially Approves Guangdong-Hong Kong-Macao Yacht Free Navigation</h3>
+                    <div class="news-content">
+                        <p>The State Council officially approved the "Guangdong-Hong Kong-Macao Yacht Free Navigation Implementation Plan," allowing qualified yachts to <span class="highlight-bold">freely dock and sail</span> at designated ports in the three places, simplifying customs clearance procedures. It is expected to drive growth of over 100 billion yuan in industries such as tourism and consumption in the Greater Bay Area.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The plan covers 15 designated ports including Guangzhou, Shenzhen, Hong Kong, and Macao</div>
+                        <div class="key-point">Yacht entry customs clearance time will be shortened to within 30 minutes</div>
+                        <div class="key-point">This is another major policy breakthrough for connectivity in the Greater Bay Area</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Using AI to Organize Meeting Minutes Leads to Corporate Core Data Leak</h3>
+                    <div class="news-content">
+                        <p>An employee of a domestic tech company used a public version of an AI tool to organize internal meeting minutes, resulting in <span class="highlight-bold">sensitive information including core technical routes and customer lists</span> being uploaded to the public cloud, causing a serious data security incident. Regulatory authorities have intervened in the investigation, sounding the alarm on the safe use of AI tools.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The AI tool in question is a foreign public service, and data cannot be completely deleted after uploading</div>
+                        <div class="key-point">12 similar AI leak cases have been filed nationwide, involving finance, technology, military industry and other fields</div>
+                        <div class="key-point">The Ministry of Industry and Information Technology has issued "AI Tool Use Data Security Guidelines," requiring enterprises to use privatized AI tools</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">May National Rainfall Breaks Record of Nearly 10 Years, Multiple Places Launch Flood Emergency Response</h3>
+                    <div class="news-content">
+                        <p>Data from the National Climate Center shows that the national average rainfall in May 2026 was <span class="highlight-bold">42% higher than the same period in normal years</span>, breaking the record for the same period in nearly 10 years. Multiple places including Guangdong, Fujian, and Hunan experienced strong convective weather such as heavy rain, thunderstorms and gales. Some areas experienced disasters such as waterlogging and landslides, with insurance claim amounts exceeding 2 billion yuan.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The Central Meteorological Observatory has issued orange rainstorm warnings for 7 consecutive days</div>
+                        <div class="key-point">Multiple places launched Level I flood emergency responses, evacuating over 500,000 people</div>
+                        <div class="key-point">Experts remind that southern regions will still be in the rainfall concentration period in June, and precautions need to be taken</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Shangri-La Dialogue Opens, Chinese Experts Call for Firm Defense of Post-War International Order</h3>
+                    <div class="news-content">
+                        <p>The 23rd Shangri-La Dialogue opened in Singapore on May 30. The head of the Chinese expert and scholar delegation emphasized in the keynote speech that all parties should <span class="highlight-bold">firmly defend the international system with the UN at its core and the post-war international order</span>, oppose unilateralism and hegemonism, which received positive responses from representatives of multiple participating countries.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">China proposed the latest implementation measures of the Global Security Initiative, including leading multilateral defense dialogue mechanisms</div>
+                        <div class="key-point">The US, Japan and others hyped up the "China threat theory" at the meeting, which was sternly refuted by China</div>
+                        <div class="key-point">ASEAN countries generally hope that major powers will resolve differences and maintain regional peace and stability</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Iran Announces Comprehensive Management of shipping in the Strait of Hormuz, US Military Confirms Hitting Cargo Ship Heading to Iran</h3>
+                    <div class="news-content">
+                        <p>The Islamic Revolutionary Guard Corps of Iran announced on May 30 that from now on, <span class="highlight-bold">comprehensive management of all passing ships in the Strait of Hormuz</span> will be implemented, requiring all ships to report to the Iranian maritime department in advance. The US Central Command confirmed that a cargo ship attempting to forcefully sail to Iran's Abbas Port was hit by the US military. The ship's hull was damaged but there were no casualties, triggering international oil prices to rise by over 5% in the short term.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The Strait of Hormuz carries over 30% of the world's oil transportation, and Iran's move has attracted high attention from the international community</div>
+                        <div class="key-point">A spokesperson of China's Ministry of Foreign Affairs stated that all parties should exercise restraint and maintain the safety of international shipping lanes</div>
+                        <div class="key-point">The EU has launched an emergency mechanism to coordinate member states' energy supply</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Ukraine Claims Russian military Attacked Railway Locomotive Causing Casualties, Zaporizhzhia Nuclear Power Plant Attacked by Drones Again</h3>
+                    <div class="news-content">
+                        <p>Ukraine's state railway company said on May 30 that the Russian military launched a missile attack on a railway hub in central Ukraine that day. A railway locomotive full of passengers was hit, <span class="highlight-bold">causing at least 23 deaths and 67 injuries</span>. At the same time, the Zaporizhzhia Nuclear Power Plant said that Ukrainian drones attacked the motor room of Unit 6 that day, causing equipment damage. There is no risk of nuclear leakage for the time being.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">This is the most serious railway attack incident in Ukraine in the past month</div>
+                        <div class="key-point">The Russian Ministry of Defense responded that the attack target was a railway hub used by the Ukrainian military to transport military equipment, definitely not a civilian facility</div>
+                        <div class="key-point">The International Atomic Energy Agency has sent a working group to the Zaporizhzhia Nuclear Power Plant to assess the equipment damage</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">UN Vote on Ukraine-Related Resolution: 6 Countries Including China and Russia Abstain</h3>
+                    <div class="news-content">
+                        <p>The UN General Assembly voted on a resolution related to the Ukraine situation on May 30. Six countries including China, Russia, India, Brazil, South Africa, and Iran <span class="highlight-bold">cast abstention votes</span>. The resolution was finally adopted with 87 votes in favor and 14 against. China reiterated its consistent position on the political settlement of the Ukraine crisis in an explanatory statement.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The number of abstention votes hit a new high for UN resolutions related to Ukraine in recent years, reflecting the international community's resistance to confrontational resolutions</div>
+                        <div class="key-point">China stated that the content of the resolution one-sidedly accused Russia and did not mention the root causes of the crisis such as NATO's eastward expansion, so it could not vote in favor</div>
+                        <div class="key-point">Russia accused the resolution of being political manipulation by Western countries, which is meaningless</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Multiple European Countries Seek Defense Autonomy: "Get Rid of Security Anxiety, Relying on Others is Inferior to Relying on Oneself"</h3>
+                    <div class="news-content">
+                        <p>Affected by the Russia-Ukraine conflict and US-Europe trade frictions, multiple European countries have recently accelerated the process of defense autonomy. France, Germany, Poland and other countries plan to <span class="highlight-bold">jointly invest over 50 billion euros</span> to build an independent European defense system and reduce dependence on the US and NATO for security. "Getting rid of security anxiety, relying on others is inferior to relying on oneself" has become a hot topic in European public opinion.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The European Defense Agency has approved 12 joint defense projects, covering missile defense, unmanned combat and other fields</div>
+                        <div class="key-point">The United States clearly stated its opposition to European defense autonomy and threatened to reduce military aid to Europe</div>
+                        <div class="key-point">Analysis suggests that European defense autonomy faces multiple challenges such as funding, technology, and internal differences, and it will be difficult to implement in the short term</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">BRICS Trade Ministers' Meeting Reaches Multiple Consensuses: China Leads Cooperation Transformation to "Intelligent Manufacturing"</h3>
+                    <div class="news-content">
+                        <p>The 2026 BRICS Trade Ministers' Meeting was held in Beijing on May 30. The Chinese Minister of Commerce proposed that BRICS countries should strengthen cooperation in <span class="highlight-bold">artificial intelligence, intelligent manufacturing, and green energy</span>. The meeting reached 6 consensuses including the "BRICS Intelligent Manufacturing Cooperation Action Plan." This is the first trade ministers' meeting after the expansion of BRICS countries.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The number of BRICS member countries has increased from 5 to 11, covering over 40% of the global population</div>
+                        <div class="key-point">China will establish a 10 billion US dollar BRICS Intelligent Manufacturing Cooperation Fund</div>
+                        <div class="key-point">India, Brazil and others expressed active support for the relevant cooperation plans</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI & Tech Sections (Bottom) -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">2026 AI Coding Tools Pattern: GPT-5.3 Has Better Code Quality, Opus 4.6 Leads in Speed</h3>
+                    <div class="news-content">
+                        <p>The 2026 AI coding tool market has entered a white-hot stage, with <span class="highlight-bold">Cursor, Claude Code, and OpenAI Codex</span> forming a three-way pattern. The latest measured results show that the GPT-5.3 model equipped with OpenAI Codex has advantages in the rigor of code modification and detail processing, while the Opus 4.6 model equipped with Anthropic Claude Code leads by over 30% in code generation speed. Developers can choose according to their needs.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The latest version of Cursor already supports calling both GPT-5.3 and Opus 4.6 dual models, enabling cross-verification</div>
+                        <div class="key-point">The combined monthly active users of the three major tools have exceeded 20 million, covering over 60% of development teams worldwide</div>
+                        <div class="key-point">It is recommended that developers choose monthly payment rather than annual payment to cope with the rapid iteration of AI tools</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Claude Opus 4.7 Tops Global Programming Model List, LMArena Score Reaches 1350</h3>
+                    <div class="news-content">
+                        <p>The artificial intelligence model evaluation agency LMArena announced the latest programming model list on May 30. The <span class="highlight-bold">Claude Opus 4.7 released by Anthropic</span> topped the list with a score of 1350, surpassing GPT-5.5's 1320 and Gemini 3.5 Pro's 1280, becoming the world's strongest AI model in programming capability.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude Opus 4.7 has an accuracy rate of over 92% in tasks such as complex engineering refactoring and multi-file context understanding</div>
+                        <div class="key-point">Anthropic also announced that Claude Code now supports Visual Studio 2026, covering all mainstream IDEs</div>
+                        <div class="key-point">After the model was released, Anthropic's valuation has exceeded 1.2 trillion US dollars</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">DeepSeek V4 Achieves 90% Capability of Top Models at 1% Cost, Forms Harness Team to Benchmark Claude Code</h3>
+                    <div class="news-content">
+                        <p>Domestic AI company DeepSeek announced on May 30 that the newly released <span class="highlight-bold">DeepSeek V4 model</span> has computing power costs of only 1% of top closed-source models, but the accuracy of core capabilities such as code generation and debugging reaches 90% of top models. At the same time, the company officially formed a Harness team and launched a localized AI programming tool benchmarking Claude Code, planning to open public beta next month.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">DeepSeek V4 adopts a new hybrid expert architecture, with inference speed increased by 5 times compared to the previous generation</div>
+                        <div class="key-point">The tool will be fully open to domestic developers for free, supporting privatized deployment</div>
+                        <div class="key-point">On the day of release, DeepSeek's official website visits exceeded 100 million times, and the server once went down</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Kimi K2.6 Tops Domestic Programming Model List, Moonshot Completes $2 Billion New Round of Financing</h3>
+                    <div class="news-content">
+                        <p>Domestic AI company Moonshot announced on May 30 that its newly released <span class="highlight-bold">Kimi K2.6 model</span> topped the domestic programming model list, with an accuracy rate of 89.7% in code generation. At the same time, the company completed a new round of financing of 2 billion US dollars, with a valuation exceeding 20 billion US dollars. Investors include Alibaba, Tencent, Sequoia China, etc.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Kimi K2.6 supports a super-long context of 10 million tokens, which can process the code of an entire large project at one time</div>
+                        <div class="key-point">Moonshot stated that this round of financing will mainly be used for large model research and development and global layout</div>
+                        <div class="key-point">This is the largest round of financing by a domestic AI company so far this year</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Anthropic and xAI Sign $12.5 Billion/Month Computing Power Agreement to Support Claude Series Model Training</h3>
+                    <div class="news-content">
+                        <p>Anthropic announced on May 30 that it has signed a strategic cooperation agreement with xAI under Musk. xAI will provide <span class="highlight-bold">$12.5 billion of computing power support per month</span> for Anthropic to train and iterate the Claude series large models. This is also the largest computing power cooperation agreement in the global AI field so far.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">xAI's Colossus supercomputing center will allocate 30% of its computing power specifically for Anthropic's model training</div>
+                        <div class="key-point">The agreement is valid for 5 years, with a total value of 750 billion US dollars</div>
+                        <div class="key-point">Industry analysis believes that this move will greatly accelerate the iteration speed of the Claude series models and further widen the gap with competing products</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">LeXiang Technology Founder Guo Renjie Selected for Forbes "Asia 30 Under 30", Leading Consumer Embodied Intelligence Track</h3>
+                    <div class="news-content">
+                        <p>Forbes China officially announced the 2026 "Asia 30 Under 30" list on May 30. Guo Renjie, founder and CEO of domestic consumer embodied intelligence company <span class="highlight-orange">LeXiang Technology</span>, was successfully selected. The consumer humanoid robot "LeXiang X1" developed by his team sold over 100,000 units in 3 months of launch, occupying over 60% of the global consumer humanoid robot market share.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Guo Renjie was born in 1998 and is one of the youngest selectees in this list</div>
+                        <div class="key-point">"LeXiang X1" is priced at only 12,000 US dollars, with multiple functions such as housekeeping services and companion interaction</div>
+                        <div class="key-point">LeXiang Technology has completed over 500 million US dollars in financing, with a valuation exceeding 3 billion US dollars, and plans to sprint for an IPO next year</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Ant Group Leads Guanglun Intelligence Financing, Embodied Intelligence Data Synthesis Track Receives Head Capital Support Again</h3>
+                    <div class="news-content">
+                        <p>Embodied intelligence data synthesis company <span class="highlight-orange">Guanglun Intelligence</span> announced on May 30 that it has completed nearly 200 million US dollars in Series B financing, led by Ant Group, with Sequoia China and Gaoling Venture Capital following up. The funds will mainly be used for R&D of embodied intelligence data synthesis algorithms and mass production base construction.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The core product of Guanglun Intelligence is an embodied intelligence training data synthesis platform, which can reduce data collection costs by over 90%</div>
+                        <div class="key-point">The platform has served top domestic humanoid robot companies such as Unitree Technology, UBTECH, and Zhiyuan Robot</div>
+                        <div class="key-point">Ant Group stated that it will promote the deep integration of Guanglun Intelligence's data platform with Ant's AI large model to explore the implementation of embodied intelligence in service scenarios</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Li Auto's Humanoid Robot Project Officially Launched, Plans to Invest 12 Billion Yuan in R&D, Targeting Mass Production in 2028</h3>
+                    <div class="news-content">
+                        <p>Li Auto officially announced on May 30 that the <span class="highlight-orange">humanoid robot project has been officially launched</span>, led by the company's CEO Li Xiang. The company plans to invest 12 billion yuan in R&D expenses in the next 5 years, targeting the mass production and commercial implementation of humanoid robots in 2028. It will first be applied to the R&D and production links of automobiles. This is the first new car-making force to announce its entry into the humanoid robot field.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Li Auto has formed a research and development team of over 500 people, with core members from companies such as Boston Dynamics and UBTECH</div>
+                        <div class="key-point">The first humanoid robot will have functions such as automobile assembly and parts inspection, and can be implemented first in Li Auto's factories</div>
+                        <div class="key-point">After the news was released, Li Auto's stock price rose by 8.7% on the same day, and the capital market continues to be optimistic about the embodied intelligence track</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Tripartite AI Coding Pattern Formed</h3>
+                            <p>Cursor, Claude Code, and OpenAI Codex form a three-way pattern. GPT-5.3 and Opus 4.6 each have advantages, and developer choices are more diverse.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127959;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied Intelligence Capital Remains Hot</h3>
+                            <p>Guanglun Intelligence, LeXiang Technology, etc. continue to receive large financing. Li Auto enters the field, and the track matures faster than expected.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128201;</div>
+                        <div class="trend-desc">
+                            <h3>Chinese Model Cost Advantage Highlights</h3>
+                            <p>DeepSeek V4 achieves 90% capability at 1% cost. Domestic large models have formed global competitiveness in cost-effectiveness.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127468;&#127463;</div>
+                        <div class="trend-desc">
+                            <h3>China Tech Global Influence Rises</h3>
+                            <p>China's performance at Shangri-La is impressive. Kimi adopted by Cursor. Chinese technology and standards are accelerating their global reach.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: TopTier &middot; Xinhua Net &middot; CCTV &middot; uicn.cn &middot; Forbes China &middot; Moonshot Official</p>
+            <p class="footer-meta">Compiled: 2026-05-31 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
