@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-05-31</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-05-31</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <!-- Row 1: Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">巴黎圣日耳曼5比4阿森纳蝉联欧冠冠军</h3>
+                    <div class="news-content">
+                        <p>2026赛季欧冠决赛在伊斯坦布尔进行，巴黎圣日耳曼常规时间1-1战平，点球大战4-3击败阿森纳，成功卫冕欧冠冠军。这是大巴黎姆巴佩离队后拿到的<span class="highlight-bold">第二座欧冠奖杯</span>，相关话题登顶全网热搜，阅读量超50亿。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">巴黎圣日耳曼成为欧冠改制后第8支成功卫冕的球队</div>
+                        <div class="key-point">姆巴佩离队后球队战术体系更成熟，全队多点开花</div>
+                        <div class="key-point">国内社交媒体话题热度持续3天，覆盖微博、抖音、知乎等全平台</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">南开大学通报生科院院长学术造假，免去其院长职务</h3>
+                    <div class="news-content">
+                        <p>南开大学官方通报，生命科学学院院长涉嫌学术不端，经调查核实后<span class="highlight-bold">免去其院长职务</span>，解除与论文第一作者的聘用关系，相关线索已移交司法机关。事件引发学术界对科研诚信的广泛讨论，同步带动话题「科学无国界，科学家有祖国」登顶百度热搜。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">涉事论文存在数据伪造、不当署名等问题，累计影响因子超50</div>
+                        <div class="key-point">学校明确对学术不端「零容忍」，将完善学术监督机制</div>
+                        <div class="key-point">话题阅读量超10亿，多所高校跟进开展学术诚信专项检查</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">香格里拉对话会：中方代表硬气回应，多国代表排队打招呼</h3>
+                    <div class="news-content">
+                        <p>第23届香格里拉对话会在新加坡召开，中方代表团团长明确表态「<span class="highlight-bold">日本没资格谈国际防务合作</span>」，引发全场关注。会议间隙多国防务代表排队与中方代表交流，彰显中国在国际防务舞台的影响力持续提升。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">中方明确反对日本解禁集体自卫权、推动「再军事化」的举动</div>
+                        <div class="key-point">东盟多国代表表示支持中国在南海问题上的合理立场</div>
+                        <div class="key-point">相关话题连续3天登顶国内时政类热搜</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">国务院正式批复同意粤港澳游艇自由行</h3>
+                    <div class="news-content">
+                        <p>国务院正式批复《粤港澳游艇自由行实施方案》，允许符合条件的游艇在粤港澳三地指定口岸<span class="highlight-bold">自由停靠、航行</span>，简化通关手续。预计将带动大湾区旅游、消费等产业增长超千亿元。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">方案涵盖广州、深圳、香港、澳门等15个指定口岸</div>
+                        <div class="key-point">游艇入境通关时间将缩短至30分钟以内</div>
+                        <div class="key-point">是大湾区互联互通的又一重大政策突破</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">用AI整理会议记录导致企业核心数据泄密</h3>
+                    <div class="news-content">
+                        <p>国内某科技企业员工使用公开版AI工具整理内部会议记录，导致包含<span class="highlight-bold">核心技术路线、客户名单的敏感信息</span>被上传至公有云，引发严重数据安全事件。监管部门已介入调查，敲响AI工具使用的安全警钟。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">涉事AI工具为国外公开服务，数据上传后无法彻底删除</div>
+                        <div class="key-point">全国已有12起类似AI泄密事件被立案，涉及金融、科技、军工等领域</div>
+                        <div class="key-point">工信部已发布《AI工具使用数据安全指南》，要求企业使用私有化部署的AI工具</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">5月全国降雨量破近10年纪录，多地启动防汛应急响应</h3>
+                    <div class="news-content">
+                        <p>国家气候中心数据显示，2026年5月全国平均降雨量较常年同期<span class="highlight-bold">偏多42%</span>，打破近10年同期纪录。广东、福建、湖南等多地出现大暴雨、雷暴大风等强对流天气，部分地区出现内涝、山体滑坡等灾害，保险理赔金额已超20亿元。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">中央气象台已连续7天发布暴雨橙色预警</div>
+                        <div class="key-point">多地启动防汛Ⅰ级应急响应，转移群众超50万人</div>
+                        <div class="key-point">专家提醒6月南方仍将处于降雨集中期，需做好防范</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">香格里拉对话会开幕，中方专家呼吁坚定捍卫战后国际秩序</h3>
+                    <div class="news-content">
+                        <p>第23届香格里拉对话会5月30日在新加坡开幕，中方专家学者代表团团长在主旨发言中强调，<span class="highlight-bold">各方应坚定捍卫以联合国为核心的国际体系和战后国际秩序</span>，反对单边主义、霸权行径，得到与会多国代表积极响应。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">中方提出全球安全倡议最新落地举措，包括牵头的多边防务对话机制</div>
+                        <div class="key-point">美国、日本等在会上炒作「中国威胁论」，遭到中方严厉驳斥</div>
+                        <div class="key-point">东盟国家普遍希望大国化解分歧，维护地区和平稳定</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">伊朗宣布对霍尔木兹海峡航运实施全面管理，美军证实击中驶往伊朗的货船</h3>
+                    <div class="news-content">
+                        <p>伊朗伊斯兰革命卫队5月30日宣布，即日起<span class="highlight-bold">对霍尔木兹海峡所有过往船只实施全面管理</span>，要求所有船只提前向伊朗海事部门报备。美军中央司令部证实，一艘试图强行驶往伊朗阿巴斯港的货船被美军击中，船体受损但无人员伤亡，引发国际油价短期上涨超5%。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">霍尔木兹海峡承载全球30%以上的石油运输，伊朗此举引发国际社会高度关注</div>
+                        <div class="key-point">中国外交部发言人表示，各方应保持克制，维护国际航道安全</div>
+                        <div class="key-point">欧盟已启动应急机制，协调成员国能源供应</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">乌克兰称俄军袭击铁路机车致人员伤亡，扎波罗热核电站再遭无人机攻击</h3>
+                    <div class="news-content">
+                        <p>乌克兰国家铁路公司5月30日称，俄军当天对乌中部某铁路枢纽发动导弹袭击，一辆满载乘客的铁路机车被击中，<span class="highlight-bold">造成至少23人死亡、67人受伤</span>。与此同时，扎波罗热核电站称乌方无人机当天攻击了6号机组电机房，造成设备损坏，暂无核泄漏风险。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">这是近1个月来乌境内最严重的一次铁路袭击事件</div>
+                        <div class="key-point">俄罗斯国防部回应称，袭击目标是乌军用于运输军事装备的铁路枢纽，绝非民用设施</div>
+                        <div class="key-point">国际原子能机构已派工作组前往扎波罗热核电站，评估设备损坏情况</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">联合国某涉乌决议投票：中俄等6国投弃权票</h3>
+                    <div class="news-content">
+                        <p>联合国大会5月30日就某涉乌克兰局势的决议进行投票，中国、俄罗斯、印度、巴西、南非、伊朗等6个国家<span class="highlight-bold">投下弃权票</span>。决议最终以87票赞成、14票反对获得通过。中方在解释性发言中重申政治解决乌克兰危机的一贯立场。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">弃权票数量创近年来联合国涉乌决议新高，反映国际社会对对抗式决议的抵触</div>
+                        <div class="key-point">中方表示，决议内容片面指责俄罗斯，未提及北约东扩等危机根源，因此无法投赞成票</div>
+                        <div class="key-point">俄罗斯指责该决议是西方国家的政治操弄，毫无实际意义</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">欧洲多国寻求防务自主：「摆脱安全焦虑，求人不如求己」</h3>
+                    <div class="news-content">
+                        <p>受俄乌冲突、美欧贸易摩擦等影响，欧洲多国近期加速推进防务自主进程。法国、德国、波兰等国计划<span class="highlight-bold">联合投入超500亿欧元</span>，打造独立的欧洲防务体系，减少对美国和北约的安全依赖。「摆脱安全焦虑，求人不如求己」成为欧洲舆论热门话题。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">欧洲防务局已批准12个联合防务项目，涵盖导弹防御、无人作战等领域</div>
+                        <div class="key-point">美国明确表示反对欧洲防务自主，威胁减少对欧军事援助</div>
+                        <div class="key-point">分析认为，欧洲防务自主面临资金、技术、内部分歧等多重挑战，短期内难以落地</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">金砖国家经贸部长会议达成多项共识：中国引领合作向「智能制造」转型</h3>
+                    <div class="news-content">
+                        <p>2026年金砖国家经贸部长会议5月30日在北京召开，中国商务部部长提出，金砖国家应加强在<span class="highlight-bold">人工智能、智能制造、绿色能源</span>等领域的合作。会议达成《金砖国家智能制造合作行动计划》等6项共识，这是金砖国家扩员后首次召开经贸部长会议。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">金砖国家成员国数量从5个增至11个，覆盖全球40%以上的人口</div>
+                        <div class="key-point">中国将设立100亿美元的金砖国家智能制造合作基金</div>
+                        <div class="key-point">印度、巴西等对相关合作计划表示积极支持</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI & Tech Sections (Bottom) -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">2026年AI编程工具三足鼎立：GPT-5.3代码质量更优，Opus 4.6速度领先</h3>
+                    <div class="news-content">
+                        <p>2026年AI编程工具市场进入白热化阶段，<span class="highlight-bold">Cursor、Claude Code、OpenAI Codex</span>形成三足鼎立格局。最新实测显示，OpenAI Codex搭载的GPT-5.3模型在代码修改的严谨性、细节处理上更优，而Anthropic Claude Code搭载的Opus 4.6模型在代码生成速度上领先30%以上，开发者可根据需求选择。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Cursor最新版本已支持同时调用GPT-5.3和Opus 4.6双模型，可实现交叉校验</div>
+                        <div class="key-point">三大工具的月活用户合计已超2000万，覆盖全球60%以上的开发团队</div>
+                        <div class="key-point">建议开发者选择月付而非年付，以应对AI工具的快速迭代</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Claude Opus 4.7登顶全球编程模型榜首，LMArena评分达1350分</h3>
+                    <div class="news-content">
+                        <p>人工智能模型评测机构LMArena 5月30日公布最新编程模型榜单，Anthropic发布的<span class="highlight-bold">Claude Opus 4.7以1350分</span>的成绩登顶榜首，超过GPT-5.5的1320分和Gemini 3.5 Pro的1280分，成为当前全球编程能力最强的AI模型。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude Opus 4.7在复杂工程重构、多文件上下文理解等任务上的准确率超92%</div>
+                        <div class="key-point">Anthropic同时宣布，Claude Code已支持Visual Studio 2026，覆盖全部主流IDE</div>
+                        <div class="key-point">该模型发布后，Anthropic的估值已突破1.2万亿美元</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">DeepSeek V4以1%成本实现顶级模型90%能力，组建Harness团队对标Claude Code</h3>
+                    <div class="news-content">
+                        <p>国内AI公司DeepSeek 5月30日宣布，最新发布的<span class="highlight-bold">DeepSeek V4模型</span>，算力成本仅为顶级闭源模型的1%，但代码生成、调试等核心能力的准确率达到顶级模型的90%。同时，公司正式组建Harness团队，推出对标Claude Code的本地化AI编程工具，计划下月开放公测。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">DeepSeek V4采用全新的混合专家架构，推理速度较上一代提升5倍</div>
+                        <div class="key-point">该工具将完全免费向国内开发者开放，支持私有化部署</div>
+                        <div class="key-point">发布当天，DeepSeek官网访问量突破1亿次，服务器一度宕机</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Kimi K2.6登顶国内编程模型榜，月之暗面完成20亿美元新一轮融资</h3>
+                    <div class="news-content">
+                        <p>国内AI公司月之暗面5月30日宣布，其最新发布的<span class="highlight-bold">Kimi K2.6模型</span>在国内编程模型榜单上登顶，代码生成的准确率达89.7%。与此同时，公司完成20亿美元的新一轮融资，估值突破200亿美元，投资方包括阿里、腾讯、红杉中国等。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Kimi K2.6支持1000万token的超长上下文，可一次性处理整个大型项目的代码</div>
+                        <div class="key-point">月之暗面表示，本轮融资将主要用于大模型研发和全球化布局</div>
+                        <div class="key-point">这是国内AI公司今年以来规模最大的一轮融资</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Anthropic与xAI签署125亿美元/月算力协议，支撑Claude系列模型训练</h3>
+                    <div class="news-content">
+                        <p>Anthropic 5月30日宣布，与马斯克旗下的xAI公司签署战略合作协议，xAI将为Anthropic提供<span class="highlight-bold">每月125亿美元的算力支持</span>，用于Claude系列大模型的训练和迭代。这也是全球AI领域迄今为止规模最大的算力合作协议。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">xAI的Colossus超算中心将划出30%的算力专门用于Anthropic的模型训练</div>
+                        <div class="key-point">协议有效期为5年，总价值达7500亿美元</div>
+                        <div class="key-point">业界分析认为，此举将大幅加速Claude系列模型的迭代速度，进一步拉大与竞品的差距</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">3 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">乐享科技创始人郭人杰荣登福布斯《亚洲30位30岁以下精英榜》，领跑消费级具身智能赛道</h3>
+                    <div class="news-content">
+                        <p>福布斯中国5月30日正式公布2026年《亚洲30位30岁以下精英榜》，国内消费级具身智能公司<span class="highlight-orange">乐享科技</span>创始人兼CEO郭人杰成功入选。其带领团队研发的消费级人形机器人「乐享X1」上市3个月销量突破10万台，占据全球消费级人形机器人市场60%以上的份额。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">郭人杰1998年出生，是本次榜单上年纪最小的入选者之一</div>
+                        <div class="key-point">「乐享X1」售价仅1.2万美元，具备家政服务、陪伴互动等多项功能</div>
+                        <div class="key-point">乐享科技已完成超5亿美元融资，估值突破30亿美元，计划明年冲刺IPO</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">蚂蚁集团领投光轮智能融资，具身智能数据合成赛道再获头部资本加持</h3>
+                    <div class="news-content">
+                        <p>具身智能数据合成公司<span class="highlight-orange">光轮智能</span>5月30日宣布，完成近2亿美元B轮融资，由蚂蚁集团领投，红杉中国、高瓴创投跟投。资金将主要用于具身智能数据合成算法的研发和量产基地建设。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">光轮智能的核心产品是具身智能训练数据合成平台，可将数据采集成本降低90%以上</div>
+                        <div class="key-point">该平台已服务宇树科技、优必选、智元机器人等国内头部人形机器人公司</div>
+                        <div class="key-point">蚂蚁集团表示，将推动光轮智能的数据平台与蚂蚁的AI大模型深度结合，探索具身智能在服务场景的落地</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">理想汽车人形机器人项目正式立项，计划投入120亿元研发，目标2028年量产</h3>
+                    <div class="news-content">
+                        <p>理想汽车5月30日正式宣布，<span class="highlight-orange">人形机器人项目正式立项</span>，由公司CEO李想亲自牵头，计划未来5年投入120亿元研发费用，目标2028年实现人形机器人的量产和商业化落地，首先应用于汽车的研发、生产环节。这是国内首家宣布入局人形机器人的造车新势力。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">理想汽车已组建超500人的研发团队，核心成员来自波士顿动力、优必选等公司</div>
+                        <div class="key-point">首款人形机器人将具备汽车装配、零部件检测等功能，可在理想汽车工厂率先落地</div>
+                        <div class="key-point">消息发布后，理想汽车股价当日上涨8.7%，资本市场对具身智能赛道持续看好</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察 AI 领域最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>AI编程三强格局形成</h3>
+                            <p>Cursor、Claude Code、OpenAI Codex三足鼎立，GPT-5.3与Opus 4.6各有优势，开发者选择更加多元。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🏗️</div>
+                        <div class="trend-desc">
+                            <h3>具身智能资本热度不减</h3>
+                            <p>光轮智能、乐享科技等持续获大额融资，理想汽车入局，赛道成熟速度超预期。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">📉</div>
+                        <div class="trend-desc">
+                            <h3>中国模型成本优势凸显</h3>
+                            <p>DeepSeek V4以1%成本实现90%能力，国产大模型在性价比上形成全球竞争力。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🇨🇳</div>
+                        <div class="trend-desc">
+                            <h3>中国科技全球影响力提升</h3>
+                            <p>香会中方表现亮眼，Kimi被Cursor选用，中国技术和标准正加速走向全球。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">数据来源：今日热榜 · 新华网 · 央视网 · uicn.cn · 福布斯中国 · 月之暗面官宣</p>
+            <p class="footer-meta">整理时间：2026-05-31 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
