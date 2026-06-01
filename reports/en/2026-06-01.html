@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-01</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-01</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Tianya Community Returns After 3-Year Shutdown, Tops Weibo Hot Search</h3>
+                    <div class="news-content">
+                        <p>On the evening of May 31, the topic "Tianya Classic Posts" topped Weibo's hot search list. <span class="highlight-bold">At midnight on June 1, www.tianya.net officially reopened for access</span>, initially offering browsing of selected classic posts. Tianya Community had been suspended since April 1, 2023, due to unpaid IDC fees. After three years of rescue efforts by the restart team, supported by the New Tianya Joint Working Group, the platform has finally been restored.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">All user posts, friend connections, and saved content are fully preserved</div>
+                        <div class="key-point">Interactive features expected to gradually resume in June; tianya.cn domain temporarily unavailable</div>
+                        <div class="key-point">New Tianya Joint Working Group will continue system architecture reconstruction</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Qiushi Journal Publishes Xi Jinping's Article on Future Industries</h3>
+                    <div class="news-content">
+                        <p>The June 1 issue of Qiushi Journal published an important article by President Xi Jinping, <span class="highlight-bold">emphasizing the significance of developing future industries for seizing technological and industrial high ground, developing new productive forces, and building a modern industrial system</span>. The article notes that future industries are forward-looking, strategic, and disruptive, requiring scientific planning and holistic coordination.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Xi Jinping Sends Reply to Young Pioneers on Children's Day</h3>
+                    <div class="news-content">
+                        <p>Ahead of International Children's Day, President Xi sent a reply to young pioneer guides at the CPC First National Congress Memorial Hall and the Nanhu Revolutionary Memorial Hall, <span class="highlight-bold">encouraging them to carry forward revolutionary traditions and build knowledge and skills</span>, wishing all children across China a happy Children's Day.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">PLA Southern Theater Command Conducts Combat Patrols Around Huangyan Island</h3>
+                    <div class="news-content">
+                        <p>On May 31, the PLA Southern Theater Command organized naval and air forces to conduct combat readiness patrols in the waters and airspace around China's Huangyan Island (Scarborough Shoal). <span class="highlight-bold">Throughout May, theater forces have continuously strengthened patrol and vigilance</span>, effectively responding to various infringing and provocative actions to safeguard national sovereignty.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">China's May Manufacturing PMI at 50.0%, High-Tech Sector Expands for 16th Month</h3>
+                    <div class="news-content">
+                        <p>NBS data shows China's May manufacturing PMI stood at <span class="highlight-bold">50.0%</span>, down 0.3 percentage points from April. Non-manufacturing PMI rose to <span class="highlight-bold">50.1%</span> (up 0.7 points), while the composite PMI output index reached 50.5% (up 0.4 points). Large enterprises led with 51.1%, while SMEs remained under pressure at 48.6% and 48.5%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">High-tech manufacturing PMI has expanded for 16 consecutive months</div>
+                        <div class="key-point">Decline in external demand was the main factor behind manufacturing PMI drop</div>
+                        <div class="key-point">Overall economic output maintained expansion momentum</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">"Hong Kong Cars Northbound" Policy Extended 5 Years to 2031; 102 National Standards Take Effect</h3>
+                    <div class="news-content">
+                        <p>Guangdong Province announced on May 30 that the <span class="highlight-bold">"Hong Kong Cars Northbound" policy will be extended by 5 years to June 1, 2031</span>. Simultaneously, <span class="highlight-bold">102 national standards take effect June 1</span>, covering gas appliance safety, interior decoration materials, dangerous goods transport packaging, power battery defect monitoring, and other livelihood-related areas.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Myanmar Mine Explosion Kills at Least 55, Injures 70; Mushroom Cloud Visible from Yunnan</h3>
+                    <div class="news-content">
+                        <p>On May 31, a massive explosion rocked Gao De village in Namkham, northern Shan State, Myanmar, <span class="highlight-bold">killing at least 55 people and injuring approximately 70</span>. The Ta'ang National Liberation Army stated it was caused by an accidental detonation of mining explosives. Residents in neighboring Yunnan, China, observed smoke plumes, though no impact was reported on Chinese territory.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">SpaceX IPO Countdown: Most Expensive IPO in History, Valued at $1.75-2 Trillion</h3>
+                    <div class="news-content">
+                        <p>SpaceX's IPO has officially entered countdown phase, <span class="highlight-bold">expected to list in June with a valuation of $1.75-2 trillion</span>, potentially the largest IPO in history. Notably, retail investor allocation could reach up to 30%, giving ordinary investors an unprecedented opportunity to participate.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">G7 Summit Set for June 15-17 in &Eacute;vian, France; AI and Trade on Core Agenda</h3>
+                    <div class="news-content">
+                        <p>The 52nd G7 Summit will take place from <span class="highlight-bold">June 15-17 in &Eacute;vian-les-Bains, France</span>, 23 years after the 2003 &Eacute;vian G8 Summit. Key agenda items include China relations, AI governance, trade policy, and the Ukraine situation.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">FIFA World Cup 2026 Kicks Off June 11 in Mexico City</h3>
+                    <div class="news-content">
+                        <p>The 2026 FIFA World Cup will officially kick off on <span class="highlight-bold">June 11 in Mexico City</span>, with opening ceremonies across three cities: Mexico City (June 11), Toronto and Los Angeles (June 12). The final is scheduled for July 19 in New York/New Jersey, featuring 48 teams and 104 matches.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">US-Iran 60-Day Ceasefire Extension Reaches Tentative Agreement</h3>
+                    <div class="news-content">
+                        <p>Market sources indicate the US and Iran have reached <span class="highlight-bold">tentative agreement on extending their ceasefire by 60 days</span>, though the deal still requires formal approval by President Trump. The preliminary framework has eased immediate fears of escalation, but the timeline for reopening the Strait of Hormuz remains unclear.</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Musk Renames xAI to SpaceXAI, Grok V9-Medium 1.5T Parameter Model Training Complete</h3>
+                    <div class="news-content">
+                        <p>In early May, Elon Musk announced that xAI would dissolve as an independent company and <span class="highlight-bold">formally merge into SpaceX, rebranding as SpaceXAI</span>. On May 25, Musk confirmed Grok V9-Medium has completed training with <span class="highlight">1.5 trillion parameters</span>, exactly triple the v8-small (0.5T) model currently powering all Grok products.</p>
+                        <p>The new model is deeply optimized for Nvidia's Blackwell GPU architecture with significantly improved compute efficiency. Training incorporated substantial Cursor data, and the model is now in the fine-tuning phase with reinforcement learning about to begin. <span class="highlight">Expected to launch in 2-3 weeks</span>. SpaceX acquired xAI in February, making this merger a full integration of space and AI capabilities.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">xAI merges into SpaceX as SpaceXAI, marking full space-AI integration</div>
+                        <div class="key-point">1.5T parameters + Cursor data directly challenge OpenAI and Anthropic's coding dominance</div>
+                        <div class="key-point">Blackwell GPU optimization makes trillion-parameter models the new economic norm</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Grok Build Coding Agent Opens to All Users, SpaceXAI Doubles Down on AI Coding</h3>
+                    <div class="news-content">
+                        <p>SpaceXAI announced Grok Build is now available to <span class="highlight-bold">all SuperGrok and X Premium Plus users</span>, previously limited to SuperGrok Heavy users only. Grok Build, launched on May 15 during Musk's Beijing visit, targets professional software engineering and complex programming tasks.</p>
+                        <p>Musk had previously admitted xAI was behind in coding capabilities. <span class="highlight">The expansion from limited testing to broader paid users marks a critical catch-up move</span> against OpenAI's Codex and Anthropic's Claude Code in the AI coding tools race.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Grok Build transitions from internal testing to broad paid user market</div>
+                        <div class="key-point">SpaceXAI now has both model (Grok V9) and tool (Grok Build) capabilities in AI coding</div>
+                        <div class="key-point">Launched during Musk's Beijing visit, signaling strategic focus on the Chinese market</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Claude Code v2.1 Continues Iterating, Plugin Ecosystem Expands Rapidly</h3>
+                    <div class="news-content">
+                        <p>Anthropic's terminal-native AI coding agent Claude Code has been continuously updated to <span class="highlight-bold">version v2.1.139</span>. The official plugin directory has expanded to multiple domains, including the latest Telegram plugin &#8212; enabling direct AI assistant interaction within Telegram with just 6 configuration steps.</p>
+                        <p>Claude Code has become one of 2026's most popular AI coding tools. <span class="highlight">The `claude plugins` command now supports a complete plugin management ecosystem</span>, with the official Telegram plugin offering three MCP tools: reply, react, and pin, further extending the AI coding assistant's interaction scenarios.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude Code maintains its leading position in AI coding tools</div>
+                        <div class="key-point">Telegram plugin bridges instant messaging and AI coding &#8212; AI assistants everywhere</div>
+                        <div class="key-point">MCP tool protocol ecosystem continues expanding with growing third-party integration</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Cursor Composer 2.5 Momentum Continues: Built on Kimi K2.5, "Model+Tool" Dual Track Takes Shape</h3>
+                    <div class="news-content">
+                        <p>Cursor's Composer 2.5, deeply customized on Moonshot AI's open-source Kimi K2.5, continues to generate industry buzz. <span class="highlight-bold">Training data increased 25x over the previous generation, with 85% of compute budget allocated to reinforcement learning</span>, approaching Claude Opus 4.7 performance on long-task stability.</p>
+                        <p>This validates Chinese open-source models' competitiveness in global developer tool ecosystems. Cursor has evolved from a "tool vendor" to a "model vendor," and <span class="highlight">the "model + tool" dual-track competition pattern in AI coding is now fully established</span>. SpaceXAI accessed Cursor data through SpaceX's acquisition rights, deepening the tool-model integration.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Chinese open-source model Kimi K2.5 adopted by Cursor proves global competitiveness</div>
+                        <div class="key-point">Cursor evolves from tool vendor to model vendor, widening competitive dimensions</div>
+                        <div class="key-point">SpaceXAI's access to Cursor data through acquisition rights intensifies data competition among giants</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Unitree IPO Review Today, Racing to Become A-Share Market's First "Humanoid Robot" Stock</h3>
+                    <div class="news-content">
+                        <p>The Shanghai Stock Exchange's listing review committee convened on <span class="highlight-orange">June 1</span> to review Unitree Robotics' IPO application. <span class="highlight-orange">The company plans to raise RMB 4.2 billion</span>, allocated across four core projects: AI robot model R&amp;D, robot body R&amp;D, new product development, and manufacturing base construction.</p>
+                        <p>Unitree specializes in high-performance general-purpose robots, with core products including the humanoid robot H1 and quadruped robot dog Go2. Despite facing a malicious patent lawsuit, the IPO process has continued. If approved, Unitree will become <span class="highlight-orange">the first "humanoid robot" concept company listed on China's A-share market</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">RMB 4.2B fundraising covers the full chain from AI models to manufacturing</div>
+                        <div class="key-point">If approved, will become the first "humanoid robot" stock on China's A-share market</div>
+                        <div class="key-point">IPO progress despite malicious patent lawsuit demonstrates industry resilience</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Li Auto Major Restructuring: 3 New Embodied AI Departments, Autonomous Driving Becomes Independent Division</h3>
+                    <div class="news-content">
+                        <p>Li Auto's base model department completed a new round of organizational restructuring, <span class="highlight-orange">adding three new embodied intelligence divisions: Embodied Engineering, Embodied Interaction, and Embodied Behavior</span>, while upgrading autonomous driving to an independent second-level department. All three report to base model lead Zhan Kun, reporting to CTO Xie Yan.</p>
+                        <p>CEO Li Xiang previously stated that <span class="highlight-orange">"in the next 3-5 years, mid-to-high-end smart vehicle competition is essentially embodied intelligence competition"</span>. Li Auto expects R&amp;D spending of RMB 12 billion this year, with humanoid robot products already approved for development.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Li Auto elevates embodied intelligence to strategic parity with autonomous driving</div>
+                        <div class="key-point">RMB 12B R&amp;D + 3 new departments &#8212; auto giant fully embraces robotics</div>
+                        <div class="key-point">Clear dual-track strategy: "first half autonomous driving, second half humanoid robots"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">China's Embodied Intelligence Industry Crosses Tipping Point: Global Market Hits RMB 8.7B, Up 680%</h3>
+                    <div class="news-content">
+                        <p>According to the China Electronics Standardization Institute white paper, <span class="highlight-orange">the global humanoid robot market will reach RMB 8.7 billion in 2026, a 680% year-over-year increase</span>. China accounts for over 65% of the market, making it the world's largest. China's first dedicated humanoid robot mass-production factory has begun operations.</p>
+                        <p>Chinese manufacturers captured <span class="highlight-orange">84.7% of global humanoid robot shipments in 2025</span>. Industry financing reached RMB 73.5B in 2025, with an additional RMB 37B+ added in 2026 so far, <span class="highlight-orange">totaling over RMB 110B</span> &#8212; averaging at least RMB 300M invested daily into this sector.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">2026 is the mass-production inaugural year for the global humanoid robot industry</div>
+                        <div class="key-point">RMB 110B cumulative financing, RMB 300M daily &#8212; astonishing capital inflow velocity</div>
+                        <div class="key-point">Industry focus shifts from technology validation to mass delivery and commercial viability</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128640;</div>
+                        <div class="trend-desc">
+                            <h3>SpaceXAI: The Ultimate Space+AI Integration</h3>
+                            <p>xAI merges into SpaceX rebranded as SpaceXAI. Grok V9 1.5T params + Grok Build full access &#8212; Musk builds a dual space-AI engine.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding "Model+Tool" Dual Track Solidifies</h3>
+                            <p>SpaceXAI (model+tool), Anthropic (Claude Code+plugins), Cursor (proprietary model) &#8212; three-way competition pattern takes shape.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129530;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied AI Enters Mass-Production Era</h3>
+                            <p>Unitree IPO review, Li Auto adds 3 divisions, first mass-production factory operational &#8212; industry moves from validation to scale.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127760;</div>
+                        <div class="trend-desc">
+                            <h3>June: A Month of Mega Events</h3>
+                            <p>World Cup kickoff, G7 Summit, SpaceX IPO &#8212; June's密集 major events will reshape the global geopolitical landscape.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua &middot; CCTV News &middot; NBS &middot; Sina Finance &middot; Sohu &middot; IT Home &middot; Tencent News &middot; Guancha &middot; ifeng</p>
+            <p class="footer-meta">Compiled: 2026-06-01 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
