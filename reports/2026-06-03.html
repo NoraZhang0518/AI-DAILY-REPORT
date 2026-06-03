@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-03</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-06-03</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 &middot; 国际时事 &middot; AI Coding &middot; 具身智能</p>
+        </header>
+
+        <!-- Row 1: Hot News (China + International) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">长征十二号乙首飞成功 + 哈伊高铁首开动车组，"扫码飞"推动低空经济</h3>
+                    <div class="news-content">
+                        <p>长征十二号乙运载火箭于6月3日成功完成<span class="highlight-bold">首飞</span>，卫星顺利送入预定轨道。同日，中国最北高铁——哈伊高铁首次开行动车组测试列车，标志着东北高寒地区高铁网络进一步延伸。中央空管办等部门联合推广"扫码飞"，推动空域资源精细化管理和低空经济发展。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">长征十二号乙首飞成功，中国新一代运载火箭家族再添新成员</div>
+                        <div class="key-point">哈伊高铁首次动车组测试，东北高铁网向北延伸</div>
+                        <div class="key-point">"扫码飞"推广标志低空空域管理进入数字化新阶段</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">财政部下达2026年育儿补贴999亿元，同比增长10.6%</h3>
+                    <div class="news-content">
+                        <p>财政部近期下达2026年育儿补贴补助资金<span class="highlight-bold">999亿元</span>，较上年增长10.6%，支持各地为符合条件的婴幼儿家庭提供育儿补贴。国家卫健委数据显示适龄儿童免疫规划疫苗接种率稳定在<span class="highlight-bold">90%以上</span>，全国已有超3000家医疗机构建成儿童友好医院。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">育儿补贴逼近千亿规模，生育支持政策持续加码</div>
+                        <div class="key-point">儿童免疫接种率90%+，3000+儿童友好医院建成</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">《商业秘密保护规定》今起实施，首次将"数据""算法"纳入保护</h3>
+                    <div class="news-content">
+                        <p>《商业秘密保护规定》6月3日起正式实施，<span class="highlight-bold">首次将"数据""算法"纳入商业秘密保护范畴</span>。同日，《国务院关于对外投资的规定》公布（7月1日施行）。市场监管总局启动商业秘密保护服务月，重点聚焦<span class="highlight-bold">生物医药、集成电路、人工智能</span>三大产业。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">"数据+算法"首次纳入商业秘密保护，回应AI时代知识产权需求</div>
+                        <div class="key-point">三大重点产业（生物医药/集成电路/AI）成保护服务月核心</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">教育部发布2026年高考提醒：警惕"AI押题"等虚假宣传</h3>
+                    <div class="news-content">
+                        <p>临近高考，教育部专门发布提醒，呼吁考生和家长警惕以<span class="highlight-bold">"AI押题""智能预测"</span>为名的虚假宣传和诈骗行为。今年全国高考报名人数预计再创新高，各地考务安全工作全面升级。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI诈骗蔓延至高考领域，"AI押题"成为新型骗局</div>
+                        <div class="key-point">教育部罕见专门针对AI虚假宣传发出预警</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">天涯社区重启首日"崩了" + 成都取消积分落户门槛大降</h3>
+                    <div class="news-content">
+                        <p>关闭3年后的天涯社区重启首日因访问人数<span class="highlight-bold">剧增导致系统崩溃</span>，客服回应正在紧急扩容。同日，成都宣布自6月5日起全面取消积分落户，凭<span class="highlight-bold">"居住证+3年养老社保"</span>即可落户，落户门槛大幅降低。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">天涯重启首日即"崩"，老牌社区仍具庞大用户基础</div>
+                        <div class="key-point">成都取消积分落户，居住证+3年社保即可落户</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">中央环保督察通报4省份虚假整改 + 全国全面进入汛期</h3>
+                    <div class="news-content">
+                        <p>中央环保督察通报4省份<span class="highlight-bold">虚假整改</span>典型案例，部分已公示治理水体仍为重度黑臭。水利部宣布我国全面进入汛期，长江、珠江等流域部分河流可能发生<span class="highlight-bold">超警洪水</span>。云南元阳客车侧翻事故已致7死12伤。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">环保督察揭"虚假整改"顽疾，已公示水体仍重度黑臭</div>
+                        <div class="key-point">全国进入汛期，长江珠江等面临超警洪水风险</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">COMPUTEX 2026台北开幕：黄仁勋发布RTX Spark，三巨头CEO同台论AI</h3>
+                    <div class="news-content">
+                        <p>6月2日，亚洲最大科技展会COMPUTEX 2026在台北正式开幕，以<span class="highlight-bold">"AI Together"</span>为主题吸引1500家厂商参展。英伟达CEO黄仁勋发表重磅主题演讲，发布RTX Spark全新AI PC品类，并透露英伟达计划<span class="highlight-bold">每年在台投资约1500亿美元</span>。高通CEO安蒙、英特尔CEO陈立武同台论AI。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">COMPUTEX 2026以"AI Together"为主题，1500家厂商参展</div>
+                        <div class="key-point">黄仁勋发布RTX Spark AI PC + 公布$1500亿/年台湾投资计划</div>
+                        <div class="key-point">安蒙、黄仁勋、陈立武三巨头CEO同台，AI军备竞赛白热化</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">伊朗革命卫队打击美军目标，安理会召开黎以紧急会议</h3>
+                    <div class="news-content">
+                        <p>伊朗伊斯兰革命卫队宣布对<span class="highlight-bold">美军目标实施打击</span>，中东紧张局势骤然升级。联合国安理会宣布将就黎以局势召开紧急会议。以色列总理内塔尼亚胡称以军已攻占黎巴嫩战略要地，将扩大军事行动。中东三线（伊朗/黎巴嫩/以色列）同时承压。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">伊朗革命卫队对美军打击，美伊对峙进入军事冲突新阶段</div>
+                        <div class="key-point">安理会紧急会议+黎以战事扩大，中东地缘风险全面飙升</div>
+                        <div class="key-point">霍尔木兹海峡持续高度军事对峙，全球1/3海运石油受威胁</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">欧洲央行报告：黄金历史性超越美债，成为全球最大储备资产</h3>
+                    <div class="news-content">
+                        <p>欧洲央行最新报告显示，<span class="highlight-bold">黄金已历史性超越美国国债</span>，成为全球央行最大的储备资产。这一转变标志着后布雷顿森林体系以来全球储备格局的最大重构。各国央行加速"去美元化"，在国际地缘风险加剧和美债收益率高企的背景下，黄金配置持续攀升。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">黄金超越美债成为全球最大储备资产——国际货币体系里程碑式转变</div>
+                        <div class="key-point">各国央行加速"去美元化"，全球储备格局加速重构</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">孙正义时隔26年再登亚洲首富，身家突破1000亿美元</h3>
+                    <div class="news-content">
+                        <p>软银集团创始人孙正义时隔26年重新登上<span class="highlight-bold">亚洲首富</span>宝座，个人财富突破<span class="highlight-bold">1000亿美元</span>。软银股价受AI投资组合（尤其是ARM、NVIDIA持仓）大幅升值推动持续飙升。韩国股市今年累计涨幅达108%，接连超越英国、加拿大、印度，跃升为全球第六大股票市场。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">孙正义$1000亿身家，ARM/NVIDIA投资回报驱动软银彻底翻身</div>
+                        <div class="key-point">韩国股市年内涨108%跻身全球第六，AI产业链红利辐射亚洲</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">俄禁止出口航空煤油 + 日本启动第20次核污染水排海</h3>
+                    <div class="news-content">
+                        <p>俄罗斯政府宣布自6月1日起实施<span class="highlight-bold">航空煤油临时出口禁令</span>，进一步收紧全球能源供应。日本东京电力公司启动第20次福岛核污染水排海作业。世界气象组织警告本轮厄尔尼诺将至少发展成中等强度事件，全球气候面临进一步挑战。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">俄罗斯航空煤油禁令加剧全球能源供应紧张</div>
+                        <div class="key-point">日本第20次核污染水排海，WMO警告厄尔尼诺增强</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">欧盟拟调查TikTok Shop + 老挝领导人访华五日国事访问</h3>
+                    <div class="news-content">
+                        <p>欧盟委员会拟对<span class="highlight-bold">TikTok Shop</span>发起正式调查，关注平台上可能存在的非法和危险商品销售。老挝国家领导人抵达杭州开始<span class="highlight-bold">五日国事访问</span>。韩国SK海力士园区发生气体泄漏火灾，航空航天企业爆炸事故已致4死2伤。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">欧盟拟调查TikTok Shop，中国电商出海再遇监管挑战</div>
+                        <div class="key-point">老挝领导人五日访华，中老关系持续升温</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI Coding + Embodied Intelligence -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">英伟达COMPUTEX发布RTX Spark AI PC：1 Petaflop本地算力，AI代理2倍提速</h3>
+                    <div class="news-content">
+                        <p>英伟达CEO黄仁勋在COMPUTEX 2026发布<span class="highlight-bold">RTX Spark</span>——全新AI PC品类，搭载Blackwell RTX GPU（6144 CUDA核心，第5代Tensor Core支持FP4）与20核Grace CPU通过NVLink-C2C互联，提供最高<span class="highlight">1 petaflop AI算力</span>和128GB统一内存。</p>
+                        <p>同步发布<span class="highlight-bold">OpenShell</span>本地AI代理框架，与微软安全基元深度集成。llama.cpp推理提速2倍、vLLM提速2.6倍。首批RTX Spark PC将于2026年秋季由华硕、戴尔、惠普、联想、微软Surface等推出。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">1 petaflop算力+128GB统一内存——AI从云端走向本地的里程碑</div>
+                        <div class="key-point">OpenShell+微软安全基元：为本地自主AI代理提供安全运行环境</div>
+                        <div class="key-point">推理引擎大提速：llama.cpp 2x + vLLM 2.6x，多GPU再翻倍</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Microsoft与Google全力追赶AI编程：编程工具市场2031年剑指300亿美元</h3>
+                    <div class="news-content">
+                        <p>CNBC深度分析指出Microsoft和Google正在全力争夺AI编程工具市场。微软预计在Build大会发布全新编程模型主打低价策略，GitHub Copilot拥有<span class="highlight">数百万开发者直接触达</span>优势。Google发布Antigravity 2.0多代理编程编排，CEO皮查伊承认"代理编码方面我们稍显落后"。</p>
+                        <p>AI编程工具市场预计从2026年<span class="highlight">93亿美元</span>增长至2031年<span class="highlight">300亿美元</span>，年增速26%。Anthropic（Claude Code）与OpenAI（Codex）仍领跑，但双巨头追赶加速。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Microsoft（Copilot+低价模型）vs Google（Antigravity+Gemini Flash）全线出击</div>
+                        <div class="key-point">市场年增速26%至2031年$300亿——编程工具成AI最赚钱赛道</div>
+                        <div class="key-point">皮查伊公开承认落后，但Google云基础设施优势不可小觑</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">DeepSWE新基准震动AI编程圈：GPT-5.5领跑，Claude被指"作弊"</h3>
+                    <div class="news-content">
+                        <p>Datacurve公司发布<span class="highlight-bold">DeepSWE</span>新基准测试，彻底改变了AI编程模型排行榜。此前在SWE-bench上分数接近的模型被拉开<span class="highlight">超70分差距</span>。GPT-5.5综合得分70分领先，但Claude（Opus 4.7）被发现在部分测试中存在"作弊"嫌疑——模型可能记忆了训练数据中的答案。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">DeepSWE拉开SWE-bench上被掩盖的性能差距，基准测试有效性再受审视</div>
+                        <div class="key-point">GPT-5.5 70分领跑，Claude"作弊"争议凸显AI评测体系亟待革新</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">DLSS 4.5发布 + RTX游戏突破1000款：英伟达生态壁垒再加固</h3>
+                    <div class="news-content">
+                        <p>DLSS 4.5 Ray Reconstruction采用第二代Transformer模型，去噪器算力提升<span class="highlight">35%</span>、参数增加20%，将支持11款新游戏。自2018年GeForce RTX 2080首发以来，RTX技术已集成<span class="highlight">超1000款游戏和应用</span>。NVIDIA App同步推出4K 240 FPS ShadowPlay录制。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">DLSS 4.5：去噪+35%算力，AI画质逼近原生渲染</div>
+                        <div class="key-point">RTX生态突破1000款游戏/应用里程碑，软硬件飞轮效应显著</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Cursor年收入$400万→$20亿仅18个月，AI编程商业验证完成</h3>
+                    <div class="news-content">
+                        <p>AI编程工具Cursor从400万美元年收入飙升至<span class="highlight">20亿美元</span>仅用18个月，并签署SpaceX <span class="highlight">60亿美元</span>收购期权。Snowflake CEO透露部分工程师每年在AI编程工具上花费<span class="highlight">5万美元</span>。分析指出编程工具是AI的"入门毒品"——开发者一旦习惯使用，将深度绑定整个云生态。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Cursor 18个月收入$4M→$2B，AI编程工具商业验证完成</div>
+                        <div class="key-point">一线工程师年均$50K花在AI编程工具上，付费意愿强烈</div>
+                        <div class="key-point">编程工具成为AI生态入口，各大云厂商争夺开发者流量</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Embodied Intelligence Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">3 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">OpenAI正式杀入机器人战场：成立OpenAI Robotics，DALL·E/Sora之父领衔</h3>
+                    <div class="news-content">
+                        <p>6月1日，OpenAI CEO Sam Altman正式宣布成立<span class="highlight-orange">OpenAI Robotics</span>团队。联合创始人Greg Brockman发文称目标是"打造能在物理世界帮助人类的AI"。该部门由<span class="highlight-orange">Aditya Ramesh</span>（DALL·E和Sora核心创建者）担任VP，计划利用Sora级世界模型和生成式AI能力打造机器人本体。</p>
+                        <p>此举发生在OpenAI与Figure终止合作仅数月之后，标志着OpenAI不再满足于"赋能者"角色，从"AI赋能"转向<span class="highlight-orange">"软硬一体"</span>。"世界模型+机器人"路线有望以Sora级空间理解能力突破具身智能数据瓶颈。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenAI Robotics成立，DALL·E/Sora之父Aditya Ramesh领衔——用视频生成能力驱动物理世界</div>
+                        <div class="key-point">与Figure分手后亲自下场，从"AI赋能"转向"软硬一体"</div>
+                        <div class="key-point">"世界模型+机器人"：Sora级空间理解能力有望突破数据瓶颈</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">宇树科技科创板IPO过会，A股"具身智能第一股"即将诞生</h3>
+                    <div class="news-content">
+                        <p>6月1日，上交所审议通过宇树科技科创板IPO首发申请，A股<span class="highlight-orange">"具身智能第一股"</span>即将诞生。宇树科技2025年人形机器人出货量全球第一，Q1营收约<span class="highlight-orange">4亿元</span>，但扣非净利润同比下滑超五成，主因研发和市场投入加大。公司获美团、红杉等顶级机构加持。</p>
+                        <p>从春晚舞台到东京羽田机场，宇树"朋友圈"已横跨零部件供应、场景落地与间接投资三重网络。在政策与资本双重驱动下，国产机器人产业正从"能跳舞"向全面的商业化落地加速转型。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">宇树科技IPO过会，A股即将迎来"具身智能第一股"</div>
+                        <div class="key-point">Q1营收4亿元但净利下滑53%——研发烧钱期的典型财务画像</div>
+                        <div class="key-point">从春晚到东京机场，宇树正从"会跳舞"向商业场景全面渗透</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">具身智能全产业链融资潮：VAST获$2亿，蚂蚁/滴滴联手入局</h3>
+                    <div class="news-content">
+                        <p>6月融资日报显示具身智能赛道迎来全产业链密集投资。<span class="highlight-orange">VAST</span>完成A+及A++轮约2亿美元融资，其Tripo 3D生成大模型和Project Eden世界模拟引擎被视为具身智能虚拟训练的关键基础设施。<span class="highlight-orange">维泛智能</span>（北大类脑实验室孵化）获种子轮数亿元，主攻人形机器人"脑-小脑"融合芯片。</p>
+                        <p><span class="highlight-orange">简智机器人</span>获蚂蚁集团和滴滴联合领投，打造"第一视角大规模数据集"用于机器人行为训练。<span class="highlight-orange">黑漫科技</span>获数千万元，研发仿生防水灵巧手。从芯片→数据→灵巧手→仿真，具身智能全产业链投资闭环加速形成。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">VAST 2亿美元——3D世界模型被视为具身智能"数字训练场"</div>
+                        <div class="key-point">蚂蚁+滴滴联手入局：用出行/支付数据训练机器人"看懂世界"</div>
+                        <div class="key-point">从芯片→数据→灵巧手→仿真，全产业链投资闭环加速形成</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; 今日核心趋势</h2>
+                <p>洞察 AI 领域最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>AI从云端走向本地</h3>
+                            <p>英伟达RTX Spark AI PC发布，1 petaflop本地算力+OpenShell代理框架，AI不再依赖云端的时代开启。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127959;</div>
+                        <div class="trend-desc">
+                            <h3>OpenAI亲自下场造机器人</h3>
+                            <p>与Figure分手后自建Robotics部门，世界模型+本体制造双路线，具身智能迎来最强"搅局者"。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128201;</div>
+                        <div class="trend-desc">
+                            <h3>编程工具成AI最赚钱赛道</h3>
+                            <p>Microsoft/Google全力追赶Anthropic/OpenAI，Cursor年收入$2B，市场2031年剑指$300亿。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127468;&#127463;</div>
+                        <div class="trend-desc">
+                            <h3>具身智能全产业链爆发</h3>
+                            <p>芯片+数据+仿真+本体全线融资，宇树IPO过会，VAST获$2亿，蚂蚁滴滴联手入局。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127758;</div>
+                        <div class="trend-desc">
+                            <h3>中东三线危机同时升级</h3>
+                            <p>伊朗打击美军+黎以战争扩大+霍尔木兹海峡对峙，全球地缘风险达到年内高点。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129351;</div>
+                        <div class="trend-desc">
+                            <h3>黄金超越美债</h3>
+                            <p>全球储备资产格局里程碑式重构，"去美元化"趋势不可逆转。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">数据来源：央广网 &middot; 新华网 &middot; 每日经济新闻 &middot; CNBC &middot; NVIDIA &middot; RoboHorizon &middot; 搜狐财经 &middot; 新浪财经</p>
+            <p class="footer-meta">整理时间：2026-06-03 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
