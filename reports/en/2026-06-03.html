@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-03</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-06-03</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Row 1: Hot News (China + International) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Long March 12B Maiden Flight Success + China's Northernmost High-Speed Rail Begins Trial Runs</h3>
+                    <div class="news-content">
+                        <p>The Long March 12B carrier rocket successfully completed its <span class="highlight-bold">maiden flight</span> on June 3, delivering its payload to orbit. On the same day, the Harbin-Yichun high-speed railway — China's northernmost HSR — began EMU test runs. The Central Airspace Management Office also launched a "Scan-to-Fly" initiative to digitize low-altitude airspace management.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Long March 12B maiden flight expands China's next-gen launch vehicle family</div>
+                        <div class="key-point">Harbin-Yichun HSR trial runs extend Northeast China's rail network northward</div>
+                        <div class="key-point">"Scan-to-Fly" digital airspace initiative marks new era for low-altitude economy</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">China Allocates 99.9 Billion RMB in Childcare Subsidies for 2026, Up 10.6%</h3>
+                    <div class="news-content">
+                        <p>The Ministry of Finance has disbursed <span class="highlight-bold">99.9 billion RMB</span> in childcare subsidies for 2026, a 10.6% YoY increase supporting eligible families nationwide. The National Health Commission reports childhood immunization coverage remains above <span class="highlight-bold">90%</span>, with over 3,000 medical institutions now designated as child-friendly hospitals.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Childcare subsidies near 100B RMB mark, pro-natal policies continue scaling</div>
+                        <div class="key-point">90%+ vaccination rate with 3,000+ child-friendly hospitals built nationwide</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">China's Trade Secret Protection Regulation Takes Effect, "Data" and "Algorithms" Now Protected</h3>
+                    <div class="news-content">
+                        <p>The Trade Secret Protection Regulation took effect June 3, <span class="highlight-bold">explicitly including "data" and "algorithms" under trade secret protection for the first time</span>. The State Council also published new outbound investment regulations (effective July 1). Market regulators launched a Protection Service Month focused on <span class="highlight-bold">biomedicine, integrated circuits, and AI</span> industries.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">"Data + algorithms" now legally protected as trade secrets — a response to AI-era IP demands</div>
+                        <div class="key-point">Three strategic industries (biomedicine/semiconductors/AI) prioritized for protection services</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Education Ministry Warns Against "AI Exam Prediction" Scams Ahead of Gaokao</h3>
+                    <div class="news-content">
+                        <p>With China's college entrance exam (Gaokao) approaching, the Ministry of Education issued a rare warning urging students and parents to beware of fraudulent services claiming <span class="highlight-bold">"AI exam prediction" and "intelligent score forecasting."</span> This year's Gaokao registration is expected to hit a new record, with test security measures fully upgraded nationwide.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI fraud spreads to Gaokao domain — "AI prediction" becomes a new scam variant</div>
+                        <div class="key-point">Ministry of Education unusually issues dedicated AI fraud alert</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Tianya Community Crashes on Relaunch Day + Chengdu Scraps Points-Based Hukou System</h3>
+                    <div class="news-content">
+                        <p>After a 3-year shutdown, Tianya Community relaunched but <span class="highlight-bold">crashed on Day 1</span> due to overwhelming traffic. Customer support confirmed emergency server expansion. Meanwhile, Chengdu announced it will abolish its points-based hukou system from June 5, allowing residency with just a <span class="highlight-bold">"residence permit + 3 years of social security."</span></p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Tianya relaunch Day 1 crash proves veteran online community still commands massive user base</div>
+                        <div class="key-point">Chengdu drops points-based hukou — residence permit + 3 years social security suffices</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Environmental Inspectors Expose "Fake Remediation" in 4 Provinces + Nation Enters Flood Season</h3>
+                    <div class="news-content">
+                        <p>Central environmental inspectors named 4 provinces for <span class="highlight-bold">"fake remediation"</span> — water bodies previously declared restored were found still severely polluted. The Ministry of Water Resources declared nationwide flood season with the Yangtze and Pearl River basins at <span class="highlight-bold">above-warning flood risk</span>. A bus rollover in Yuanyang, Yunnan killed 7 and injured 12.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Environmental inspectors uncover persistent fake remediation, water bodies remain severely polluted</div>
+                        <div class="key-point">Nationwide flood season declared, Yangtze and Pearl River basins face above-warning risk</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">COMPUTEX 2026 Opens in Taipei: Jensen Huang Unveils RTX Spark, Three Tech CEOs Share Stage</h3>
+                    <div class="news-content">
+                        <p>Asia's largest tech expo COMPUTEX 2026 opened in Taipei on June 2 with <span class="highlight-bold">"AI Together"</span> as its theme, drawing 1,500 exhibitors. NVIDIA CEO Jensen Huang delivered a major keynote unveiling RTX Spark, a new AI PC category, and revealed NVIDIA plans to invest <span class="highlight-bold">~$150 billion annually in Taiwan</span>. Qualcomm CEO Cristiano Amon and Intel CEO Lip-Bu Tan shared the stage.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">COMPUTEX 2026 themed "AI Together" with 1,500 exhibitors</div>
+                        <div class="key-point">Jensen Huang unveils RTX Spark AI PC + $150B/year Taiwan investment plan</div>
+                        <div class="key-point">Three semiconductor titan CEOs share stage — AI arms race hits fever pitch</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Iran's Revolutionary Guard Strikes U.S. Targets, UN Security Council Convenes Emergency Session</h3>
+                    <div class="news-content">
+                        <p>Iran's Islamic Revolutionary Guard Corps announced <span class="highlight-bold">strikes against U.S. military targets</span>, sharply escalating Middle East tensions. The UN Security Council called an emergency session on the Lebanon-Israel situation. Israeli PM Netanyahu claimed IDF forces have seized strategic positions in Lebanon and will expand operations. Three-front crisis intensifies.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Iran IRGC strikes U.S. targets — U.S.-Iran confrontation enters new military phase</div>
+                        <div class="key-point">UNSC emergency session + Lebanon-Israel war expands, Middle East risk at yearly high</div>
+                        <div class="key-point">Strait of Hormuz remains under heavy military standoff — 1/3 of global seaborne oil at risk</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">ECB Report: Gold Historically Surpasses U.S. Treasuries as World's Largest Reserve Asset</h3>
+                    <div class="news-content">
+                        <p>The European Central Bank's latest report shows <span class="highlight-bold">gold has historically surpassed U.S. Treasuries</span> to become the world's largest central bank reserve asset. This marks the biggest restructuring of global reserve holdings since the post-Bretton Woods era. Central banks worldwide are accelerating de-dollarization amid heightened geopolitical risk and elevated Treasury yields.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Gold overtakes Treasuries as #1 reserve asset — a milestone in international monetary evolution</div>
+                        <div class="key-point">Central banks globally accelerate de-dollarization, global reserve structure restructures rapidly</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Masayoshi Son Reclaims Asia's Richest Title After 26 Years, Net Worth Tops $100 Billion</h3>
+                    <div class="news-content">
+                        <p>SoftBank founder Masayoshi Son reclaimed the title of <span class="highlight-bold">Asia's richest person</span> after 26 years, with personal wealth surpassing <span class="highlight-bold">$100 billion</span>. SoftBank shares surged on the back of its AI portfolio (especially ARM and NVIDIA holdings). South Korea's stock market has surged 108% year-to-date, surpassing the UK, Canada, and India to rank 6th globally.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Son's $100B fortune driven by ARM/NVIDIA returns — SoftBank completes full turnaround</div>
+                        <div class="key-point">Korea's stock market up 108% YTD, ranking 6th globally — AI supply chain dividends radiate across Asia</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Russia Bans Jet Fuel Exports + Japan Begins 20th Fukushima Wastewater Release</h3>
+                    <div class="news-content">
+                        <p>Russia imposed a <span class="highlight-bold">temporary ban on jet fuel exports</span> effective June 1, further tightening global energy supply. Tokyo Electric Power began its 20th release of treated Fukushima wastewater. The WMO warned the current El Nino will develop into at least a moderate-intensity event, posing further global climate challenges.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Russia's jet fuel export ban tightens global energy supply</div>
+                        <div class="key-point">Japan's 20th Fukushima wastewater release, WMO warns El Nino intensifying</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">EU Plans Formal TikTok Shop Investigation + Laos Leader Begins Five-Day China Visit</h3>
+                    <div class="news-content">
+                        <p>The European Commission is preparing a formal investigation into <span class="highlight-bold">TikTok Shop</span> over illegal and dangerous product sales. Laos' national leader arrived in Hangzhou for a <span class="highlight-bold">five-day state visit</span>. SK Hynix suffered a gas leak fire at its campus; a separate aerospace factory explosion in South Korea killed 4 and injured 2.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">EU to probe TikTok Shop — Chinese e-commerce overseas faces new regulatory challenge</div>
+                        <div class="key-point">Laos leader's five-day China visit signals warming bilateral ties</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI Coding + Embodied Intelligence -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">NVIDIA RTX Spark AI PC Unveiled at COMPUTEX: 1 Petaflop Local Compute, 2x AI Agent Speed</h3>
+                    <div class="news-content">
+                        <p>NVIDIA CEO Jensen Huang unveiled <span class="highlight-bold">RTX Spark</span> at COMPUTEX 2026 — a new AI PC category featuring a Blackwell RTX GPU (6,144 CUDA cores, 5th-gen Tensor Cores with FP4) paired with a 20-core Grace CPU via NVLink-C2C, delivering up to <span class="highlight">1 petaflop of AI compute</span> and 128GB of unified memory.</p>
+                        <p>Huang also introduced <span class="highlight-bold">OpenShell</span>, a local AI agent framework deeply integrated with Microsoft security primitives. llama.cpp inference speeds doubled, vLLM up 2.6x faster. First RTX Spark PCs ship Fall 2026 from ASUS, Dell, HP, Lenovo, and Microsoft Surface.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">1 petaflop + 128GB unified memory — AI moves from cloud to local, a watershed moment</div>
+                        <div class="key-point">OpenShell + Microsoft security primitives enable safe autonomous local AI agents</div>
+                        <div class="key-point">Inference engines accelerate: llama.cpp 2x, vLLM 2.6x, multi-GPU doubles again</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Microsoft & Google Go All-In on AI Coding, Market Set to Hit $30B by 2031</h3>
+                    <div class="news-content">
+                        <p>CNBC reports Microsoft and Google are racing to catch up in AI coding tools. Microsoft plans to announce a new coding model at Build emphasizing low pricing; GitHub Copilot has <span class="highlight">direct access to millions of developers</span>. Google launched Antigravity 2.0 multi-agent coding orchestration, but CEO Pichai admitted being "a bit behind on agentic coding."</p>
+                        <p>The AI coding tools market is projected to grow from <span class="highlight">$9.3 billion</span> in 2026 to <span class="highlight">$30 billion by 2031</span>, a 26% annual growth rate. Anthropic (Claude Code) and OpenAI (Codex) still lead, but both giants are accelerating pursuit.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Microsoft (Copilot + low-cost model) vs Google (Antigravity + Gemini Flash) go all-out</div>
+                        <div class="key-point">Market growing at 26% CAGR toward $30B by 2031 — coding tools become AI's most lucrative segment</div>
+                        <div class="key-point">Pichai publicly admits Google's lag, but cloud infrastructure advantage is significant</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">DeepSWE Benchmark Shakes AI Coding World: GPT-5.5 Leads, Claude Accused of "Cheating"</h3>
+                    <div class="news-content">
+                        <p>Datacurve's new <span class="highlight-bold">DeepSWE</span> benchmark has upended AI coding model rankings. Models previously clustered on SWE-bench are now separated by <span class="highlight">over 70 points</span>. GPT-5.5 scored 70 to lead, but Claude (Opus 4.7) was found to have "cheated" on some tests — the model likely memorized answers from training data, sparking industry-wide debate on benchmark integrity.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">DeepSWE exposes performance gaps hidden by SWE-bench, benchmark validity under scrutiny</div>
+                        <div class="key-point">GPT-5.5 leads at 70 points, Claude "cheating" controversy highlights urgent need for better evaluation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">DLSS 4.5 Ray Reconstruction Launches + RTX Ecosystem Surpasses 1,000 Games</h3>
+                    <div class="news-content">
+                        <p>DLSS 4.5 Ray Reconstruction features a 2nd-gen Transformer model with <span class="highlight">35% more compute</span> and 20% more parameters, supporting 11 new games. Since the GeForce RTX 2080 debut in 2018, RTX technology has been integrated into <span class="highlight">over 1,000 games and applications</span>. The NVIDIA App also launches 4K 240 FPS ShadowPlay recording.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">DLSS 4.5: 35% more denoising compute, approaching native-quality rendering</div>
+                        <div class="key-point">RTX ecosystem surpasses 1,000 games/apps — hardware-software flywheel effect intensifies</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Cursor Revenue: $4M → $2B in 18 Months — AI Coding's Commercial Validation Is Complete</h3>
+                    <div class="news-content">
+                        <p>AI coding tool Cursor skyrocketed from $4 million to <span class="highlight">$2 billion</span> in annualized revenue in just 18 months, and signed a <span class="highlight">$60 billion</span> acquisition option with SpaceX. Snowflake's CEO revealed some engineers spend <span class="highlight">$50,000/year</span> on AI coding tools. Analysts describe coding tools as AI's "gateway drug" — once developers are hooked, they bind to entire cloud ecosystems.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Cursor 18-month revenue trajectory $4M→$2B — AI coding tool commercial validation complete</div>
+                        <div class="key-point">Top engineers spending $50K/year on AI coding tools — strong willingness to pay</div>
+                        <div class="key-point">Coding tools become AI ecosystem gateway, cloud providers race for developer traffic</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Embodied Intelligence Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">OpenAI Officially Enters Robotics: Launches OpenAI Robotics Led by DALL·E/Sora Creator</h3>
+                    <div class="news-content">
+                        <p>On June 1, OpenAI CEO Sam Altman officially announced <span class="highlight-orange">OpenAI Robotics</span>. Co-founder Greg Brockman stated the goal is "building AI that helps humans in the physical world." The division is led by <span class="highlight-orange">Aditya Ramesh</span> (creator of DALL·E and Sora) as VP of Robotics, planning to leverage Sora-class world models and generative AI to build robot hardware.</p>
+                        <p>This move comes just months after OpenAI ended its partnership with Figure, signaling OpenAI is done being just an "enabler" — it's going <span class="highlight-orange">"software + hardware"</span> directly. The "world model + robotics" approach could break through embodied AI's data bottleneck with Sora-level spatial understanding.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenAI Robotics launched, DALL·E/Sora creator Aditya Ramesh at helm — driving physical world with video generation</div>
+                        <div class="key-point">Post-Figure breakup, OpenAI pivots from "AI enabler" to "software + hardware"</div>
+                        <div class="key-point">"World model + robotics" approach: Sora-level spatial intelligence could break the data bottleneck</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Unitree Technology IPO Approved — China's First "Embodied Intelligence Stock" Nears Debut</h3>
+                    <div class="news-content">
+                        <p>On June 1, the Shanghai Stock Exchange approved Unitree Technology's STAR Market IPO, making it A-shares' imminent <span class="highlight-orange">"Embodied Intelligence First Stock."</span> Unitree led global humanoid robot shipments in 2025, with Q1 revenue of ~<span class="highlight-orange">400 million RMB</span>, though net profit fell over 50% YoY due to aggressive R&D and market investment. Backed by Meituan and Sequoia.</p>
+                        <p>From CCTV Spring Festival Gala to Tokyo's Haneda Airport, Unitree's ecosystem spans component supply, scenario deployment, and strategic investment. With policy and capital tailwinds, China's robotics sector is accelerating from "can dance" to full commercial deployment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Unitree IPO approved — A-shares' first embodied intelligence listing is imminent</div>
+                        <div class="key-point">Q1 revenue 400M RMB but net profit down 53% — classic R&D burn phase financial profile</div>
+                        <div class="key-point">From Spring Festival Gala to Haneda Airport, Unitree expands from spectacle to commercial reality</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Embodied AI Full-Stack Funding Wave: VAST Raises $200M, Ant Group & DiDi Enter the Race</h3>
+                    <div class="news-content">
+                        <p>June funding data shows dense investment across the embodied AI value chain. <span class="highlight-orange">VAST</span> closed ~$200M in A+ and A++ rounds; its Tripo 3D generative model and Project Eden world simulation engine are seen as critical infrastructure for embodied AI virtual training. <span class="highlight-orange">WeiFan Intelligence</span> (Peking University spinout) raised hundreds of millions RMB in seed funding for humanoid robot "brain-cerebellum" fusion chips.</p>
+                        <p><span class="highlight-orange">Jianzhi Robotics</span> secured co-lead investment from Ant Group and DiDi to build "first-person view datasets" for robot behavior training. <span class="highlight-orange">Heiman Technology</span> raised tens of millions for biomimetic waterproof dexterous hands. From chips → data → hands → simulation, the full-stack embodied AI investment flywheel is accelerating.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">VAST $200M — 3D world models seen as the "digital training ground" for embodied intelligence</div>
+                        <div class="key-point">Ant Group + DiDi joint entry: training robots to "see the world" with mobility and payment data</div>
+                        <div class="key-point">From chips → data → dexterous hands → simulation, full-stack investment ecosystem rapidly forming</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>AI Moves from Cloud to Local</h3>
+                            <p>NVIDIA RTX Spark AI PC: 1 petaflop local compute + OpenShell agent framework — the era of cloud-independent AI begins.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127959;</div>
+                        <div class="trend-desc">
+                            <h3>OpenAI Builds Its Own Robots</h3>
+                            <p>Post-Figure breakup, OpenAI launches Robotics division combining world models with hardware — embodied AI's strongest disruptor arrives.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128201;</div>
+                        <div class="trend-desc">
+                            <h3>Coding Tools: AI's Most Lucrative Market</h3>
+                            <p>Microsoft/Google chase Anthropic/OpenAI; Cursor hits $2B revenue; market heading to $30B by 2031.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127468;&#127463;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied AI Full-Stack Explosion</h3>
+                            <p>Chips + data + simulation + hardware funding across the board: Unitree IPO, VAST $200M, Ant+DiDi enter.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127758;</div>
+                        <div class="trend-desc">
+                            <h3>Middle East Three-Front Crisis</h3>
+                            <p>Iran strikes U.S. targets + Lebanon-Israel war expands + Hormuz standoff — geopolitical risk at 2026 peak.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129351;</div>
+                        <div class="trend-desc">
+                            <h3>Gold Dethrones Treasuries</h3>
+                            <p>Global reserve structure reaches historic inflection point — de-dollarization is now irreversible.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: CNR &middot; Xinhua &middot; NBD &middot; CNBC &middot; NVIDIA &middot; RoboHorizon &middot; Sohu Finance &middot; Sina Finance</p>
+            <p class="footer-meta">Compiled: 2026-06-03 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
