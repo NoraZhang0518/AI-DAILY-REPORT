@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-05</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0,150,255,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+
+        .header .subtitle { font-size: 18px; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+
+        .section {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count { background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+
+        .news-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px; position: relative;
+            transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px; font-size: 13px;
+            color: rgba(255,255,255,0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '→'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(255,107,53,0.1));
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255,255,255,0.5); font-size: 14px; }
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+
+        .trend-card { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 24px; transition: all 0.3s ease; }
+        .trend-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-desc { flex: 1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-06-05</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <!-- Row 1: Hot News -->
+        <div class="sections">
+            <!-- China Domestic -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">China's Largest Fuel Price Cut This Year: Gasoline Down 0.41 Yuan/Liter, Dragon Boat Festival Travel Boost</h3>
+                    <div class="news-content">
+                        <p>Effective midnight tonight, domestic gasoline and diesel prices will drop by <span class="highlight-bold">525 and 505 yuan per ton</span> respectively, with 92-octane gasoline falling 0.41 yuan per liter—saving approximately 20.5 yuan on a 50-liter fill-up. Dragon Boat Festival (June 19) train tickets go on sale today. The 2026 National College Entrance Examination (Gaokao) begins June 7, with Beijing launching <span class="highlight">24-hour expedited ID services</span> for test-takers.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Largest fuel price reduction this year brings 92-octane back below 8 yuan/liter</div>
+                        <div class="key-point">Dual tailwind for holiday travelers: cheaper fuel + train tickets now available</div>
+                        <div class="key-point">Beijing offers 24-hour expedited ID issuance for Gaokao candidates June 4-10</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Doubao AI Misguides Elderly Man to Soak Severed Finger in Saline, Causing Permanent Disability; AI Liability Debate Erupts</h3>
+                    <div class="news-content">
+                        <p>A user reported that their elderly family member asked <span class="highlight-bold">Doubao AI</span> for first-aid advice after a finger injury, and the AI recommended "soaking the severed finger in saline," causing the victim to miss the optimal treatment window and suffer permanent disability. The incident surged to #3 on trending topics (7.96M views). Doubao subsequently announced its free tier would remain free while launching a paid professional edition.</p>
+                        <p>The case has ignited a nationwide debate on <span class="highlight">AI liability boundaries</span> in medical scenarios—how to divide responsibility among AI companies, users, and regulators.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI "hallucination" in medical contexts can cause irreversible harm—safety red lines urgently need legislation</div>
+                        <div class="key-point">Doubao's "free + pro" tiered strategy raises questions about balancing commerce and safety</div>
+                        <div class="key-point">This case may become a landmark precedent driving China's AI liability legislation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">2026 Gaokao Kicks Off Tomorrow: Security Upgrades Target AI Smart Glasses as New Cheating Threat</h3>
+                    <div class="news-content">
+                        <p>China's national college entrance exam begins June 7. This year, multiple provinces require <span class="highlight-bold">eyeglass-wearing candidates to remove glasses for inspection</span> to prevent AI smart glasses cheating. The Ministry of Education continues to warn against "AI predicted exam questions" scams. Provinces have rolled out their strictest-ever anti-cheating measures involving technology.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI smart glasses and other new hardware pose unprecedented challenges to exam integrity</div>
+                        <div class="key-point">"Tech-powered anti-cheating" is the defining keyword of Gaokao 2026</div>
+                        <div class="key-point">First time the Ministry of Education has listed AI cheating as a priority prevention category</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">China's Commerce Ministry Fires Back on Multiple Trade Fronts: Opposes US Semiconductor Export Controls and Tariff Proposals</h3>
+                    <div class="news-content">
+                        <p>The Ministry of Commerce issued successive statements criticizing US abuse of semiconductor export controls as "<span class="highlight-bold">severely disrupting global supply chain stability</span>" and opposing trade restrictions under the guise of "forced labor." The US proposal to impose 12.5% additional tariffs on Chinese goods has drawn widespread domestic attention. The ministry also rebuked an OECD industrial subsidy report as "conceptually imprecise and one-sided in its conclusions."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Semiconductor controls + tariff proposals mark dual-pronged escalation in US-China trade tensions</div>
+                        <div class="key-point">China's unusually combative pushback on international institutional reports signals growing discourse assertiveness</div>
+                        <div class="key-point">ChangXin Memory Technologies' IPO approval (raising 29.5B yuan) represents China's capital-market answer to semiconductor self-sufficiency</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">ChangXin Memory Founder Pledges 768M Shares for Employee Incentives as STAR Market IPO Approved at 29.5B Yuan</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">ChangXin Memory Technologies (CXMT)</span> has received STAR Market IPO approval, aiming to raise 29.5 billion yuan—the second-largest A-share IPO in history after China Mobile. Founder Zhu Yiming is pledging 768 million personal shares for employee equity incentives, with expected post-IPO valuation of 2-3 trillion yuan. The move is seen as a landmark event in China's DRAM self-sufficiency push.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The 29.5B yuan fundraising underscores the strategic priority of DRAM independence for China</div>
+                        <div class="key-point">Founder's 768M-share employee incentive plan highlights the rise of tech "all-employee ownership" models</div>
+                        <div class="key-point">From chip design to fabrication, China's semiconductor value chain is entering a capital acceleration phase</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Trending Brief: Nike Price Cuts Fall Flat, Esports Star Fined 150K, Gas-Powered Car Prices Plunge</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">Nike faces China market headwinds</span>: price slashed from 899 to 429 yuan yet consumers still aren't buying (#4 trending, 7.67M views). Esports player Bin fined 150,000 yuan for failing to fulfill post-match appearance obligations (#1 trending, 8.96M views). Gasoline-powered car prices are in freefall as EV adoption accelerates, forcing traditional automakers into a survival price war.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Nike's pricing struggles reflect a deeper shift in China's consumer brand landscape</div>
+                        <div class="key-point">Traditional auto price war intensifies as new energy vehicle penetration continues to climb</div>
+                        <div class="key-point">Record esports fine highlights the regulatory challenges of professionalized gaming</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">UK PM Starmer Publicly Accuses Elon Musk of "Trying to Whip Up Division" in Britain</h3>
+                    <div class="news-content">
+                        <p>British Prime Minister Keir Starmer publicly criticized Elon Musk over his series of posts on X about the <span class="highlight-bold">Henry Nowak Southhampton fatal stabbing case</span>, accusing Musk of suggesting police bias against white people and "trying to whip up division" in the UK. Musk's pattern of intervening in other nations' internal affairs under the banner of "free speech" is increasingly seen as a collective challenge by European governments.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Musk is evolving from "tech leader" into a "political force" that European governments increasingly view as a threat</div>
+                        <div class="key-point">The "Musk effect" on X as a global public square is drawing mounting regulatory attention</div>
+                        <div class="key-point">Starmer's anti-Musk stance aims to consolidate public support ahead of UK elections</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Russia-Ukraine Update: Putin Rejects European Mediation, Zelenskyy Proposes Direct Summit and Full Ceasefire</h3>
+                    <div class="news-content">
+                        <p>Putin has explicitly rejected European-led Ukraine peace initiatives, stating his preference for <span class="highlight-bold">reaching a deal directly with Trump</span>. Zelenskyy proposed a direct meeting with Putin, with Ukraine ready to implement a full ceasefire and conduct a <span class="highlight">comprehensive prisoner exchange</span> during negotiations. Putin responded that Russia does not reject dialogue with Europe, but emphasized that it is Europe that refuses to buy Russian energy. Europe's role in the Ukraine dossier continues to be marginalized.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Russia's "bypass Europe, deal directly with America" strategy is becoming increasingly explicit</div>
+                        <div class="key-point">Ukraine extends an olive branch with ceasefire + prisoner swap, but Russia's response remains cool</div>
+                        <div class="key-point">Energy remains the core bargaining chip—European energy independence is now a critical strategic variable</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Middle East Multi-Front Escalation: Hezbollah Rejects Ceasefire, Iran Issues Ultimatum, US-Iran Talks Stall</h3>
+                    <div class="news-content">
+                        <p>Hezbollah has formally rejected the US-brokered ceasefire proposal, as Israel continues military operations in southern and eastern Lebanon. <span class="highlight-bold">Iran's Foreign Minister issued an ultimatum</span>: if Israel continues striking Beirut, Iran will resume hostilities and directly target Israeli territory. US-Iran negotiations have stalled, with Iran demanding an end to Israeli operations in Lebanon as a precondition. The Houthis say they are prepared for any escalation.</p>
+                        <p>Trump stated he would not rule out meeting Iran's Supreme Leader if a deal is reached, but emphasized it <span class="highlight">must include Iran abandoning nuclear weapons and reopening the Strait of Hormuz</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Four simultaneous fronts (Israel-Lebanon, US-Iran, Houthis, Syria) make this the most complex Middle East moment in years</div>
+                        <div class="key-point">Iran links the Lebanon situation to nuclear negotiations, raising the geopolitical stakes</div>
+                        <div class="key-point">Trump signals openness to a summit but insists on denuclearization—the negotiating window is narrowing</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Dow Surges 870+ Points to Record High as Broadcom Plunges 12.6%, Triggering Chip Sell-Off</h3>
+                    <div class="news-content">
+                        <p>US stocks closed mixed Thursday: the <span class="highlight-bold">Dow surged 1.73% to a record closing high</span>, while the Nasdaq slipped 0.09%. Broadcom tumbled 12.6% after issuing tepid AI revenue guidance, triggering a broad semiconductor sell-off as investors rotated from chips into banking and retail. Macy's beat across all Q1 metrics with 3% same-store sales growth, sending shares up ~8%.</p>
+                        <p>Analysts say Broadcom's plunge marks the arrival of the <span class="highlight">AI chip "earnings verification phase"</span>—investors no longer accept narrative without profits.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The Dow's record high masks a sector rotation from overvalued tech into traditional value stocks</div>
+                        <div class="key-point">Broadcom's crash is a wake-up call for AI concept stocks: earnings must catch up to expectations</div>
+                        <div class="key-point">Three macro variables dominate: Middle East, Fed policy path, and AI profitability</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Spot Gold Nears $4,500 as Global Risk-Off Sentiment Intensifies</h3>
+                    <div class="news-content">
+                        <p>Spot gold rose 0.9% to <span class="highlight-bold">$4,475.4/oz</span>, extending its record-breaking rally. The complex Middle East situation, elevated US Treasury yields, and escalating global trade frictions are jointly fueling demand for safe-haven assets. LME copper rose 0.8% to $13,932/ton, with commodities broadly diverging. Chinese gold jewelry prices have dropped ~20%, creating an unusual price inversion with international markets.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Gold's relentless record run reflects extreme investor anxiety over geopolitical risk</div>
+                        <div class="key-point">The China-international gold price inversion signals yuan exchange rate expectations and capital flow pressures</div>
+                        <div class="key-point">Goldman Sachs projects SpaceX AI revenue to surge ~100x to $322 billion by 2030</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Global Brief: US Sanctions Cuban President, Japan Vows to Counter China's Military, Bond Yields Stay Elevated</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">The US has sanctioned Cuba's President</span> and family members, further escalating pressure. Japan declared it would "counter China's military with comprehensive national power," trending on Chinese social media (5.64M views). US 10-year yield hovers around 4.66%, the 30-year above 5.19%. European stocks fell with the Stoxx 600 down 0.8% after Iran halted information exchanges with the US.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Japan's hawkish posture on China introduces new variables into bilateral relations</div>
+                        <div class="key-point">Persistently high US yields continue to raise the global asset pricing anchor</div>
+                        <div class="key-point">Renewed US-Cuba tensions signal potential realignment in Latin American geopolitics</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI + Robotics -->
+        <div class="sections">
+            <!-- AI Coding -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic Calls for Global Pause on Frontier AI Development, Warns Self-Improving AI Has Reached "Dangerous Threshold"</h3>
+                    <div class="news-content">
+                        <p>Anthropic issued a public statement calling for a global pause on frontier AI development, warning that AI systems' <span class="highlight-bold">self-improvement capabilities have reached a "dangerous threshold"</span>—AI can now modify its own code and model architecture, and this recursive progress could escape human control within a short time. The statement has ignited fierce debate across Silicon Valley.</p>
+                        <p>This marks the first time a leading AI developer has proactively called for a "brake," representing a <span class="highlight">watershed moment</span> in the AI safety debate moving from academia to industry.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Anthropic's safety-first brand identity gains substantive validation, differentiating from OpenAI</div>
+                        <div class="key-point">This statement may accelerate global AI regulatory legislation, especially in the EU and US</div>
+                        <div class="key-point">Industry rift deepens: one camp calls for "pause," the other insists on "accelerate to lead"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">COMPUTEX 2026: Jensen Huang Declares AI Industry Will Reach $100 Trillion, Unveils Vera Rubin Platform</h3>
+                    <div class="news-content">
+                        <p>NVIDIA CEO Jensen Huang dropped a staggering figure during his COMPUTEX 2026 keynote: the <span class="highlight-bold">global AI industry will reach $100 trillion</span>—33 times the size of the IT era. NVIDIA unveiled the next-generation Vera Rubin GPU platform, Vera CPU, and RTX Spark AI PC (1 petaflop of local compute). Huang announced GPU iteration will accelerate from biennial to annual, declaring that "<span class="highlight">the age of agentic AI has arrived</span>."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The $100 trillion projection redefines the economic imagination ceiling for AI</div>
+                        <div class="key-point">Rubin architecture + RTX Spark AI PC dual prong covers cloud to edge compute</div>
+                        <div class="key-point">"Huang's Law" of annual GPU cycles declares Moore's Law insufficient to describe AI compute growth</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">AI Coding Tools at Full Tilt: Claude Code vs Cursor vs Copilot—From "Code Completion" to "Autonomous Agents"</h3>
+                    <div class="news-content">
+                        <p>The 2026 AI coding tools race has entered a new phase. <span class="highlight-bold">Claude Code</span> offers full-codebase understanding across CLI/IDE/GitHub/Slack. <span class="highlight-bold">Cursor</span> is deeply customized on VS Code with proprietary models plus multi-vendor flagship aggregation. <span class="highlight-bold">GitHub Copilot</span> leverages deep Microsoft ecosystem integration. The industry trajectory is shifting from "helping humans write code" to "autonomously completing entire development tasks."</p>
+                        <p>Chinese models (DeepSeek V4, Kimi K2.5) continue gaining share in the global coding tools ecosystem. In the new <span class="highlight">DeepSWE benchmark</span>, GPT-5.5 leads but China's Forge team achieved a stunning 53%→99% agent success rate with only an 8B-parameter model.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Core competitiveness has shifted from "model quality" to "workflow integration depth"</div>
+                        <div class="key-point">Claude Code's Agentic Coding model is setting the industry direction</div>
+                        <div class="key-point">Forge 8B proves that "bigger ≠ better"—scenario optimization is key</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Huawei Cloud INSPIRE Creator Conference Opens Today in Shanghai with 6,000m² AI Agent Showcase</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">Huawei Cloud INSPIRE Creator Conference</span> runs June 5-6 at Shanghai's West Bund Convention Center. Featuring a 6,000m² immersive exhibition, 100+ themed sessions, and hands-on developer workshops, the conference focuses on LLM application deployment, AI Agent development, and enterprise-grade AI. Huawei's previously announced "Tao's Law" continues to resonate—381 chips mass-produced in 6 years, targeting 1.4nm by 2031.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Huawei's full-stack AI strategy—from chips to cloud to models—is clearly articulated through "Tao's Law"</div>
+                        <div class="key-point">Agentic AI is the unifying theme of every major tech conference in 2026</div>
+                        <div class="key-point">China's AI developer ecosystem continues to grow as Huawei Cloud builds an independent AI infrastructure</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">AI Brief: Doubao Goes Pro, Hermes Desktop Beta, WeChat AI Monetization, Anthropic Posts First Quarterly Profit</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">Doubao</span> confirmed its free tier will remain free while launching a professional edition. "AI Horse Trainer" tool <span class="highlight">Hermes Desktop</span> enters public beta, bringing AI coding capabilities to the desktop. WeChat AI monetization is "quietly making a killing," trending on Huxiu. Anthropic posted its first-ever quarterly profit of $559 million, with three of the Big Four auditing firms now using Claude.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Chinese AI apps are accelerating their shift from "free user acquisition" to "tiered monetization"</div>
+                        <div class="key-point">Anthropic's Q1 profit of $559M marks initial validation of the AI company business model</div>
+                        <div class="key-point">AI coding tools moving to desktop (Hermes Desktop), competing for developers' daily workflow entry point</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Embodied Intelligence -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">OpenAI Officially Enters Robotics: Launches Robotics Division Led by Sora/DALL·E Teams</h3>
+                    <div class="news-content">
+                        <p>On June 1, OpenAI CEO Sam Altman officially announced the formation of <span class="highlight-orange">OpenAI Robotics</span>, recruiting full-stack hardware, operations, systems, and ML engineers. Co-founder Greg Brockman stated the goal is to "build AI that helps humans in the physical world." The near-term focus is assistive robots; the long-term vision is <span class="highlight-orange">"a personal robot for everyone."</span></p>
+                        <p>This marks OpenAI's return to robotics after a six-year hiatus. Unlike its previous "brain-only" approach, OpenAI is now building <span class="highlight-orange">its own hardware</span>, powered by the triple engine of GPT LLMs, Sora video understanding, and DALL·E visual generation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenAI's "AI model + custom hardware" play puts it in direct competition with Tesla Optimus and Figure</div>
+                        <div class="key-point">Sora/DALL·E team expertise provides unique advantages for robotic perception</div>
+                        <div class="key-point">The "personal robot for everyone" vision mirrors the smartphone adoption trajectory</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Unitree Technology's STAR Market IPO Approved: China's First Listed Humanoid Robot Company Raises 4.2B Yuan</h3>
+                    <div class="news-content">
+                        <p>On June 1, Unitree Technology's STAR Market IPO received listing committee approval, making it <span class="highlight-orange">China's first publicly listed humanoid robot company</span>. The company aims to raise 4.2 billion yuan, with review focused on revenue volatility, commercialization progress, technical moats, and embodied AI R&D. Q1 2026 embodied intelligence sector funding in China totaled 37.3 billion yuan, with capital concentration continuing to rise.</p>
+                        <p>Meanwhile, DeepRobotics' STAR Market IPO has been accepted, and Youibot has filed its second Hong Kong listing application—the <span class="highlight-orange">"Embodied Intelligence IPO wave"</span> has officially arrived. Zhiyuan Robotics hit a milestone with its 10,000th Yuanzheng A3 rolling off the production line.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Unitree's approval marks the sector's transition from "storytelling" to "financial reporting"</div>
+                        <div class="key-point">Q1 funding of 37.3B yuan, with DeepRobotics and Youibot close behind—sector capitalization accelerating across the board</div>
+                        <div class="key-point">Zhiyuan's 10,000-unit production milestone validates the industrialization feasibility of humanoid robots</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">UBTECH Consumer Humanoid Robot Launches on JD.com + Tesla Optimus Gen-3 Production Ramps Up</h3>
+                    <div class="news-content">
+                        <p>UBTECH's consumer humanoid robot brand <span class="highlight-orange">"U-World"</span> has launched pre-sales of its first full-size hyper-realistic humanoid robot on JD.com, targeting home companionship and education. Tesla's Optimus Gen-3 has produced <span class="highlight-orange">its first 50 units</span> at the Fremont factory, deployed directly into Tesla's own assembly lines for parts transport, light assembly, and quality inspection. The production line is designed for 1 million units annually, with a second Texas line targeting 10 million units long-term.</p>
+                        <p>China's embodied intelligence industry standards have been officially released, with <span class="highlight-orange">"digital identity" platforms</span> now online—ushering in a new era of standardized, scalable development.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Consumer-grade and industrial-grade humanoid robots advance in parallel, representing two distinct commercialization paths</div>
+                        <div class="key-point">Tesla's "internal use first, then external sales" strategy de-risks early-stage mass production</div>
+                        <div class="key-point">Industry standards + digital identity infrastructure lay the institutional foundation for sector scaling</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Today's Key Trends</h2>
+                <p>Insights into global tech and geopolitical currents</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🔴</div>
+                        <div class="trend-desc">
+                            <h3>AI Liability Debate Hits National Scale</h3>
+                            <p>The Doubao AI incident has sparked nationwide reflection on legal and ethical AI safety responsibilities, potentially accelerating China's AI liability legislation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🌐</div>
+                        <div class="trend-desc">
+                            <h3>Middle East Crisis on Four Fronts</h3>
+                            <p>Simultaneous tensions across Israel-Lebanon, US-Iran, Houthis, and Syria send gold to record highs as global capital floods into safe havens.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>Embodied Intelligence Enters the "Delivery Race"</h3>
+                            <p>Unitree IPO + UBTECH pre-sales + Tesla production + OpenAI entry—the sector pivots from concepts to real orders and production capacity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">⚠️</div>
+                        <div class="trend-desc">
+                            <h3>AI Safety Alarms at Full Blast</h3>
+                            <p>Anthropic's pause call + Doubao incident + Gaokao AI anti-cheating—AI governance shifts from "future concern" to "immediate imperative."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: Sina Finance · Zhihu · Weibo · Baidu · Livemint · ITHome · Tencent News · 36Kr</p>
+            <p class="footer-meta">Compiled: 2026-06-05 09:40 | NEWS DAILY Automated Push</p>
+        </footer>
+    </div>
+</body>
+</html>
