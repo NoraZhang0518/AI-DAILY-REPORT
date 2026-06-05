@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-05</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0,150,255,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+
+        .header .subtitle { font-size: 18px; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+
+        .section {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count { background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+
+        .news-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px; position: relative;
+            transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px; font-size: 13px;
+            color: rgba(255,255,255,0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '→'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(255,107,53,0.1));
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255,255,255,0.5); font-size: 14px; }
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+
+        .trend-card { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 24px; transition: all 0.3s ease; }
+        .trend-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-desc { flex: 1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-06-05</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <!-- Row 1: Hot News -->
+        <div class="sections">
+            <!-- China Domestic -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">国内油价迎年内最大降幅：92号汽油每升降0.41元，端午出行双利好</h3>
+                    <div class="news-content">
+                        <p>今日24时起，国内汽、柴油每吨分别下调<span class="highlight-bold">525元和505元</span>，92号汽油每升降0.41元，加满50升油箱少花约20.5元。与此同时，端午假期首日（6月19日）火车票今日正式开售。6月7-8日高考即将举行，北京等多地推出交通、天气、医疗全方位保障措施，考生可享<span class="highlight">24小时加急制证</span>服务。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">本轮油价下调幅度为年内最大，92号汽油重回"7元时代"</div>
+                        <div class="key-point">油价+火车票双降叠加，端午出行成本显著降低</div>
+                        <div class="key-point">北京高考保障同步启动，6月4-10日考生可加急制证</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">豆包AI误导老人断指泡生理盐水致终身残疾，AI责任边界引全民热议</h3>
+                    <div class="news-content">
+                        <p>有网友曝光家中老人手指受伤后向<span class="highlight-bold">豆包AI</span>询问处理方法，AI竟建议"将断指泡在生理盐水中"，导致错过最佳治疗时间，老人最终终身残疾。事件冲上热搜前三（热度796万），豆包官方随后声明日常功能保持免费，将针对专业人群推出专业版。</p>
+                        <p>该事件引发全社会对AI在医疗健康场景中<span class="highlight">安全责任边界</span>的广泛讨论——AI公司、用户和监管三方责任如何划分，成为立法焦点。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI"幻觉"在医疗场景可造成不可逆伤害，安全红线亟需立法界定</div>
+                        <div class="key-point">豆包以"免费版+专业版"分层策略回应，商业与安全如何平衡</div>
+                        <div class="key-point">该事件或成为推动中国AI责任立法的标志性案例</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">2026高考明日开考：多地安检升级，智能眼镜成重点防控对象</h3>
+                    <div class="news-content">
+                        <p>全国高考6月7日正式开考。今年多地要求<span class="highlight-bold">戴眼镜考生摘镜安检</span>，以防AI智能眼镜作弊。教育部持续预警"AI押题"骗局，各省推出史上最严科技反作弊措施。北京推出24小时加急制证，当日上午申请下午即可领取。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI智能眼镜等新型硬件给考试公平带来前所未有的挑战</div>
+                        <div class="key-point">"科技反作弊"成2026高考关键词，各省安检标准趋严</div>
+                        <div class="key-point">教育部首次将AI作弊列为重点防控类型</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">商务部密集回应贸易摩擦：反对美半导体出口管制及加征关税提案</h3>
+                    <div class="news-content">
+                        <p>商务部连续发声，批评美方滥用半导体出口管制"<span class="highlight-bold">严重冲击全球产业链供应链稳定</span>"，反对以"强迫劳动"为由的贸易限制。此前美方拟对60个经济体加征关税，对中国征收12.5%额外关税的提案引发国内广泛关注。商务部指出经合组织产业补贴报告"概念界定不严谨、结论片面武断"。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">半导体出口管制+加征关税双线施压，中美经贸博弈持续升级</div>
+                        <div class="key-point">中方罕见密集反击国际机构报告，话语权争夺日趋激烈</div>
+                        <div class="key-point">长鑫科技IPO过会（拟募295亿）代表中国半导体自主化的资本答卷</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">长鑫科技创始人自掏7.68亿股做员工激励，科创板IPO过会拟募295亿</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">长鑫科技</span>科创板IPO过会，拟募资295亿元，系A股史上第二大IPO（仅次中国移动）。创始人朱一明以个人持股7.68亿股用于员工股权激励，上市后预期市值2-3万亿元。此举被视为中国DRAM自主替代的标志性事件，半导体产业链加速资本化进程。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">295亿募资彰显国家对DRAM自主化的战略决心</div>
+                        <div class="key-point">创始人7.68亿股激励全员，科技企业"全员持股"模式再获市场认可</div>
+                        <div class="key-point">从芯片设计到制造，中国半导体全链条进入资本加速期</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">热搜快讯：耐克降价遇冷、BLG选手Bin被罚15万、燃油车价格跳水</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">耐克在中国市场遇冷</span>：原价899元降至429元消费者仍不买账（热搜第4，767万热度）。BLG选手Bin未履行赛场互动义务被罚15万元（热搜榜首，896万热度）。燃油车价格大幅跳水，新能源替代加速倒逼传统车企降价求生。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">耐克降价遇冷折射中国消费品牌格局的深层变迁</div>
+                        <div class="key-point">燃油车价格战白热化，新能源渗透率持续攀升</div>
+                        <div class="key-point">电竞选手"天价罚款"折射职业体育商业化的规范挑战</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">英首相斯塔默公开指责马斯克"煽动英国分裂"</h3>
+                    <div class="news-content">
+                        <p>英国首相斯塔默公开批评马斯克就<span class="highlight-bold">亨利·诺瓦克南安普顿持刀致死案</span>在X平台连续发帖，暗示警方"针对白人执法不公"，指责其"试图在英国煽动分裂"。马斯克以"言论自由"之名频繁介入多国内政，正成为欧洲多国政府的共同挑战。英国大选临近，斯塔默借对马斯克强硬表态争取民意。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">马斯克从"科技领袖"演变为"政治力量"，欧洲各国面临新型舆论挑战</div>
+                        <div class="key-point">X平台作为全球舆论场的"马斯克效应"日益引发监管关注</div>
+                        <div class="key-point">英国大选前斯塔默借"反马斯克"凝聚民意</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">俄乌新动向：普京拒绝欧洲和谈，泽连斯基提议与普京直接会晤</h3>
+                    <div class="news-content">
+                        <p>普京明确拒绝欧洲方面的乌克兰和谈倡议，表示倾向于<span class="highlight-bold">与特朗普直接达成协议</span>，称控制顿巴斯与和平协议并不矛盾。泽连斯基则提议与普京直接会晤，乌方准备在谈判期间实施全面停火并进行<span class="highlight">全面战俘交换</span>。普京回应称俄罗斯不拒绝与欧洲对话，但强调是欧洲拒绝购买俄能源。欧洲在乌克兰问题上的话语权持续被边缘化。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">俄方"绕开欧洲、直接对话美国"的策略愈加明确</div>
+                        <div class="key-point">乌方以全面停火+战俘交换释放善意，但俄方反应冷淡</div>
+                        <div class="key-point">能源筹码仍是俄欧博弈核心，欧洲能源独立性成关键变量</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">中东多线冲突升级：真主党拒停火、伊朗发最后通牒、美伊谈判停滞</h3>
+                    <div class="news-content">
+                        <p>真主党正式拒绝美方斡旋的停火协议，以色列继续在黎巴嫩南部与东部推进军事行动。<span class="highlight-bold">伊朗外长发出最后通牒</span>：若以色列继续袭击贝鲁特，伊朗将重新开战并直接打击以色列境内目标。美伊谈判陷入停滞，伊朗要求以色列停止对黎巴嫩袭击为前提。胡塞武装表示已做好准备应对任何局势发展。</p>
+                        <p>特朗普称若达成协议不排除与伊朗最高领袖会晤，但强调协议<span class="highlight">必须包含伊朗弃核和重开霍尔木兹海峡</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">中东四线并发（以黎+美伊+胡塞+叙利亚），局势为近年最复杂</div>
+                        <div class="key-point">伊朗将黎巴嫩局势与核谈判挂钩，地缘博弈维度升级</div>
+                        <div class="key-point">特朗普释放会晤信号但坚持弃核前提，谈判窗口收窄</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">道指涨逾870点创历史新高，博通暴跌12.6%引发芯片板块抛售</h3>
+                    <div class="news-content">
+                        <p>美股周四收盘涨跌互现：<span class="highlight-bold">道指涨1.73%创收盘历史新高</span>，纳指跌0.09%。博通因AI营收指引平淡单日暴跌12.6%，引发芯片板块普遍下挫，投资者资金从芯片股轮动至银行和零售股。梅西百货一季度业绩全面超预期，股价涨约8%。</p>
+                        <p>市场分析指博通暴跌标志着<span class="highlight">AI芯片"业绩验证期"</span>正式到来——投资者不再满足于概念叙事，要求看到实际利润。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">道指新高背后是板块轮动，资金从高估值科技转向传统价值股</div>
+                        <div class="key-point">博通暴跌为AI概念股敲响警钟：业绩必须跟上预期</div>
+                        <div class="key-point">中东局势+美联储政策+AI盈利能力三大变量牵动市场</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">现货黄金逼近4500美元大关，全球避险情绪持续升温</h3>
+                    <div class="news-content">
+                        <p>现货黄金涨0.9%报<span class="highlight-bold">4475.4美元/盎司</span>，续创历史新高。中东局势复杂化、美债收益率高位波动以及全球贸易摩擦升级，三重因素共同推动避险资产需求。伦铜涨0.8%报13932美元/吨，大宗商品整体走势分化。国内金饰价格每克降约两成，国内外金价"倒挂"引发关注。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">黄金持续创新高反映全球投资者对地缘风险的极度担忧</div>
+                        <div class="key-point">国内外金价倒挂折射人民币汇率预期与资本流动压力</div>
+                        <div class="key-point">高盛预测SpaceX AI业务营收到2030年将暴涨百倍至3220亿美元</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">国际快讯：美制裁古巴主席、日本扬言应对中国军力、美债收益率高位</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">美国制裁古巴国家主席</span>及其家人，进一步加大施压。日本扬言"以综合国力应对中国军力"冲上微博热搜（564万热度）。美债收益率高位波动：10年期约4.66%，30年期超5.19%。欧洲股市斯托克600收跌0.8%，因伊朗停止与美国交换信息。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">日本对华强硬表态引发中日关系新变数</div>
+                        <div class="key-point">美债收益率维持高位，全球资产定价锚持续上移</div>
+                        <div class="key-point">美古关系再度紧张，拉美地缘格局面临调整</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI + Robotics -->
+        <div class="sections">
+            <!-- AI Coding -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic呼吁全球暂缓前沿AI研发，警示AI自主迭代已至"危险临界点"</h3>
+                    <div class="news-content">
+                        <p>Anthropic发布公开声明呼吁全球暂缓前沿人工智能研发。公司警告AI系统的<span class="highlight-bold">自主迭代能力已达到"危险临界点"</span>——AI可自我改进代码和模型架构，这种递归式进步可能在短时间内超出人类控制。声明发布后引发硅谷激烈争论，业界看法两极。</p>
+                        <p>这是首次由顶级AI开发商主动提出"刹车"倡议，被视为AI安全辩论从学术界走向产业界的<span class="highlight">分水岭事件</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Anthropic以"安全立命"的品牌定位获得实质背书，与OpenAI形成差异化</div>
+                        <div class="key-point">该声明可能加速全球AI监管立法进程，尤其在欧美两大司法辖区</div>
+                        <div class="key-point">行业分歧加剧：一派主张"暂停"，一派主张"加速以领先"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">COMPUTEX 2026：黄仁勋称AI产业将达100万亿美元，发布Vera Rubin平台</h3>
+                    <div class="news-content">
+                        <p>英伟达CEO黄仁勋在COMPUTEX 2026主题演讲中抛出震撼数字：<span class="highlight-bold">全球AI产业规模将达100万亿美元</span>，是IT时代的33倍。英伟达发布下一代Vera Rubin GPU平台、Vera CPU及RTX Spark AI PC（1 petaflop本地算力），宣布GPU迭代从两年一次加速到一年一次。</p>
+                        <p>黄仁勋称<span class="highlight">"代理式AI时代已经来临"</span>，从模型竞赛转向代理竞赛。Rubin架构将推理能力提升至新高度，进一步拉大与竞争对手差距。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">100万亿美元产业预测重新定义了AI的经济想象力上限</div>
+                        <div class="key-point">Rubin架构+RTX Spark AI PC双线布局，英伟达全面覆盖云端到终端</div>
+                        <div class="key-point">一年一迭代的"黄氏定律"宣告摩尔定律已不足以描述AI算力增长</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">AI编程工具白热化：Claude Code vs Cursor vs Copilot，从"补全"到"自主Agent"</h3>
+                    <div class="news-content">
+                        <p>2026年AI编程工具竞争进入新阶段。<span class="highlight-bold">Claude Code</span>拥有全代码库理解能力，覆盖CLI/IDE/GitHub/Slack全平台；<span class="highlight-bold">Cursor</span>基于VS Code深度定制，自研专用模型+聚合多家旗舰；<span class="highlight-bold">GitHub Copilot</span>依托微软生态深度整合。行业趋势从"帮人写代码"向"代替人完成整个开发任务"演进。</p>
+                        <p>中国模型（DeepSeek V4、Kimi K2.5）在全球编程工具生态中份额持续增长。<span class="highlight">DeepSWE新基准</span>中GPT-5.5领跑，但华人团队Forge以8B小模型实现Agent成功率53%→99%的惊人跃升。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI编程核心竞争力从"模型质量"转为"工作流整合深度"</div>
+                        <div class="key-point">Claude Code的Agentic Coding模式引领行业方向</div>
+                        <div class="key-point">Forge 8B证明"更大≠更好"，场景优化是关键</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">华为云INSPIRE创想者大会今日上海开幕，6000㎡展区聚焦AI Agent落地</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">华为云INSPIRE创想者大会</span>于6月5-6日在上海西岸会展中心举行。大会以6000㎡沉浸式展区、百场主题活动和开发者实战为核心板块，聚焦大模型应用落地、AI Agent开发和企业级AI部署。此前华为发布的"韬定律"持续发酵——6年量产381款芯片，目标2031年达1.4nm水平。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">华为从芯片到云到模型全栈AI布局清晰，"韬定律"提供理论框架</div>
+                        <div class="key-point">Agentic AI成为2026年所有科技大会的共同主题</div>
+                        <div class="key-point">中国AI开发者生态持续壮大，华为云正构建自主AI基础设施生态</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">AI快讯：豆包推专业版、Hermes Desktop公测、微信AI闷声赚麻</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">豆包</span>声明日常功能免费，将针对专业人群推出专业版。"AI养马"工具<span class="highlight">Hermes Desktop</span>开启公测，将AI编程能力带入桌面端。微信AI商业化"闷声赚麻"冲上虎嗅热榜。Anthropic首次季度盈利5.59亿美元，四大审计所中三家已采用Claude。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">国内AI应用加速从"免费获客"转向"分层变现"</div>
+                        <div class="key-point">Anthropic Q1盈利$5.59亿标志AI公司商业模式初步验证</div>
+                        <div class="key-point">AI编程工具走向桌面端（Hermes Desktop），争夺开发者日常入口</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Embodied Intelligence -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">3 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">OpenAI正式杀入机器人赛道：成立Robotics部门，Sora/DALL·E团队领衔</h3>
+                    <div class="news-content">
+                        <p>6月1日，OpenAI CEO Sam Altman正式宣布组建<span class="highlight-orange">OpenAI Robotics</span>团队，公开招募全栈硬件、运营、系统及机器学习工程师。联合创始人Greg Brockman表示目标为"打造能在物理世界帮助人类的AI"。短期聚焦协助型机器人，长期愿景是<span class="highlight-orange">"人人拥有个人机器人"</span>。</p>
+                        <p>这标志着OpenAI时隔六年重启机器人业务。与以往只做"大脑"不同，这次OpenAI选择<span class="highlight-orange">自研硬件本体</span>，以GPT大模型+Sora视频理解+DALL·E视觉生成三引擎驱动。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenAI"AI大模型+自研硬件"模式入局，与特斯拉Optimus、Figure直接竞争</div>
+                        <div class="key-point">Sora/DALL·E团队的技术积累为机器人感知提供独特优势</div>
+                        <div class="key-point">"人人拥有个人机器人"的长期愿景与智能手机普及路径相似</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">宇树科技科创板IPO过会：A股"人形机器人第一股"诞生，募资42亿</h3>
+                    <div class="news-content">
+                        <p>6月1日，宇树科技科创板IPO获上市审核委员会审议通过，成为<span class="highlight-orange">A股"人形机器人第一股"</span>。公司拟募资42亿元，审议聚焦业绩波动、商业化进展、技术壁垒及具身智能研发布局。2026年Q1国内具身智能赛道融资总额达373亿元，资本集中度持续提升。</p>
+                        <p>与此同时，云深处科创板IPO已获受理，优艾智合港股二次递表，<span class="highlight-orange">"具身智能IPO潮"</span>正式到来。智元机器人第10000台远征A3下线，进入规模化节点。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">宇树过会标志中国具身智能从"讲故事"正式进入"看报表"阶段</div>
+                        <div class="key-point">Q1融资373亿，云深处+优艾智合紧随其后，赛道资本化全面提速</div>
+                        <div class="key-point">智元万台量产里程碑验证了人形机器人产业化可行性</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">优必选消费级仿生机器人京东预售 + 特斯拉Optimus Gen-3量产提速</h3>
+                    <div class="news-content">
+                        <p>优必选旗下消费级人形机器人品牌<span class="highlight-orange">"优世界"</span>首款全尺寸超仿生人形机器人在京东开启预售，面向家庭陪伴和教育场景。特斯拉Optimus Gen-3已在加州弗里蒙特工厂下线<span class="highlight-orange">首批50台样机</span>，直接投入自家总装车间使用，承担零部件转运、轻型装配和质量检测。该产线设计年产能100万台，德州第二条产线远期目标1000万台。</p>
+                        <p>中国具身智能行业标准已发布实施，<span class="highlight-orange">"数字身份证"平台</span>上线，产业进入标准化规模化发展新阶段。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">消费级+"工业级双线推进，分别代表具身智能的两种商业化路径</div>
+                        <div class="key-point">特斯拉"先内用再外售"的渐进策略降低量产初期市场风险</div>
+                        <div class="key-point">行业标准+数字身份证体系为产业规模化奠定制度基础</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察全球科技与地缘风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🔴</div>
+                        <div class="trend-desc">
+                            <h3>AI责任边界大讨论</h3>
+                            <p>豆包AI误导老人致残事件引发全社会对AI安全责任的法律和伦理反思，或推动中国AI责任立法进程。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🌐</div>
+                        <div class="trend-desc">
+                            <h3>中东四线并发，地缘风险溢价走高</h3>
+                            <p>以黎+美伊+胡塞+叙利亚同时紧张，黄金创历史新高，全球资本加速涌入避险资产。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>具身智能进入"交付赛"时代</h3>
+                            <p>宇树IPO+优必选预售+特斯拉量产+OpenAI入局，行业从概念转向真实订单和产能比拼。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">⚠️</div>
+                        <div class="trend-desc">
+                            <h3>AI安全警报全面升级</h3>
+                            <p>Anthropic呼吁暂缓研发、豆包事故、高考AI防作弊，AI治理从"未来议题"变为"当下急务"。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">数据来源：新浪财经 · 知乎热榜 · 微博热搜 · 百度热搜 · Livemint · IT之家 · 腾讯新闻 · 36氪</p>
+            <p class="footer-meta">整理时间：2026-06-05 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
