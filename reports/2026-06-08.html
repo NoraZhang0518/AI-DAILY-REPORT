@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-08</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-08</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">2026年全国高考开考，1290万学子赴考，数学难度"两极分化"引热议</h3>
+                    <div class="news-content">
+                        <p>6月7日，2026年全国高考正式拉开帷幕，全国<span class="highlight-bold">1290万</span>莘莘学子奔赴考场。高考首日网络讨论热度持续攀升，数学科目难度成为热议焦点——不少考生反映试题呈现"两极分化"态势，部分题目简单令人惊喜，另一部分则极具挑战性。甘肃省21.87万名考生报名参加，山东夏季高考同步启幕。AI时代下的高考也引发外媒广泛关注。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">菲律宾棉兰老岛海域8.1级强震，海啸预警发布</h3>
+                    <div class="news-content">
+                        <p>6月8日7时37分（北京时间），菲律宾棉兰老岛海域发生<span class="highlight-bold">8.1级地震</span>，震源深度15千米。菲律宾火山地震研究所发布海啸预警，预计浪高超过正常潮位1米，建议南部多个沿海地区居民立即撤离。自然资源部海啸预警中心判断不会对中国沿岸造成灾害性影响。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">沪市近900亿"分红红包"下周发放，438家公司已派现2810亿</h3>
+                    <div class="news-content">
+                        <p>6月8日至12日，近200家沪市公司将实施2025年度期末分红，合计分红金额<span class="highlight-bold">919亿元</span>。截至6月5日，已有438家沪市公司派现约2810亿元。A股市场近期震荡回调，机构普遍认为科技成长仍是下半年核心主线。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">宜信财富理财纠纷升级，多名高管被限制出境</h3>
+                    <div class="news-content">
+                        <p>自5月22日全平台类固收产品<span class="highlight-bold">暂停本息兑付</span>以来，宜信财富维权事件持续升级。监管已介入调查，多名高管被限制出境。宜信官方称网传兑付方案未定稿，下周将设立高管专项接待中心处理投资者诉求。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">香港发布红色暴雨警告，暴雨天气影响出行</h3>
+                    <div class="news-content">
+                        <p>6月8日，香港天文台发布<span class="highlight-bold">红色暴雨警告</span>信号，提醒市民注意防范极端天气。与此同时，河南等地高考期间以晴好天气为主，仅西部和南部有分散性阵雨，全国大部分考区天气条件总体适宜。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">具身智能薪酬曝光：平均月薪6.2万，人才缺口暴涨15倍</h3>
+                    <div class="news-content">
+                        <p>2026年具身智能赛道平均月薪从5.9万涨到<span class="highlight-bold">6.2万</span>，招聘量同比暴涨15倍。首席科学家年薪普遍千万起步，优必选公开招聘的具身智能科学家月薪45万-50万。教育部新增具身智能本科专业，9所顶尖工科高校首批招生，但人才供需缺口预计持续到2029年。</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">伊朗向以色列发射导弹，百日停火正式破裂，冲突进入第100天</h3>
+                    <div class="news-content">
+                        <p>6月7日，伊朗向以色列发射导弹，这是自<span class="highlight-bold">4月停火协议</span>生效以来的首次弹道导弹袭击。伊朗革命卫队声明称此次行动是"警告"，若以色列和美国继续违反停火协议，"回应将更加广泛"。特朗普紧急致电内塔尼亚胡敦促克制，白宫官员承认低估了伊朗重启冲突的意愿。冲突已进入<span class="highlight-bold">第100天</span>，停火谈判陷入冻结。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">美股遭遇血腥抛售：纳指暴跌1100点，科技九巨头一日蒸发万亿美元</h3>
+                    <div class="news-content">
+                        <p>6月6日，美股三大指数集体重挫。纳斯达克综合指数跌<span class="highlight-bold">4.18%</span>，跌幅超1100点，创2025年4月以来最大单日跌幅；标普500跌2.64%；费城半导体指数暴跌超<span class="highlight-bold">10%</span>。导火索是超预期的美国5月非农就业数据。英伟达市值单日蒸发超3000亿美元，美光科技暴跌13.25%，VIX飙升40%。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">SpaceX 6月12日纳斯达克IPO，估值1.75万亿美元创史上最大</h3>
+                    <div class="news-content">
+                        <p>马斯克旗下SpaceX计划于<span class="highlight-bold">6月12日</span>在纳斯达克挂牌，股票代码SPCX，发行价135美元/股，筹集750亿美元，估值达<span class="highlight-bold">1.75万亿美元</span>，将成为全球史上最大IPO。2025年营收187亿美元但净亏损49.4亿美元，募集资金将用于AI业务、火箭发射及卫星基础设施。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">美国非农数据超预期，美联储加息预期全面升温</h3>
+                    <div class="news-content">
+                        <p>美国5月非农就业数据大超预期，失业率连续两月持稳。交易员已将<span class="highlight-bold">12月加息25基点</span>完全纳入定价，华尔街多数机构放弃2026年降息预测。美债市场遭猛烈抛售，两年期国债收益率飙升创2025年2月以来新高。花旗仍坚持年内降息三次，美联储主席面临控通胀与白宫降息期待的两难。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">金价年内涨幅被抹平，加密货币市场全线拉升</h3>
+                    <div class="news-content">
+                        <p>美国强劲非农数据引发避险资产急剧分化：现货黄金<span class="highlight-bold">几乎抹去年内全部涨幅</span>，黄金ETF持续承压，但中国央行连续19个月增持。与此同时，比特币等加密货币大幅上涨，市场情绪受美伊对峙未升级等利好提振。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">韩国股市"全民炒股"泡沫风险加剧，年内涨幅超106%</h3>
+                    <div class="news-content">
+                        <p>2026年韩国综合指数涨幅超<span class="highlight-bold">106%</span>，总市值跃居全球第六。上班族、未成年人纷纷入市，杠杆资金大量涌入。6月5日股市大幅下跌，外资流入放缓，泡沫破裂风险引发市场广泛关注。</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic发布重磅报告：Claude编写80%代码，警示AI递归自我改进风险</h3>
+                    <div class="news-content">
+                        <p>Anthropic发布报告《When AI Builds Itself》，披露截至2026年5月，Claude已编写超过<span class="highlight-bold">80%</span>合并至Anthropic生产系统的代码，工程师人均代码产出暴增<span class="highlight">8倍</span>。公司警告这一趋势指向"递归自我改进"（RSI）——AI系统最终可能自主构建更强大的继任者，呼吁全球在必要时暂停前沿AI研发。</p>
+                        <p>报告中数据显示，Claude承担了此前需要人类数小时才能完成的编程任务，且可连续工作超16小时；Mythos研究项目的实验速度提速<span class="highlight">52倍</span>。Anthropic指出AI系统快速发展可能超出许多机构的管理能力，引发业界对AI自主迭代临界点的深度讨论。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI造AI已成现实——Claude代码贡献率从2025年初的个位数飙升至80%以上</div>
+                        <div class="key-point">Anthropic罕见呼吁"必要时暂停前沿AI研发"，警示递归自我改进的失控风险</div>
+                        <div class="key-point">工程师人均产出暴增8倍，AI编程工具已从"辅助"进化为"主力"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">OpenAI Codex重大升级：新增Sites建站功能+6大岗位插件，周活突破500万</h3>
+                    <div class="news-content">
+                        <p>OpenAI于6月2日对Codex进行重大升级，从编程辅助工具扩展为面向全行业的<span class="highlight-bold">"知识工作系统"</span>。新增Sites功能，支持用自然语言创建可交互网站和应用；推出6个角色专属插件，覆盖数据分析、创意设计、销售等62款应用和<span class="highlight">110项技能</span>。</p>
+                        <p>Codex<span class="highlight">周活跃用户已突破500万</span>，其中非技术岗位用户占比20%且增速达开发者的3倍。官方计划未来几周内将Codex全部功能集成进ChatGPT，标志着AI编程工具从开发者专用走向全民生产力平台。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Sites功能可将创意直接转化为仪表盘、规划器、项目看板等实用工具</div>
+                        <div class="key-point">非技术用户增速是开发者的3倍，AI编程工具正在"破圈"</div>
+                        <div class="key-point">62款应用+110项技能，Codex从"写代码"进化为"做工作"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Google发布Gemma 4 12B开源模型：16GB笔记本可本地运行多模态AI</h3>
+                    <div class="news-content">
+                        <p>Google DeepMind发布<span class="highlight-bold">Gemma 4 12B</span>，120亿参数的多模态开源模型，采用Apache 2.0协议。只需<span class="highlight">16GB内存</span>的普通笔记本即可本地离线运行，支持文本、图像和音频的统一处理，无需独立多模态编码器。基准性能接近26B大模型，但内存占用大幅降低。</p>
+                        <p>谷歌同步推出AI Edge Gallery应用，支持Mac设备本地运行。这是首款支持原生音频输入的中型Gemma模型，定位"将云端多模态智能带到笔记本"，开源生态再添强援。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">16GB内存即可本地跑多模态AI——端侧智能的普及门槛大幅降低</div>
+                        <div class="key-point">Apache 2.0完全开源，12B参数性能逼近26B模型</div>
+                        <div class="key-point">Google加速布局本地AI生态，与NVIDIA RTX Spark形成竞争格局</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Microsoft与NVIDIA联合推出RTX Spark平台，AI Agent可在Windows本地安全运行</h3>
+                    <div class="news-content">
+                        <p>Microsoft和NVIDIA联合发布<span class="highlight-bold">NVIDIA RTX Spark</span>平台，专为主流轻薄Windows AI PC设计，支持最高<span class="highlight">128GB统一内存</span>。OpenClaw可通过Microsoft Execution Containers在Windows上安全运行AI Agent，结合Agent 365实现企业级Agent监控管理。</p>
+                        <p>首批搭载RTX Spark的笔记本和小型台式机预计今年秋季上市，OEM合作伙伴涵盖Surface、ASUS、Dell、HP、Lenovo、MSI等。统一CPU/GPU/内存架构专为本地Agent工作负载优化。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">128GB统一内存+安全容器——AI Agent本地化部署的关键基础设施</div>
+                        <div class="key-point">Windows平台从"运行AI模型"进化为"安全运行AI Agent"</div>
+                        <div class="key-point">全OEM阵容秋季出货，本地AI PC进入量产元年</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">2 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">宇树科技发布H2 Plus人形机器人：基于NVIDIA Isaac GR00T的首款参考设计</h3>
+                    <div class="news-content">
+                        <p>宇树科技发布<span class="highlight-orange">H2 Plus</span>人形机器人平台，这是首款基于NVIDIA Isaac GR00T开发平台的人形机器人参考设计。集成宇树H2人形本体、双SharpaWave触觉五指灵巧手、NVIDIA Jetson Thor车载计算平台及Isaac GR00T开源软件栈。</p>
+                        <p>平台提供从数据采集到部署验证的完整开源工具链，支持人形机器人推理学习、多任务行为及实时车载推理控制。作为学术研究和产业开发的标准化硬件平台，将显著降低人形机器人研发门槛。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">首个Isaac GR00T参考设计，为人形机器人行业提供标准化硬件底座</div>
+                        <div class="key-point">双五指灵巧手+Jetson Thor算力，感知与决策能力大幅提升</div>
+                        <div class="key-point">开源工具链降低研发门槛，加速学术成果向产业转化</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">2026具身智能人才报告：月薪6.2万，缺口暴涨15倍，千万年薪不再罕见</h3>
+                    <div class="news-content">
+                        <p>具身智能行业进入"落地为王、硬件为王、人才为王"的兑现期。2026年1-4月招聘岗位量暴增<span class="highlight-orange">15倍</span>，三大核心缺口为算法技术人才（VLA模型、世界模型）、硬件与系统工程人才（关节研发、整机设计）、产品与商业化落地人才。机器人调试工程师需求暴涨<span class="highlight-orange">60%</span>。</p>
+                        <p>核心算法专家月薪6万-9万，首席科学家千万年薪起步。教育部新增具身智能本科专业，9所高校首批招生，但大批人才进入职场需3-4年，2026-2029年仍为严重供不应求窗口期。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">招聘量暴增15倍远超AI整体8.7倍增速，具身智能成最强人才磁极</div>
+                        <div class="key-point">三大缺口揭示行业从"模型竞赛"转向"量产落地"</div>
+                        <div class="key-point">人才窗口期至少延续到2029年，存量人才争夺将持续白热化</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察 AI 领域最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🧬</div>
+                        <div class="trend-desc">
+                            <h3>AI递归自我改进从理论走向现实</h3>
+                            <p>Claude编写80%代码，AI造AI已成既定事实。Anthropic的警告意味着行业即将面对一个前所未有的治理难题。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">📱</div>
+                        <div class="trend-desc">
+                            <h3>AI编程工具"破圈"加速</h3>
+                            <p>Codex非技术用户增速达开发者3倍，Sites建站让所有人都能用自然语言创建应用。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">💻</div>
+                        <div class="trend-desc">
+                            <h3>本地AI PC进入量产元年</h3>
+                            <p>Gemma 4 12B只需16GB内存，RTX Spark支持128GB统一内存——端侧AI的硬件门槛正在消失。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>具身智能从"模型"走向"量产"</h3>
+                            <p>宇树H2 Plus提供标准化硬件平台，人才缺口15倍——行业瓶颈已从算法转向硬件与系统集成。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">数据来源：新浪财经 · 央广网 · 界面新闻 · 中国新闻网 · CNBC · Morning Star · Anthropic · OpenAI · Google · ITBear</p>
+            <p class="footer-meta">整理时间：2026-06-08 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
