@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-08</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-08</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">2026 National Gaokao Begins: 12.9 Million Students Take Exam, Math Difficulty Sparks Heated Debate</h3>
+                    <div class="news-content">
+                        <p>On June 7, China's 2026 National College Entrance Examination (Gaokao) officially began, with <span class="highlight-bold">12.9 million</span> students across the country heading to exam halls. Online discussion surged on the first day, with math being the most debated subject &#8212; many students reported a "polarized" difficulty, with some questions surprisingly easy while others were extremely challenging. Gansu Province had 218,700 registered candidates, and Shandong's summer Gaokao kicked off simultaneously. The exam in the AI era also drew significant attention from international media.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Magnitude 8.1 Earthquake Strikes Near Mindanao, Philippines; Tsunami Warning Issued</h3>
+                    <div class="news-content">
+                        <p>At 7:37 AM Beijing time on June 8, a <span class="highlight-bold">magnitude 8.1 earthquake</span> struck off the coast of Mindanao, Philippines, at a depth of 15 km. The Philippine Institute of Volcanology and Seismology issued a tsunami warning, predicting waves up to 1 meter above normal tide levels, and advised immediate evacuation of coastal areas in the southern region. China's Natural Resources Tsunami Warning Center confirmed the earthquake could trigger a massive tsunami near the epicenter but would not cause destructive impact on China's coastline.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Shanghai Stock Exchange Companies to Distribute 91.9 Billion Yuan in Dividends Next Week</h3>
+                    <div class="news-content">
+                        <p>From June 8 to 12, nearly 200 Shanghai-listed companies will distribute 2025 annual dividends totaling <span class="highlight-bold">91.9 billion yuan</span>. As of June 5, 438 Shanghai-listed companies have already distributed approximately 281 billion yuan. A-shares have been volatile recently, but institutions broadly believe tech growth stocks remain the core theme for the second half of the year.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">CreditEase Wealth Management Dispute Escalates: Multiple Executives Barred from Leaving China</h3>
+                    <div class="news-content">
+                        <p>Since May 22, when all fixed-income products on the CreditEase platform <span class="highlight-bold">suspended principal and interest payments</span>, the investor维权 (rights protection) incident has continued to escalate. Regulators have intervened, and multiple executives have been barred from leaving the country. CreditEase stated that rumored repayment plans are not finalized, and a dedicated executive reception center will open next week.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Hong Kong Issues Red Rainstorm Warning as Severe Weather Disrupts Travel</h3>
+                    <div class="news-content">
+                        <p>On June 8, the Hong Kong Observatory issued a <span class="highlight-bold">red rainstorm warning</span>, advising residents to take precautions against extreme weather. Meanwhile, most Gaokao exam regions in China, including Henan Province, enjoyed generally fair weather with only scattered showers in western and southern areas.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Embodied AI Salary Report: Average Monthly Pay 62K RMB, Talent Demand Surges 15x</h3>
+                    <div class="news-content">
+                        <p>The embodied AI sector's average monthly salary rose from 59K to <span class="highlight-bold">62K RMB</span> in 2026, with job postings surging 15x year-over-year, far outpacing the overall AI sector's 8.7x growth. Chief scientists command starting salaries of 10 million RMB annually, and UBTECH is publicly recruiting embodied AI scientists at 450K-500K RMB per month. The Ministry of Education added embodied AI as a new undergraduate major at 9 top engineering universities, but the talent supply-demand gap is expected to persist until 2029.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Iran Fires Missiles at Israel, 100-Day Ceasefire Collapses as Conflict Enters Day 100</h3>
+                    <div class="news-content">
+                        <p>On June 7, Iran fired missiles at Israel &#8212; the first ballistic missile attack since the <span class="highlight-bold">April ceasefire</span> took effect. Iran's Islamic Revolutionary Guard Corps called the operation "a warning," stating that if Israel and the U.S. continue violating the ceasefire, "responses will be broader." Trump urgently called Netanyahu urging restraint, while a White House official admitted underestimating Iran's willingness to restart hostilities. The conflict has now entered <span class="highlight-bold">day 100</span>, with ceasefire talks frozen.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Bloodbath on Wall Street: Nasdaq Plunges 1,100 Points, Tech Giants Lose $1 Trillion in a Day</h3>
+                    <div class="news-content">
+                        <p>On June 6, all three major U.S. indices sold off sharply. The Nasdaq Composite fell <span class="highlight-bold">4.18%</span>, dropping over 1,100 points in its worst single-day decline since April 2025. The S&amp;P 500 fell 2.64%, and the Philadelphia Semiconductor Index plunged over <span class="highlight-bold">10%</span> &#8212; its worst day since March 2020. The catalyst was a hotter-than-expected May nonfarm payrolls report. Nvidia alone lost over $300 billion in market cap, Micron tumbled 13.25%, and the VIX fear index surged 40%.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">SpaceX to List on Nasdaq June 12 at $1.75 Trillion Valuation &#8212; Largest IPO in History</h3>
+                    <div class="news-content">
+                        <p>Elon Musk's SpaceX plans to list on Nasdaq on <span class="highlight-bold">June 12</span> under ticker SPCX, priced at $135 per share, raising $75 billion at a <span class="highlight-bold">$1.75 trillion valuation</span> &#8212; the largest IPO in global history. The company reported $18.7 billion in 2025 revenue but a net loss of $4.94 billion. Proceeds will fund AI business expansion, rocket launches, and satellite infrastructure. SpaceX adopted an unconventional "take it or leave it" pricing strategy.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">U.S. Nonfarm Payrolls Exceed Expectations, Fed Rate Hike Expectations Surge</h3>
+                    <div class="news-content">
+                        <p>May U.S. nonfarm payrolls significantly beat expectations, with the unemployment rate steady for two consecutive months. Traders have fully priced in a <span class="highlight-bold">25-basis-point rate hike by December</span>. Most Wall Street institutions have abandoned their 2026 rate cut forecasts. The Treasury market saw aggressive selling, with 2-year yields surging to the highest since February 2025. Citi maintains its call for three rate cuts this year.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Gold Erases All 2026 Gains While Cryptocurrency Market Surges</h3>
+                    <div class="news-content">
+                        <p>Strong U.S. jobs data triggered a sharp divergence in safe-haven assets: spot gold <span class="highlight-bold">nearly erased all year-to-date gains</span>, with gold ETFs under sustained pressure, though China's central bank continued buying for a 19th consecutive month. Meanwhile, Bitcoin and other cryptocurrencies rallied sharply, boosted by de-escalating U.S.-Iran tensions and potential OPEC+ production increases.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">South Korea's Stock Market Bubble Warning: KOSPI Up 106% YTD, "Nationwide Stock Trading" Frenzy</h3>
+                    <div class="news-content">
+                        <p>The KOSPI Composite Index has surged over <span class="highlight-bold">106%</span> in 2026, with total market cap rising to sixth globally. Office workers and minors have flooded into the market, with leveraged capital pouring in. The June 5 sharp sell-off and slowing foreign inflows have intensified concerns about a potential bubble burst.</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic Releases Landmark Report: Claude Writes 80% of Production Code, Warns of AI Recursive Self-Improvement</h3>
+                    <div class="news-content">
+                        <p>Anthropic published a report titled "When AI Builds Itself," revealing that as of May 2026, Claude has written over <span class="highlight-bold">80%</span> of the code merged into Anthropic's production systems, with engineer per-capita output surging <span class="highlight">8x</span>. The company warned this trajectory points toward "recursive self-improvement" (RSI) &#8212; where AI systems could eventually autonomously build more powerful successors &#8212; and called for a global pause on frontier AI development when necessary.</p>
+                        <p>Claude handles programming tasks that previously took humans hours and can work continuously for over 16 hours. The Mythos research project's experiment speed increased <span class="highlight">52x</span>. Anthropic noted that rapid AI advancement may exceed the management capacity of many institutions, sparking deep industry discussion about the tipping point of autonomous AI iteration.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI building AI is now a reality &#8212; Claude's code contribution surged from single digits in early 2025 to over 80%</div>
+                        <div class="key-point">Anthropic's rare call to "pause frontier AI research when necessary" highlights the governance crisis</div>
+                        <div class="key-point">8x per-engineer output boost: AI coding tools have evolved from "assistants" to "primary developers"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">OpenAI Codex Major Upgrade: Sites Web Builder + 6 Role Plugins, 5M Weekly Active Users</h3>
+                    <div class="news-content">
+                        <p>OpenAI released a major Codex upgrade on June 2, expanding it from a coding assistant to an all-industry <span class="highlight-bold">"knowledge work system."</span> New Sites feature enables creating interactive websites and apps via natural language. Six role-specific plugins cover data analysis, creative design, and sales across <span class="highlight">62 apps and 110 skills</span>.</p>
+                        <p>Codex now has <span class="highlight">5 million weekly active users</span>, with non-technical users accounting for 20% and growing 3x faster than developers. OpenAI plans to integrate all Codex features into ChatGPT in the coming weeks, marking AI coding tools' expansion from developer-only to universal productivity platforms.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Sites turns ideas directly into dashboards, planners, and project boards &#8212; no coding required</div>
+                        <div class="key-point">Non-technical user growth 3x that of developers &#8212; AI coding tools are "going mainstream"</div>
+                        <div class="key-point">62 apps + 110 skills: Codex evolves from "writing code" to "doing work"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Google Releases Gemma 4 12B: Open-Source Multimodal AI That Runs on 16GB Laptops</h3>
+                    <div class="news-content">
+                        <p>Google DeepMind released <span class="highlight-bold">Gemma 4 12B</span>, a 12-billion parameter multimodal open-source model under the Apache 2.0 license. It runs locally on laptops with just <span class="highlight">16GB of memory</span>, processing text, images, and audio through a unified architecture without separate multimodal encoders. Benchmark performance approaches the larger 26B model at a fraction of the memory cost.</p>
+                        <p>Google simultaneously launched AI Edge Gallery for Mac, enabling local model execution. As the first mid-sized Gemma model with native audio input, it aims to bring cloud-grade multimodal intelligence to personal laptops.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">16GB memory for local multimodal AI &#8212; the threshold for on-device intelligence just dropped dramatically</div>
+                        <div class="key-point">Fully open-source Apache 2.0, 12B performance approaches the 26B model</div>
+                        <div class="key-point">Google accelerates local AI ecosystem, creating competition with NVIDIA's RTX Spark platform</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Microsoft &amp; NVIDIA Launch RTX Spark Platform: AI Agents Run Securely on Windows</h3>
+                    <div class="news-content">
+                        <p>Microsoft and NVIDIA jointly unveiled the <span class="highlight-bold">NVIDIA RTX Spark</span> platform for mainstream thin-and-light Windows AI PCs, supporting up to <span class="highlight">128GB unified memory</span>. OpenClaw can now run securely on Windows via Microsoft Execution Containers, combined with Agent 365 for enterprise-grade agent monitoring and management.</p>
+                        <p>First RTX Spark-powered laptops and small form factor desktops from Surface, ASUS, Dell, HP, Lenovo, MSI and others are expected this fall. The unified CPU/GPU/memory architecture is purpose-built for local agent workloads.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">128GB unified memory + secure containers &#8212; critical infrastructure for on-device AI Agent deployment</div>
+                        <div class="key-point">Windows evolves from "running AI models" to "securely running AI Agents"</div>
+                        <div class="key-point">Full OEM lineup shipping this fall &#8212; local AI PC enters mass production era</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">2 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Unitree Unveils H2 Plus: First NVIDIA Isaac GR00T Reference Humanoid Robot Design</h3>
+                    <div class="news-content">
+                        <p>Unitree announced the <span class="highlight-orange">H2 Plus</span> humanoid robot platform, the first reference design built on NVIDIA's Isaac GR00T development platform. It integrates Unitree's H2 humanoid body, dual SharpaWave tactile five-finger hands, NVIDIA Jetson Thor onboard computing, and the Isaac GR00T open-source software stack.</p>
+                        <p>The platform provides a complete open-source toolchain from data collection to deployment validation, supporting humanoid robot reasoning, learning, multi-task behavior, and real-time onboard inference. As a standardized hardware platform for academic research and industrial development, it significantly lowers the barrier to entry for humanoid robotics R&amp;D.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First Isaac GR00T reference design &#8212; providing a standardized hardware foundation for the humanoid robot industry</div>
+                        <div class="key-point">Dual five-finger dexterous hands + Jetson Thor computing &#8212; major leap in perception and decision capabilities</div>
+                        <div class="key-point">Open-source toolchain reduces R&amp;D barriers, accelerating the academic-to-industry pipeline</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">2026 Embodied AI Talent Report: 62K RMB Average Monthly Pay, 15x Demand Surge, 10M+ Annual Salaries Now Common</h3>
+                    <div class="news-content">
+                        <p>The embodied AI sector has entered a "delivery-first, hardware-first, talent-first" phase. Job postings surged <span class="highlight-orange">15x</span> in Jan-Apr 2026, with three critical talent gaps: algorithm engineers (VLA models, world models), hardware &amp; systems engineers (joint development, system integration), and product &amp; commercialization specialists. Robot commissioning engineer demand jumped <span class="highlight-orange">60%</span>.</p>
+                        <p>Core algorithm experts earn 60K-90K RMB monthly, while chief scientists command starting salaries of 10 million RMB annually. The Ministry of Education added embodied AI as a new undergraduate major at 9 top engineering universities, but the talent supply-demand gap will persist through 2029.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">15x job growth far exceeds overall AI's 8.7x &#8212; embodied AI is the strongest talent magnet</div>
+                        <div class="key-point">Three talent gaps reveal industry shift from "model competition" to "mass production deployment"</div>
+                        <div class="key-point">Talent window extends to at least 2029 &#8212; war for existing talent will only intensify</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129516;</div>
+                        <div class="trend-desc">
+                            <h3>AI Recursive Self-Improvement: From Theory to Reality</h3>
+                            <p>Claude writes 80% of Anthropic's production code. AI building AI is now an established fact, and Anthropic's warning signals an unprecedented governance challenge ahead.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128241;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Tools Go Mainstream</h3>
+                            <p>Codex's non-technical user growth is 3x that of developers. Sites lets anyone create apps with natural language &#8212; coding is no longer just for coders.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128187;</div>
+                        <div class="trend-desc">
+                            <h3>Local AI PC Enters Mass Production Era</h3>
+                            <p>Gemma 4 12B needs only 16GB RAM, RTX Spark supports 128GB unified memory &#8212; the hardware barriers for on-device AI are dissolving.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied AI Shifts from Models to Mass Production</h3>
+                            <p>Unitree H2 Plus provides standardized hardware, 15x talent gap &#8212; the industry bottleneck has moved from algorithms to hardware and systems integration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Sina Finance &middot; CCTV &middot; Jiemian News &middot; China News &middot; CNBC &middot; Morning Star &middot; Anthropic &middot; OpenAI &middot; Google &middot; ITBear</p>
+            <p class="footer-meta">Compiled: 2026-06-08 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
