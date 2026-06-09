@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-09</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-09</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">2026年全国高考今日结束，多地查分时间出炉</h3>
+                    <div class="news-content">
+                        <p>6月9日，2026年高考进入第三天，全国多地高考将于今日结束。目前已有<span class="highlight-bold">29个省区市实行"新高考"模式</span>，6个省份采用"3+3"选科模式，23个省份采用"3+1+2"选科模式。接下来考生将进入成绩查询及志愿填报阶段，绝大多数省份查分时间集中在6月23日-26日。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">今年全国高考报名人数达1290万，再创新高</div>
+                        <div class="key-point">新高考模式下选科组合更加多元，志愿填报复杂度提升</div>
+                        <div class="key-point">教育部门提醒考生警惕"AI押题"等高考诈骗</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">全国公安机关严查严打涉高考网络谣言</h3>
+                    <div class="news-content">
+                        <p>为确保2026年高考安全顺利进行，全国公安机关坚持<span class="highlight-bold">最高标准、最严要求、最强措施</span>，严查严打涉考类违法犯罪活动。多地公安已依法查处多起编造"高考泄题""替考"等虚假信息的案件。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">公安部统一部署，各地成立高考安保专班</div>
+                        <div class="key-point">重点打击组织作弊、贩卖考试答案、传播涉考谣言等行为</div>
+                        <div class="key-point">编造传播高考谣言将依法追究法律责任</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">高考数学题让宁夏青铜峡108塔出圈，微博热搜470万</h3>
+                    <div class="news-content">
+                        <p>2026高考数学题中出现以宁夏青铜峡108塔为背景的题目，让这座千年古塔意外走红。相关话题冲上微博热搜，热度超<span class="highlight-bold">470万</span>，不少考生考后专门搜索了解这座西夏时期的历史遗迹。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">108塔始建于西夏时期，位于宁夏青铜峡黄河大峡谷</div>
+                        <div class="key-point">考题将数学建模与文化遗产结合，被赞"最美考题"</div>
+                        <div class="key-point">当地文旅部门迅速推出"数学题同款"游览路线</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">人民币中间价6.8198，CFETS指数上涨0.67%</h3>
+                    <div class="news-content">
+                        <p>6月9日人民币汇率中间价报<span class="highlight-bold">6.8198</span>，较前日下调41个基点。CFETS人民币汇率指数报101.33，上涨0.67%。在岸人民币报6.7844，离岸人民币报6.7901。美元指数报100.0000，微跌0.07%。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">人民币汇率整体保持稳健，CFETS指数持续回升</div>
+                        <div class="key-point">市场关注本周美联储议息会议对汇率走向的影响</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">全球科技股大跌，A股走势引关注</h3>
+                    <div class="news-content">
+                        <p>上周全球科技股相继大跌，A股科技板块"抱团"松动，<span class="highlight-bold">创业板指自4月8日以来首次跌破20日线</span>。1883家个股累计上涨，为近4周最好表现，但市场整体先涨后跌。6月核心主线：美联储利率决议 + SpaceX IPO + 长鑫科技IPO进程。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">创业板指破位下跌，科技股"抱团"出现松动信号</div>
+                        <div class="key-point">分析师建议关注防御性板块，等待政策面信号</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">比亚迪确认入局人形机器人，代号"尧舜禹"秘密研发四年</h3>
+                    <div class="news-content">
+                        <p>比亚迪集团执行副总裁李柯首次公开确认比亚迪正在开发人形机器人，项目代号<span class="highlight-bold">"尧舜禹"</span>，2022年由第十五事业部正式立项，已秘密研发四年。已组建约4000人核心研发团队，博士占比超30%。不过比亚迪对网传"年内部署2万台"等细节予以否认。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">项目隶属于第十五事业部，中央研究院提供技术支撑</div>
+                        <div class="key-point">比亚迪辟谣：年内2万台等具体数据不属实，但项目确实存在</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">伊朗向以色列发射多轮弹道导弹，停火协议濒临破裂</h3>
+                    <div class="news-content">
+                        <p>当地时间6月7日晚，伊朗伊斯兰革命卫队向以色列北部发射至少三轮弹道导弹（约10枚），打击目标指向拉马特戴维空军基地。以色列国防军称已成功拦截两枚，暂无人员伤亡。这是<span class="highlight-bold">4月8日停火协议生效以来伊朗首次直接攻击以色列</span>。</p>
+                        <p>特朗普警告内塔尼亚胡"不要反击"，称进一步升级将破坏美伊谈判进展。特朗普公开称内塔尼亚胡"疯了"，表示以色列正在复杂化与伊朗的和谈。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">从"忍让到此为止"到导弹升空仅用72小时，中东局势急剧恶化</div>
+                        <div class="key-point">特朗普"on your own"警告以色列，美以裂痕公开化</div>
+                        <div class="key-point">停火协议命悬一线，国际油价面临新一轮上行压力</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">SpaceX史上最大IPO三天后登陆纳斯达克，估值1.75万亿美元</h3>
+                    <div class="news-content">
+                        <p>SpaceX计划于6月12日在纳斯达克挂牌上市，股票代码SPCX，发行价每股<span class="highlight-bold">135美元</span>，拟发行5.55亿股A类普通股，总募资规模约750亿美元。这将是<span class="highlight-bold">人类历史上最大规模的IPO</span>，目标估值达1.75万亿美元。</p>
+                        <p>上市采用纯增发架构，募集资金全部归入公司。核心业务涵盖太空发射、星链卫星互联网和人工智能三大板块。SpaceX同时与Anthropic签署重大AI算力协议。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">6月11日定价，6月12日正式挂牌，全球资本市场瞩目</div>
+                        <div class="key-point">纯增发架构意味着原有股东不出售股份，全部资金用于公司发展</div>
+                        <div class="key-point">Anthropic百亿算力大单显示SpaceX正从航天向AI基础设施延伸</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">2026美加墨世界杯6月11日开幕，48队三国联办创历史</h3>
+                    <div class="news-content">
+                        <p>2026年国际足联世界杯将于6月11日在墨西哥开幕，这是<span class="highlight-bold">世界杯历史上首次由三个国家联合承办，也是首次扩军至48支球队</span>。赛事横跨美国、加拿大、墨西哥16座城市，共104场比赛，7月19日闭幕。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">揭幕战6月11日墨西哥城，三国分别举办开幕式</div>
+                        <div class="key-point">伊朗队备战遭美拒发部分签证，德黑兰抗议"歧视性待遇"</div>
+                        <div class="key-point">史上规模最大世界杯，预计吸引全球数十亿观众</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">美联储6月议息会议本周召开，降息预期再度推迟</h3>
+                    <div class="news-content">
+                        <p>美联储6月议息会议即将召开，CCTV报道指出今年或继续加息至少25个基点。荷兰合作银行最新预测将美联储首次降息推迟至<span class="highlight-bold">2026年10月</span>，第二次降息在2027年1月，较此前预测进一步延后。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">中东局势推高能源价格，通胀压力持续压制降息空间</div>
+                        <div class="key-point">FOMC已放弃宽松倾向，政策转向偏鹰</div>
+                        <div class="key-point">6月18日凌晨2点公布决定及经济预测摘要，市场高度关注</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Anthropic秘密递交IPO申请，估值9650亿美元超越OpenAI</h3>
+                    <div class="news-content">
+                        <p>6月1日，Anthropic宣布已向SEC秘密递交S-1注册声明，正式启动上市进程。5月28日刚完成<span class="highlight-bold">650亿美元H轮融资</span>，投后估值飙升至<span class="highlight-bold">9650亿美元</span>，正式超越OpenAI成为全球估值最高的AI初创企业。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">IPO最快秋季上市，三大AI独角兽（Anthropic/OpenAI/SpaceX）上市竞速</div>
+                        <div class="key-point">Anthropic同时扩展Glasswing计划，Mythos即将公开发布</div>
+                        <div class="key-point">OpenAI最新估值8520亿美元，同样即将递交IPO</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">伊朗世界杯备战遭美拒发签证，德黑兰抗议"歧视性待遇"</h3>
+                    <div class="news-content">
+                        <p>2026年世界杯开赛在即，伊朗国家队6日前往墨西哥展开最后阶段备战。但美国拒绝向部分伊朗队官员和后勤人员发放签证，<span class="highlight-bold">德黑兰方面指责美方实施"歧视性待遇"</span>，双方围绕签证问题的争议持续发酵。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">签证问题涉及伊朗代表团多名非运动员成员</div>
+                        <div class="key-point">国际足联尚未就此事发表官方声明</div>
+                        <div class="key-point">体育与地缘政治的交叉再次引发关注</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">MIT追踪10万开发者：AI编程代码量翻17倍，软件产出仅增三成</h3>
+                    <div class="news-content">
+                        <p>麻省理工学院和宾夕法尼亚大学联合在NBER发表工作论文，对生成式AI编程工具的影响进行了迄今最大规模实证研究。研究追踪10万名开发者，发现AI工具使<span class="highlight-bold">代码量增长了17倍</span>，但<span class="highlight">实际软件产出仅增加约30%</span>。</p>
+                        <p>AI工具显著降低了代码编写的边际成本，但产出转化率远低于预期。大量新增代码为"胶水代码"和样板代码，并未转化为功能性软件。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">效率提升≠产出提升，AI编程可能制造"代码通胀"</div>
+                        <div class="key-point">17倍代码量vs30%软件产出，揭示了AI编程工具的非线性转化</div>
+                        <div class="key-point">研究警示：需关注AI生成代码的长期维护成本</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Anthropic扩展Glasswing计划，Mythos级模型数周内公开发布</h3>
+                    <div class="news-content">
+                        <p>6月2日，Anthropic宣布将Project Glasswing扩展至<span class="highlight-bold">15个国家的约150家机构</span>，覆盖电力、水务、医疗、通信、硬件等关键基础设施行业。同时承诺<span class="highlight">Mythos级模型将在数周内面向所有用户正式发布</span>。</p>
+                        <p>Glasswing计划旨在关键基础设施领域安全部署前沿AI。Claude Mythos于4月7日发布Preview版，此前仅限苹果等少数合作伙伴使用，是Claude产品线的全新最高层级。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Mythos正式版即将全面开放，AI前沿模型竞争进入新阶段</div>
+                        <div class="key-point">Glasswing从受限测试走向大规模部署，AI安全框架逐步成型</div>
+                        <div class="key-point">150家机构覆盖关键基础设施，AI与实体经济的深度融合加速</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Claude Code重磅升级引入"自愈"功能，AI编程进入新阶段</h3>
+                    <div class="news-content">
+                        <p>5月28日，Anthropic发布Claude Code最新版本，被认为是该系统发布以来<span class="highlight-bold">规模最大的一次更新</span>。核心亮点是引入<span class="highlight">"自愈"功能</span>——AI能在运行过程中自动检测和修复代码错误，而非仅仅提供建议。</p>
+                        <p>新版本同时解决六大关键痛点，包括视觉体验优化和上下文管理改进。开发者反馈编程效率提升显著，但需警惕AI自主修改代码的潜在风险。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">"自愈"标志着AI编程从"辅助建议"进化为"自主修复"</div>
+                        <div class="key-point">AI编程工具正从被动响应转向主动干预</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">微软因Claude太贵将推自研AI编程大模型，内部6月全面切换</h3>
+                    <div class="news-content">
+                        <p>微软CEO纳德拉要求公司内部员工在6月份从Claude切换到自家GitHub Copilot，原因是<span class="highlight-bold">使用Claude大模型成本太高已不划算</span>。结合最新消息，微软即将推出自研AI编程大模型，与Anthropic正面竞争。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">微软此前大量使用Claude支撑GitHub Copilot Pro服务</div>
+                        <div class="key-point">自研模型将深度整合Visual Studio和GitHub生态</div>
+                        <div class="key-point">AI编程工具成本战打响，大厂加速自研替代</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">3 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">工信部、国资委联合开展人形机器人与具身智能实景实训专项行动</h3>
+                    <div class="news-content">
+                        <p>6月9日，工业和信息化部办公厅、国务院国资委办公厅联合发布通知，开展2026年度人形机器人与具身智能实景实训专项行动。坚持应用牵引，面向工业、特种、服务等领域重点场景，一体推进<span class="highlight-bold">实景实训空间建设、创新应用联合体培育、作业技能攻关</span>等重点任务。</p>
+                        <p>目标：到2026年底，人形机器人等重点产品在代表性场景率先完成应用验证和常态部署，开启"作业模式"。凝练形成百个以上高价值应用场景，带动形成<span class="highlight-orange">万台级规模落地能力</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">两部委联合推动，政策力度空前——从"鼓励研发"到"强制落地"</div>
+                        <div class="key-point">通过真实场景训练持续优化具身智能模型算法，积累高质量真机数据</div>
+                        <div class="key-point">万台级规模目标标志着人形机器人从实验室走向产业化关键一步</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">天工3.0人形机器人将于2026年下半年规模化量产</h3>
+                    <div class="news-content">
+                        <p>6月8日，北京人形机器人创新中心与地瓜机器人公布产业化合作新进展，双方协同打造的<span class="highlight-orange">全尺寸通用人形机器人天工3.0</span>，确定于2026年下半年开启规模化量产交付。天工3.0搭载地瓜机器人提供的核心计算平台与运动控制模块。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">天工系列是北京人形机器人创新中心的旗舰产品线</div>
+                        <div class="key-point">地瓜机器人提供端侧算力平台和运动控制系统</div>
+                        <div class="key-point">量产交付标志着国产人形机器人从实验室走向规模化部署</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">宇树科技单款人形机器人累计下线约11000台，IPO已提交注册</h3>
+                    <div class="news-content">
+                        <p>6月2日，宇树科技宣布<span class="highlight-orange">单款双足人形机器人累计生产下线约11000台</span>（不含其他型号），同时科创板IPO审核状态已变更为"提交注册"。从受理到提交注册仅用时74天，远快于科创板平均审核周期。宇树目前通用人形机器人产品包括H1/H1-2、G1、R1、H2等。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">11000台下线数据验证了人形机器人量产能力已跨过临界点</div>
+                        <div class="key-point">科创板IPO拟募资42亿元，有望成为A股人形机器人第一股</div>
+                        <div class="key-point">74天审核速度彰显资本市场对硬科技的精准支持</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察全球资讯最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🔥</div>
+                        <div class="trend-desc">
+                            <h3>中东火药桶再度引爆</h3>
+                            <p>伊朗时隔两月再袭以色列，停火协议岌岌可危，特朗普罕见公开与内塔尼亚胡翻脸。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🚀</div>
+                        <div class="trend-desc">
+                            <h3>史上最大IPO周来临</h3>
+                            <p>SpaceX 6月12日上市，Anthropic提交IPO，三家万亿级独角兽上市竞速开启。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>人形机器人从政策到量产全面加速</h3>
+                            <p>两部委万台级落地目标、天工3.0量产、宇树11000台下线，产业化临界点已至。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">⚡</div>
+                        <div class="trend-desc">
+                            <h3>AI编程进入"成本与能力"双轨竞赛</h3>
+                            <p>MIT揭示代码通胀真相，微软因成本自研模型，AI编程从比能力到比性价比。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">数据来源：新华社 · 央视网 · IT之家 · 新浪财经 · 环球网 · CNBC · Times of Israel · Mint</p>
+            <p class="footer-meta">整理时间：2026-06-09 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
