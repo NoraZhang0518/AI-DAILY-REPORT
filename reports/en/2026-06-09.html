@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-09</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-09</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">2026 Gaokao Ends Today Across China, Score Release Dates Announced</h3>
+                    <div class="news-content">
+                        <p>June 9 marks the third day of the 2026 Gaokao, with exams concluding in most regions today. <span class="highlight-bold">29 provinces now follow the "New Gaokao" model</span> &#8212; 6 using the "3+3" subject selection mode and 23 using "3+1+2." Students now enter the score query and college application phase, with most provinces releasing results between June 23-26.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">National Gaokao registration hits 12.9 million, a new record</div>
+                        <div class="key-point">New Gaokao model offers more subject combinations but increases application complexity</div>
+                        <div class="key-point">Authorities warn students about "AI prediction" scams targeting exam takers</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Police Nationwide Crack Down on Gaokao-Related Online Rumors</h3>
+                    <div class="news-content">
+                        <p>To ensure the 2026 Gaokao proceeds safely, police across China are enforcing <span class="highlight-bold">the highest standards and strictest measures</span> against exam-related crimes. Multiple cases of fabricated "exam leaks" and "proxy testing" rumors have been prosecuted.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Ministry of Public Security deploys dedicated exam security task forces nationwide</div>
+                        <div class="key-point">Key targets: organized cheating, selling exam answers, spreading exam-related rumors</div>
+                        <div class="key-point">Legal consequences for fabricating and spreading Gaokao-related misinformation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Gaokao Math Question Makes Ningxia's 108 Pagodas Go Viral, 4.7M Hot Search</h3>
+                    <div class="news-content">
+                        <p>A 2026 Gaokao math question featuring Ningxia's Bronze Gorge 108 Pagodas sent the ancient site viral. The topic trended on Weibo with over <span class="highlight-bold">4.7 million</span> views, as many students searched for the Western Xia-era relic after the exam.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The 108 Pagodas date back to the Western Xia dynasty, located in Ningxia's Bronze Gorge</div>
+                        <div class="key-point">Question combining math modeling with cultural heritage praised as "most beautiful exam question"</div>
+                        <div class="key-point">Local tourism bureau quickly launched a "same as the math question" tour route</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">RMB Midpoint at 6.8198, CFETS Index Up 0.67%</h3>
+                    <div class="news-content">
+                        <p>The RMB central parity rate was set at <span class="highlight-bold">6.8198</span> on June 9, down 41 basis points. The CFETS RMB Index rose to 101.33, up 0.67%. Onshore RMB traded at 6.7844, offshore at 6.7901. The USD index stood at 100.0000, down 0.07%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">RMB exchange rate remains stable overall, CFETS index continues to recover</div>
+                        <div class="key-point">Market eyes this week's Fed meeting for directional cues on the yuan</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Global Tech Selloff, A-Share Market Direction in Focus</h3>
+                    <div class="news-content">
+                        <p>Last week saw a global tech stock selloff. A-share tech sector "crowding" loosened, with the <span class="highlight-bold">ChiNext Index breaking below its 20-day line for the first time since April 8</span>. While 1,883 stocks rose (best in 4 weeks), the overall market fell after early gains. Key June themes: Fed rate decision + SpaceX IPO + Changxin Tech IPO.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">ChiNext breaks support level, signaling tech sector crowding may be unwinding</div>
+                        <div class="key-point">Analysts recommend defensive positions, awaiting policy signals</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">BYD Confirms Humanoid Robot Program Codenamed "Yao Shun Yu," Secretly Developed for 4 Years</h3>
+                    <div class="news-content">
+                        <p>BYD Executive Vice President Li Ke publicly confirmed the company is developing a humanoid robot, codenamed <span class="highlight-bold">"Yao Shun Yu"</span>, launched in 2022 under Division 15, with four years of secret R&D. A ~4,000-person core team has been assembled with 30%+ holding PhDs. However, BYD denied rumors of "20,000 units to be deployed internally this year."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Program under Division 15 with technical support from Central Research Institute</div>
+                        <div class="key-point">BYD clarifies: 20,000-unit deployment figure is inaccurate, but the robot program is real</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Iran Fires Multiple Waves of Ballistic Missiles at Israel, Ceasefire on the Brink</h3>
+                    <div class="news-content">
+                        <p>On the evening of June 7 local time, Iran's Islamic Revolutionary Guard Corps launched at least three waves of ballistic missiles (~10 total) at northern Israel, targeting the Ramat David Air Base. The IDF said it intercepted two missiles with no casualties. This marks <span class="highlight-bold">the first direct Iranian attack on Israel since the April 8 ceasefire</span>.</p>
+                        <p>Trump warned Netanyahu "not to retaliate," saying further escalation would destroy progress in U.S.-Iran negotiations. Trump publicly called Netanyahu "crazy," saying Israel was complicating peace talks with Tehran.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">From "patience has ended" to missiles in the air took just 72 hours &#8212; Middle East situation deteriorating rapidly</div>
+                        <div class="key-point">Trump's "on your own" warning to Israel exposes a public rift in U.S.-Israel relations</div>
+                        <div class="key-point">Ceasefire hanging by a thread, international oil prices face renewed upward pressure</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">SpaceX's Record-Breaking IPO Hits Nasdaq in 3 Days, $1.75 Trillion Valuation</h3>
+                    <div class="news-content">
+                        <p>SpaceX plans to list on Nasdaq on June 12 under ticker SPCX, offering 555 million Class A shares at <span class="highlight-bold">$135 per share</span>, raising ~$75 billion &#8212; the <span class="highlight-bold">largest IPO in history</span>, targeting a $1.75 trillion valuation.</p>
+                        <p>The IPO uses a pure primary offering structure, with all proceeds going to the company. Core businesses span space launch, Starlink satellite internet, and AI infrastructure. SpaceX also signed a major AI computing agreement with Anthropic.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Pricing on June 11, trading debut June 12 &#8212; global capital markets watching closely</div>
+                        <div class="key-point">Pure primary offering means existing shareholders aren't selling &#8212; all funds for company growth</div>
+                        <div class="key-point">Anthropic's billion-dollar compute deal signals SpaceX expanding from aerospace to AI infrastructure</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">2026 FIFA World Cup Opens June 11: 48 Teams, 3 Host Nations, Historic First</h3>
+                    <div class="news-content">
+                        <p>The 2026 FIFA World Cup opens June 11 in Mexico City &#8212; the <span class="highlight-bold">first World Cup co-hosted by three nations and first with 48 teams</span>. Matches span 16 cities across the U.S., Canada, and Mexico, with 104 games culminating on July 19.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Opening match: Mexico City, June 11; three separate opening ceremonies across host nations</div>
+                        <div class="key-point">Iran team faces U.S. visa denial for some delegation members, Tehran protests "discriminatory treatment"</div>
+                        <div class="key-point">Largest World Cup ever, expected to attract billions of global viewers</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Fed's June FOMC Meeting This Week, Rate Cut Expectations Pushed Back Again</h3>
+                    <div class="news-content">
+                        <p>The Federal Reserve's June FOMC meeting is approaching, with CCTV reporting that another rate hike of at least 25 basis points may be coming. Rabobank now forecasts the first rate cut pushed to <span class="highlight-bold">October 2026</span>, with the second in January 2027, later than previously expected.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Middle East tensions keep energy prices elevated, inflation pressure suppressing rate cut room</div>
+                        <div class="key-point">FOMC has abandoned its easing bias, policy shifting hawkish</div>
+                        <div class="key-point">Decision and Summary of Economic Projections due June 18 at 2:00 AM Beijing time</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Anthropic Secretly Files IPO, $965 Billion Valuation Surpasses OpenAI</h3>
+                    <div class="news-content">
+                        <p>On June 1, Anthropic announced it had confidentially submitted an S-1 registration statement to the SEC, formally initiating the IPO process. Having just completed a <span class="highlight-bold">$65 billion Series H round</span> on May 28, its post-money valuation surged to <span class="highlight-bold">$965 billion</span>, officially surpassing OpenAI as the world's most valuable AI startup.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">IPO likely in fall; three trillion-dollar unicorns (Anthropic/OpenAI/SpaceX) race to public markets</div>
+                        <div class="key-point">Anthropic also expands Glasswing program, Mythos public release coming in weeks</div>
+                        <div class="key-point">OpenAI valued at $852 billion, also preparing its own IPO filing</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Iran World Cup Squad Faces U.S. Visa Denial, Tehran Protests "Discriminatory Treatment"</h3>
+                    <div class="news-content">
+                        <p>With the 2026 World Cup approaching, Iran's national team traveled to Mexico on June 6 for final preparations. However, the U.S. denied visas to some Iranian team officials and support staff, with <span class="highlight-bold">Tehran accusing Washington of "discriminatory treatment"</span> of the Iranian delegation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Visa issues affect multiple non-athlete members of Iran's delegation</div>
+                        <div class="key-point">FIFA has not yet issued an official statement on the matter</div>
+                        <div class="key-point">Intersection of sports and geopolitics draws renewed international attention</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">MIT Tracks 100K Developers: AI Coding Output Up 17x, Software Products Up Only 30%</h3>
+                    <div class="news-content">
+                        <p>MIT and University of Pennsylvania researchers published a landmark NBER working paper on generative AI coding tools' impact &#8212; the largest empirical study to date. Tracking 100,000 developers, they found AI tools drove <span class="highlight-bold">a 17x increase in code volume</span>, but <span class="highlight">actual software output rose only ~30%</span>.</p>
+                        <p>AI tools dramatically lowered the marginal cost of writing code, but the output conversion rate fell far short of expectations. Much of the new code consists of "glue code" and boilerplate that doesn't translate into functional software.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Efficiency gains &#8800; output gains &#8212; AI coding may be creating "code inflation"</div>
+                        <div class="key-point">17x code vs. 30% software reveals the nonlinear conversion of AI coding tools</div>
+                        <div class="key-point">Study warns: long-term maintenance costs of AI-generated code need attention</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Anthropic Expands Glasswing Program, Mythos-Level Model Public Release in Weeks</h3>
+                    <div class="news-content">
+                        <p>On June 2, Anthropic expanded Project Glasswing to <span class="highlight-bold">~150 organizations across 15 countries</span>, covering power, water, healthcare, telecommunications, and hardware &#8212; critical infrastructure industries. Anthropic also committed to releasing <span class="highlight">Mythos-level models to all users within weeks</span>.</p>
+                        <p>Glasswing aims to safely deploy frontier AI in critical infrastructure. Claude Mythos Preview launched April 7, previously limited to select partners like Apple. It represents the highest tier in the Claude product line, surpassing Opus.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Mythos public launch imminent &#8212; frontier AI model competition enters new phase</div>
+                        <div class="key-point">Glasswing moving from restricted testing to large-scale deployment, AI safety framework taking shape</div>
+                        <div class="key-point">150 organizations across critical infrastructure signal accelerating AI-real economy integration</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Claude Code's Major Update Introduces "Self-Healing," Ushering New Era in AI Coding</h3>
+                    <div class="news-content">
+                        <p>On May 28, Anthropic released the latest version of Claude Code, described as <span class="highlight-bold">its largest update since launch</span>. The headline feature is <span class="highlight">"self-healing"</span> &#8212; AI that can automatically detect and fix code errors during execution, rather than merely suggesting fixes.</p>
+                        <p>The update addresses six key pain points, including visual experience improvements and better context management. Developer feedback indicates significant efficiency gains, though risks of autonomous code modification warrant caution.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">"Self-healing" marks the evolution from "assisted suggestion" to "autonomous repair" in AI coding</div>
+                        <div class="key-point">AI coding tools shifting from passive response to proactive intervention</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Microsoft to Build In-House AI Coding Model as Claude Costs Too Much, Internal Switch in June</h3>
+                    <div class="news-content">
+                        <p>Microsoft CEO Satya Nadella ordered internal teams to switch from Claude to GitHub Copilot in June, as <span class="highlight-bold">Claude's model costs have become unjustifiable</span>. Combined with the latest reports, Microsoft is preparing its own proprietary AI coding model to compete directly with Anthropic.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Microsoft previously relied heavily on Claude to power GitHub Copilot Pro</div>
+                        <div class="key-point">Proprietary model will deeply integrate with Visual Studio and GitHub ecosystems</div>
+                        <div class="key-point">AI coding tool cost wars begin as big tech accelerates in-house alternatives</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">MIIT &amp; SASAC Jointly Launch Humanoid Robot &amp; Embodied AI Real-World Training Campaign</h3>
+                    <div class="news-content">
+                        <p>On June 9, China's Ministry of Industry and Information Technology (MIIT) and the State-Owned Assets Supervision and Administration Commission (SASAC) jointly issued a notice to launch the 2026 Humanoid Robot &amp; Embodied AI Real-World Training Campaign. Focusing on industrial, special-operations, and service scenarios, the campaign advances <span class="highlight-bold">real-world training space construction, innovation consortium cultivation, and operational skill development</span>.</p>
+                        <p>Target: By end of 2026, key products like humanoid robots should achieve application verification and routine deployment in representative scenarios. The goal is to develop 100+ high-value application scenarios and drive <span class="highlight-orange">10,000-unit-scale deployment capability</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Two national-level departments jointly push policy &#8212; from "encouraging R&amp;D" to "mandating deployment"</div>
+                        <div class="key-point">Real-world training to continuously optimize embodied AI model algorithms and accumulate high-quality data</div>
+                        <div class="key-point">10,000-unit target signals humanoid robots crossing the critical threshold from lab to industrialization</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Tiangong 3.0 Humanoid Robot Set for Mass Production in H2 2026</h3>
+                    <div class="news-content">
+                        <p>On June 8, the Beijing Humanoid Robot Innovation Center and Digua Robotics announced new industrialization progress: the <span class="highlight-orange">full-size general-purpose humanoid robot Tiangong 3.0</span>, co-developed by both parties, is confirmed for scaled mass production and delivery starting in H2 2026. Tiangong 3.0 features Digua Robotics' core computing platform and motion control modules.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Tiangong series is the flagship product line of Beijing Humanoid Robot Innovation Center</div>
+                        <div class="key-point">Digua Robotics provides edge computing platform and motion control systems</div>
+                        <div class="key-point">Mass production marks the transition of Chinese humanoid robots from lab to scaled deployment</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Unitree's Single Humanoid Robot Model Reaches ~11,000 Units Produced, IPO Registration Submitted</h3>
+                    <div class="news-content">
+                        <p>On June 2, Unitree Robotics announced <span class="highlight-orange">approximately 11,000 units of a single bipedal humanoid model produced</span> (excluding other models). Its STAR Market IPO status has also been updated to "registration submitted." The process from acceptance to registration took just 74 days &#8212; far faster than the STAR Market average. Unitree's humanoid product lineup includes H1/H1-2, G1, R1, and H2.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">11,000 units validates that humanoid robot mass production capability has crossed a critical threshold</div>
+                        <div class="key-point">IPO targets 4.2 billion RMB in fundraising, poised to become China's first A-share humanoid robot stock</div>
+                        <div class="key-point">74-day review speed demonstrates capital markets' efficient support for deep-tech companies</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest global landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128293;</div>
+                        <div class="trend-desc">
+                            <h3>Middle East Powder Keg Re-ignited</h3>
+                            <p>Iran strikes Israel for first time in two months, ceasefire on the verge of collapse, Trump publicly breaks with Netanyahu.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128640;</div>
+                        <div class="trend-desc">
+                            <h3>Largest IPO Week in History</h3>
+                            <p>SpaceX debuts June 12, Anthropic files IPO &#8212; three trillion-dollar unicorns race to public markets.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robots Accelerate from Policy to Production</h3>
+                            <p>Two ministries target 10K-unit deployment, Tiangong 3.0 enters mass production, Unitree hits 11,000 units &#8212; industrialization inflection point reached.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9889;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Enters Dual Track: Cost vs. Capability</h3>
+                            <p>MIT reveals code inflation truth, Microsoft builds in-house model over Claude costs &#8212; the race shifts from capability to cost-effectiveness.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua &middot; CCTV &middot; IT Home &middot; Sina Finance &middot; Huanqiu &middot; CNBC &middot; Times of Israel &middot; Mint</p>
+            <p class="footer-meta">Compiled: 2026-06-09 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
