@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-10</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-10</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">U.S. Requests China Resume Rare Earth Exports to Japan? China Firmly Responds: Stopping Japan's "Remilitarization"</h3>
+                    <div class="news-content">
+                        <p>According to Nikkei, the U.S. government formally pressured China to resume rare earth exports to Japan and plans to make it a core agenda item at next week's G7 summit. On June 9, Chinese Foreign Ministry spokesperson Lin Jian firmly responded: <span class="highlight-bold">China lawfully prohibits all dual-use items exports to Japanese military users and military purposes</span>, aiming to stop Japan's "remilitarization" and nuclear ambitions. China holds 70% of global rare earth production and 90% of processing capacity.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">China controls 70% of global rare earth production, 90% of processing</div>
+                        <div class="key-point">Japan's remarks on Taiwan triggered China's export control escalation</div>
+                        <div class="key-point">U.S. lobbying for Japan at G7, China's stance remains firm</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">2026 Gaokao Concludes in Most Regions, Score Release Dates Announced for 12.9M Test-Takers</h3>
+                    <div class="news-content">
+                        <p>On June 9, the 2026 National College Entrance Exam entered its third day, concluding in most regions. This year saw <span class="highlight-bold">12.9 million registered examinees</span> across 29 provinces implementing the "New Gaokao" model. Score release dates are mostly set around June 25. This year marks the first comprehensive deployment of AI-powered smart surveillance and smart glasses inspection systems.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">12.9M examinees, 29 provinces on "New Gaokao" model</div>
+                        <div class="key-point">Most provinces to release scores around June 25</div>
+                        <div class="key-point">First-ever comprehensive AI smart surveillance for anti-cheating</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Humanoid Robot Prices Crash: From Millions to Under 10,000 RMB</h3>
+                    <div class="news-content">
+                        <p>Unitree R1 is priced at <span class="highlight-bold">39,999 RMB</span> with over 200 purchases, while Xiaobumi is priced at only <span class="highlight-bold">9,998 RMB</span> topping e-commerce sales charts. Engineering prototypes that cost nearly one million RMB a year ago are now being cleared out at "50,000 RMB per batch." Unitree's unit price dropped from 593,400 RMB in 2023 to 167,600 RMB, driven by supply chain maturity and scale effects.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Unitree R1 at 39,999 RMB, Xiaobumi under 10,000 RMB</div>
+                        <div class="key-point">Price dropped from 593K to 167.6K RMB in just over a year</div>
+                        <div class="key-point">Supply chain reuse + high localization rate driving cost compression</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Apple WWDC 2026 Launches iOS 27/Siri AI, Market Cap Evaporates Over 570B RMB</h3>
+                    <div class="news-content">
+                        <p>On June 8, Apple held WWDC 2026 at Apple Park, officially launching iOS 27 and <span class="highlight-bold">Siri AI</span>. Siri was rebranded and became a standalone app with smarter interaction capabilities. However, investors reacted coolly, with <span class="highlight-bold">market cap evaporating over 570 billion RMB</span> overnight. Some Siri AI features are not yet available in mainland China.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Siri rebranded as "Siri AI" and becomes standalone app</div>
+                        <div class="key-point">Investor disappointment wipes 570B+ RMB from market cap</div>
+                        <div class="key-point">Some AI features unavailable in mainland China</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Oil Prices Drop for Second Straight Round, 92# Gasoline Down 0.45 RMB/Liter</h3>
+                    <div class="news-content">
+                        <p>China's June 4 fuel price adjustment cut gasoline and diesel by 525 and 505 RMB/ton respectively. <span class="highlight-bold">92# gasoline dropped 0.45 RMB/liter</span>, with Beijing 92# falling to 8.35 RMB/liter. The next adjustment window opens June 19, with an expected further drop of 0.1-0.11 RMB/liter. International WTI crude stands around $94.95/barrel.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">92# gasoline down 0.45 RMB/liter</div>
+                        <div class="key-point">Next round June 19 expected to drop another 0.1-0.11 RMB/liter</div>
+                        <div class="key-point">International WTI at $94.95/barrel</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">China's Largest Solar-Hydrogen-Storage Integrated Project Completed</h3>
+                    <div class="news-content">
+                        <p>China's largest <span class="highlight-bold">solar-hydrogen-storage integrated project</span> has been fully completed. The new-generation communication network is projected to drive 7 trillion RMB in output over five years. The world's largest LNG transport ship began construction in Shanghai, and Guangdong is encouraging "solar-storage-charging" integrated facilities.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Solar-hydrogen-storage project fully completed</div>
+                        <div class="key-point">New communication network to drive 7 trillion RMB output in 5 years</div>
+                        <div class="key-point">World's largest LNG carrier under construction in Shanghai</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Iran Shoots Down U.S. Apache Helicopter, Trump Orders Retaliatory Strikes</h3>
+                    <div class="news-content">
+                        <p>On June 8, a U.S. AH-64 Apache helicopter was <span class="highlight-bold">shot down by Iran near the Strait of Hormuz</span>; both crew members survived. Trump declared on June 9 that the U.S. "must respond," and U.S. Central Command launched "self-defense strikes" against Iran. Multiple explosions reported across southern Iran as Middle East tensions escalate dramatically.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">U.S. Apache helicopter shot down over Strait of Hormuz</div>
+                        <div class="key-point">Trump orders retaliatory strikes against Iran</div>
+                        <div class="key-point">Multiple explosions across southern Iran, Middle East crisis deepens</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">2026 FIFA World Cup Opens June 11: 48 Teams, 3 Host Nations</h3>
+                    <div class="news-content">
+                        <p>The 2026 FIFA World Cup kicks off June 11 at <span class="highlight-bold">Estadio Azteca in Mexico City</span>, marking the first-ever 48-team tournament co-hosted by three nations. The tournament features 104 matches across 16 cities in the U.S., Canada, and Mexico. Portugal's president presented Ronaldo with a flag, and global fan anticipation is at an all-time high.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First-ever 48-team, tri-nation World Cup</div>
+                        <div class="key-point">Opening ceremony at Estadio Azteca, Mexico City</div>
+                        <div class="key-point">104 matches across 16 cities in 3 countries</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">G7 Summit June 14-16 in Evian, France</h3>
+                    <div class="news-content">
+                        <p>The 2026 G7 Summit will be held June 14-16 in <span class="highlight-bold">Evian-les-Bains, France</span>, the 52nd G7 summit. Rare earth exports, Middle East tensions, and AI regulation are expected to dominate the agenda. Macron previously announced guest lists without inviting China, drawing diplomatic attention.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Evian-les-Bains, France hosts the 52nd G7 Summit</div>
+                        <div class="key-point">Rare earth, Middle East, AI regulation as key topics</div>
+                        <div class="key-point">China not invited as special guest</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">SpaceX IPO Heavily Oversubscribed, Nasdaq Debut June 12</h3>
+                    <div class="news-content">
+                        <p>SpaceX plans to list on Nasdaq on June 12 at <span class="highlight-bold">$135 per share</span>, issuing 5.556 billion shares to raise $75 billion at a <span class="highlight-bold">$1.75 trillion valuation</span>, making it the largest IPO in U.S. history. Institutional subscription closes June 11, already heavily oversubscribed. The Anthropic AI computing deal is a highlight in the prospectus.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Nasdaq debut June 12, ticker SPCX</div>
+                        <div class="key-point">$135/share, $1.75T valuation</div>
+                        <div class="key-point">Largest U.S. IPO in history, heavily oversubscribed</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">OpenAI Secretly Files IPO, Racing Anthropic to Public Markets</h3>
+                    <div class="news-content">
+                        <p>On June 8, OpenAI announced it had secretly filed an S-1 registration statement with the SEC. <span class="highlight-bold">Anthropic filed first on June 2</span> (valuation $965 billion). OpenAI is targeting a <span class="highlight-bold">$1 trillion valuation</span>, potentially listing as early as September. SpaceX + Anthropic + OpenAI together would add nearly $4 trillion in market cap to public markets.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenAI follows Anthropic in filing S-1</div>
+                        <div class="key-point">Targeting $1T valuation, possibly listing by September</div>
+                        <div class="key-point">Three giants adding nearly $4T in combined market cap</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Gold, Silver, Oil All Drop as U.S.-Iran Conflict Triggers Market Turmoil</h3>
+                    <div class="news-content">
+                        <p>The escalating U.S.-Iran conflict triggered global market turbulence with <span class="highlight-bold">gold, silver, and crude oil all falling</span>. Gold had previously approached $4,500/oz historic highs, but safe-haven assets were sold off after the conflict escalated. Nasdaq closed down ~1%, chip stocks continued recovering. U.S. May CPI data is due imminently, with markets watching the Fed closely.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Gold, silver, crude oil all declining</div>
+                        <div class="key-point">Nasdaq down ~1%, chip stocks continuing recovery</div>
+                        <div class="key-point">U.S. May CPI data imminent, markets on edge</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic Drops Claude Fable 5/Mythos 5 Overnight, Tops All Benchmarks</h3>
+                    <div class="news-content">
+                        <p>In the early hours of June 10 (Beijing time), Anthropic released two new models without any prior announcement: <span class="highlight-bold">Claude Fable 5</span> available to all users, and <span class="highlight-bold">Claude Mythos 5</span> remaining in controlled projects like Project Glasswing. Fable 5 is Anthropic's most capable publicly available model, demonstrating "exceptional performance" in software engineering, knowledge work, vision, and scientific research.</p>
+                        <p>Fable 5 outperforms Opus models on longer, more complex tasks and has the longest autonomous runtime of any Claude model to date. This marks the first time Anthropic has brought "Mythos-class" capabilities to a broader audience.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Fable 5: Anthropic's strongest publicly available model</div>
+                        <div class="key-point">Mythos 5: same foundation model, controlled access</div>
+                        <div class="key-point">Tops all benchmarks, sets new autonomous runtime record</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">GitHub Copilot Switches to AI Credits Pay-Per-Use Billing on June 1</h3>
+                    <div class="news-content">
+                        <p>Starting June 1, GitHub Copilot shifted from fixed subscription to <span class="highlight-bold">AI Credits token-based billing</span>. Code completion remains free, but Chat, Agent mode, and PR summaries now charge per use. Copilot Max costs $100/month with 20,000 AI Credits; heavy users can see bills up to <span class="highlight">$3,000/month</span>, a 60x increase. This shift marks the end of the AI coding "cheap flat-rate" era.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Code completion free, Chat/Agent modes pay-per-use</div>
+                        <div class="key-point">Heavy user bills surge from $50 to $3,000/month</div>
+                        <div class="key-point">AI coding "cheap flat-rate" era officially ends</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">ByteDance's TRAE Tops AI Coding Tool Rankings with 98% Code Generation Accuracy</h3>
+                    <div class="news-content">
+                        <p>In Q2 2026 developer community voting, ByteDance's AI-native IDE <span class="highlight-bold">TRAE</span> topped the AI coding tool popularity chart with <span class="highlight">98% code generation accuracy</span>. It has surpassed 6 million registered users, boosting coding efficiency by 30%+ on average. Deep integration with Doubao-1.5-pro and DeepSeek models, design-to-code time reduced by 22%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">98% code generation accuracy, 6M+ registered users</div>
+                        <div class="key-point">Deep integration with Doubao-1.5-pro and DeepSeek</div>
+                        <div class="key-point">Design-to-code time reduced by 22%</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Meituan Launches AI-Native Browser Tabbit 1.0, WeChat Opens AI Ecosystem</h3>
+                    <div class="news-content">
+                        <p>On June 9, Meituan's GN06 team announced <span class="highlight-bold">AI-native browser Tabbit 1.0</span> officially launched. It integrates multiple LLMs and can automatically execute cross-app, cross-webpage tasks from a single user prompt. Meanwhile, <span class="highlight">WeChat opened AI ecosystem access</span> with Didi and 10+ major companies joining. DeepSeek is hiring "civil engineering veterans" to build its own GW-scale data center.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Tabbit 1.0: AI-native browser, one prompt for cross-app tasks</div>
+                        <div class="key-point">WeChat opens AI ecosystem, 10+ giants joining</div>
+                        <div class="key-point">DeepSeek plans self-built GW-scale data center</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Humanoid Robot Price Crash: Unitree R1 at 39,999 RMB, Xiaobumi Under 10K</h3>
+                    <div class="news-content">
+                        <p>The humanoid robot industry is experiencing an unprecedented price collapse. <span class="highlight-orange">Unitree R1 priced at 39,999 RMB</span> with 200+ purchases, while <span class="highlight-orange">Xiaobumi is priced at only 9,998 RMB</span> topping e-commerce sales. Unitree's unit price dropped from 593,400 RMB in 2023 to 167,600 RMB by Q3 2025, a cumulative drop of over 400,000 RMB.</p>
+                        <p>Supply chain reuse + high localization rate + scale effects have compressed per-unit costs to the level of a large home appliance. Overseas analysts say Unitree is "following the path of BYD and DJI." Actuators account for 50-70% of BOM, and localization-driven cost reduction is the key driver.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Unitree R1 at 39,999 RMB, Xiaobumi at 9,998 RMB</div>
+                        <div class="key-point">Price crashed from 593K to 167.6K RMB in just over a year</div>
+                        <div class="key-point">Actuators 50-70% of BOM, localization is key cost driver</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Two Ministries Launch Humanoid Robot Real-Scenario Training Action with 10,000-Unit Target</h3>
+                    <div class="news-content">
+                        <p>The Ministry of Industry and Information Technology and SASAC jointly launched the <span class="highlight-orange">Humanoid Robot & Embodied AI Real-Scenario Training Special Action</span>, targeting 10,000+ units in real-world deployment. The action leverages manufacturing, logistics, and service scenarios to accelerate the transition from lab to industrial deployment. This follows the HEIS 2026 standard system release as another major government push for embodied AI industrialization.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">MIIT + SASAC jointly driving the initiative</div>
+                        <div class="key-point">10,000-unit real-world deployment target</div>
+                        <div class="key-point">Manufacturing, logistics, service as three core scenarios</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">BYD Confirms Self-Developed Humanoid Robot Codenamed "Yao-Shun-Yu," 20,000 Units for Internal Deployment in 2026</h3>
+                    <div class="news-content">
+                        <p>BYD Executive Vice President Li Ke officially confirmed the company's self-developed humanoid robot codenamed <span class="highlight-orange">"Yao-Shun-Yu"</span> (named after three legendary Chinese sage-kings), with plans for <span class="highlight-orange">20,000 units of internal deployment</span> in 2026. Li Ke stated that the core of robot competition lies in manufacturing, software, and hardware capabilities, and that migrating automotive software complexity to robots is "very easy." BYD's full automotive chain advantage will unlock a second growth curve for the robotics business.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Codename "Yao-Shun-Yu," 20,000 units internally in 2026</div>
+                        <div class="key-point">Full automotive chain advantage transfers to robotics</div>
+                        <div class="key-point">Actuator costs high, automotive supply chain reusable</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128293;</div>
+                        <div class="trend-desc">
+                            <h3>Middle East Crisis Escalates</h3>
+                            <p>Iran downs U.S. helicopter &#8594; U.S. retaliatory strikes &#8594; Hormuz risk surges &#8594; global market turmoil. Geopolitics enters new danger zone.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>AI Giants Rush to IPO</h3>
+                            <p>SpaceX lists June 12, Anthropic filed, OpenAI follows with S-1. Three giants bringing nearly $4T in combined market cap to public markets.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128201;</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robot Price "Collapse"</h3>
+                            <p>From millions to thousands, prices crashed 90%+ in one year. Mature domestic supply chains drive "cabbage price" era, consumer market poised to explode.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128142;</div>
+                        <div class="trend-desc">
+                            <h3>AI Models Reach "Fable" Class</h3>
+                            <p>Anthropic's Fable 5/Mythos 5 tops all benchmarks. AI coding's "cheap flat-rate" era ends, pay-per-use billing begins.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua &middot; Ifeng &middot; Sohu &middot; IT Home &middot; Caixin &middot; Jin10 &middot; 36Kr &middot; TopHub</p>
+            <p class="footer-meta">Compiled: 2026-06-10 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
