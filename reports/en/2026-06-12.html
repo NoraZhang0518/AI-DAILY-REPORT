@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-12</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-12</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">World Cup 2026 Opener Dominates Weibo: Mexico 2-0 South Africa, 3 Red Cards Make History</h3>
+                    <div class="news-content">
+                        <p>The 2026 FIFA World Cup opener kicked off at 3:00 AM Beijing time (June 12) at Mexico City's Estadio Azteca, with host Mexico defeating <span class="highlight-bold">South Africa 2-0</span>. The match was intensely physical with <span class="highlight-bold">3 red cards</span> issued &#8212; the first time in World Cup history an opening match saw three players sent off. World Cup topics swept multiple slots in Weibo's top 10 trending list, with "World Cup Opening Ceremony" hitting 850K popularity.</p>
+                        <p>The first-ever 48-team World Cup officially began as a historic three-nation joint hosting. The opening ceremony featured global superstars including <span class="highlight">Shakira, Burna Boy, and J Balvin</span>. South Korea vs. Czech Republic kicks off today at 10:00 AM Beijing time.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First 48-team World Cup opens, 3 red cards in the opener sets a historic record</div>
+                        <div class="key-point">"World Cup Opening Ceremony" tops Weibo trending at 850K popularity</div>
+                        <div class="key-point">Chinese elements: referee Ma Ning selected for officiating team, Labubu mascot goes viral</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Huawei HDC 2026 Opens Today: HarmonyOS 7.0 Debuts, Native HarmonyOS Goes Fully Independent</h3>
+                    <div class="news-content">
+                        <p>Huawei Developer Conference HDC 2026 runs from June 12-14 at Songshan Lake, Dongguan, with the keynote at 2:30 PM today. The conference unveils <span class="highlight-bold">HarmonyOS 7.0</span>, with HarmonyOS NEXT completely stripping away AOSP code and <span class="highlight">no longer supporting Android apps</span>, marking full independence for the world's third-largest mobile OS. "Huawei Developer Conference 2026" ranked #4 on Weibo trending with 540K popularity.</p>
+                        <p>The conference also showcases HarmonyOS AI core capabilities, cross-device connectivity upgrades, and ecosystem achievements. HarmonyOS AI covers on-device LLM inference, multimodal interaction, and code generation, with cockpit AI APIs opened to developers for the first time.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">HarmonyOS 7.0 released, native HarmonyOS fully breaks away from Android compatibility</div>
+                        <div class="key-point">Cockpit AI APIs opened for the first time, accelerating smart mobility ecosystem</div>
+                        <div class="key-point">World's third-largest mobile OS achieves full independence, forming a tripartite with iOS/Android</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">National Human Rights Action Plan (2026-2030) Released, Multiple Livelihood Policies Roll Out</h3>
+                    <div class="news-content">
+                        <p>On June 11, at the opening ceremony of the "2026 Global Human Rights Governance Forum," the <span class="highlight-bold">National Human Rights Action Plan (2026-2030)</span> was officially released. The Ministry of Public Security simultaneously issued the 2026 Anti-Telecom Fraud Handbook. The first batch of "China's Good People List" for 2026 was also announced with 151 individuals recognized.</p>
+                        <p>Multiple livelihood policies launched: China Railway introduced <span class="highlight">children's tourist multi-ride tickets at 50% adult price</span>, Suzhou encourages "courageous emergency rescue" with 2,000 RMB rewards, and four ministries jointly launched an entrepreneurship guidance initiative.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">New human rights action plan covers 2026-2030 across economic, social and cultural rights</div>
+                        <div class="key-point">Children's rail pass at 50% off, emergency rescue rewards, and more livelihood policies</div>
+                        <div class="key-point">Four ministries launch entrepreneurship initiative focusing on tech commercialization</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">China Sanctions Philippine Defense Secretary Teodoro Over Anti-China Remarks</h3>
+                    <div class="news-content">
+                        <p>China's Ministry of Foreign Affairs announced sanctions against Philippine Defense Secretary Teodoro, who <span class="highlight-bold">repeatedly made erroneous remarks concerning China</span>, harming China's legitimate interests and bilateral relations. Sanctions include banning Teodoro and his immediate family from entering Chinese mainland, Hong Kong, and Macau, and prohibiting any transactions with Chinese entities and individuals.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Philippine defense chief's repeated anti-China remarks trigger targeted sanctions</div>
+                        <div class="key-point">Entry ban plus transaction ban, sanctions cover immediate family members</div>
+                        <div class="key-point">China's firm position on South China Sea sovereignty remains unwavering</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">MIIT and SAMR Summon Automakers Over Irrational Competition, State Council Deploys Tech Power Strategy</h3>
+                    <div class="news-content">
+                        <p>On June 11, the Ministry of Industry and Information Technology and the State Administration for Market Regulation jointly summoned <span class="highlight-bold">automakers suspected of irrational competitive practices</span>, demanding strict compliance with the Price Law and product quality controls to maintain orderly competition. The automotive price war had been escalating, triggering regulatory scrutiny.</p>
+                        <p>The same day, Premier Li Qiang chaired a State Council executive meeting, calling for <span class="highlight">anchoring the goal of building a tech powerhouse</span> and strengthening national strategic science and technology capabilities through systematic collaboration.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Two ministries jointly summon automakers over irrational price wars</div>
+                        <div class="key-point">State Council deploys tech powerhouse strategy, strengthening national S&T capabilities</div>
+                        <div class="key-point">MIIT and Ministry of Culture launch 2026 Consumer Products National Tour</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Foreign Minister Wang Yi to Visit Mongolia, China-EU Summit Rumors Draw Attention</h3>
+                    <div class="news-content">
+                        <p>Foreign Minister Wang Yi will visit Mongolia from June 13-15. Separately, in response to foreign media reports that "China canceled this month's high-level meeting with the EU due to rising trade tensions," Foreign Ministry spokesperson Lin Jian stated that <span class="highlight-bold">China and the EU maintain communication on relevant dialogues</span>. China-EU trade frictions have been heating up recently, with both sides maneuvering on semiconductor controls and EV tariffs.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Wang Yi's Mongolia visit advances bilateral relations</div>
+                        <div class="key-point">China-EU summit rumors swirl, Foreign Ministry confirms ongoing communication</div>
+                        <div class="key-point">China-EU relationship dynamics in focus amid trade frictions</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">SpaceX Debuts on Nasdaq Today: Largest IPO in History at $1.75 Trillion Valuation</h3>
+                    <div class="news-content">
+                        <p>On June 12, SpaceX officially began trading on Nasdaq under ticker <span class="highlight-bold">SPCX</span>, priced at <span class="highlight">$135 per share</span>, corresponding to a valuation of approximately <span class="highlight">$1.75 trillion</span>, raising $750 billion &#8212; the largest IPO in global history. Elon Musk's aerospace and AI giant will surpass Tesla to enter the top 10 US stocks by market cap.</p>
+                        <p>SpaceX reported $18.7 billion in 2025 revenue with a $1.9 billion operating loss, and $4.7 billion in Q1 2026 revenue. The company has secured a multi-billion-dollar AI computing contract with Anthropic, bringing a dual "Space + AI" narrative to capital markets. Morningstar's fair value estimate stands at $111 per share.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">$135/share, $1.75T valuation, $75B raised &#8212; all global records</div>
+                        <div class="key-point">Surpasses Tesla into top 10 US market cap, dual Space+AI narrative</div>
+                        <div class="key-point">Multi-billion Anthropic AI computing deal, dual-listed on Nasdaq + Texas exchange</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Trump Announces Iran Deal in Final Stages, Cancels Planned Strikes</h3>
+                    <div class="news-content">
+                        <p>President Trump posted on Truth Social that consultations with Iran have been <span class="highlight-bold">submitted to Iran's supreme leadership and approved</span>, and he has canceled planned strikes and bombing operations against Iran. Trump described it as "an excellent deal," with <span class="highlight">documents entering final drafting and expected to be signed within days</span>.</p>
+                        <p>If signed, the agreement would mark a major turning point in the months-long Middle East crisis. "Trump cancels Iran strikes" trended at #10 on Weibo.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Trump confirms deal approved by Iran's top leadership, cancels military strikes</div>
+                        <div class="key-point">Final documents being drafted, signing expected within days</div>
+                        <div class="key-point">If successful, a major breakthrough for the months-long Middle East crisis</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">2026 World Cup Officially Opens: 48 Teams, 3 Nations, Global Spectacle</h3>
+                    <div class="news-content">
+                        <p>The expanded 48-team 2026 FIFA World Cup officially opened on June 11 at Mexico City's Estadio Azteca. This is the first World Cup <span class="highlight-bold">jointly hosted by three nations</span> and the first time a stadium has hosted three World Cup opening matches. The ceremony featured global superstars Shakira, Burna Boy, and J Balvin.</p>
+                        <p>104 matches across 16 host cities in three countries. The opener saw Mexico beat South Africa 2-0 with <span class="highlight">3 red cards &#8212; an opening match World Cup record</span>. Over 1 billion viewers tuned in globally for the ceremony and opening match.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First 48-team World Cup, 104 matches across 16 cities in 3 nations</div>
+                        <div class="key-point">Estadio Azteca makes history hosting three World Cup openers</div>
+                        <div class="key-point">Star-studded opening ceremony, over 1 billion global viewers</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">G7 Summit June 15-17 in Evian, France: Iran and Ukraine Dominate Agenda</h3>
+                    <div class="news-content">
+                        <p>The 52nd G7 Summit will be held June 15-17 in Evian-les-Bains, France. Host nation France seeks consensus on <span class="highlight-bold">Iran and the Ukraine conflict</span> while avoiding direct confrontation with President Trump. Strict border controls between France and Switzerland are already in effect ahead of the summit.</p>
+                        <p>Analysts note that Trump's sudden pivot toward negotiations with Iran, combined with uncertainty around his trade policy toward Europe, will pose significant challenges. <span class="highlight">Global trade friction and climate issues</span> also feature prominently on the agenda.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">52nd G7 Summit in Evian, France, June 15-17</div>
+                        <div class="key-point">Iran nuclear deal and Ukraine conflict dominate the agenda</div>
+                        <div class="key-point">Trump's pivot toward Iran negotiations adds uncertainty to the summit</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">World Bank Cuts 2026 Global Growth Forecast to 2.5%</h3>
+                    <div class="news-content">
+                        <p>The World Bank's latest Global Economic Prospects report downgraded 2026 global growth to <span class="highlight-bold">2.5%</span>, lower than previous forecasts. The report cited Middle East geopolitical conflicts, escalating trade tensions, and monetary policy uncertainty in major economies as key downside risks.</p>
+                        <p>Developing nations face mounting debt pressures, and while global inflation has eased, it remains above pre-pandemic levels. The World Bank urged stronger policy coordination to <span class="highlight">prevent protectionism from further dragging down global economic recovery</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Global growth forecast downgraded to 2.5% amid multiple headwinds</div>
+                        <div class="key-point">Middle East conflicts + trade friction + monetary policy uncertainty as key risks</div>
+                        <div class="key-point">Developing nations' debt pressures continue to mount</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">US Requests China Resume Rare Earth Exports to Japan; China Firmly Refuses</h3>
+                    <div class="news-content">
+                        <p>The US has formally requested that China resume rare earth exports to Japan. China's Foreign Ministry reiterated its <span class="highlight-bold">rare earth export control position toward Japan</span>, stating that Japan's accelerated militarization seriously threatens regional security, and China's export controls are legitimate measures to preserve peace and stability. China's bottom line "will not retreat."</p>
+                        <p>Since China implemented rare earth export controls, Japan's Ministry of Economy, Trade and Industry has urgently sought alternative sources, investing heavily in supply chain "de-China-ization," but short-term gaps remain difficult to fill, keeping the rare earth strategic contest at high intensity.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">US formally requests China resume rare earth exports to Japan, China refuses</div>
+                        <div class="key-point">China's stance: curbing Japan's re-militarization, rare earth red line will not retreat</div>
+                        <div class="key-point">Japan scrambles for "de-China" alternatives but faces near-term shortfall</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Huawei HDC 2026 Opens: HarmonyOS 7.0 Launches, HarmonyOS AI Fully Upgraded</h3>
+                    <div class="news-content">
+                        <p>Huawei Developer Conference 2026 officially opened today at Songshan Lake, Dongguan. <span class="highlight-bold">HarmonyOS 7.0</span> and HarmonyOS AI core capabilities take center stage. HarmonyOS NEXT completely removes AOSP code, with no Android app compatibility, marking the full independence of the world's third-largest mobile operating system.</p>
+                        <p>HarmonyOS AI covers on-device LLM inference, multimodal interaction, and code generation capabilities, with <span class="highlight">cockpit AI APIs opened to developers for the first time</span>. Partner companies like Talkweb showcase "AI x HarmonyOS" integration achievements, with the HarmonyOS ecosystem surpassing 1 billion devices.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">HarmonyOS 7.0 officially launched, native HarmonyOS fully breaks from Android</div>
+                        <div class="key-point">On-device LLM + multimodal + code generation, HarmonyOS AI capabilities fully open</div>
+                        <div class="key-point">World's 3rd largest mobile OS achieves independence, tripartite with iOS/Android</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">OpenAI GPT-5.6 Launch Imminent This Month, Altman Projects IPO Within a Year</h3>
+                    <div class="news-content">
+                        <p>According to The Information, OpenAI CEO Sam Altman projected in an internal Slack message that the company will complete its IPO <span class="highlight-bold">"within the next year."</span> Chief Scientist Jakub Pachocki confirmed a new model is in preparation, while leaker Leo says <span class="highlight">GPT-5.6 will launch this month</span>.</p>
+                        <p>GPT-5.6 call records have been discovered in OpenAI's internal Codex logs under codenames ember-alpha/beacon-alpha. Codex has simultaneously launched an ultrafast mode with 2-3x faster response, directly challenging Claude Code. The image model gpt-image-2 leads Image Arena by +242 points.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Altman confirms IPO timeline: "within the next year"</div>
+                        <div class="key-point">GPT-5.6 launches this month, Codex ultrafast mode offers 2-3x speed boost</div>
+                        <div class="key-point">OpenAI vs Anthropic coding war escalates on all fronts</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Anthropic Claude Fable 5 / Mythos 5 Dominates All Benchmarks, Agent Coding Surpasses All</h3>
+                    <div class="news-content">
+                        <p>On June 10, Anthropic officially released <span class="highlight-bold">Claude Fable 5 and Claude Mythos 5</span>, bringing Mythos-class capabilities to a broad user base for the first time. Fable 5 leads across nearly all AI benchmarks, while Mythos 5 represents the current pinnacle of AI model capability.</p>
+                        <p>Both models achieve a qualitative leap in coding agent capabilities, autonomously completing complex software engineering projects, cross-file refactoring, and full-stack application development. Anthropic has completed a $65 billion Series H round at a <span class="highlight">$965 billion valuation</span>, surpassing OpenAI as the world's most valuable AI startup, and has confidentially filed for IPO.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude Fable 5 / Mythos 5 officially released, Mythos-class capabilities debut publicly</div>
+                        <div class="key-point">Coding agent achieves fully autonomous development from planning to deployment</div>
+                        <div class="key-point">Anthropic valued at $965B, surpassing OpenAI, confidentially filed for IPO</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">GitHub Copilot Fully Shifts to AI Credits Pay-Per-Use Model, Ending the Cheap Subscription Era</h3>
+                    <div class="news-content">
+                        <p>GitHub Copilot has officially announced a full transition to an <span class="highlight-bold">AI Credits pay-per-use pricing model</span>, ending the $10/month flat-rate subscription. Under the new model, developers consume Credits based on AI interaction frequency, with costs rising sharply for power users.</p>
+                        <p>Industry analysts note that high LLM inference costs are pushing the entire AI coding tools sector from "low-price customer acquisition" to "pay-per-use" models. The AI coding tools market has reached <span class="highlight">$128 billion</span>, with 85% of developers using AI assistants daily. Claude Code, Cursor, and other competitors may follow suit.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Copilot ends $10/month flat rate, shifts to AI Credits pay-per-use</div>
+                        <div class="key-point">Power users face significant cost increases, industry business model inflection point</div>
+                        <div class="key-point">AI coding market at $128B, 85% of developers use AI assistants daily</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">ByteDance TRAE SOLO Tops AI Coding Tool Rankings with 98% Chinese Command Accuracy</h3>
+                    <div class="news-content">
+                        <p>ByteDance's AI-native IDE tool <span class="highlight-bold">TRAE</span> continues gaining market recognition with its SOLO agent system, achieving <span class="highlight">98% Chinese command recognition accuracy</span>. SOLO Builder enables full "zero to one" automated project scaffolding, while SOLO Coder specializes in complex project iteration and architecture refactoring using a "main Agent + sub-Agent" collaborative architecture.</p>
+                        <p>Since launching its SOLO standalone client in March 2026, TRAE has become the fastest-growing AI coding tool in China and the most widely used among domestic developers, available on both PC and Web with industry-leading Chinese semantic understanding.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">TRAE achieves 98% Chinese command accuracy, top choice for domestic developers</div>
+                        <div class="key-point">SOLO agent system: main Agent + sub-Agent collaborative architecture</div>
+                        <div class="key-point">Fastest growth rate among China's AI coding tools in 2026</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Unitree Technology's STAR Market IPO Approved: A-Share's First Embodied AI Stock, Partners with NVIDIA on H2 Plus</h3>
+                    <div class="news-content">
+                        <p>On June 1, Unitree Technology's STAR Market IPO was approved in just <span class="highlight-orange">73 days</span> from acceptance to review &#8212; a record pace. The IPO seeks to raise 4.2 billion RMB, with an initial market cap of approximately 42 billion RMB. Unitree commands over 60% global market share in quadruped robots and is rapidly expanding its humanoid robot lineup.</p>
+                        <p>During COMPUTEX 2026, Unitree partnered with NVIDIA to unveil the <span class="highlight-orange">H2 Plus humanoid robot</span> (1.82m, 68kg), powered by Jetson AGX Thor and deeply integrated with Isaac GR00T, becoming the world's first NVIDIA reference design humanoid robot.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Unitree IPO approved, raising 4.2B RMB, ~42B RMB market cap, A-share embodied AI milestone</div>
+                        <div class="key-point">NVIDIA H2 Plus partnership: world's first Isaac GR00T reference design humanoid</div>
+                        <div class="key-point">60%+ global quadruped market share, humanoid robot mass production accelerating</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">MIIT and SASAC Launch Humanoid Robot Real-World Training Initiative with 10,000-Unit Target</h3>
+                    <div class="news-content">
+                        <p>On June 9, the Ministry of Industry and Information Technology and the State-owned Assets Supervision and Administration Commission jointly issued a notice launching the <span class="highlight-orange">2026 Humanoid Robot and Embodied Intelligence Real-World Training Initiative</span>, aimed at deploying humanoid robots in real production and living environments for normalized operation and scaled development.</p>
+                        <p>The initiative targets 10,000-unit deployment across industrial manufacturing, commercial services, healthcare, and public safety. The embodied AI sector continues to attract heavy investment, with Galaxy Universal securing <span class="highlight-orange">2.5 billion RMB</span> in new funding from national AI funds, industrial capital, and local state-owned investors.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Two ministries launch real-world training initiative with 10,000-unit deployment target</div>
+                        <div class="key-point">Covering industrial manufacturing, commercial services, healthcare, and public safety</div>
+                        <div class="key-point">Embodied AI funding boom continues: Galaxy Universal raises 2.5B RMB</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">BYD Denies "Yao-Shun-Yu" Rumors but Confirms Humanoid Robot Development</h3>
+                    <div class="news-content">
+                        <p>Responding to recent rumors about "BYD humanoid robot codenamed Yao-Shun-Yu," "7th-gen prototype testing in Shenzhen and Changsha factories," and "150 units deployed, targeting 20,000 internal units this year," BYD officially stated: <span class="highlight-orange">all such reports are untrue</span>. However, BYD Executive VP Li Ke previously confirmed in a public interview that BYD is indeed developing humanoid robots.</p>
+                        <p>Li noted that automotive AI capabilities share significant commonality with robotics, and <span class="highlight-orange">future robots could be sold through BYD's dealer network</span>. The humanoid robot competitive landscape is heating up: Unitree IPO + Tesla Optimus mass production + BYD's official entry, three major forces competing in a trillion-dollar market.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">BYD denies "Yao-Shun-Yu" codename and 20,000-unit deployment rumors</div>
+                        <div class="key-point">Officially confirms humanoid robot R&D, automotive AI capabilities are transferable</div>
+                        <div class="key-point">Tripartite competition: Unitree + Tesla + BYD, trillion-dollar race intensifies</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest global tech and geopolitical landscape</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128640;</div>
+                        <div class="trend-desc">
+                            <h3>SpaceX IPO Opens a New "Space + AI" Capital Era</h3>
+                            <p>The $75B largest IPO in history debuts today, backed by a multi-billion Anthropic computing deal. Tech enters a new phase where space and AI deeply converge in capital markets.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9917;</div>
+                        <div class="trend-desc">
+                            <h3>World Cup 2026 Ignites Global Attention Economy</h3>
+                            <p>The 48-team three-nation World Cup opener dominates global trending charts, ushering in a new era of World Cup commerce and broadcasting.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Shifts from Tools to Agents, Business Models Go Pay-Per-Use</h3>
+                            <p>Claude Fable 5/Mythos 5 achieves fully autonomous coding. Copilot abandons flat-rate for AI Credits. The industry hits a dual inflection point in capability and business model.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129530;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied Intelligence Moves from Proof-of-Concept to Mass Deployment</h3>
+                            <p>10,000-unit government training initiative + Unitree IPO approval + BYD official entry &#8212; the humanoid robot industry officially crosses the mass production threshold.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Weibo Trending &middot; IT Home &middot; Sina Finance &middot; The Paper &middot; Xinhua &middot; The Information &middot; Independent &middot; CNBC &middot; World Bank</p>
+            <p class="footer-meta">Compiled: 2026-06-12 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
