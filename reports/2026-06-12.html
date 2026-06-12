@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-12</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-12</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">2026世界杯揭幕战霸屏微博热搜：墨西哥2-0南非，3张红牌创历史</h3>
+                    <div class="news-content">
+                        <p>北京时间6月12日凌晨3:00，2026年美加墨世界杯揭幕战在墨西哥城阿兹特克体育场打响，东道主墨西哥队<span class="highlight-bold">2-0击败南非队</span>。本场比赛火药味十足，共出现<span class="highlight-bold">3张红牌</span>，成为世界杯历史上首场揭幕战3人被罚下的比赛。世界杯相关话题横扫微博热搜榜前10名中的多个席位，"世界杯开幕式"以85万热度登顶。</p>
+                        <p>首次48队参赛的世界杯正式开幕，三国联办创历史。开幕式<span class="highlight">Shakira、Burna Boy、J Balvin</span>等全球巨星献唱，全球超10亿观众收看。今日上午10:00韩国队对阵捷克队，赛事持续升温。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">首次48队世界杯开幕，揭幕战3张红牌创纪录</div>
+                        <div class="key-point">"世界杯开幕式"85万热度登顶微博热搜，"世界杯 红牌比进球多"成热门话题</div>
+                        <div class="key-point">中国元素：马宁入选裁判团队，labubu吉祥物出圈</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">华为HDC 2026今日开幕：HarmonyOS 7.0正式亮相，原生鸿蒙全面独立</h3>
+                    <div class="news-content">
+                        <p>华为开发者大会HDC 2026于6月12日至14日在东莞松山湖举行，主题演讲今日14:30开启。本届大会发布<span class="highlight-bold">HarmonyOS 7.0</span>操作系统，HarmonyOS NEXT彻底剥离安卓AOSP代码，<span class="highlight">不再兼容安卓应用</span>，标志着全球第三大移动操作系统走向全面独立。"华为开发者大会2026"登上微博热搜第4位，热度54万。</p>
+                        <p>大会还将展示鸿蒙AI核心能力、全场景互联升级及生态新成果。鸿蒙AI覆盖端侧大模型推理、多模态交互、代码生成等能力，首次向开发者开放鸿蒙座舱AI接口。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">HarmonyOS 7.0发布，原生鸿蒙彻底告别安卓兼容</div>
+                        <div class="key-point">首次开放座舱AI接口，加速智慧出行生态</div>
+                        <div class="key-point">全球第三大移动OS正式独立，与iOS/Android三足鼎立</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">《国家人权行动计划(2026-2030年)》正式发布，多部门密集落地民生新政</h3>
+                    <div class="news-content">
+                        <p>6月11日，在"2026·全球人权治理高端论坛"开幕式上，《国家人权行动计划(2026-2030年)》正式发布。该计划指出，2021-2025年第四期人权行动计划目标有效落实，中国人权保障水平显著提升。同日公安部发布<span class="highlight-bold">《2026版防范电信网络诈骗宣传手册》</span>，2026年第一批"中国好人榜"同期发布，151人上榜。</p>
+                        <p>民生新政密集落地：国铁集团即日起推出<span class="highlight">儿童铁路旅游计次票（成人5折）</span>、苏州鼓励"见急勇为"奖励2000元、人社部等四部委联合启动创业引领行动。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">新一期人权行动计划覆盖2026-2030年，涵盖经济社会文化权利</div>
+                        <div class="key-point">儿童铁路计次票5折、见急勇为奖励2000元等民生新政落地</div>
+                        <div class="key-point">四部委联合启动创业引领行动，聚焦科技成果转化</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">外交部宣布制裁菲律宾国防部长特奥多罗</h3>
+                    <div class="news-content">
+                        <p>外交部宣布，因菲律宾国防部长特奥多罗<span class="highlight-bold">多次发表涉华谬论</span>，损害中方正当利益、破坏中菲两国关系，中方决定禁止特奥多罗及其配偶、子女入境中国内地和香港、澳门，禁止中国境内组织、个人与其进行任何交易合作。此前中方已多次在南海问题上表明严正立场。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">菲防长多次发表涉华错误言论，中方实施精准制裁</div>
+                        <div class="key-point">禁止入境+禁止交易，制裁覆盖其直系亲属</div>
+                        <div class="key-point">中国在南海主权权益问题上的立场坚定不移</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">工信部+市监总局约谈非理性竞争车企，国常会部署科技强国建设</h3>
+                    <div class="news-content">
+                        <p>工业和信息化部、市场监管总局6月11日联合约谈涉嫌<span class="highlight-bold">非理性竞争行为的汽车生产企业</span>，要求企业严格遵守《价格法》，按照《汽车行业价格行为合规指南》加强价格合规建设，强化产品质量管控，共同维护优质优价、良性竞争的市场秩序。此前汽车行业价格战持续升级引发监管关注。</p>
+                        <p>同日，国务院总理李强主持召开国常会，听取关于贯彻落实全国科技大会精神情况汇报，要求<span class="highlight">锚定科技强国建设目标</span>，强化国家战略科技力量体系化协同攻关。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">两部门联合约谈车企，剑指汽车行业非理性价格战</div>
+                        <div class="key-point">国常会部署科技强国建设，强化国家战略科技力量</div>
+                        <div class="key-point">工信部+文旅部同步启动2026消费名品全国行</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">王毅将访问蒙古国，中欧高层会晤传闻引关注</h3>
+                    <div class="news-content">
+                        <p>外交部长王毅将于6月13日至15日访问蒙古国。此外，针对外媒报道"由于贸易紧张局势加剧，中国取消了本月与欧盟的高层会晤"，外交部发言人林剑回应称，<span class="highlight-bold">中欧双方就相关对话保持着沟通</span>。中欧贸易摩擦近期持续升温，双方在半导体管制、电动车关税等问题上博弈加剧。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">王毅应邀访蒙，推动中蒙双边关系发展</div>
+                        <div class="key-point">中欧高层会晤传闻发酵，外交部称双方保持沟通</div>
+                        <div class="key-point">中欧贸易摩擦背景下双边关系走向引关注</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">SpaceX今日登陆纳斯达克：史上最大IPO震撼挂牌，估值1.75万亿美元</h3>
+                    <div class="news-content">
+                        <p>北京时间6月12日，SpaceX正式以股票代码<span class="highlight-bold">SPCX</span>在纳斯达克挂牌交易，发行价<span class="highlight">135美元/股</span>，对应估值约<span class="highlight">1.75万亿美元</span>，募资规模高达750亿美元，创下全球史上最大规模IPO纪录。这家马斯克旗下的航天+AI巨头将超越特斯拉，空降美股市值前十。</p>
+                        <p>SpaceX 2025年营收187亿美元，运营亏损19亿美元，2026年Q1营收47亿美元。公司与Anthropic签下百亿美元AI算力大单，携"太空+AI"双重叙事冲击资本市场。晨星公允价值估计为每股111美元。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">$135/股×5.556亿股，估值$1.75万亿，募资$750亿创全球纪录</div>
+                        <div class="key-point">超越特斯拉成美股前十大市值公司，太空+AI双重叙事</div>
+                        <div class="key-point">已与Anthropic签百亿级算力合同，纳斯达克+德州双挂牌</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">特朗普宣布美伊协议进入最后阶段，取消对伊打击行动</h3>
+                    <div class="news-content">
+                        <p>美国总统特朗普在社交平台"真实社交"发文称，鉴于与伊朗的磋商已提交至<span class="highlight-bold">伊朗最高领导层并获批准</span>，他取消了原定于当晚对伊朗实施的打击与轰炸行动。特朗普表示"达成了极好的协议"，相关文件已进入最后定稿阶段，<span class="highlight">未来几天有望最终敲定并签署</span>。</p>
+                        <p>此前中东局势持续紧张，美伊双方在霍尔木兹海峡航运管理等问题上严重对峙。若协议签署成功，将为持续数月的中东危机带来重大转机，"特朗普称取消打击伊朗行动"登上微博热搜第10位。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">特朗普称协议已获伊朗最高层批准，取消军事打击</div>
+                        <div class="key-point">正式文件最后定稿，未来几天有望签署</div>
+                        <div class="key-point">若签署成功，将为持续数月的中东危机带来转机</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">2026世界杯正式开幕：48队三国联办，全球瞩目</h3>
+                    <div class="news-content">
+                        <p>首次扩军至48支球队的2026年美加墨世界杯于6月11日在墨西哥城阿兹特克体育场盛大开幕。这是世界杯历史上首次由<span class="highlight-bold">三个国家联合举办</span>，也是阿兹特克体育场成为首座三次承办世界杯开幕战的场馆。开幕式表演由Shakira、Burna Boy、J Balvin等国际巨星献唱。</p>
+                        <p>104场比赛横跨三国16座城市，揭幕战墨西哥2-0南非。本场比赛出现3张红牌，<span class="highlight">创世界杯揭幕战历史纪录</span>。全球超10亿观众收看开幕式及揭幕战。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">历史性48队赛制首次亮相，104场比赛横跨三国16城</div>
+                        <div class="key-point">阿兹特克体育场创纪录三次承办世界杯揭幕战</div>
+                        <div class="key-point">开幕式群星献唱，全球超10亿观众收看</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">G7峰会6月15-17日法国依云召开，伊朗+乌克兰主导议程</h3>
+                    <div class="news-content">
+                        <p>第52届七国集团（G7）峰会将于6月15日至17日在法国依云莱班举行。东道主法国力求在<span class="highlight-bold">伊朗问题和乌克兰冲突</span>两大议题上凝聚共识，并避免与美国总统特朗普发生正面冲突。峰会前夕，法国与瑞士边境已实施严格安全管控。</p>
+                        <p>分析认为，特朗普政府对伊朗态度突然转向和谈，以及对欧贸易政策的不确定性，将给峰会带来挑战。此外，<span class="highlight">全球贸易摩擦和气候议题</span>也将是峰会重要议程。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">法国依云举办第52届G7峰会，6月15-17日</div>
+                        <div class="key-point">伊朗核协议+乌克兰冲突主导议程</div>
+                        <div class="key-point">特朗普态度转向和谈加大峰会不确定性</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">世界银行下调2026全球经济增长预期至2.5%</h3>
+                    <div class="news-content">
+                        <p>世界银行最新发布的《全球经济展望》报告将2026年全球经济增长预期下调至<span class="highlight-bold">2.5%</span>，较此前预测进一步走低。报告指出，中东地缘冲突、贸易紧张局势加剧以及主要经济体货币政策不确定性，是全球经济面临的主要下行风险。</p>
+                        <p>发展中国家债务压力持续增大，全球通胀虽有回落但仍高于疫情前水平。世界银行呼吁各国加强政策协调，<span class="highlight">避免贸易保护主义进一步拖累全球经济复苏</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">全球经济增长预期下调至2.5%，多重风险叠加</div>
+                        <div class="key-point">中东冲突+贸易摩擦+货币政策不确定性构成主要下行风险</div>
+                        <div class="key-point">发展中国家债务压力持续增大</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">美方请求恢复对日稀土出口，中方强硬回应：红线绝不后退</h3>
+                    <div class="news-content">
+                        <p>美国近期正式请求中方恢复对日本稀土出口，中国外交部再次重申<span class="highlight-bold">对日稀土管制立场</span>。中方表示，日本加速军事化进程严重威胁地区安全稳定，中方对日稀土出口管制措施是基于维护地区和平与安全的正当举措，<span class="highlight">相关"红线绝不后退"</span>。</p>
+                        <p>自中国实施稀土出口管制以来，日本经济产业省紧急布局替代来源，投入巨资推动供应链"去中国化"，但短期缺口难以弥补，重稀土战略博弈持续升级。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">美方正式请求中方恢复对日稀土出口，中方强硬拒绝</div>
+                        <div class="key-point">中方立场：制止日本再军事化，稀土管制红线绝不后退</div>
+                        <div class="key-point">日本加紧"去中国化"替代布局，短期缺口难弥补</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">华为HDC 2026开幕：HarmonyOS 7.0发布，鸿蒙AI全面升级</h3>
+                    <div class="news-content">
+                        <p>华为开发者大会2026今日在东莞松山湖正式开幕，<span class="highlight-bold">HarmonyOS 7.0</span>与鸿蒙AI核心能力成为最大看点。HarmonyOS NEXT彻底剥离安卓AOSP代码，原生鸿蒙生态不再兼容安卓应用，标志着全球第三大移动操作系统走向全面独立。</p>
+                        <p>鸿蒙AI覆盖端侧大模型推理、多模态交互、代码生成等能力，并首次向开发者开放<span class="highlight">鸿蒙座舱AI接口</span>。拓维信息等合作伙伴展示"AI×鸿蒙"融合成果，鸿蒙生态设备已超10亿台。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">HarmonyOS 7.0正式发布，原生鸿蒙彻底告别安卓兼容</div>
+                        <div class="key-point">端侧大模型+多模态+代码生成，鸿蒙AI能力全面开放</div>
+                        <div class="key-point">全球第三大移动OS正式独立，与iOS/Android三足鼎立</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">OpenAI GPT-5.6本月发布在即，Altman预估一年内完成IPO</h3>
+                    <div class="news-content">
+                        <p>据The Information最新爆料，OpenAI CEO Altman在内部Slack发文预计公司将在<span class="highlight-bold">"一年内"完成IPO</span>，首席科学家Jakub Pachocki透露新模型正在筹备中，知名爆料人Leo称<span class="highlight">GPT-5.6将在本月正式发布</span>。</p>
+                        <p>OpenAI内部Codex日志中已发现GPT-5.6调用记录，内部代号ember-alpha/beacon-alpha已启动内部测试。Codex同步推出ultrafast极速模式，响应速度提升2-3倍，正面迎战Claude Code。图像模型gpt-image-2在Image Arena排行榜+242分断档领先。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Altman内部邮件确认IPO时间表："明年内"</div>
+                        <div class="key-point">GPT-5.6本月发布，Codex ultrafast提速2-3倍</div>
+                        <div class="key-point">OpenAI vs Anthropic编程大战全面升级</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Anthropic Claude Fable 5/Mythos 5屠榜：编程Agent能力全面超越</h3>
+                    <div class="news-content">
+                        <p>Anthropic 6月10日正式发布<span class="highlight-bold">Claude Fable 5及Claude Mythos 5</span>，这是Anthropic首次将"Mythos-class"（神话级）能力带给广泛用户。Fable 5在几乎所有AI基准测试中全面领先，Mythos 5则代表当前AI模型的最高水平。</p>
+                        <p>两大模型在编程Agent能力上实现质的飞跃，能自主完成复杂软件工程项目、跨文件重构、全栈应用开发等。Anthropic已完成650亿美元H轮融资，估值<span class="highlight">9650亿美元</span>，超越OpenAI成为全球估值最高AI初创企业，已秘密提交IPO申请。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude Fable 5/Mythos 5正式发布，Mythos级能力首次公开</div>
+                        <div class="key-point">编程Agent实现全自主开发，覆盖规划-编码-测试-部署</div>
+                        <div class="key-point">Anthropic估值$9650亿超越OpenAI，已秘密提交IPO</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">GitHub Copilot全面转向AI Credits按量计费，低价包月时代终结</h3>
+                    <div class="news-content">
+                        <p>GitHub Copilot正式宣布全面转向<span class="highlight-bold">AI Credits按量计费模式</span>，告别此前$10/月的低价包月订阅。新模式下开发者按AI交互次数消耗Credits额度，高频使用者成本大幅上涨。</p>
+                        <p>行业分析认为，大模型推理成本高企正推动整个AI编程工具行业从"低价获客"向"按量付费"转型。AI编程工具市场规模已达<span class="highlight">128亿美元</span>，85%的开发者在日常工作中使用AI编程助手。Claude Code、Cursor等竞品或将陆续跟进此定价模式。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Copilot正式告别$10/月包月，转向AI Credits按量计费</div>
+                        <div class="key-point">高频开发者成本大幅攀升，AI编程行业商业模式拐点</div>
+                        <div class="key-point">AI编程市场规模$128亿，85%开发者日常使用AI助手</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">字节跳动TRAE SOLO登顶AI编程工具榜，中文指令准确率98%</h3>
+                    <div class="news-content">
+                        <p>字节跳动旗下AI原生IDE工具<span class="highlight-bold">TRAE</span>凭借SOLO智能体系统持续获得市场认可，中文指令识别准确率达<span class="highlight">98%</span>。SOLO Builder实现"从0到1"全自动项目搭建，SOLO Coder专注复杂项目迭代与架构重构，采用"主Agent-子Agent"协同架构。</p>
+                        <p>2026年3月TRAE上线SOLO独立端后用户增速全国第一，已成为国内开发者使用率最高的AI编程工具，PC端+Web端同步覆盖，中文语义深度理解能力行业领先。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">TRAE中文指令识别准确率98%，国内开发者首选</div>
+                        <div class="key-point">SOLO智能体系统：主Agent+子Agent协同架构</div>
+                        <div class="key-point">2026年国内AI编程工具使用率增速第一</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">3 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">宇树科技科创板IPO顺利过会：A股具身智能第一股诞生，联手英伟达推H2 Plus</h3>
+                    <div class="news-content">
+                        <p>6月1日，宇树科技科创板IPO顺利过会，从3月21日获受理到上会仅<span class="highlight-orange">73天</span>，创下科创板最快审核纪录。本次IPO拟募资42亿元，初始发行市值约420亿元。宇树科技四足机器人全球市占率超60%，人形机器人产品线快速扩展。</p>
+                        <p>6月COMPUTEX期间，宇树联手英伟达发布<span class="highlight-orange">H2 Plus人形机器人</span>，身高1.82米、重68公斤，搭载Jetson AGX Thor算力平台、深度集成Isaac GR00T，成为全球首款英伟达参考设计人形机器人。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">宇树科技IPO过会，募资42亿，市值约420亿，A股具身智能第一股</div>
+                        <div class="key-point">联手英伟达H2 Plus，全球首款Isaac GR00T参考设计</div>
+                        <div class="key-point">四足机器人全球市占率超60%，人形机器人加速量产</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">工信部+国资委启动人形机器人实景实训专项行动，万台级目标</h3>
+                    <div class="news-content">
+                        <p>6月9日，工业和信息化部、国务院国资委联合印发通知，正式启动<span class="highlight-orange">2026年度人形机器人与具身智能实景实训专项行动</span>，旨在推动人形机器人与具身智能产品在真实生产生活环境中常态化部署应用，加速实现规模化发展。</p>
+                        <p>专项行动设万台级部署目标，覆盖工业制造、商业服务、医疗康养、公共安全等重点场景。具身智能赛道融资持续火热，银河通用获<span class="highlight-orange">25亿</span>新一轮融资，投资方覆盖国家AI产业基金、产业资本和地方国资。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">两部委联合启动实景实训专项行动，万台级部署目标</div>
+                        <div class="key-point">覆盖工业制造、商业服务、医疗康养、公共安全四大场景</div>
+                        <div class="key-point">具身智能融资火热，银河通用获25亿新一轮融资</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">比亚迪否认"尧舜禹"传闻，但确认正在研发人形机器人</h3>
+                    <div class="news-content">
+                        <p>针对近期网传"比亚迪人形机器人代号尧舜禹""第七代原型机在深圳和长沙工厂测试""约150台上岗，目标年内自用2万台"等消息，比亚迪官方明确回应：<span class="highlight-orange">相关消息均不属实</span>。但比亚迪执行副总裁李柯此前在公开访谈中确认：比亚迪确实在开发人形机器人。</p>
+                        <p>李柯表示，汽车相关AI能力与机器人具有同源性，<span class="highlight-orange">未来可通过经销商网络售卖机器人产品</span>。人形机器人产业链竞争格局持续升温：宇树IPO过会+特斯拉Optimus量产加速+比亚迪官宣入局，三大势力角力万亿级赛道。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">比亚迪否认"尧舜禹"代号及2万台部署传闻</div>
+                        <div class="key-point">官方确认正在研发人形机器人，汽车AI能力可复用</div>
+                        <div class="key-point">产业链三足鼎立：宇树+特斯拉+比亚迪，万亿赛道竞争升温</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察全球科技与政经最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🚀</div>
+                        <div class="trend-desc">
+                            <h3>SpaceX IPO开启"太空+AI"资本新纪元</h3>
+                            <p>$750亿史上最大IPO今日挂牌，携Anthropic百亿算力合同，科技行业进入太空与AI深度融合的资本新阶段。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">⚽</div>
+                        <div class="trend-desc">
+                            <h3>2026世界杯引爆全球注意力经济</h3>
+                            <p>48队三国联办的世界杯揭幕战霸屏全球热搜，开创世界杯商业与传播新纪元。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>AI编程从工具走向Agent，商业模式转向按量计费</h3>
+                            <p>Claude Fable 5/Mythos 5实现全自主编程，Copilot告别包月转向AI Credits，行业进入能力+商业模式双重拐点。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🦾</div>
+                        <div class="trend-desc">
+                            <h3>具身智能从概念验证走向规模部署</h3>
+                            <p>两部委万台级实训+宇树IPO过会+比亚迪官宣入局，人形机器人产业正式跨过量产临界点。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">数据来源：微博热搜 · IT之家 · 新浪财经 · 澎湃新闻 · 新华网 · The Information · Independent · CNBC · 世界银行</p>
+            <p class="footer-meta">整理时间：2026-06-12 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
