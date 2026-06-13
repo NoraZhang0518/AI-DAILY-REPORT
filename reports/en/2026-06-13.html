@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-13</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-13</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">A-Share Rally! Shanghai Index Reclaims 4,000 as Trading Volume Hits 3.24 Trillion Yuan</h3>
+                    <div class="news-content">
+                        <p>On June 12, all three major A-share indices rose. The Shanghai Composite gained 1.12% to close at 4,031.51, firmly reclaiming the 4,000-point mark. The Shenzhen Component rose 0.75% above 15,000. Total market turnover reached <span class="highlight-bold">3.24 trillion yuan</span>, up 661.2 billion from the previous session, signaling fresh capital inflows.</p>
+                        <p>The brokerage sector, known as the "bull market bellwether," surged intraday. Defense, chips, and non-ferrous metals led the gains. Over 3,900 stocks rose, with 89 hitting the daily limit, forming a broad-based rally.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Shanghai closes at 4,031.51, up 1.12%, with record recent turnover of 3.24 trillion yuan</div>
+                        <div class="key-point">Brokerage rally lifts sentiment; non-ferrous metals sector surges across the board</div>
+                        <div class="key-point">3,922 stocks advance, broad-based rally evident</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Three Industry Associations Jointly End "Billing Order" Chaos: Actor Credits to Be Sorted by Stroke Count from July 10</h3>
+                    <div class="news-content">
+                        <p>On June 12, three major industry associations jointly issued the "Notice on Standardizing Actor Credits in TV Dramas (Online Dramas)." The new rules specify that credits within categories (Lead, Special Appearance, Cast) shall be <span class="highlight-bold">sorted by the stroke count of actors' legal names</span>, with stage names no longer permitted as sole identifiers.</p>
+                        <p>The rules take effect July 10, 2026, aiming to eradicate the long-standing "billing order wars" that have plagued the entertainment industry and redirect focus back to artistic creation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Three hard standards reshape credit rules: category management + stroke-count sorting + legal names only</div>
+                        <div class="key-point">Ends "star power" and "traffic-first" billing chaos once and for all</div>
+                        <div class="key-point">Effective July 10, covering all TV and online dramas</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Cyberspace Administration Issues Self-Regulatory Pact to Protect Entrepreneurs from Online Abuse</h3>
+                    <div class="news-content">
+                        <p>Under the guidance of the Cyberspace Administration of China (CAC), major online platforms have jointly adopted the "Self-Regulatory Pact on Addressing Enterprise-Targeted Infringement and Optimizing the Business Environment." The pact requires platforms to promptly remove <span class="highlight-bold">content infringing on entrepreneurs' personal rights</span> and clear verified false information targeting businesses.</p>
+                        <p>It also mandates improved algorithmic recommendation oversight to prevent "traffic-boosting" of negative enterprise content and revokes monetization rights for accounts that frequently post such material.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Platforms must proactively remove false information targeting businesses</div>
+                        <div class="key-point">Strict controls on illegal profit-making; violators lose monetization rights</div>
+                        <div class="key-point">Algorithm optimization to prevent amplification of negative enterprise content</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">2026 Lujiazui Forum Opens June 17, Focusing on Global Financial Governance</h3>
+                    <div class="news-content">
+                        <p>The 2026 Lujiazui Forum will be held June 17-18 in Shanghai under the theme <span class="highlight-bold">"Financial Development and Cooperation under the Global Governance Initiative: New Visions, New Challenges, and New Opportunities."</span> Co-hosted by the People's Bank of China, NFRA, CSRC, and the Shanghai Municipal Government, the forum will feature 70+ speakers.</p>
+                        <p>Eight plenary sessions will cover global financial governance reform, Shanghai-Hong Kong financial cooperation, and other key topics. Major project signings and policy announcements are expected.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Theme focuses on global financial governance with 70+ international speakers</div>
+                        <div class="key-point">Cross-border finance and free-trade account reforms likely to be announced</div>
+                        <div class="key-point">Regulators will report latest progress on Shanghai International Financial Center</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Myanmar President Min Aung Hlaing to Make State Visit to China</h3>
+                    <div class="news-content">
+                        <p>At the invitation of President Xi Jinping, Myanmar President Min Aung Hlaing will conduct a state visit to China from June 15-19. Separately, Nepal's Foreign Minister will visit China from June 14-17 at the invitation of Foreign Minister Wang Yi.</p>
+                        <p><span class="highlight-bold">Two neighboring leaders visiting in one week</span> reflects the positive momentum of China's neighborhood diplomacy.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">National Flood Control Headquarters Deploys Flood Risk Inspections Across 16 Provinces</h3>
+                    <div class="news-content">
+                        <p>The National Flood Control Headquarters has deployed <span class="highlight-bold">16 key provinces</span> including Beijing and Hebei to conduct flood risk inspections at nursing homes, construction sites, and homestays near mountain flood channels and riverbanks. Six joint expert teams from multiple ministries have been dispatched and completed their field guidance by end of May.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">SpaceX's Record-Breaking IPO! Opens at $174, Valuation Hits $1.77 Trillion</h3>
+                    <div class="news-content">
+                        <p>On June 12, Elon Musk's SpaceX debuted on Nasdaq under ticker SPCX. Priced at $135/share, the stock opened at $174, surging nearly 30% with market cap exceeding <span class="highlight-bold">$2 trillion</span>. SpaceX raised approximately $75 billion, shattering the global IPO record previously held by Saudi Aramco.</p>
+                        <p>SpaceX acquired xAI in February and filed its S-1 in May, going from filing to listing in just 23 days. The IPO marks a new era for the convergence of commercial space and AI in capital markets.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">IPO price $135, opening at $174, nearly 30% first-day gain</div>
+                        <div class="key-point">$75B raised at $1.77T valuation, breaking the all-time global IPO record</div>
+                        <div class="key-point">Post-xAI acquisition listing: space + AI narrative attracts global capital</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Iran-US Peace Deal Text Reportedly Agreed, But Trump Disputes Iranian Media Draft</h3>
+                    <div class="news-content">
+                        <p>Pakistan's PM Sharif stated that Iran and the US have agreed on the final text of a peace deal. Iranian FM Araghchi said the two sides have <span class="highlight-bold">"never been this close"</span> to a memorandum of understanding. A senior US official expressed 80-85% confidence in signing within days.</p>
+                        <p>However, Trump posted that the draft published by Iranian media "has nothing to do with" the actual agreement. Israel's Defense Minister Katz hinted that Israel may use force again to prevent Iran from going nuclear, representing the biggest wild card in the Middle East.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Deal framework: lift sanctions, withdraw forces, reopen Strait of Hormuz, unfreeze assets</div>
+                        <div class="key-point">Nuclear and missile programs deferred to a second-phase negotiation</div>
+                        <div class="key-point">Israel's hardline stance remains the biggest wild card in the region</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">2026 World Cup Group Stage Kicks Off: Canada 1-1 Bosnia, Opener Mexico 2-1 South Africa</h3>
+                    <div class="news-content">
+                        <p>In the early hours of June 13 (Beijing time), <span class="highlight-bold">Canada drew 1-1 with Bosnia</span> in Group B, earning Canada's first-ever World Cup group stage point. The opener on June 12 saw Mexico come from behind to beat South Africa 2-1, with Hwang In-beom contributing a goal and assist.</p>
+                        <p>At 9 AM on June 13, the US will face Paraguay at SoFi Stadium in Los Angeles in Group D. This World Cup features 48 teams, 104 matches, and three co-host nations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Opener: Mexico 2-1 comeback vs South Africa with two goals and three red cards</div>
+                        <div class="key-point">Canada 1-1 Bosnia: Canada's first World Cup group stage point in history</div>
+                        <div class="key-point">US vs Paraguay up next; 48 teams, three co-hosts make history</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Oil Prices Plunge as Iran-US Deal Hopes Rise: WTI Drops Below $84/Barrel</h3>
+                    <div class="news-content">
+                        <p>Driven by progress in Iran-US negotiations and expectations of the Strait of Hormuz reopening, oil prices continued their slide. <span class="highlight-bold">WTI fell below $84/barrel</span>, and Brent dropped to around $87/barrel. The peace deal expectations are rapidly eroding geopolitical risk premiums.</p>
+                        <p>Falling oil prices are cooling inflation expectations, lifting US stocks: S&amp;P 500 +0.5%, Nasdaq +0.31%, Dow +0.7%. However, Apple dropped over 5% for the week while Intel surged 25%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WTI below $84, Brent around $87 as geopolitical risk premiums evaporate</div>
+                        <div class="key-point">Falling oil cools inflation expectations, US indices rise</div>
+                        <div class="key-point">Energy sector pressured, tech stocks increasingly divergent</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">OpenAI and Anthropic Race to IPO: AI Giants' Capital Competition Begins</h3>
+                    <div class="news-content">
+                        <p>After Anthropic filed its IPO application first (post-money valuation of <span class="highlight-bold">$965 billion</span>), OpenAI announced on June 8 that it had submitted an S-1 draft to the SEC. CEO Altman indicated a possible IPO within the next year, with GPT-5.6 potentially launching in June.</p>
+                        <p>Anthropic's H round raised $65 billion, with valuation surging from $380B to $965B in just 3 months, surpassing OpenAI's $852B to become the world's most valuable AI startup.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Anthropic leads at $965B valuation, 2.5x in just 3 months</div>
+                        <div class="key-point">OpenAI follows with S-1 filing; two giants in a capital race</div>
+                        <div class="key-point">AI companies shift from pure tech competition to "tech + capital" dual-track strategy</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">India Summons US Diplomat Over Oil Tanker Attack That Killed 3 Indian Sailors</h3>
+                    <div class="news-content">
+                        <p>On June 12, India's Foreign Ministry summoned the US Charg&#233; d'Affaires to formally protest repeated US military attacks on oil tankers carrying Indian crew members in the Gulf of Oman, which resulted in <span class="highlight-bold">3 Indian sailors' deaths</span>. Trump simultaneously condemned an Iranian drone strike on an Indian vessel departing the Strait of Hormuz.</p>
+                        <p>Middle East maritime conflicts are spilling over to third countries, adding further complexity to the situation.</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">OpenAI vs Anthropic IPO Race: AI Industry Capitalization Wave Fully Underway</h3>
+                    <div class="news-content">
+                        <p>In early June, Anthropic became the first to file for IPO with a post-money valuation of <span class="highlight-bold">$965 billion</span>, led by Altimeter Capital and Sequoia. Just three months after its G round at $380B, the valuation exploded to $965B, surpassing OpenAI's $852B.</p>
+                        <p>OpenAI followed on June 8 with an S-1 draft filing. CEO Altman acknowledged the advantages of staying private but retained the IPO option. OpenAI also released a three-year strategic roadmap covering model development and enterprise deployment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Anthropic leads at $965B; $65B H-round sets AI financing record</div>
+                        <div class="key-point">OpenAI files S-1 next; two giants in white-hot capital competition</div>
+                        <div class="key-point">AI companies shift from tech race to full "tech + capital" dual-track battle</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">GPT-5.6 Expected in June as OpenAI's Technology Roadmap Emerges</h3>
+                    <div class="news-content">
+                        <p>Multiple reports suggest OpenAI's next flagship model <span class="highlight-bold">GPT-5.6</span> could launch in June. Altman hinted at significant improvements in reasoning and Agent task execution. OpenAI also disclosed a three-year strategic plan focused on: continued model iteration, enterprise AI deployment solutions, and AI Agent ecosystem development.</p>
+                        <p>With Anthropic's Claude Fable 5 and Mythos 5 dominating benchmarks, OpenAI faces mounting competitive pressure that may accelerate GPT-5.6's release timeline.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 focuses on reasoning and Agent execution, likely launching in June</div>
+                        <div class="key-point">Three-year roadmap revealed: model iteration + enterprise deployment + Agent ecosystem</div>
+                        <div class="key-point">Anthropic Fable 5/Mythos 5 benchmark dominance pressures OpenAI to accelerate</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">AI Coding Tools Evolve from "Completion" to "Agent" as 2026 Competition Intensifies</h3>
+                    <div class="news-content">
+                        <p>In 2026, AI coding tools have evolved from simple code completion plugins into agents with <span class="highlight">autonomous planning and execution capabilities</span>. Claude Code, Cursor, and GitHub Copilot continue iterating: Claude Code excels at long-chain reasoning and complex architecture; Cursor leads in cross-file refactoring; Copilot dominates day-to-day code completion.</p>
+                        <p>Cursor's Composer 2.5 (built on Kimi K2.5) approaches Claude Opus 4.7 levels, while GitHub Copilot has shifted to an AI Credits billing model. <span class="highlight">59% of developers now use a multi-tool combination</span>, as tool boundaries increasingly blur.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI coding tools evolve from "completion" to "Agent" with autonomous planning</div>
+                        <div class="key-point">Cursor Composer 2.5 nears Claude Opus 4.7, validating open-source model commercial value</div>
+                        <div class="key-point">59% of developers mix tools; competition shifts to ecosystem integration</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Unitree Passes STAR Market IPO Review in Record 73 Days, Set to Become China's First Embodied AI Stock</h3>
+                    <div class="news-content">
+                        <p>On June 1, the Shanghai Stock Exchange approved Unitree's IPO application in just <span class="highlight-orange">73 days</span> from filing to approval, setting a record for hard-tech review speed on the STAR Market. Unitree is poised to become China's first "embodied intelligence stock," planning to raise approximately 4.2 billion yuan.</p>
+                        <p>Financials show 2025 revenue of 1.708 billion yuan with 590 million yuan in adjusted net profit, making Unitree one of the rare profitable embodied AI companies in China. Q1 2026 revenue was 423 million yuan, up 68.49% YoY. Starting from robot dogs, Unitree now covers both quadruped and humanoid robots.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">73-day record approval via STAR Market's "pre-review mechanism" for hard-tech</div>
+                        <div class="key-point">2025 revenue 1.708B yuan, adjusted net profit 590M yuan; already profitable</div>
+                        <div class="key-point">From robot dogs to humanoids, a clear commercialization trajectory</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">2026 Future Auto AI Tech Expo Opens Today in Chongqing, Huawei Qiankun & CATL Among Exhibitors</h3>
+                    <div class="news-content">
+                        <p>June 13-16: The 2026 Future Auto AI Tech Expo opens at the Chongqing International Expo Center. Focused on <span class="highlight-orange">"AI + Automotive" innovation</span>, the expo features five core zones: NEV manufacturing, robotics applications, AI model innovation, smart mobility ecosystems, and tech collaboration.</p>
+                        <p>Exhibitors include Huawei Qiankun, Horizon Robotics, CATL, and Sunwoda. As vehicles evolve from traditional transport into smart mobile terminals and data hubs, large models, high-level autonomous driving, and embodied intelligence are reshaping the automotive ecosystem.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Five core zones covering the full chain from manufacturing to mobility</div>
+                        <div class="key-point">Huawei Qiankun, Horizon, CATL and other leaders exhibiting</div>
+                        <div class="key-point">Vehicles accelerating toward "smart mobile terminal + robot carrier" status</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Galbot General Robot Raises 2.5B Yuan with State-Backed Funding, 100+ Units in Commercial Operation</h3>
+                    <div class="news-content">
+                        <p>In March 2026, Galbot General Robot announced a <span class="highlight-orange">2.5 billion yuan funding round</span> with participation from the National AI Industry Fund, industrial capital, and local state assets. Total financing exceeds 5 billion yuan, with post-money valuation over 20 billion yuan.</p>
+                        <p>The Galbot G1 robot is already operating in Zhongguancun convenience stores, autonomously greeting customers, fetching items, and preparing beverages. The "Galbot Space Cabin" convenience store and smart pharmacy projects have reached <span class="highlight-orange">100+ unit operational scale</span>. The company aims to close the loop from embodied AI model to robot body to scenario operations through its "Galbot Star Brain" system.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">2.5B yuan round with National Fund III strategic investment; valuation exceeds 20B yuan</div>
+                        <div class="key-point">Galbot G1 operating at 100+ unit scale in Zhongguancun stores</div>
+                        <div class="key-point">"Galbot Star Brain" closes the loop: embodied model + robot body + scenario operations</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128640;</div>
+                        <div class="trend-desc">
+                            <h3>AI Giants Rush into Capital Markets</h3>
+                            <p>SpaceX's record IPO, OpenAI and Anthropic racing to file S-1s &#8212; the AI industry is moving from pure tech competition to full capital market entry.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129309;</div>
+                        <div class="trend-desc">
+                            <h3>Middle East Peace Hopes vs. Geopolitical Undercurrents</h3>
+                            <p>Iran-US deal nears completion but both sides tell different stories. Oil crashes while Israel threatens force &#8212; peace and conflict separated by a thread.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129530;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied AI Moves from "Concept" to "Delivery"</h3>
+                            <p>Unitree's 73-day IPO approval, Galbot's 100+ unit deployment, and the Future Auto AI Expo all signal the industry's shift from labs to real orders and mass production.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9917;</div>
+                        <div class="trend-desc">
+                            <h3>World Cup Fever Sweeps the Globe</h3>
+                            <p>The 48-team tournament is underway. The sporting spectacle overlaps with geopolitical and economic drama, creating a multi-threaded global attention landscape.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Sina Finance &middot; The Paper &middot; IT Home &middot; CCTV News &middot; Cailian Press &middot; iFeng &middot; The Independent</p>
+            <p class="footer-meta">Compiled: 2026-06-13 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
