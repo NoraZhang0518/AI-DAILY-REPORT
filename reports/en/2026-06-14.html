@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-14</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-14</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">China's Government Bond Balance Exceeds 100 Trillion Yuan for the First Time</h3>
+                    <div class="news-content">
+                        <p>On June 12, the People's Bank of China released the May 2026 financial statistics. The outstanding balance of government bonds reached <span class="highlight-bold">100.6 trillion yuan</span> at the end of May, up 15.1% year-on-year, surpassing the 100 trillion mark for the first time. This was primarily driven by proactive fiscal policies implemented to counter economic downward pressure and the transformation of implicit debt into explicit debt.</p>
+                        <p>Experts note that overall debt risk remains controllable, and China still has significant room for further borrowing. China becomes the third country globally after the US and Japan to have government debt exceeding the 100 trillion level.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Government bond balance at 100.6 trillion yuan, first time exceeding 100 trillion</div>
+                        <div class="key-point">15.1% YoY growth driven by proactive fiscal policy + implicit debt formalization</div>
+                        <div class="key-point">Experts assess overall risk as controllable with room for further borrowing</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">A-Share Investors Surpass 250 Million, 13.87 Million New in 2025</h3>
+                    <div class="news-content">
+                        <p>On June 12, China Securities Depository and Clearing Corporation released its 2025 annual report. A total of 13.8695 million new investors were added in 2025, with 13.8284 million being individual investors. The total number of investors reached <span class="highlight-bold">250.6729 million</span>, up 5.86% from the previous year.</p>
+                        <p>Over the past decade, A-shares have added over 10 million new investors annually, peaking at over 20 million. Market performance is a significant factor influencing investor numbers.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Total A-share investors exceed 250 million, nearly 14 million added in 2025</div>
+                        <div class="key-point">Over 10 million new investors annually for the past decade</div>
+                        <div class="key-point">Market performance highly correlated with investor growth</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Major Capital Rotation: Funds Flow from Tech to Cyclical Resource Sectors</h3>
+                    <div class="news-content">
+                        <p>A-shares continued to fluctuate this week with notable capital rotation from tech to <span class="highlight-bold">cyclical resource sectors</span>. Lithium battery and non-ferrous metal targets received significant capital allocation, while optical module core stocks saw concentrated capital withdrawal. Banking led the gains while media lagged.</p>
+                        <p>On June 8, the Shanghai Composite fell 1.70% below 4000, then rebounded 1.28% to 4010 on June 9, but trading volume shrank to 2.67 trillion yuan, a recent low, signaling increasing market divergence.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Capital rotating from tech to cyclical resources, lithium and metals favored</div>
+                        <div class="key-point">Optical module and AI hardware stocks facing concentrated selling</div>
+                        <div class="key-point">Shrinking volume signals increasing market divergence</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">2026 Gaokao Concludes: 12.9 Million Students Finish, Results Expected Around June 25</h3>
+                    <div class="news-content">
+                        <p>On June 10, the 2026 National College Entrance Examination concluded. A total of <span class="highlight-bold">12.9 million students</span> registered, down 450,000 from 2025, marking two consecutive years of decline. Most provinces finished on June 9, while Beijing and Zhejiang concluded on June 10.</p>
+                        <p>Over 10 provinces have announced result release dates, mostly around June 25. The Ministry of Education upgraded the Sunshine College Application system with free guidance for students.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">12.9 million students took the Gaokao, declining for two consecutive years</div>
+                        <div class="key-point">Results expected around June 25, application system upgraded</div>
+                        <div class="key-point">Ministry of Education provides free intelligent application guidance</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Myanmar President Min Aung Hlaing to Make State Visit to China Starting June 15</h3>
+                    <div class="news-content">
+                        <p>At the invitation of President Xi Jinping, Myanmar President Min Aung Hlaing will make a state visit to China from June 15 to 19. Additionally, Nepal's Foreign Minister will visit China from June 14 to 17 at the invitation of Foreign Minister Wang Yi.</p>
+                        <p>Two neighboring leaders visiting China within a week reflects <span class="highlight-bold">China's proactive neighborhood diplomacy</span>.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">PBOC Conducts 600 Billion Yuan Buyout Reverse Repo, Net Zero Injection</h3>
+                    <div class="news-content">
+                        <p>On June 12, the PBOC announced a <span class="highlight-bold">600 billion yuan 6-month buyout reverse repo</span> operation for June 15. With 600 billion yuan of the same tenor maturing this month, the net effect is zero injection or withdrawal. The operation serves as flexible "peak shaving and valley filling" to stabilize bond and equity market expectations.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">SpaceX Surges 19% on IPO Debut, Musk Becomes World's First Trillionaire</h3>
+                    <div class="news-content">
+                        <p>On June 12 local time, Elon Musk's SpaceX (SPCX) officially listed on NASDAQ. Priced at $135/share, it opened at $150, up 11%, and peaked over 30% before closing at <span class="highlight-bold">$160.95</span>, a 19.22% first-day gain. At closing price, SpaceX's market cap reached approximately $2.1 trillion.</p>
+                        <p>The IPO raised $75 billion by issuing 5.556 billion shares, shattering the global IPO record. Musk became the first trillionaire in human history, and approximately 400 employees are set to become billionaires.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">IPO price $135, closed at $160.95, up 19.22% on debut</div>
+                        <div class="key-point">$75 billion raised, $2.1 trillion market cap, new global IPO record</div>
+                        <div class="key-point">Musk becomes first trillionaire, ~400 employees become billionaires</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">US and Iran Both Declare "Victory" as Peace Agreement Text Finalized for First Time</h3>
+                    <div class="news-content">
+                        <p>On June 11, Trump announced the cancellation of planned strikes on Iran, declaring "we have just ended the war with Iran." The core terms of the US-Iran memorandum include: <span class="highlight-bold">lifting sanctions, troop withdrawal, reopening the Strait of Hormuz, and unfreezing $20 billion in Iranian assets</span>. The ceasefire was extended for another 60 days.</p>
+                        <p>However, Trump later stated the draft released by Iranian media "does not match the facts," and Iran's Supreme Leader has not yet formally approved it. Israel's Defense Minister Katz hinted at possible military action to prevent Iran from obtaining nuclear weapons, seen as the biggest variable in the Middle East situation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">US-Iran peace agreement text finalized for the first time, but diverging narratives</div>
+                        <div class="key-point">Core terms: sanctions relief, troop withdrawal, Hormuz reopening, asset unfreezing</div>
+                        <div class="key-point">Israel's hardline stance remains the biggest variable; nuclear issue deferred</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">2026 World Cup: Brazil 1-1 Morocco, Qatar's Stoppage-Time Equalizer Earns First-Ever Point</h3>
+                    <div class="news-content">
+                        <p>World Cup group stage continued on June 14. In Group B, <span class="highlight-bold">Qatar drew 1-1 with Switzerland</span>, scoring a stoppage-time header in the 94th minute to earn their first-ever World Cup point. In Group C, Brazil drew 1-1 with Morocco. In Group D, the USA defeated Paraguay 4-1.</p>
+                        <p>Chinese referee Fu Ming will serve as assistant video assistant referee in the Australia vs Turkey match, becoming the first Chinese referee to appear at this World Cup.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Qatar earns first-ever World Cup point with stoppage-time equalizer</div>
+                        <div class="key-point">Brazil 1-1 Morocco, USA 4-1 Paraguay</div>
+                        <div class="key-point">Chinese referee Fu Ming makes World Cup debut</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Oil Prices Continue Decline, WTI Drops to $84/Barrel</h3>
+                    <div class="news-content">
+                        <p>Driven by progress in US-Iran peace talks and expectations of the Strait of Hormuz reopening, international oil prices continued their decline. <span class="highlight-bold">WTI crude fell to $84/barrel</span>, while Brent dropped to around $87/barrel. Peace agreement expectations rapidly erased geopolitical risk premiums.</p>
+                        <p>Falling oil prices cooled inflation expectations, and all three major US indices closed higher. S&P 500 up 0.5%, Nasdaq up 0.31%, Dow up 0.7%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WTI at $84, Brent at $87, geopolitical risk premium evaporating</div>
+                        <div class="key-point">Lower oil prices cool inflation expectations, US indices rise</div>
+                        <div class="key-point">Strait of Hormuz reopening expectations are the key oil price variable</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Anthropic Secretly Files IPO, $965 Billion Valuation Beats OpenAI to the Punch</h3>
+                    <div class="news-content">
+                        <p>On June 1, Anthropic announced it had secretly filed an S-1 with the SEC. Post-money valuation reached <span class="highlight-bold">$965 billion</span>, with a $65 billion Series H led by Altimeter Capital and Sequoia Capital. Just 3 months earlier, the post-G-round valuation was $380 billion — a 2.5x increase in one quarter.</p>
+                        <p>Anthropic surpassed OpenAI's approximately $852 billion valuation to become the world's highest-valued AI company. It is expected to list on US markets within months in what could be the largest AI IPO ever.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Anthropic leads at $965B valuation, 2.5x in 3 months</div>
+                        <div class="key-point">$65B Series H sets AI financing record</div>
+                        <div class="key-point">Beating OpenAI to IPO filing signals full-scale capital race</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">India Summons US Chargé d'Affaires Over Oil Tanker Attacks, US-India Relations Strained</h3>
+                    <div class="news-content">
+                        <p>On June 12, India's Ministry of External Affairs summoned the US Chargé d'Affaires to formally protest US military attacks on oil tankers carrying Indian crew members in the Gulf of Oman, which resulted in <span class="highlight-bold">3 Indian crew deaths</span>. Trump simultaneously condemned Iranian drone attacks on Indian vessels leaving the Strait of Hormuz. Middle East maritime conflicts spilling over to third countries add further complexity.</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">3 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">GPT-5.6 Release Candidate Confirmed, Major Leap in Frontend and Vision</h3>
+                    <div class="news-content">
+                        <p>OpenAI's next flagship model <span class="highlight">GPT-5.6</span> release candidate version kindle-alpha has been confirmed, with core upgrades focused on frontend development and visual understanding. GPT-5.5 was released just over a month ago, and 5.6 has already appeared — iteration speed setting new records.</p>
+                        <p>Meanwhile, Anthropic's rumored "terrifyingly powerful" Claude Mythos 5 briefly appeared in the API before being swiftly removed. Both signals went viral on X simultaneously, with AI's "Ragnarok" arriving ahead of schedule.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 RC kindle-alpha confirmed, major frontend and vision improvements</div>
+                        <div class="key-point">Claude Mythos 5 flashes and disappears from API, dual-race accelerating</div>
+                        <div class="key-point">GPT-5.5 to 5.6 in just over a month, AI iteration speed hits new record</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Anthropic Beats OpenAI to IPO Filing, Largest AI IPO in History Underway</h3>
+                    <div class="news-content">
+                        <p>Anthropic officially submitted a confidential S-1 to the SEC on June 1, with valuation approaching <span class="highlight">$1 trillion</span>, potentially becoming the largest public offering in AI history. Founded in 2021, the company has reached $14 billion in annualized revenue in just 5 years, with a $65 billion Series H round.</p>
+                        <p>Anthropic's series of leaks, validations, and commercialization probes appear designed to maintain Mythos's mystique and boost capital market appeal ahead of the IPO.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Anthropic secretly files S-1, largest AI IPO in history launched</div>
+                        <div class="key-point">$1T valuation in 5 years, $14B annualized revenue</div>
+                        <div class="key-point">Claude Mythos 5's mysterious appearances seen as IPO valuation booster</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Claude Mythos 5 Flashes and Vanishes, AI Coding Agent Race Intensifies</h3>
+                    <div class="news-content">
+                        <p>Claude Mythos 5 is considered Anthropic's most powerful product to date. Its mysterious appearance and rapid removal from the API has drawn intense market attention. Anthropic claims Claude Fable 5 is the strongest public Claude, the first Fable series model to reach <span class="highlight">Mythos-level capability</span>, excelling in software engineering, complex knowledge work, vision, long context, and memory.</p>
+                        <p>AI coding tools have fully entered the Agent era. Claude Code, Cursor, and GitHub Copilot continue iterating, with 59% of developers adopting multi-tool hybrid approaches.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude Mythos 5 flashes then vanishes from API, "terrifyingly powerful"</div>
+                        <div class="key-point">Fable 5 reaches Mythos-level capability, leading in software engineering and long context</div>
+                        <div class="key-point">AI coding Agent era arrives, 59% of developers use multi-tool approaches</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">UBTECH Lifelike Robot Presales Break 3,000 Units in 7 Days — Humanoid "GPT Moment" Arriving?</h3>
+                    <div class="news-content">
+                        <p>In June, UBTECH launched presales of the world's first full-size ultra-lifelike humanoid robot U1 series, with <span class="highlight-orange">presales exceeding 3,000 units in 7 days</span>, igniting the consumer market. UBTECH's 2025 full-size humanoid robot business revenue reached 820 million yuan, up 2203.7% year-on-year.</p>
+                        <p>Unitree officially announced a deep partnership with NVIDIA, and BYD accelerated industrial humanoid robot production line deployment. Multiple signals suggest the humanoid robot "GPT moment" may be approaching.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">UBTECH U1 lifelike robot presales exceed 3,000 units, consumer market first breakout</div>
+                        <div class="key-point">2025 humanoid robot revenue 820M yuan, up 2203.7% YoY</div>
+                        <div class="key-point">Unitree+NVIDIA, BYD entering field, industry consensus "GPT moment" nears</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">NVIDIA × Unitree Launch GR00T Humanoid Robot Reference Design at GTC</h3>
+                    <div class="news-content">
+                        <p>On June 1, NVIDIA CEO Jensen Huang announced the partnership with Unitree at GTC Taipei, launching the open humanoid robot reference design <span class="highlight-orange">NVIDIA Isaac GR00T</span>. Unitree provides the ~1.8m H2 humanoid robot body, NVIDIA supplies the Jetson Thor AI computing platform, GR00T embodied AI model, and simulation system, plus Sharpa five-finger robotic hands.</p>
+                        <p>The kit targets top global universities and research institutions. The announcement sparked debate — some worry about chip dependency, while others see it as a fast track for Chinese robots to leapfrog.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">NVIDIA + Unitree launch GR00T humanoid robot reference design</div>
+                        <div class="key-point">Unitree H2 body + Jetson Thor compute + GR00T model + five-finger hands</div>
+                        <div class="key-point">Targeting academic/research market, sparking "independence vs. leverage" debate</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Metax Partners with UBTECH for Robot Chip Race, 270B Yuan Valuation Enters the Field</h3>
+                    <div class="news-content">
+                        <p>Metax (valued at approximately <span class="highlight-orange">270 billion yuan</span>) has partnered with UBTECH to compete in the next-generation humanoid robot computing chip race. UBTECH's 2025 annual report shows revenue of 2.001 billion yuan, up 53.3% YoY, with full-size embodied intelligent humanoid robot business revenue at 820 million yuan, surging 2203.7% YoY, and sales of 1,079 units, up 35,866.7%.</p>
+                        <p>The robot chip sector is becoming the next computing battlefield after GPUs, with domestic chip companies accelerating development of specialized humanoid robot chips.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Metax 270B yuan valuation partners with UBTECH for robot chip race</div>
+                        <div class="key-point">UBTECH humanoid robot business surges 2203.7% YoY</div>
+                        <div class="key-point">Domestic chips accelerating specialized humanoid robot computing</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Key Trends Today</h2>
+                <p>Insights into the latest AI landscape</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">💰</div>
+                        <div class="trend-desc">
+                            <h3>Trillionaire Born & AI Capital Frenzy</h3>
+                            <p>SpaceX's IPO creates the world's first trillionaire, Anthropic valuation nears $1T — AI and space dual-track ignite capital markets, 2026 may be the "Year of Super IPOs."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🕊️</div>
+                        <div class="trend-desc">
+                            <h3>Middle East Peace with Undercurrents</h3>
+                            <p>US-Iran agreement text finalized but narratives diverge, oil plunges while Israel holds firm — peace and conflict separated by a thread, Strait of Hormuz remains the key variable.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robots Move from Lab to Home</h3>
+                            <p>UBTECH lifelike robot presales break 3,000, NVIDIA × Unitree GR00T launched, Metax + UBTECH target robot chips — consumer breakout signals are clear.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">⚽</div>
+                        <div class="trend-desc">
+                            <h3>World Cup Fever & Global Attention Split</h3>
+                            <p>US-Canada-Mexico World Cup group stage in full swing, Qatar's historic first point, Chinese referee debut — sports spectacles overlapping with geopolitical dynamics in "multi-thread" mode.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Sina Finance · Baidu Hot Search · CCTV News · ITHome · Cailian Press · The Paper · 51CTO</p>
+            <p class="footer-meta">Compiled: 2026-06-14 09:40 | NEWS DAILY Automated Push</p>
+        </footer>
+    </div>
+</body>
+</html>
