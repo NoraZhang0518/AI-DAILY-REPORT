@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-15</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+        .header .subtitle { font-size: 18px; color: rgba(255, 255, 255, 0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count {
+            background: rgba(255, 255, 255, 0.1); padding: 4px 12px;
+            border-radius: 20px; font-size: 12px; font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px;
+            position: relative; transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255, 255, 255, 0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '→'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255, 255, 255, 0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255, 255, 255, 0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px;
+            padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03); border-radius: 16px;
+            padding: 24px; transition: all 0.3s ease;
+        }
+        .trend-card:hover { background: rgba(255, 255, 255, 0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255, 255, 255, 0.6); line-height: 1.6; }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-desc { flex: 1; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-06-15</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <!-- 第一行：热搜在上 -->
+        <div class="sections">
+            <!-- 国内综合热搜 -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">5月经济数据密集发布：CPI同比上涨1.2%，PPI涨幅扩大至3.9%</h3>
+                    <div class="news-content">
+                        <p>国家统计局 6 月 10 日发布 5 月经济数据，居民消费价格指数（CPI）同比上涨 <span class="highlight-bold">1.2%</span>，工业生产者出厂价格（PPI）同比上涨 3.9%，环比上涨 0.4%。市场分析认为温和通胀配合稳增长政策，为后续货币政策操作留下空间。A 股、债市应声出现结构性行情。</p>
+                        <p>5月数据进一步确认国内需求温和复苏的态势，市场普遍关注 6 月 LPR 续作节奏与下半年财政发力方向，宏观流动性预期保持稳定偏松。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">CPI 同比 +1.2%，消费温和复苏</div>
+                        <div class="key-point">PPI 同比 +3.9%，工业品价格回升</div>
+                        <div class="key-point">政策仍存操作空间，关注 6 月 LPR 动向</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">端午假期出行火热：跨城流动同比+18%，文旅消费成经济增长新引擎</h3>
+                    <div class="news-content">
+                        <p>端午小长假落幕，交通运输部数据显示假期跨城出行总量同比 <span class="highlight-bold">+18%</span>，高铁、民航及自驾游全面增长。文旅部统计假期国内旅游收入突破 <span class="highlight-bold">4500 亿元</span>，"情绪经济+文旅"赛道持续升温，端午经济成为观察二季度内需成色的重要窗口。</p>
+                        <p>节日期间县域旅游、Citywalk、非遗体验等新业态表现尤为亮眼，Z 世代客群正成为消费主导力量，多地夜间经济与文旅新场景持续出圈。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">跨城流动同比+18%，高铁民航全线高位</div>
+                        <div class="key-point">国内旅游收入破 4500 亿元</div>
+                        <div class="key-point">"情绪经济+文旅"成新增长点</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">高考成绩 6 月底集中放榜：1290 万考生志愿填报新规落地</h3>
+                    <div class="news-content">
+                        <p>2026 年高考已顺利落幕，<span class="highlight-bold">1290 万考生</span>进入评卷与志愿填报阶段。教育部今年新规强化"院校专业组"大类招生，部分省份新增 AI、具身智能、量子信息等紧缺专业志愿容量。高校招生办启动密集咨询周，避免考生因信息差踩坑。</p>
+                        <p>新规意在打破"唯分数论"，引导高校与考生更精准对接产业需求。AI、具身智能等专业的扩招反映新兴产业对人才的强烈需求。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">1290 万考生进入放榜与填报阶段</div>
+                        <div class="key-point">新规强化"院校专业组"大类招生</div>
+                        <div class="key-point">AI、具身智能等专业扩招</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">央行重启逆回购操作呵护流动性，6 月 MLF 续作窗口临近</h3>
+                    <div class="news-content">
+                        <p>央行本周连续多日开展 7 天逆回购操作，单日净投放规模创近期新高，<span class="highlight-bold">呵护跨季资金面意图明显</span>。市场普遍预计 6 月 MLF 续作量将适度增加，利率维持稳定。债市短端品种走强，长端利率震荡，反映"短松长稳"的政策意图。</p>
+                        <p>银行间隔夜资金价格持续低于政策利率，DR007 维持在低位。机构预期后续还有结构性货币政策工具继续落地。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">央行连续净投放呵护跨季资金</div>
+                        <div class="key-point">6 月 MLF 续作关注规模与利率</div>
+                        <div class="key-point">债市呈"短松长稳"格局</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">具身智能扶持再加码：上海发布 10 万台部署目标，配套百亿母基金</h3>
+                    <div class="news-content">
+                        <p>上海市经信委本周发布具身智能产业行动方案 2.0，提出到 2027 年实现 <span class="highlight-bold">10 万台人形机器人</span>真实场景部署目标，并配套总规模 100 亿元的具身智能产业母基金。杭州、北京、深圳等地同步加码，资本与政策双轮驱动产业进入"量产-数据-迭代"正循环。</p>
+                        <p>各地具身专项政策密集出台，已形成长三角、珠三角、京津冀三大产业集群，机器人本体、VLA 大模型、灵巧手等环节均获重点支持。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">上海 2027 年 10 万台部署目标</div>
+                        <div class="key-point">100 亿元母基金配套落地</div>
+                        <div class="key-point">杭州/北京/深圳同步加码政策</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">暴雨高温双预警齐发：江南进入"蒸煮"模式，北方多地破 35℃</h3>
+                    <div class="news-content">
+                        <p>中央气象台 6 月 14 日同时发布<span class="highlight-bold">暴雨蓝色预警 + 高温黄色预警</span>，江南、华南持续强对流天气，北方多地气温突破 35℃。气象专家提示今年副热带高压偏北偏强，雨带北抬明显，防汛与防暑需"两手抓"。</p>
+                        <p>农业部门已部署防汛抗旱预案，水利部亦提前调度长江、淮河等流域水库腾库容，迎战可能到来的洪涝挑战。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">暴雨蓝色 + 高温黄色预警齐发</div>
+                        <div class="key-point">北方多地破 35℃</div>
+                        <div class="key-point">副高偏北，雨带北抬明显</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 国际时事热点 -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">美伊和平协议文本敲定：6 月 19 日正式签署，霍尔木兹海峡复航在望</h3>
+                    <div class="news-content">
+                        <p>巴基斯坦总理夏巴兹·谢里夫 6 月 14 日宣布，美伊和平协议正式达成，<span class="highlight-bold">签署仪式定于 6 月 19 日举行</span>。双方同意立即并永久停止所有战线上的军事行动，霍尔木兹海峡将恢复通航。作为交换，伊朗承诺不发展核武器，美国将提供制裁缓解与 250 亿美元资金支持。</p>
+                        <p>受积极信号影响，国际油价应声大跌，全球航运与能源股迅速重定价。协议执行细节仍待确认，市场正快速切换至"和解后交易"模式。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">6 月 19 日正式签署，停火永久生效</div>
+                        <div class="key-point">霍尔木兹海峡复航，全球能源动脉打通</div>
+                        <div class="key-point">250 亿美元资金支持与制裁松绑</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">诺伊达国际机场正式投运：印度航空基建升级，年吞吐量 1200 万人次</h3>
+                    <div class="news-content">
+                        <p>印度诺伊达国际机场 6 月 15 日开始商业航班运营，<span class="highlight-bold">设计年吞吐量 1200 万人次</span>，是印度近年来规模最大的航空基础设施扩建项目之一。该机场投入运营将显著缓解德里机场压力，并为北印度地区带来新的物流与产业集聚效应。</p>
+                        <p>项目配套建设大型综合交通枢纽与航空产业园区，预计将带动周边房地产与高端制造业快速发展。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">设计年吞吐量 1200 万人次</div>
+                        <div class="key-point">缓解德里机场压力</div>
+                        <div class="key-point">推动北印度物流与产业集聚</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">伊朗与美方就核协议版本仍存分歧：时间表成为博弈焦点</h3>
+                    <div class="news-content">
+                        <p>尽管和平协议框架已经敲定，伊朗与美方在最终核协议条款上仍提出不同版本。伊朗主张分阶段恢复与核查并行，<span class="highlight-bold">美方则坚持既定时间表快速推进</span>。分析认为，关键议题（核能力上限、IAEA 全面检查、远程导弹冻结等）仍需数周才能谈妥。</p>
+                        <p>6 月 19 日签署后或继续留下"以签代谈"的延宕局面。中、俄等区域大国在协议担保与执行环节中的角色备受关注。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">伊美就版本仍存分歧</div>
+                        <div class="key-point">时间表成博弈焦点</div>
+                        <div class="key-point">关键议题需数周谈判</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">巴西蹦极跳悲剧：21 岁女子因安全绳未系身亡，多人被拘</h3>
+                    <div class="news-content">
+                        <p>巴西 6 月 14 日发生严重蹦极安全事故，<span class="highlight-bold">一名 21 岁女性在参加蹦极活动时坠亡</span>。组织者涉嫌未将安全绳系好便将其推下桥梁，警方已拘留多名活动组织者与场地运营方，司法调查正在推进。</p>
+                        <p>事件再次引发对极限运动安全监管与持证经营的全球关注。多家极限运动行业协会呼吁加强设备检验与第三方审计。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">21 岁女子因安全绳未系坠亡</div>
+                        <div class="key-point">多名组织者被拘</div>
+                        <div class="key-point">极限运动安全监管再引关注</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">美国密苏里州小型客机坠毁：机上 12 人全部遇难</h3>
+                    <div class="news-content">
+                        <p>美国密苏里州巴特勒纪念机场附近 6 月 14 日发生小型客机坠毁事故，<span class="highlight-bold">机上 12 人全部罹难</span>，初步调查显示可能与恶劣天气下的低空飞行决策有关。NTSB 已派员介入调查，事件再度引发美国国内对支线航空安全、飞行员培训以及小型机场监管的讨论。</p>
+                        <p>事件也再次暴露美国通用航空在恶劣天气协同决策机制上的短板，监管机构可能出台新规强化航空公司自主停飞决策权。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">机上 12 人全部遇难</div>
+                        <div class="key-point">NTSB 已介入调查</div>
+                        <div class="key-point">支线航空安全再被聚焦</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">2026 世界杯开幕倒计时：48 强齐聚北美，盛典规模史无前例</h3>
+                    <div class="news-content">
+                        <p>2026 FIFA 男足世界杯开幕仪式进入最后 48 小时倒计时，<span class="highlight-bold">48 支球队将首次在美国、加拿大、墨西哥联合举办</span>的世界杯中同场竞技。开幕表演嘉宾包括 Shakira、Katy Perry、Nora Fatehi 等国际巨星。</p>
+                        <p>FIFA 与主办国预计赛事将创下观赛与商业收入多项历史纪录，跨境客流、住宿预订与赞助商品牌曝光均有望刷新历史峰值。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">48 强首次横跨美加墨三国</div>
+                        <div class="key-point">开幕表演阵容豪华</div>
+                        <div class="key-point">商业与观赛规模史无前例</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- 第二行：AI在下 -->
+        <div class="sections">
+            <!-- AI Coding -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Claude Fable 5 登顶编程榜：SWE-Pro 80.3%，Anthropic 锁定 6 月 AI 编程 C 位</h3>
+                    <div class="news-content">
+                        <p>Anthropic 于 6 月 9 日发布 Claude Fable 5，在 <span class="highlight-bold">SWE-Pro 编程基准上以 80.3%</span> 登顶当前模型榜，推理能力同样位居第一梯队。叠加此前的 Claude Opus 4.8（推理 57.9% HLE、编程 69.2% SWE-Pro），Anthropic 已形成"Opus 旗舰 + Fable 编程"双线布局。</p>
+                        <p>在编程自动化测试、企业代码评审等高端场景中，Anthropic 模型组合已成为众多开发者的首选方案，社区形成 Fable 5 + Opus 4.8 的混用范式。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">SWE-Pro 80.3% 登顶编程榜</div>
+                        <div class="key-point">Opus 4.8 + Fable 5 双线布局</div>
+                        <div class="key-point">高端编程场景首选品牌</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">GPT-5.5 / 5.5-Pro 全线发布：企业级 Agent 编排成为新战场</h3>
+                    <div class="news-content">
+                        <p>OpenAI 在 4 月 23 日正式发布 GPT-5.5 与 5.5-Pro，基础版推理 HLE 52.2%、编程 SWE-Pro 58.6%；5.5-Pro 在 <span class="highlight">FrontierMath 上达到 52.4%</span>。与单纯的代码补全不同，GPT-5.5 系列主打"全栈工作流自动化 + 工具调用编排"。</p>
+                        <p>OpenAI 已与多家 SaaS 厂商打通企业 Agent 集成，市场重心从"模型排名"转向"企业部署 ROI"。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">5.5 / 5.5-Pro 双发，主打企业 Agent</div>
+                        <div class="key-point">FrontierMath 52.4% 强化推理</div>
+                        <div class="key-point">竞争焦点从模型转向 ROI</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">DeepSeek V4-Pro / V4-Flash 同步登场：推理 GPQA 90% 突破，性价比再压一档</h3>
+                    <div class="news-content">
+                        <p>DeepSeek 4 月 24 日同步发布 V4-Pro 与 V4-Flash，V4-Pro 在 <span class="highlight-bold">GPQA 推理基准上达到 90.1%</span>，逼近 GPT-5.5-Pro 水平。V4-Flash 仍维持超低价 API，成为中小开发者日常编码的"水电煤"选择。</p>
+                        <p>DeepSeek 正以"高端追平 + 低端价格战"双线策略，持续压缩 OpenAI/Anthropic 的盈利空间，被社区戏称为"AI 编程领域的拼多多"。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">V4-Pro GPQA 90.1% 紧追 GPT-5.5</div>
+                        <div class="key-point">V4-Flash 守住极致性价比</div>
+                        <div class="key-point">高端追平+低端价格战并行</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Cursor Composer 2.5 / Google Gemini Omni 同期推出：编程工具双线对垒</h3>
+                    <div class="news-content">
+                        <p>Cursor 5 月 18 日推出 Composer 2.5，<span class="highlight">SWE-Multi 达到 79.8%</span>，AI 编程工具从"补全型"向"Agent 编排型"进化。Google 同步推出 Gemini Omni 与 Gemini 3.5 Flash（推理 40.2% HLE、编程 55.1% SWE-Pro）。</p>
+                        <p>"开源/闭源""工具/模型"多线对垒格局已形成，开发者选型从"用哪个"变成"组合使用"，模型与工具的耦合关系日益复杂。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Cursor Composer 2.5：SWE-Multi 79.8%</div>
+                        <div class="key-point">Gemini Omni + 3.5 Flash 同步推出</div>
+                        <div class="key-point">工具与模型厂商多线对垒</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 具身智能 -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">3 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">智元 1 亿元生态资金启动：未来五年 20 亿元专项赋能具身开发者</h3>
+                    <div class="news-content">
+                        <p>智元机器人 6 月 10 日发布"2026 元苼生态共建行动计划"，宣布今年先行落地 <span class="highlight-orange">1 亿元生态扶持资金</span>，未来五年规划投入 20 亿元专项资金，围绕科研学术、教育人才、生态伙伴、开发社区四大维度系统赋能。</p>
+                        <p>智元正以"基金+生态"双轮策略，对标英伟达 Inception，构建具身智能领域的开发者护城河。此举被视为具身赛道"卷应用"的标志性信号。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">1 亿元今年落地，5 年共 20 亿元</div>
+                        <div class="key-point">4 大维度：科研/教育/伙伴/社区</div>
+                        <div class="key-point">对标英伟达 Inception，构建生态护城河</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">宇树科技 IPO 过会倒计时：联想战略入股，具身智能第一股再进一步</h3>
+                    <div class="news-content">
+                        <p>上交所 <span class="highlight-orange">6 月 1 日审议通过宇树科技股份有限公司首发申请</span>，宇树距离成为"A 股具身智能第一股"仅余注册环节。近期联想以战略投资者身份注资，进一步强化宇树在产业链上下游的协同能力。</p>
+                        <p>叠加智元、银河通用等头部企业的快速融资与量产推进，国内具身智能板块已形成"宇树/智元/银河"三足鼎立格局，资本市场关注度持续提升。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">6/1 宇树 IPO 过会</div>
+                        <div class="key-point">联想战略入股强化协同</div>
+                        <div class="key-point">具身智能"三足鼎立"格局形成</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">银河通用 25 亿元新一轮融资落地：国家队入场，"银河星脑"全栈布局</h3>
+                    <div class="news-content">
+                        <p>银河通用 3 月宣布完成 <span class="highlight-orange">25 亿元新一轮融资</span>，累计融资额超 50 亿元，由国家人工智能产业基金、产业资本与地方国资联合加持。区别于单纯硬件展示路线，银河通用以"银河星脑"将具身大模型、机器人本体、场景运营三者打通。</p>
+                        <p>"银河太空舱"便利店与智慧药房已实现百台级真实运营，"模型+本体+场景"三打通成为具身智能商业化最具说服力的范本。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">25 亿元新融资，国家队加持</div>
+                        <div class="key-point">"银河星脑"模型+本体+场景三打通</div>
+                        <div class="key-point">便利店/药房百台级真实运营</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- 趋势总结 -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察 AI 领域最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🕊️</div>
+                        <div class="trend-desc">
+                            <h3>美伊和谈落地</h3>
+                            <p>6/19 正式签署 + 250 亿美元资金安排，全球能源与航运链迅速重定价。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🎏</div>
+                        <div class="trend-desc">
+                            <h3>端午 + 高考收官</h3>
+                            <p>跨城流动+18%、旅游收入破 4500 亿，内需弹性集中检验。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">💡</div>
+                        <div class="trend-desc">
+                            <h3>AI 编程多线对垒</h3>
+                            <p>Claude Fable 5 登顶 + GPT-5.5 Pro / DeepSeek V4-Pro 紧追，工具/模型厂商同台竞速。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>具身智能产业化提速</h3>
+                            <p>上海 10 万台目标 + 智元 20 亿生态 + 宇树 IPO 过会，量产-数据-资本三正循环形成。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">数据来源：新华社 · 国家统计局 · 百度热搜 · Reuters · LiveMint · AIReleaseTracker · Leaderobot</p>
+            <p class="footer-meta">整理时间：2026-06-15 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
