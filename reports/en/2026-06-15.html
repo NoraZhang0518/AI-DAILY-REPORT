@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-15</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+        .header .subtitle { font-size: 18px; color: rgba(255, 255, 255, 0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count {
+            background: rgba(255, 255, 255, 0.1); padding: 4px 12px;
+            border-radius: 20px; font-size: 12px; font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px;
+            position: relative; transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255, 255, 255, 0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '\2192'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255, 255, 255, 0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255, 255, 255, 0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px;
+            padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03); border-radius: 16px;
+            padding: 24px; transition: all 0.3s ease;
+        }
+        .trend-card:hover { background: rgba(255, 255, 255, 0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255, 255, 255, 0.6); line-height: 1.6; }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-desc { flex: 1; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-06-15</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Row 1: Hot News on Top -->
+        <div class="sections">
+            <!-- China Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">May Economic Data Released: CPI +1.2% YoY, PPI Expands to +3.9%</h3>
+                    <div class="news-content">
+                        <p>China's National Bureau of Statistics released May economic data on June 10. The Consumer Price Index (CPI) rose <span class="highlight-bold">1.2% year-on-year</span>, while the Producer Price Index (PPI) climbed 3.9% YoY, with a 0.4% monthly gain. Analysts view the mild inflation combined with stable growth policies as leaving room for further monetary policy action. A-shares and bond markets saw structural repricing.</p>
+                        <p>The May data further confirms a mild domestic demand recovery. The market is broadly watching the June LPR renewal pace and the direction of fiscal stimulus in H2, with macro liquidity expectations remaining stable and dovish.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">CPI +1.2% YoY, mild consumption recovery</div>
+                        <div class="key-point">PPI +3.9% YoY, industrial prices rebounding</div>
+                        <div class="key-point">Policy room remains, watch June LPR signals</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Dragon Boat Festival Travel Surge: Cross-City Flow +18% YoY, Tourism as Growth Engine</h3>
+                    <div class="news-content">
+                        <p>The Dragon Boat Festival holiday has concluded, with the Ministry of Transport reporting <span class="highlight-bold">cross-city travel up 18% year-on-year</span>, with high-speed rail, civil aviation, and road trips all recording strong growth. The Ministry of Culture and Tourism tallied domestic tourism revenue above <span class="highlight-bold">450 billion yuan</span>, as the "emotional economy + culture and travel" trend continued to heat up.</p>
+                        <p>County-level tourism, Citywalk, and intangible cultural heritage experiences stood out, with Gen Z becoming the dominant consumer force driving new nighttime economy and cultural scenarios.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Cross-city flow +18% YoY, all transport modes at highs</div>
+                        <div class="key-point">Domestic tourism revenue exceeds 450 billion yuan</div>
+                        <div class="key-point">"Emotional economy + travel" emerges as new growth driver</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Gaokao Score Release Approaching: 12.9M Candidates Face New Application Rules</h3>
+                    <div class="news-content">
+                        <p>The 2026 Gaokao (national college entrance exam) has wrapped up, with <span class="highlight-bold">12.9 million candidates</span> entering the grading and university application phase. The Ministry of Education's new rules this year strengthen "school-major group" category-based enrollment, with several provinces expanding capacity in shortage disciplines such as AI, embodied intelligence, and quantum information.</p>
+                        <p>The new rules aim to break the "score-only" mentality and steer universities and candidates toward more precise alignment with industry needs. The expansion of AI and embodied intelligence programs reflects strong demand for talent in emerging industries.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">12.9M candidates enter score release and application phase</div>
+                        <div class="key-point">New rules strengthen "school-major group" category enrollment</div>
+                        <div class="key-point">AI, embodied intelligence, and other programs expand capacity</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">PBOC Resumes Reverse Repos to Support Liquidity, June MLF Rollover Window Approaches</h3>
+                    <div class="news-content">
+                        <p>The People's Bank of China has conducted 7-day reverse repo operations for several consecutive days this week, with single-day net injections hitting recent highs, signaling a clear intent to <span class="highlight-bold">support cross-quarter liquidity</span>. The market widely expects June MLF rollover volume to increase moderately with rates held stable. The short end of the bond market strengthened while long-end rates oscillated, reflecting a "loose short end, stable long end" policy posture.</p>
+                        <p>Overnight interbank rates remained below the policy rate, with DR007 staying low. Institutions expect more structural monetary policy tools to land in the coming period.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">PBOC continuous net injection to support cross-quarter liquidity</div>
+                        <div class="key-point">June MLF rollover volume and rate under close watch</div>
+                        <div class="key-point">Bond market shows "loose short end, stable long end" pattern</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Embodied Intelligence Support Intensifies: Shanghai Sets 100K Robot Target, 10B Yuan Fund</h3>
+                    <div class="news-content">
+                        <p>Shanghai's Municipal Economic and Information Commission released the Embodied Intelligence Industry Action Plan 2.0 this week, targeting <span class="highlight-bold">100,000 humanoid robots</span> in real-world scenarios by 2027, backed by a 10 billion yuan industrial mother fund. Hangzhou, Beijing, and Shenzhen are stepping up in tandem, with capital and policy jointly driving the industry into a positive "mass production - data - iteration" cycle.</p>
+                        <p>Embodied intelligence-specific policies are emerging in clusters, forming three major industrial belts in the Yangtze River Delta, Pearl River Delta, and Beijing-Tianjin-Hebei region, with strong support for robot bodies, VLA foundation models, and dexterous hands.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Shanghai sets 100K robot deployment target for 2027</div>
+                        <div class="key-point">10 billion yuan mother fund formally launched</div>
+                        <div class="key-point">Hangzhou/Beijing/Shenzhen raise policy support in parallel</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Dual Rain and Heat Alerts: Southern China in "Steaming" Mode, Northern Regions Cross 35°C</h3>
+                    <div class="news-content">
+                        <p>China's National Meteorological Center issued a <span class="highlight-bold">blue rainstorm alert and a yellow high-temperature alert simultaneously</span> on June 14, with persistent strong convective weather in southern China and temperatures above 35°C in many northern regions. Experts note that the subtropical high is positioned further north and stronger this year, with the rain belt shifting north markedly, calling for "two-handed" flood and heat prevention.</p>
+                        <p>The agricultural department has deployed flood and drought prevention plans, while the Ministry of Water Resources has pre-emptively scheduled reservoir storage in the Yangtze and Huai river basins to brace for potential flood challenges.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Blue rainstorm + yellow high-temperature alerts issued in tandem</div>
+                        <div class="key-point">Northern regions cross 35°C</div>
+                        <div class="key-point">Subtropical high shifts north, rain belt migrates accordingly</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International Affairs -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US-Iran Peace Deal Finalized: Formal Signing June 19, Strait of Hormuz to Reopen</h3>
+                    <div class="news-content">
+                        <p>Pakistani Prime Minister Shehbaz Sharif announced on June 14 that the US-Iran peace agreement has been formally concluded, with the <span class="highlight-bold">signing ceremony scheduled for June 19</span>. Both sides have agreed to immediately and permanently cease all military operations across fronts, with the Strait of Hormuz to resume navigation. In exchange, Iran commits not to develop nuclear weapons, and the US will provide sanctions relief and $25 billion in funding support.</p>
+                        <p>Following the positive signals, international oil prices fell sharply, and global shipping and energy stocks rapidly repriced. Implementation details remain to be confirmed, with the market quickly switching to a "post-reconciliation trading" mode.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Formal signing June 19, permanent ceasefire takes effect</div>
+                        <div class="key-point">Strait of Hormuz reopens, global energy artery unblocked</div>
+                        <div class="key-point">$25 billion funding support plus sanctions relief</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Noida International Airport Opens for Commercial Flights: 12M Annual Capacity Design</h3>
+                    <div class="news-content">
+                        <p>India's Noida International Airport commenced commercial flight operations on June 15, with a <span class="highlight-bold">designed annual throughput of 12 million passengers</span>, making it one of the largest aviation infrastructure expansion projects in India in recent years. The airport's opening will significantly ease pressure on Delhi airport and bring new logistics and industrial cluster effects to northern India.</p>
+                        <p>The project is paired with a large integrated transportation hub and an aviation industrial park, expected to drive rapid development of surrounding real estate and high-end manufacturing.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Designed annual throughput 12 million passengers</div>
+                        <div class="key-point">Eases Delhi airport capacity pressure</div>
+                        <div class="key-point">Drives logistics and industrial clustering in northern India</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Iran-US Still Diverge on Nuclear Deal Versions: Timeline Becomes the Focal Point</h3>
+                    <div class="news-content">
+                        <p>Although the peace deal framework has been finalized, Iran and the US continue to propose different versions of the final nuclear deal terms. Iran advocates a phased resumption paired with inspections, while the <span class="highlight-bold">US insists on pushing forward rapidly according to a fixed timeline</span>. Analysts believe key issues (nuclear capability caps, comprehensive IAEA inspections, long-range missile freezes, etc.) will still take weeks to negotiate.</p>
+                        <p>Following the June 19 signing, a "sign-instead-of-talks" stalemate may persist. The roles of regional powers such as China and Russia in deal guarantees and enforcement are receiving close attention.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Iran and US still differ on deal versions</div>
+                        <div class="key-point">Timeline emerges as the focal point of contention</div>
+                        <div class="key-point">Key issues require weeks of further negotiation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Brazil Bungee Jumping Tragedy: 21-Year-Old Woman Dies from Unsecured Safety Cord</h3>
+                    <div class="news-content">
+                        <p>A severe bungee jumping safety accident occurred in Brazil on June 14, with a <span class="highlight-bold">21-year-old woman falling to her death</span>. Organizers are accused of pushing her off the bridge without properly attaching the safety cord. Police have detained multiple organizers and venue operators, with a judicial investigation underway.</p>
+                        <p>The incident has reignited global attention to extreme sports safety regulation and licensed operations. Several extreme sports industry associations are calling for strengthened equipment inspection and third-party audits.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">21-year-old woman dies from unsecured safety cord</div>
+                        <div class="key-point">Multiple organizers detained</div>
+                        <div class="key-point">Extreme sports safety regulation back in focus</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Missouri Small Aircraft Crash Kills All 12 Onboard</h3>
+                    <div class="news-content">
+                        <p>A small aircraft crash near Butler Memorial Airport in Missouri on June 14 killed <span class="highlight-bold">all 12 people on board</span>. Preliminary investigation indicates the crash may be linked to low-altitude flight decisions under severe weather. The NTSB has deployed investigators, and the incident has reignited US domestic debate over regional aviation safety, pilot training, and small airport oversight.</p>
+                        <p>The incident also exposes shortcomings in the US general aviation collaborative decision-making mechanism under severe weather, with regulators likely to issue new rules strengthening airline autonomy in grounding decisions.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">All 12 people on board killed</div>
+                        <div class="key-point">NTSB investigators deployed</div>
+                        <div class="key-point">Regional aviation safety back in the spotlight</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">2026 FIFA World Cup Countdown: 48 Teams Converge in North America</h3>
+                    <div class="news-content">
+                        <p>The 2026 FIFA Men's World Cup opening ceremony has entered its final 48-hour countdown, with <span class="highlight-bold">48 teams competing for the first time in a tournament jointly hosted by the United States, Canada, and Mexico</span>. Opening performers include international superstars Shakira, Katy Perry, and Nora Fatehi.</p>
+                        <p>FIFA and host countries expect the tournament to set new historical records in viewership and commercial revenue, with cross-border travel, accommodation bookings, and sponsor brand exposure all expected to peak.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">48 teams across US/Canada/Mexico for the first time</div>
+                        <div class="key-point">Star-studded opening performance lineup</div>
+                        <div class="key-point">Unprecedented scale in commercial and viewership terms</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI & Embodied Below -->
+        <div class="sections">
+            <!-- AI Coding -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Claude Fable 5 Tops Coding Charts: SWE-Pro 80.3%, Anthropic Locks June AI Coding Crown</h3>
+                    <div class="news-content">
+                        <p>Anthropic released Claude Fable 5 on June 9, achieving the <span class="highlight-bold">SWE-Pro coding benchmark top score of 80.3%</span>, with reasoning capabilities also at the top tier. Combined with the earlier Claude Opus 4.8 (57.9% HLE reasoning, 69.2% SWE-Pro coding), Anthropic has formed a "Opus flagship + Fable coding" dual-line layout.</p>
+                        <p>In high-end scenarios such as automated programming tests and enterprise code review, the Anthropic model combo has become the preferred choice for many developers, with the community forming a Fable 5 + Opus 4.8 mixed-use paradigm.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">SWE-Pro 80.3% tops the coding charts</div>
+                        <div class="key-point">Opus 4.8 + Fable 5 dual-line layout</div>
+                        <div class="key-point">Preferred brand for high-end coding scenarios</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">GPT-5.5 / 5.5-Pro Fully Released: Enterprise Agent Orchestration as the New Battleground</h3>
+                    <div class="news-content">
+                        <p>OpenAI officially released GPT-5.5 and 5.5-Pro on April 23. The base version scores 52.2% HLE reasoning and 58.6% SWE-Pro coding, while 5.5-Pro reaches <span class="highlight">52.4% on FrontierMath</span>. Unlike pure code completion, the GPT-5.5 series emphasizes "full-stack workflow automation + tool calling orchestration."</p>
+                        <p>OpenAI has integrated enterprise Agent solutions with multiple SaaS vendors, shifting market focus from "model rankings" to "enterprise deployment ROI."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">5.5 / 5.5-Pro dual release, focusing on enterprise Agent</div>
+                        <div class="key-point">FrontierMath 52.4% strengthens reasoning</div>
+                        <div class="key-point">Competition focus shifts from models to ROI</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">DeepSeek V4-Pro / V4-Flash Launch Together: GPQA 90% Breakthrough, Affordability Pressed Another Notch</h3>
+                    <div class="news-content">
+                        <p>DeepSeek simultaneously released V4-Pro and V4-Flash on April 24, with V4-Pro achieving <span class="highlight-bold">90.1% on the GPQA reasoning benchmark</span>, approaching GPT-5.5-Pro levels. V4-Flash maintains its ultra-low-price API, becoming the "utility" choice for daily coding by small and medium developers.</p>
+                        <p>DeepSeek is employing a "high-end catch-up + low-end price war" dual-line strategy, continuously squeezing OpenAI/Anthropic profit margins, earning the community nickname "the Pinduoduo of AI coding."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">V4-Pro GPQA 90.1% closes in on GPT-5.5</div>
+                        <div class="key-point">V4-Flash defends extreme price-performance ratio</div>
+                        <div class="key-point">High-end catch-up and low-end price war run in parallel</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Cursor Composer 2.5 / Google Gemini Omni Launch Together: Dual-Track Coding Tool Battle</h3>
+                    <div class="news-content">
+                        <p>Cursor released Composer 2.5 on May 18, achieving <span class="highlight">79.8% on SWE-Multi</span>, with AI coding tools evolving from "completion" to "Agent orchestration" type. Google simultaneously launched Gemini Omni and Gemini 3.5 Flash (40.2% HLE reasoning, 55.1% SWE-Pro coding).</p>
+                        <p>A multi-front "open-source/closed-source" and "tool/model" confrontation landscape has formed, with developer choice evolving from "which one" to "how to combine," making the model-tool coupling relationship increasingly complex.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Cursor Composer 2.5: SWE-Multi 79.8%</div>
+                        <div class="key-point">Gemini Omni + 3.5 Flash launched simultaneously</div>
+                        <div class="key-point">Tools and model vendors compete on multiple fronts</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Embodied Intelligence -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">AgiBot 100M Yuan Ecosystem Fund Launched: 2B Yuan Over Five Years to Empower Embodied Developers</h3>
+                    <div class="news-content">
+                        <p>AgiBot Robotics released the "2026 Yuansheng Ecosystem Co-Building Action Plan" on June 10, announcing an initial <span class="highlight-orange">100 million yuan in ecosystem support funds</span> this year, with plans to invest 2 billion yuan over the next five years across four dimensions: scientific research, education and talent, ecosystem partners, and developer community.</p>
+                        <p>AgiBot is pursuing a "fund + ecosystem" dual-wheel strategy, benchmarking NVIDIA Inception to build a developer moat in embodied intelligence. The move is seen as a landmark signal that the embodied AI track is "competing on applications."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">100M yuan this year, 2B yuan total over 5 years</div>
+                        <div class="key-point">Four dimensions: research / education / partners / community</div>
+                        <div class="key-point">Benchmarks NVIDIA Inception, builds ecosystem moat</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Unitree IPO Countdown: Lenovo Strategic Investment, Embodied Intelligence's First Stock One Step Closer</h3>
+                    <div class="news-content">
+                        <p>The Shanghai Stock Exchange <span class="highlight-orange">approved Unitree Technology's IPO application on June 1</span>, with only the registration step remaining before Unitree becomes the "A-share embodied intelligence first stock." Lenovo recently invested as a strategic investor, further strengthening Unitree's upstream and downstream supply chain collaboration.</p>
+                        <p>Combined with rapid financing and mass production progress at leading companies like AgiBot and Galaxy General, China's embodied intelligence sector has formed a "Unitree / AgiBot / Galaxy" three-way competitive landscape, with capital market attention continuing to rise.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Unitree IPO approved on June 1</div>
+                        <div class="key-point">Lenovo strategic investment strengthens collaboration</div>
+                        <div class="key-point">"Three-way" embodied intelligence landscape takes shape</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Galaxy General Closes 2.5B Yuan New Financing: National Team Enters, "Galaxy Star Brain" Full-Stack Play</h3>
+                    <div class="news-content">
+                        <p>Galaxy General announced the completion of a <span class="highlight-orange">2.5 billion yuan new round of financing</span> in March, with cumulative financing exceeding 5 billion yuan, backed jointly by the National AI Industry Fund, industrial capital, and local state capital. Unlike pure hardware demonstration routes, Galaxy General uses "Galaxy Star Brain" to integrate embodied foundation models, robot bodies, and scenario operations.</p>
+                        <p>The "Galaxy Space Capsule" convenience stores and smart pharmacies have achieved hundreds-of-units-level real-world operations, making the "model + body + scenario" integration the most persuasive paradigm for embodied AI commercialization.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">2.5B yuan new financing with National Team backing</div>
+                        <div class="key-point">"Galaxy Star Brain" integrates model + body + scenario</div>
+                        <div class="key-point">Hundreds-of-units real operation in stores and pharmacies</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI and global landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9774;</div>
+                        <div class="trend-desc">
+                            <h3>US-Iran Peace Deal Lands</h3>
+                            <p>June 19 formal signing plus $25B funding arrangement, with global energy and shipping chains repricing rapidly.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127881;</div>
+                        <div class="trend-desc">
+                            <h3>Dragon Boat + Gaokao Wrap-up</h3>
+                            <p>Cross-city flow +18%, tourism revenue over 450B yuan, domestic demand elasticity put to the test.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128161;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Multi-Front Duel</h3>
+                            <p>Claude Fable 5 leads + GPT-5.5 Pro / DeepSeek V4-Pro hot pursuit, with tools and model vendors racing on the same stage.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied Intelligence Industrialization Accelerates</h3>
+                            <p>Shanghai 100K target + AgiBot 2B ecosystem + Unitree IPO approved, with production-data-capital positive cycle forming.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua &middot; NBS China &middot; Baidu Trends &middot; Reuters &middot; LiveMint &middot; AIReleaseTracker &middot; Leaderobot</p>
+            <p class="footer-meta">Compiled: 2026-06-15 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
