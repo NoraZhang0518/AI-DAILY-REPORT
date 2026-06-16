@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-16</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-16</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">China's Market Regulator Summons Sam's Club HQ Over Frequent Food Safety Issues</h3>
+                    <div class="news-content">
+                        <p>On June 15, China's State Administration for Market Regulation formally summoned Walmart China Investment Co. (Sam's Club headquarters) over recurring food safety violations. Consumer complaint platform data shows over <span class="highlight-bold">15,000 complaints</span> related to Sam's Club as of June 2026, covering issues like moldy food, insects, and foreign objects within expiration dates.</p>
+                        <p>The summons elevates Sam's Club food safety issues to a national-level regulatory priority, ending the company's pattern of localized fixes. The regulator demanded full accountability across the entire supply chain.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">15,000+ complaints spanning stores, delivery, and supply chain</div>
+                        <div class="key-point">National-level supervision ends the company's pattern of piecemeal fixes</div>
+                        <div class="key-point">Premium membership retailer's brand trust faces severe test</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">China Achieves Domestic Mass Production of Silicon-28 Isotope Above 99.99% Purity for Quantum Chips</h3>
+                    <div class="news-content">
+                        <p>On June 15, CNNC announced a critical breakthrough in stable isotope enrichment: China has achieved domestic mass production of silicon-28 isotope with purity exceeding <span class="highlight-bold">99.99%</span>, reaching international advanced levels.</p>
+                        <p>This achievement breaks decades of foreign monopoly and provides autonomous supply for silicon-based quantum computing core materials. It has strategic significance for advanced semiconductor processes and quantum chip development.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">99.99%+ purity meets international advanced standards, breaking foreign monopoly</div>
+                        <div class="key-point">Applications span quantum computing, advanced semiconductors, and precision sensors</div>
+                        <div class="key-point">Cross-domain collaboration: nuclear isotope separation to semiconductor materials</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Five Departments Launch 3-Year Energy Conservation Campaign Across 9 Major Industries</h3>
+                    <div class="news-content">
+                        <p>NDRC and four other departments jointly issued a notice to carry out comprehensive energy conservation and carbon reduction upgrades across <span class="highlight-bold">nine major industries</span>: steel, electrolytic aluminum, cement, flat glass, oil refining, ethylene, synthetic ammonia, methanol, and coal power. This marks a new phase in China's industrial green transition.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Myanmar President Min Aung Hlaing Arrives in Beijing for First State Visit</h3>
+                    <div class="news-content">
+                        <p>On June 16, President Xi Jinping held talks with Myanmar President Min Aung Hlaing at the Great Hall of the People in Beijing. This five-day visit marks Min Aung Hlaing's <span class="highlight-bold">first state visit to China</span> since taking office, with the China-Myanmar Economic Corridor and border security cooperation as key agenda items.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Flood Emergency Response Upgraded to Level III for Guangdong and Guangxi</h3>
+                    <div class="news-content">
+                        <p>China's National Meteorological Center continued issuing orange rainstorm warnings. Heavy to torrential rain is expected in central-southern Guangdong, southeastern Guangxi, and northeastern Hainan. The State Flood Control Headquarters upgraded flood emergency response to <span class="highlight-bold">Level III</span> for Guangdong and Guangxi, while maintaining Level IV for Fujian, Zhejiang, Jiangxi, and Hunan.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">EVE Energy Forecasts 95%-110% Profit Surge; AI Server Demand Pushes Copper Foil Orders to 2027</h3>
+                    <div class="news-content">
+                        <p>EVE Energy expects H1 net profit to grow <span class="highlight-bold">95%-110%</span> YoY, driven by both energy storage and power batteries. Meanwhile, HVLP4-gen copper foil orders for AI servers are booked through <span class="highlight-bold">H2 2027</span>. The dual resonance of new energy + AI is accelerating China's manufacturing upgrade.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">G7 Summit in Évian-les-Bains: Trump Touts Iran Deal, Pushes for Ukraine-Russia Ceasefire</h3>
+                    <div class="news-content">
+                        <p>The G7 Summit is being held June 15-17 in Évian-les-Bains, France. Trump highlighted the US-Iran deal and announced the <span class="highlight-bold">next step: pushing for a Ukraine-Russia ceasefire</span>. The summit has drawn attention for internal divisions, the Iran ceasefire breakthrough, and massive protests outside.</p>
+                        <p>As rotating host, France adjusted arrangements to accommodate the US and downplay transatlantic tensions. Internal G7 divisions on China tariffs and climate policy have become public.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Trump presents Iran deal as centerpiece of his diplomatic achievements</div>
+                        <div class="key-point">G7 internal divisions on China tariffs and climate policy go public</div>
+                        <div class="key-point">Tens of thousands protest outside against G7's "rich nation club" nature</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">US-Iran MOU Electronically Signed; Formal Ceremony Set for June 19 in Geneva</h3>
+                    <div class="news-content">
+                        <p>The US and Iran have electronically signed a memorandum of understanding. Trump and VP Vance signed for the US; Speaker Kalibaf signed for Iran. A <span class="highlight-bold">formal signing ceremony is scheduled for June 19 in Geneva</span>, Switzerland. Pakistan's PM confirmed Pakistan will host the ceremony.</p>
+                        <p>Trump stated Iran would be permitted low-level uranium enrichment and the <span class="highlight-bold">Strait of Hormuz will fully reopen on Friday</span>. Nuclear negotiations will continue for 60 days.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">US and Russia Each Lose a Strategic Bomber on the Same Day</h3>
+                    <div class="news-content">
+                        <p>A US <span class="highlight-bold">B-52 Stratofortress</span> crashed in California, with casualties under investigation. On the same day, a Russian <span class="highlight-bold">Tu-22M3 strategic bomber</span> crashed during a training flight in the Irkutsk region; crew members were rescued. Both aircraft are core platforms of their respective nuclear deterrent forces. The coincidence of two nuclear powers losing strategic bombers on the same day drew widespread attention.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">UK PM Announces Ban on Social Media for Under-16s</h3>
+                    <div class="news-content">
+                        <p>The UK Prime Minister announced plans to <span class="highlight-bold">ban under-16s from certain social media platforms</span>, making it one of the strictest youth social media controls globally. The 16-year age threshold exceeds the 13-year standard in most countries. Tech companies will need to build age verification systems, significantly raising compliance costs.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Nasdaq Surges 3% to Record High; SpaceX Market Cap Exceeds $2.5 Trillion</h3>
+                    <div class="news-content">
+                        <p>The Nasdaq surged <span class="highlight-bold">3%</span> to a new all-time high. SpaceX's post-IPO rally continues, with market cap exceeding <span class="highlight-bold">$2.5 trillion</span>. The US-Iran deal boosted market expectations for reduced geopolitical risk, with oil prices falling sharply while stocks rose broadly. US Strategic Petroleum Reserve dropped to a 43-year low, though short-term supply concerns eased.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">2026 World Cup: Spain 0-0 Cape Verde Becomes First Goalless Match</h3>
+                    <div class="news-content">
+                        <p>In the 2026 FIFA World Cup group stage, <span class="highlight-bold">Spain drew 0-0 with Cape Verde</span>, marking the tournament's first goalless match. Belgium drew 1-1 with Egypt. The expanded 48-team format has led to more matches and surprising upsets as a new trend.</p>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">GPT-5.6 Imminent: Context Window Expands to 1.5M Tokens, OpenAI Preps Price War</h3>
+                    <div class="news-content">
+                        <p>OpenAI Chief Scientist Jakub Pachocki told the team that GPT-5.6 delivers a <span class="highlight-bold">"substantial improvement"</span> over GPT-5.5. Developers found the internal codename "iris-alpha" in Codex backend logs, with a context window of approximately <span class="highlight">1.5 million tokens</span> (up from GPT-5.5's 1M).</p>
+                        <p>Sam Altman declared <span class="highlight-bold">"forget the math, grab market share first"</span>, and OpenAI is considering preemptive price cuts before Anthropic moves. However, with $14B in annual losses, a price war before IPO will compress margins.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Context window expands from 1M to 1.5M tokens, a 50% increase</div>
+                        <div class="key-point">Internal codename iris-alpha; expected to launch this month</div>
+                        <div class="key-point">$14B annual loss yet fighting a price war — aggressive market grab before IPO</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Claude Fable 5 Globally Banned by US Government; Mythos 5 Simultaneously Blocked</h3>
+                    <div class="news-content">
+                        <p>The US government forced Anthropic to shut down <span class="highlight-bold">Claude Fable 5 and Mythos 5</span> worldwide, citing national security and jailbreak risks. Fable 5 had topped coding benchmarks with <span class="highlight">SWE-bench Pro 80.3%</span>, far exceeding GPT-5.5's 58.6%.</p>
+                        <p>Anthropic called it an "isolated incident" but was criticized by the government for being evasive. GPT-5.6 may be delayed as a result. US AI regulation has reached unprecedented levels of stringency. Anthropic CEO Dario once compared AI to nuclear weapons, but now faces a crisis for refusing to shut down the system.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Fable 5 crushed GPT-5.5 in coding (80.3% vs 58.6%) yet was shut down for safety risks</div>
+                        <div class="key-point">US AI regulation hits unprecedented stringency; entire industry dragged into storm</div>
+                        <div class="key-point">GPT-5.6 may be delayed; the AI safety vs capability balance is shifting</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">OpenAI Bets $500B on 10GW Mega Data Center; Nvidia Commits $100B in Equipment</h3>
+                    <div class="news-content">
+                        <p>To support GPT-5.6 and beyond, OpenAI is partnering with SoftBank to build a <span class="highlight-bold">10GW mega data center</span> in Ohio, with at least <span class="highlight">$500 billion</span> in total investment and a 20-year lease. 10GW can power 7.5 million homes — unprecedented in scale.</p>
+                        <p>Nvidia has committed up to <span class="highlight">$100 billion</span> in equipment procurement, with the first 1GW batch featuring the Vera Rubin platform arriving H2 this year. The Stargate project continues; AI's computing arms race has entered "national project" territory.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">10GW — enough to power 7.5 million homes, unprecedented scale</div>
+                        <div class="key-point">SoftBank's SB Energy leads construction; Nvidia guarantees compute supply</div>
+                        <div class="key-point">First Vera Rubin platform equipment arriving H2 2026</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Anthropic Valuation Hits $965B, Surpassing OpenAI; Both File IPO in Same Month</h3>
+                    <div class="news-content">
+                        <p>Anthropic's valuation reached <span class="highlight-bold">$965 billion</span>, surpassing OpenAI's <span class="highlight">$852 billion</span> for the first time. Both companies secretly filed S-1 registrations in the same month — OpenAI with Goldman Sachs and Morgan Stanley as underwriters, targeting a Sep-Nov listing. SpaceX also listed this month, making 2026 a mega-IPO year.</p>
+                        <p>Altman stated "if recursive self-improvement accelerates, the IPO could be delayed." OpenAI employee stock buyback price stands at $687.69 per share.</p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">XPeng's He Xiaopeng Personally Takes Helm as Robot Business CEO; 200-Day Sprint to IRON Mass Production</h3>
+                    <div class="news-content">
+                        <p>On June 10, He Xiaopeng announced via internal letter he would personally serve as Robot Business CEO, launching a <span class="highlight-orange">200-day sprint to mass production</span>. XPeng's humanoid robot IRON features <span class="highlight-orange">82 DOF, 3,000 TOPS compute, and open SDK</span>, targeting Q4 2026 mass production and delivery.</p>
+                        <p>He compared the current phase to "8 years ago when XPeng was about to launch the G3" — a pivotal step from "smart car company" to <span class="highlight-orange">"physical AI company"</span>. Despite Q1 losses returning, the commitment to betting on robotics remains unchanged.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Billion-dollar auto CEO personally leads robotics — unprecedented commitment</div>
+                        <div class="key-point">82 DOF + 3,000 TOPS + open SDK, targeting developer ecosystem</div>
+                        <div class="key-point">Q1 losses don't change strategic resolve; 200-day countdown has started</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Tiangong 3.0 with Sunrise S600 Chip Set for H2 Mass Production; China Targets 10,000-Unit Commercial Deployment</h3>
+                    <div class="news-content">
+                        <p>Developed by the Beijing Humanoid Robot Innovation Center and Digua Robot, <span class="highlight-orange">Tiangong 3.0</span> is officially scheduled for mass production in H2 2026. Powered by the purpose-built <span class="highlight-orange">Sunrise S600 chip</span> for embodied intelligence, it's optimized for industrial manufacturing and commercial service scenarios.</p>
+                        <p>MIIT and SASAC jointly launched the "2026 Humanoid Robot & Embodied Intelligence Real-Scene Training Special Action," targeting <span class="highlight-orange">10,000-unit commercial deployment</span> by year-end. Supply chain surge: Qiaofeng Intelligence, Yi'an Technology pivot to robot joints and electronic skin.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Domestic embodied intelligence chip enters mass production for the first time</div>
+                        <div class="key-point">10,000-unit target: from "lab" to "new quality productive forces"</div>
+                        <div class="key-point">Supply chain scaling up: joints, actuators, electronic skin components surging</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">¥46B Floods Into Embodied Intelligence; 288 Funding Events Set Record High</h3>
+                    <div class="news-content">
+                        <p>In H1 2026, China's embodied intelligence and robotics sector recorded <span class="highlight-orange">288 funding events</span> involving 226 companies and 274 investment institutions, with total financing exceeding <span class="highlight-orange">¥46 billion</span> — surpassing all of 2025 in capital density.</p>
+                        <p>Automakers are crossing over: XPeng's IRON and BYD's Yao-Shun-Yu open platform. Nvidia partnered with Unitree for a research humanoid system. Zoomlion's Z01 debuted at Turkey's KOMATEK exhibition. China's embodied intelligence technology is accelerating global expansion.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">288 events / ¥46B — capital density exceeds all of 2025</div>
+                        <div class="key-point">Automaker crossover: XPeng IRON + BYD Yao-Shun-Yu open platform</div>
+                        <div class="key-point">Nvidia × Unitree, Zoomlion Z01 going global — China's embodied AI exports accelerate</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Today's Core Trends</h2>
+                <p>Key insights from the latest developments</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🛡️</div>
+                        <div class="trend-desc">
+                            <h3>AI Safety vs Capability: The Regulatory Iron Curtain Falls</h3>
+                            <p>Fable 5's global ban signals that AI safety regulation has entered "hard constraint" territory — even the most powerful models can be shut down, rewriting the industry's rules of the game.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">💰</div>
+                        <div class="trend-desc">
+                            <h3>Price War Begins, IPO Race Accelerates</h3>
+                            <p>OpenAI losing $14B yet cutting prices to grab market; Anthropic valuation overtaking — both filed IPOs in the same month. The AI industry is shifting from tech competition to capital competition.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>Automakers Building Robots: From "Side Project" to "Core Business"</h3>
+                            <p>He Xiaopeng personally leads; BYD opens its Yao-Shun-Yu platform — automotive DNA (manufacturing + AI + hardware) is becoming the core competitive moat in humanoid robotics.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">⚛️</div>
+                        <div class="trend-desc">
+                            <h3>Quantum Chip Material Breakthrough</h3>
+                            <p>99.99% purity silicon-28 domestic mass production removes another item from the "chokepoint" list — China's hard-tech攻坚 capability continues to deliver results.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: CCTV News · The Paper · Sina Finance · Jin10 Data · Caixin · 36Kr · ITHome · CNNC · CNBC</p>
+            <p class="footer-meta">Generated: 2026-06-16 09:40 | NEWS DAILY Automated Push</p>
+        </footer>
+    </div>
+</body>
+</html>
