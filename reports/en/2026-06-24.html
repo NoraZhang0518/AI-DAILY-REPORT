@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-24</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-24</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">China Emergency Management: Drought-Flood Coexistence, North-South Dual Rain Belts Make Flood Control a "Routine Test"</h3>
+                    <div class="news-content">
+                        <p>On June 23, China's Emergency Management Ministry held a flood season safety press conference. Spokesperson Shen Zhanli noted that extreme weather has clearly increased in recent years. <span class="highlight-bold">Northern heavy rain process frequency over the past 5 years averaged 50% more than in the 1990s</span>, with comprehensive intensity also 50% above normal.</p>
+                        <p>Core forecast for 2026's main flood season: extreme weather events remain frequent, showing a <span class="highlight-bold">drought-flood coexistence pattern with distinct north-south dual rain belts</span>. Key basins at risk of serious flooding include Haihe, Songliao, Pearl River, upper Yangtze, and lower Yellow River. Landfall typhoons may be more frequent and stronger.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Northern flood control shifted from "preparing more than fighting" to "routine major test"</div>
+                        <div class="key-point">Some southern areas may transition from flood to drought as rain belts shift</div>
+                        <div class="key-point">Haihe, Songliao, Pearl River, upper Yangtze, lower Yellow River at highest flood risk</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">National Flood Control Headquarters: Multi-Department Joint Deployment, High Disaster Risk in Guizhou and Hunan</h3>
+                    <div class="news-content">
+                        <p>On June 21, the National Flood Control Headquarters and Emergency Management Ministry organized a multi-department joint consultation with China Meteorological Administration, Ministry of Water Resources, and others. <span class="highlight-bold">Over the next three days, Guizhou and Hunan face high disaster risk from heavy rain</span>, requiring enhanced prevention of flash floods, landslides, and urban waterlogging.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Multi-department joint consultation deployed flood prevention</div>
+                        <div class="key-point">Guizhou and Hunan are key focus areas</div>
+                        <div class="key-point">Flash floods, landslides, urban waterlogging risks prominent</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Cyber Police Crack Down on Agricultural Rumors, Safeguarding "Three Summers" Production</h3>
+                    <div class="news-content">
+                        <p>Henan public security cyber departments swiftly acted to investigate and prosecute cases of <span class="highlight-bold">fabricating and spreading agricultural-related online rumors</span>, firmly maintaining a clean network environment and stable agricultural production. During the "Three Summers" (summer harvest, planting, management) period, agricultural rumors disrupt farmers' production order.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Henan police cracked down on agricultural rumor cases</div>
+                        <div class="key-point">Rumor refutation safeguards "Three Summers" agricultural production order</div>
+                        <div class="key-point">Law enforcement strengthening crackdown on low-cost rumor fabrication</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Elevator Emergency Myth Debunked: Pressing All Floor Buttons Is Not Scientific, Experts Explain Correct Response</h3>
+                    <div class="news-content">
+                        <p>Regarding the widely circulated claim that <span class="highlight-bold">pressing all floor buttons during an elevator free-fall can save lives</span>, experts unequivocally stated this method is not scientific. The correct response includes: staying calm, gripping handrails, bending knees to cushion impact, and pressing the emergency call button.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Pressing all floor buttons for self-rescue is not scientific and may delay real emergency actions</div>
+                        <div class="key-point">Correct approach: grip handrails, bend knees, press emergency call button</div>
+                        <div class="key-point">Public safety information should follow authoritative channels</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Man's Door Lock Replacement Scam Exposed &#8212; New Fraud Method Draws Attention</h3>
+                    <div class="news-content">
+                        <p>A man hired a locksmith to <span class="highlight-bold">secretly replace someone else's door lock</span>, attempting to impersonate the homeowner for illicit gain. The scam was exposed and prosecuted, drawing public attention to personal property security and community access control management.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">New fraud method: secretly replacing others' door locks to impersonate homeowners</div>
+                        <div class="key-point">Scam exposed and legally prosecuted</div>
+                        <div class="key-point">Reminder to pay attention to door lock and personal property security</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">US Allows Iranian Team Early Entry for World Cup but Requires Same-Day Departure, Security Debate Sparks</h3>
+                    <div class="news-content">
+                        <p>The US allowed Iran's national team to <span class="highlight-bold">enter 2 days early for the FIFA World Cup</span> but required players to leave the country on the same day as their match. This special arrangement has triggered widespread debate about World Cup security and international sports fairness.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Iran team granted early entry but required same-day departure</div>
+                        <div class="key-point">Reflects political complexity of sports events under US-Iran relations</div>
+                        <div class="key-point">World Cup security and fair participation draw international attention</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Cristiano Ronaldo Scores in 6th Straight World Cup! 41-Year-Old Bags Brace as Portugal 5-0 Uzbekistan</h3>
+                    <div class="news-content">
+                        <p>On June 23, 41-year-old Cristiano Ronaldo scored twice, helping Portugal <span class="highlight-bold">thrash Uzbekistan 5-0</span> and setting the record for scoring in six consecutive World Cups. After the first-round shock 1-1 draw with DR Congo, Ronaldo faced immense media pressure &#8212; this match was a emphatic response.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Ronaldo becomes the first player in history to score in six consecutive World Cups</div>
+                        <div class="key-point">After first-round shock 1-1, second-round 5-0 comeback</div>
+                        <div class="key-point">41 years old, still starting and scoring &#8212; fitness and willpower astonishing</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">FIFA World Cup Multiple Results: England 0-0 Draw, Croatia 1-0 Sends Panama Out</h3>
+                    <div class="news-content">
+                        <p>World Cup group stage continues: England managed <span class="highlight-bold">19 shots with no goals in a 0-0 draw</span>; Croatia's substitute Budimir scored to give a <span class="highlight-bold">1-0 win sending Panama out</span>; Colombia vs DR Congo and other intense matches. 48 teams, 104 matches progressing intensively.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">England's attack efficiency dismal &#8212; 19 shots, no goals, 0-0 draw</div>
+                        <div class="key-point">Croatia's substitute hero 1-0 victory, Panama eliminated</div>
+                        <div class="key-point">48-team expansion makes group stage competition more intense</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">US-Iran Peace Agreement Follow-Up: First Face-to-Face Negotiation Lasted 21 Hours</h3>
+                    <div class="news-content">
+                        <p>Led by US Vice President Vance and Iranian Parliament Speaker Kalibaf respectively, the two sides conducted <span class="highlight-bold">the first face-to-face negotiation since the US-Iran conflict began</span>. The talks lasted approximately 21 hours, covering nuclear issues, economic sanctions, and Strait of Hormuz security.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First face-to-face US-Iran negotiation lasting 21 hours &#8212; historic breakthrough</div>
+                        <div class="key-point">Covered nuclear issues, economic sanctions, strait security</div>
+                        <div class="key-point">Agreement reached but implementation stability remains uncertain</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Anthropic Fable 5/Mythos 5 Banned by US Government &#8212; Export Control on National Security Grounds</h3>
+                    <div class="news-content">
+                        <p>The US government forced Anthropic to shut down <span class="highlight-bold">Claude Fable 5 and Mythos 5</span> &#8212; issuing export control directives citing national security and jailbreak risks. Anthropic countered that the jailbreak scope was narrow and GPT-5.5 exhibits similar issues. GPT-5.6's release may be delayed as a result.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">US government bans Fable 5 and Mythos 5 on national security grounds</div>
+                        <div class="key-point">Anthropic rebuttal: narrow jailbreak scope, GPT-5.5 also has similar issues</div>
+                        <div class="key-point">AI safety regulation upgrading from industry self-governance to government control</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Microsoft Considering Chinese DeepSeek Model to Replace Expensive US AI Models &#8212; Cost Pressures Force Pivot</h3>
+                    <div class="news-content">
+                        <p>According to Axios, Microsoft is considering introducing a <span class="highlight-bold">fine-tuned version of China's open-source DeepSeek V4</span> into Copilot Cowork as a low-cost alternative to OpenAI and Anthropic models. Goldman Sachs called this "a trillion-dollar question" &#8212; lower intelligence costs are reshaping industry pricing expectations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Microsoft publicly considers Chinese open-source model to replace US commercial models</div>
+                        <div class="key-point">DeepSeek V4-Pro cost-performance ratio 31x that of Opus 4.8</div>
+                        <div class="key-point">AI cost pressures forcing enterprises toward open-source, low-cost solutions</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">GPT-5.6 Coming (Expected June 25 Thursday): 1.5M Token Context, Pixel-Level Image Generation, Agentic Workflows</h3>
+                    <div class="news-content">
+                        <p>OpenAI's next flagship model GPT-5.6 (internal codename kindle-alpha) has seen extensive leaked test results. Key highlights: <span class="highlight-bold">1.5 million token context window</span> (43% increase over GPT-5.5), pixel-level image replication and free-form creation capability, one-click UI/front-end generation, and significantly improved Agentic workflow reliability.</p>
+                        <p>The simultaneously exposed <span class="highlight">GPT-Bidi-1</span> achieves "true human-level" bidirectional voice conversation &#8212; users can interrupt at any time without the model freezing. OpenAI burned ~$34B over the past year; ChatGPT market share fell below 50% (~46.4%) for the first time, while Anthropic's valuation ($965B) surpassed OpenAI ($852B).</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">1.5M token context window can process massive codebases or hundreds of pages of financial reports</div>
+                        <div class="key-point">Pixel-level image replication + one-click UI generation &#8212; visual reasoning breakthrough</div>
+                        <div class="key-point">OpenAI market share below 50% &#8212; GPT-5.6 is a fight-back release</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">OpenCode Tops AI Dev Tool Power Rankings: Open-Source Coding Agent Beats Cursor and Claude Code</h3>
+                    <div class="news-content">
+                        <p>LogRocket's June 2026 "AI Dev Tool Power Rankings" revealed: <span class="highlight-bold">OpenCode surpassed Cursor, Claude Code, and Codex CLI to take the #1 spot</span>. GitHub Stars exceed 172K, monthly active users at 7.5 million, supporting 75+ models with free switching.</p>
+                        <p>Core strengths: MIT license open-source, CLI-native, model-agnostic, community flywheel effect. Execution speed approximately 78% faster than Claude Code. Cursor dropped to #5, positioned as "$20/month cost-performance choice." Chinese models (DeepSeek, GLM, Kimi, Qwen) are joining global competition through international open-source tool ecosystems.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenCode topped rankings in just 16 months &#8212; open-source community flywheel accelerating</div>
+                        <div class="key-point">75+ model free switching, no vendor lock-in</div>
+                        <div class="key-point">"Model-agnostic + CLI-native + MIT open-source" emerging as new AI coding paradigm</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">June 2026 AI Model Landscape Upheaval: Fable 5 Tops Coding Bench, Chinese Open-Source Trio Breaks Through</h3>
+                    <div class="news-content">
+                        <p>Anthropic released <span class="highlight-bold">Claude Fable 5</span> (SWE-bench Pro 80.3%, far exceeding GPT-5.5's 58.6%); Chinese trio breaking through: <span class="highlight">DeepSeek V4-Pro</span> (1.6T parameters MoE, cost-performance index 171.9), <span class="highlight">Kimi K2.7 Code</span> (AAII open-source top at 54 points), <span class="highlight">GLM-5.2</span> (strong in Chinese scenarios).</p>
+                        <p>AAII v4.0 comprehensive intelligence index: Claude Opus 4.8 first to break 60 (61.4), GPT-5.5 at 60.2, Gemini 3.1 Pro at 57.8. DeepSeek's $0.28/million token input price is <span class="highlight-bold">reshaping industry cost expectations</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Fable 5 SWE-bench 80.3% coding capability crushes GPT-5.5</div>
+                        <div class="key-point">DeepSeek V4-Pro cost-performance 31x that of Opus 4.8</div>
+                        <div class="key-point">Multi-model routing strategy becoming mainstream for enterprise AI deployment</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Humanoid Robot Industry Innovation Alliance Conference: 120+ Members Focus on Common Tech and Industry Standards</h3>
+                    <div class="news-content">
+                        <p>The Humanoid Robot Industry Innovation Alliance Conference was held in Zhangjiang, Shanghai. National Ground Center VP Liu Yufei noted the industry faces <span class="highlight-orange">core technology bottlenecks and redundant R&amp;D</span> &#8212; forming an industry alliance is a key measure. Gathering <span class="highlight-orange">120+ member organizations</span>, the alliance focuses on common technology development and industry standard setting.</p>
+                        <p>China's first "first-person view" real-scene embodied intelligence data research alliance was also established, pushing robots from labs to real-world deployment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">120+ member organizations form industry innovation alliance</div>
+                        <div class="key-point">Focus on common technology development and industry standard setting</div>
+                        <div class="key-point">First real-scene embodied intelligence data research alliance established</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">China's Humanoid Robot Production Expected to Surge 94% in 2026, Unitree and Agibot Hold 80% of Output</h3>
+                    <div class="news-content">
+                        <p>TrendForce's latest report shows China's humanoid robot market production will <span class="highlight-orange">grow 94% year-over-year in 2026</span>. Unitree Tech and Agibot Robotics, leveraging profitability and mass production progress, hold approximately <span class="highlight-orange">80% of shipments</span>. The global humanoid robot industry is entering a critical commercialization phase in the second half of 2026.</p>
+                        <p>Unitree IPO approved, Agibot accelerating mass production &#8212; a "dual leader"格局 is forming, as the humanoid robot track shifts from tech validation to mass delivery.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">2026 China humanoid robot production surging 94% year-over-year</div>
+                        <div class="key-point">Unitree + Agibot hold 80% of shipments, "dual leader"格局 emerging</div>
+                        <div class="key-point">Hard pivot from technology validation to mass production delivery</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Car Makers Becoming "Robot Makers": XPeng's He Xiaopeng Takes Over Robot Division, Bosch Deepens Humanoid Robot Push</h3>
+                    <div class="news-content">
+                        <p>On June 10, XPeng Group Chairman He Xiaopeng sent an internal letter announcing he would <span class="highlight-orange">personally take charge of the robot business</span>. The same day, Bosch Group Board Chairman Hartung stated the company is deeply participating in the humanoid robot revolution, expecting to develop <span class="highlight-orange">billions of euros in business</span> in this field. BYD, XPeng, Chery and other automakers have all announced humanoid robot R&amp;D plans.</p>
+                        <p>Approximately 70% of automotive manufacturing technology can be reused for humanoid robots &#8212; supply chain reuse, manufacturing process migration, and system integration experience are automakers' core advantages for entering this field.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">He Xiaopeng personally manages robot business &#8212; strategic upgrade</div>
+                        <div class="key-point">~70% of car manufacturing tech reusable for humanoid robots</div>
+                        <div class="key-point">From making cars to making robots &#8212; automotive supply chain accelerating embodied intelligence push</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>GPT-5.6: OpenAI's Fight-Back</h3>
+                            <p>Market share below 50%, Anthropic valuation surpasses. GPT-5.6 counters with 1.5M tokens + Agent capabilities.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128275;</div>
+                        <div class="trend-desc">
+                            <h3>Open-Source Coding Agents Rising</h3>
+                            <p>OpenCode tops AI dev tool rankings. "Model-agnostic + MIT open-source + CLI-native" becomes new paradigm.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129530;</div>
+                        <div class="trend-desc">
+                            <h3>Car Makers &#8594; Robot Makers</h3>
+                            <p>XPeng, BYD, Bosch all pushing humanoid robots. 70% auto tech reusable, production expected to surge 94%.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127782;</div>
+                        <div class="trend-desc">
+                            <h3>Flood Season: Severe and Complex</h3>
+                            <p>Drought-flood coexistence with north-south dual rain belts. Northern flood control becomes "routine major test."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: CNR &middot; China News Service &middot; NBD &middot; People's Daily &middot; IT Home &middot; iFeng Tech &middot; TrendForce &middot; Axios</p>
+            <p class="footer-meta">Compiled: 2026-06-24 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
