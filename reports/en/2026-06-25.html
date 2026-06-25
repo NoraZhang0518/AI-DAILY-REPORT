@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-25</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-25</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">PBOC Conducts ¥500B MLF on June 25, Consecutive Two-Month Expansion to Smooth Liquidity</h3>
+                    <div class="news-content">
+                        <p>The People's Bank of China announced a <span class="highlight-bold">¥500 billion 1-year MLF operation</span> on June 25, 2026 via fixed-quantity, interest-rate-tender, multi-price winning method. With ¥300 billion MLF maturing this month, the operation represents a <span class="highlight-bold">net injection of ¥200 billion</span>, marking two consecutive months of expansion—the increase is ¥100 billion larger than last month.</p>
+                        <p>Wang Qing, chief macro analyst at Oriental Golden Credit Rating, noted that mid-term liquidity operations went through a "tighter-then-looser" process this month. The PBOC's MLF net injection protects cross-quarter funding, <span class="highlight">sending a clear signal of currency and credit stability</span>, leaving ample room for subsequent structural monetary policy tools.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">June MLF net injection ¥200B, second consecutive month of expansion</div>
+                        <div class="key-point">PBOC clearly intends to smooth cross-quarter liquidity and stabilize currency</div>
+                        <div class="key-point">Creates headroom for upcoming structural monetary policy tools</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Five Ministries Launch Industrial 5G Private Network Pilot, Accelerating "5G + Industrial Internet"</h3>
+                    <div class="news-content">
+                        <p>The Ministry of Industry and Information Technology, together with the State-owned Assets Supervision and Administration Commission, Ministry of Transport, National Energy Administration, and Ministry of Industry and Information Technology for Defense Industry, jointly issued a notice on June 24 to <span class="highlight-bold">launch a pilot program for industrial 5G private networks</span>. Industrial 5G private networks refer to enterprise-exclusive 5G networks independently built and operated by industrial enterprises, including access and core networks, decoupled from public networks.</p>
+                        <p>The pilot supports large and extra-large enterprises in raw materials, equipment manufacturing, consumer goods, electronic information, defense technology, energy and transportation to build private networks, <span class="highlight-bold">encouraging "5G + Industrial Internet" integrated application city pilots to take the lead</span>, moving 5G and industrial internet from concept to scaled deployment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Industrial enterprises can independently build 5G core and access networks for the first time</div>
+                        <div class="key-point">"5G + Industrial Internet" moves from concept to scaled deployment</div>
+                        <div class="key-point">Six priority industries including defense and energy lead the deployment</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Audit Office Exposes Bank of China ¥2.37B Tax Evasion via "Headcount Stuffing", Bank Vows Reform</h3>
+                    <div class="news-content">
+                        <p>On June 23, the National Audit Office released the 2025 Central Budget Execution and Other Financial Revenue/Expenditure Audit Report, naming Bank of China for routing operations through two subsidiaries to <span class="highlight-bold">repackage 11 private-placement funds as public-offer funds</span>, exploiting public fund tax exemptions to evade ¥2.367 billion in income tax. Employees were organized to contribute ¥1-¥100 in "headcount stuffing" to dress as qualified investors.</p>
+                        <p>Bank of China responded with "immediate reform, comprehensive investigation, and strict accountability." Q1 2026 revenue reached ¥178.846 billion (+8.44% YoY), net interest margin 1.26%. <span class="highlight-bold">The incident exposed internal control and compliance gaps at major state-owned banks</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Systemic tax violations at a major state-owned bank reveal compliance gaps</div>
+                        <div class="key-point">Hidden "channel + headcount stuffing" scheme exploited public fund tax incentives</div>
+                        <div class="key-point">Bank of China has launched bank-wide rectification, with accountability underway</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Shandong Gaokao Scores Released June 25 at 15:00, 720K Students Face College Application "Big Test"</h3>
+                    <div class="news-content">
+                        <p>Shandong Province's 2026 Gaokao scores will be officially released at <span class="highlight-bold">15:00 on June 25</span>, with 720,000 students facing the subsequent college application challenge. Anhui Provincial Education Examination Authority previously released application timeline, conducting online mock application exercises from June 13-25.</p>
+                        <p>2026 marks full implementation of new Gaokao reform across 29 provinces nationwide, with <span class="highlight">first-tier and second-tier undergraduate batches officially merged</span>. Major-category enrollment tightens while medical-engineering crossover programs expand, requiring parents and students to closely track significant rule changes.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">720K Shandong students check scores at 15:00 today, application window opens</div>
+                        <div class="key-point">2026 new Gaokao reform lands nationwide, first/second-tier undergraduate batches merged</div>
+                        <div class="key-point">Major-category enrollment tightens, medical-engineering programs expand—logic fundamentally changes</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Coke Prices Launch 9th Round of Price Hikes, Industrial Commodities Continue to Rebound</h3>
+                    <div class="news-content">
+                        <p>According to June 25 market news, <span class="highlight-bold">the coke industry will execute its 9th round of price hikes starting 0:00 on June 26</span>, with significant cumulative increases. Combined with prior rebounds in rebar, iron ore and other black-series products, industrial commodity price indices strengthened overall, reflecting marginal improvement in infrastructure and real estate chain demand.</p>
+                        <p>Seven ministries including the Ministry of Commerce will launch a special rectification action against illegal recycling and dismantling of scrapped motor vehicles, <span class="highlight">2026 total box office crossed ¥17 billion</span>, and Bilibili plans a $300 million share buyback—multiple market signals show dual-wheel drive from consumption and industry.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Coke's 9th round of price hikes, industrial commodities continue to rebound</div>
+                        <div class="key-point">Ministry of Commerce cracks down on illegal vehicle dismantling</div>
+                        <div class="key-point">Box office exceeds ¥17B, Bilibili's $300M buyback signal consumption recovery</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">National Meteorological Center: Continuous Heavy Rain in South China, Fujian and Guangdong Hit Hard</h3>
+                    <div class="news-content">
+                        <p>China's National Meteorological Center issued a weather bulletin on June 25 stating that from <span class="highlight-bold">08:00 on June 26 to 08:00 on June 27</span>, parts of eastern and southern Fujian, Taiwan Island, southern Jiangxi, central-northern Guangdong, southern Hunan, most of Guangxi, and central-eastern Yunnan will experience scattered heavy to torrential rain, with local convective weather including short-term heavy precipitation and thunderstorm gusts.</p>
+                        <p>Recent cumulative rainfall in southwest, south China, and Jiangnan has been substantial, with <span class="highlight">high meteorological risk of mountain floods, geological disasters, and urban waterlogging</span> in some areas. The public is advised to avoid mountainous and riverside disaster-prone areas.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Fujian, Guangdong, Guangxi, Yunnan face heavy to torrential rain</div>
+                        <div class="key-point">Frequent convective weather, watch for short-term heavy rain and thunderstorm gusts</div>
+                        <div class="key-point">High risk of mountain floods, geological disasters, and urban waterlogging</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US-Iran Peace Deal Stalls: 21-Hour Talks Fail, Trump Threatens "Necessary Action"</h3>
+                    <div class="news-content">
+                        <p>US-Iran relations have tightened again. <span class="highlight-bold">Trump's latest statement</span>: if Iran does not comply with the agreement, the US will take "necessary action"; he also stressed that "nuclear weapons are worse than depression." Previously, US Vice President Vance and Iranian Parliament Speaker Kalibaf held the first face-to-face negotiations since the conflict began in Islamabad, lasting about 21 hours and covering nuclear issues, economic sanctions, and Strait of Hormuz security—but ultimately no final agreement was reached.</p>
+                        <p>Vance announced the result in less than 4 minutes after the talks collapsed, with <span class="highlight-bold">the fragile ceasefire facing collapse risk</span>. Israel continues to "disrupt" the Iran nuclear issue, adding further uncertainty to agreement progress.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">21-hour marathon talks end without deal, fragile ceasefire teeters on the brink</div>
+                        <div class="key-point">Trump threatens "necessary action", hard-line stance toward Iran escalates</div>
+                        <div class="key-point">Israel's continued interference heats up Hormuz security and nuclear standoff</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Micron Blowout Earnings: HBM Demand Surge, DRAM Price Hikes, Memory Super-Cycle Continues</h3>
+                    <div class="news-content">
+                        <p>Micron Technology's latest quarterly results <span class="highlight-bold">significantly exceeded market expectations</span>, with after-hours stock prices hitting new highs. HBM (High Bandwidth Memory) demand is severely undersupplied due to explosive AI data center growth, with DRAM and NAND prices entering a synchronous rising cycle.</p>
+                        <p><span class="highlight-bold">The memory chip super-cycle</span> is becoming one of the strongest themes in the second half of 2026 for the semiconductor industry. Capacity expansion by Samsung, SK Hynix, and Micron still cannot meet AI computing demand. Samsung and Hynix have simultaneously raised HBM3E prices by 25%, with industry profit margins rapidly recovering.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Micron blowout earnings confirm HBM demand surge and memory super-cycle</div>
+                        <div class="key-point">DRAM/NAND prices up over 25%, industry profit margins rapidly recovering</div>
+                        <div class="key-point">AI computing demand becomes strongest driver for memory chips</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">SpaceX Valuation Tops $2.5 Trillion, Musk World's Richest: Starlink & Starship Drive Dual Growth</h3>
+                    <div class="news-content">
+                        <p>SpaceX stock continues to hit new highs, with <span class="highlight-bold">latest valuation exceeding $2.5 trillion</span>, pushing Musk's personal wealth higher and solidifying his position as the world's richest person. Starlink's global users surpassed 7 million, with explosive commercialization revenue. Starship completed multiple orbital test flights and will execute its first crewed lunar flyby mission in H2 2026.</p>
+                        <p>SpaceX has become the 7th-largest market cap company in the US, <span class="highlight-bold">surpassing the combined value of traditional giants Boeing and Lockheed Martin</span>. Major contracts including NASA lunar base and European Starlink access continue to land.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">SpaceX valued at $2.5 trillion, Musk solidifies position as world's richest</div>
+                        <div class="key-point">Starlink hits 7M users, Starship's first crewed lunar flyby imminent</div>
+                        <div class="key-point">7th-largest US market cap, surpasses traditional aerospace giants combined</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Bitcoin Breaks $120,000, Crypto Market Enters New Bull Cycle</h3>
+                    <div class="news-content">
+                        <p>Bitcoin's price <span class="highlight-bold">broke the historic $120,000 mark</span>, with 24-hour gains exceeding 5%, as the crypto market enters a new bull cycle. Institutional money is accelerating its entry, with <span class="highlight-bold">BlackRock's Bitcoin ETF holdings exceeding 1 million BTC</span>, equivalent to 4.8% of global supply.</p>
+                        <p>Ethereum spot ETFs have been simultaneously approved in Hong Kong and Europe, kicking off Altcoin Season 2.0. L2 public chain tokens like Solana and Polygon are rising in tandem, with <span class="highlight">total crypto market cap exceeding $4.5 trillion</span>. El Salvador, Argentina, and other Latin American countries continue to accumulate BTC as strategic reserves.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">BTC breaks $120K, institutional money accelerates inflow</div>
+                        <div class="key-point">BlackRock BTC ETF holdings exceed 1M, 4.8% of global supply</div>
+                        <div class="key-point">Hong Kong and Europe approve ETH spot ETFs, total market cap above $4.5T</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">World Cup Group Stage Heats Up: England Stumbles 0-0, Ronaldo Scores in 6th Consecutive World Cup</h3>
+                    <div class="news-content">
+                        <p>Group stage matches at the US-Canada-Mexico World Cup continue. Portugal thrashed Uzbekistan 5-0, with <span class="highlight-bold">41-year-old Ronaldo scoring twice</span>, becoming the first player in history to <span class="highlight-bold">score in six consecutive World Cups</span>, bouncing back strongly after a 1-1 draw with DR Congo in the opener.</p>
+                        <p>England's 19 shots without a goal resulted in a <span class="highlight-bold">0-0 stalemate</span>, drawing criticism for attacking inefficiency. Croatia's Budimir came off the bench to score a 1-0 winner, eliminating Panama. With 48 teams and 104 matches in a packed schedule, <span class="highlight">Asian teams (Saudi Arabia, Qatar) secured their first points</span>, while South American powerhouses Argentina and Brazil recovered form.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Ronaldo's record 6th consecutive World Cup goal, 41 years young with a brace</div>
+                        <div class="key-point">England's 19-shot 0-0 draw exposes attacking inefficiency</div>
+                        <div class="key-point">48-team expansion heats up group stage competition, Asian teams shine</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">GPT-5.6 Countdown: June 25 Launch Window Approaches, 1.5M Token Context + Agentic Workflows as Core Selling Points</h3>
+                    <div class="news-content">
+                        <p>OpenAI's new flagship model <span class="highlight-bold">GPT-5.6 (codename: kindle-alpha)</span> is expected to launch June 22-28, with June 25 as the most likely release date. Core highlights: context window of <span class="highlight-bold">1.5 million tokens</span> (a 43% increase over GPT-5.5), capable of processing hundreds of thousands of lines of code or hundreds of pages of financial reports; pixel-level image reproduction and generation capabilities, one-click UI/front-end code generation; and significantly improved Agentic workflow reliability.</p>
+                        <p>Concurrently revealed <span class="highlight">GPT-Bidi-1</span> delivers "truly human-level" bidirectional voice dialogue, with users able to interrupt at will without the model freezing. Affected by the Fable 5 ban, OpenAI is accelerating its release cadence, with <span class="highlight-bold">API pricing only one-third that of Claude Fable 5</span>, intending to reclaim lost ground through extreme cost-effectiveness.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">June 25 launch window approaches, 1.5M tokens + Agentic workflows</div>
+                        <div class="key-point">API pricing just one-third of Fable 5, OpenAI initiates price war</div>
+                        <div class="key-point">GPT-Bidi-1 delivers smooth human-level bidirectional voice interaction</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">June 2026 AI Dev Tool Rankings: OpenCode Reclaims Top Spot, Open-Source Agent Reshapes Workflows</h3>
+                    <div class="news-content">
+                        <p>LogRocket's June 2026 edition of the AI Dev Tool Power Rankings revealed <span class="highlight-bold">OpenCode reclaiming the top spot</span>: GitHub Stars exceeding 172K, 7.5M monthly active users, and support for 75+ model switches.</p>
+                        <p><span class="highlight">Core advantages</span>: MIT-licensed open source, CLI-native, model-agnostic, and community flywheel effects—execution speed approximately 78% faster than Claude Code. Cursor dropped to 5th, positioned as a "$20/month overall value pick." Chinese models (DeepSeek, GLM, Kimi, Qwen) are participating in global competition through international open-source tools, with <span class="highlight-bold">"model-agnostic + CLI-native + MIT open source"</span> becoming the new paradigm for AI programming.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenCode reclaims top spot, open-source Agent model validated by market</div>
+                        <div class="key-point">75+ model freedom of choice, no single-vendor lock-in</div>
+                        <div class="key-point">"MIT + CLI + model-agnostic" emerges as the new AI programming paradigm</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">AMD MI400 Series Mass Production Imminent, Partners with OpenAI to Challenge Nvidia H200 Dominance</h3>
+                    <div class="news-content">
+                        <p>AMD announced that the <span class="highlight-bold">Instinct MI400 series AI accelerators</span> will officially enter mass production in H2 2026, using CDNA 5 architecture and <span class="highlight">CoWoS-L packaging</span>, delivering 35x inference performance improvement over the previous generation. AMD is deeply partnered with OpenAI, which has committed to purchasing tens of billions of dollars worth of MI450 chips.</p>
+                        <p><span class="highlight-bold">Single-card performance rivals Nvidia H200</span>, with pricing only 60-70% of the equivalent. MI400 mass production will break Nvidia's near-monopoly in the AI data center market, providing cloud vendors with a more cost-effective "second source" option.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">MI400 series mass production in H2, 35x inference performance improvement</div>
+                        <div class="key-point">OpenAI's tens of billions of dollars commitment locks in capacity</div>
+                        <div class="key-point">Pricing only 60-70% of Nvidia, AI chip market landscape to be reshaped</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">China's 2026 Humanoid Robot Output Set to Surge 94%, Unitree + AgiBot Capture 80% of Shipments</h3>
+                    <div class="news-content">
+                        <p>TrendForce's latest report shows that <span class="highlight-orange">China's humanoid robot market output will grow 94% YoY in 2026</span>. Unitree Robotics and AgiBot Robotics, leveraging their profitability and mass production progress, account for approximately 80% of shipments, with the <span class="highlight-orange">"duopoly" landscape taking shape</span>. Unitree's IPO approval and AgiBot's accelerated mass production represent a hard-core leap from technology validation to mass delivery.</p>
+                        <p>The humanoid robot track is undergoing a critical transition from "demo" to "delivery", entering the commercialization key period in H2 2026. Capital markets have sent clear signals: <span class="highlight-orange">Unitree's STAR Market IPO valuation exceeds ¥60B, and AgiBot's new funding round exceeds ¥2B</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">2026 output surge of 94%, track moves from "demo" to "delivery"</div>
+                        <div class="key-point">Unitree + AgiBot capture 80% of shipments, "duopoly" established</div>
+                        <div class="key-point">Capital market hot: Unitree IPO + AgiBot's ¥2B funding round proceed in parallel</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">UBTech Walker S2 Humanoid Robot Pre-Orders Break 3,000 Units: Consumer Commercialization Sets Sail</h3>
+                    <div class="news-content">
+                        <p>UBTech's <span class="highlight-orange">Walker S2 humanoid robot</span> officially opened pre-orders, with <span class="highlight-orange">the first 3,000 units selling out within 48 hours</span>, priced from ¥198,000. Walker S2 features self-developed "Tiangong" joint modules and can complete 80+ household tasks including laundry, cooking, cleaning, and companionship.</p>
+                        <p>UBTech simultaneously reached strategic cooperation with JD.com and Suning, with <span class="highlight-orange">the first 10,000 units set to begin delivery in Q4 2026</span>. This is the world's first full-size humanoid robot to enter ordinary consumer households, marking the formal arrival of embodied intelligence in the "consumer commercialization" era.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Walker S2 pre-orders break 3,000 units in 48 hours, ¥198,000 pricing</div>
+                        <div class="key-point">80+ household tasks, first 10,000 units delivered in Q4 2026</div>
+                        <div class="key-point">UBTech x JD.com/Suning strategic cooperation, consumer commercialization begins</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Galactic General ¥2.5B Funding Lands, "National Team" Backs 100-Unit Commercial Deployment</h3>
+                    <div class="news-content">
+                        <p>Humanoid robot startup <span class="highlight-orange">Galactic General (Galaxy General/Galbot)</span> completed a ¥2.5 billion Series B+ funding round, led by the National Integrated Circuit Industry Investment Fund ("Big Fund") with participation from Beijing and Shanghai state-owned capital. Funds will primarily support <span class="highlight-orange">"100-unit scale" commercial operations</span>—deploying 100+ industrial humanoid robots in leading manufacturing enterprises including BYD, Foxconn, and CATL.</p>
+                        <p>Galactic General's "G1" industrial robot <span class="highlight-orange">has already achieved 7x24 unmanned operations in factory handling, assembly, and inspection</span>. Embodied intelligence startups backed by the "national team" are emerging as the third key force following Unitree and AgiBot.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Galactic General ¥2.5B Series B+, National Big Fund leads</div>
+                        <div class="key-point">100-unit commercial deployment lands at BYD, Foxconn, CATL</div>
+                        <div class="key-point">Industrial humanoid robots achieve 7x24 unmanned operations</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Today's Core Trends</h2>
+                <p>Insights into the latest winds</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>GPT-5.6's Last Stand</h3>
+                            <p>OpenAI's market share has fallen below 50%, with Anthropic's valuation surpassing. Can GPT-5.6's June 25 launch with 1.5M tokens and extreme pricing reclaim the high ground?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">💰</div>
+                        <div class="trend-desc">
+                            <h3>AI Price War in Full Swing</h3>
+                            <p>GPT-5.6 API at one-third Fable 5 pricing, AMD MI400 at 60-70% of Nvidia—AI compute costs accelerate downward.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🦾</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robots: "Duopoly + Dark Horse"</h3>
+                            <p>Unitree + AgiBot capture 80% output, UBTech breaks into consumer market, Galactic General backed by "national team"—track moves from "demo" to "delivery".</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🌍</div>
+                        <div class="trend-desc">
+                            <h3>US-Iran Standoff Intensifies</h3>
+                            <p>21 hours of talks yield no result, Trump threatens "necessary action", Strait of Hormuz security and nuclear issues become global focal points.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Eastmoney · Sina Finance · PBOC Official · Xinhua · CCTV News · IT Home · 36Kr · TrendForce · LogRocket · Axios · Bloomberg</p>
+            <p class="footer-meta">Compiled: 2026-06-25 09:40 | NEWS DAILY Automated Push</p>
+        </footer>
+    </div>
+</body>
+</html>
