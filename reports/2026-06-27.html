@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-27</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="date-badge">2026-06-27</div>
+            <h1>NEWS DAILY</h1>
+            <div class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</div>
+        </div>
+
+        <!-- Row 1: China + International -->
+        <div class="sections">
+            <div class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <div class="section-title">中国国内综合热搜</div>
+                    <div class="section-count">6条</div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">1</div>
+                    <div class="news-title">"十五五"新型能源体系建设：总投资超<span class="highlight-bold">20万亿元</span></div>
+                    <div class="news-content">
+                        <p>国新办6月26日举行"开局起步'十五五'"主题发布会，国家能源局局长王宏志详解新型能源体系建设顶层规划。围绕<span class="highlight-bold">放开民营企业能源投资准入</span>、推进算力电力双向协同、扩大非化石能源供给三大方向释放重磅政策信号。</p>
+                        <p>通过放开重大能源项目准入、完善算电统筹布局、落地超20万亿级能源重点工程等多重抓手，提速能源绿色低碳转型。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">总投资超20万亿元，覆盖新型能源体系全链条</div>
+                        <div class="key-point">拓宽民营企业能源投资渠道，打破传统准入壁垒</div>
+                        <div class="key-point">算力电力双向协同：AI算力需求与绿色电力供给深度绑定</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">2</div>
+                    <div class="news-title">消费品以旧换新"国补"第三批<span class="highlight-bold">625亿元</span>下达</div>
+                    <div class="news-content">
+                        <p>第三批625亿元超长期特别国债资金已下达。截至6月20日，已惠及1.36亿人次，带动销售额超1万亿元。补贴撬动比从1:7.8提升至<span class="highlight-bold">1:10.3</span>。</p>
+                        <p>覆盖家电、汽车、家居等多个品类，有效拉动内需消费，推动绿色低碳消费转型。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">第三批625亿元，累计惠及1.36亿人次</div>
+                        <div class="key-point">带动销售额超1万亿元，撬动比升至1:10.3</div>
+                        <div class="key-point">覆盖家电、汽车、家居等多品类绿色消费</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">3</div>
+                    <div class="news-title">全国人大常委会通过新修订<span class="highlight-bold">商标法</span>，<span class="highlight-bold">政府采购法</span>23年来首次修订</div>
+                    <div class="news-content">
+                        <p>十四届全国人大常委会第二十三次会议闭幕，通过新修订的商标法（2027年1月1日起施行）。政府采购法迎来23年来首次系统性修订，明确<span class="highlight-bold">禁止对供应商实行差别待遇或歧视待遇</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">新修订商标法2027年1月1日起施行</div>
+                        <div class="key-point">政府采购法23年来首次修订，禁止供应商歧视待遇</div>
+                        <div class="key-point">授权香港对皇岗口岸港方口岸区实施管辖</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">4</div>
+                    <div class="news-title">A股港股大幅回调：科创50领跌，港股<span class="highlight-bold">周跌5.24%</span></div>
+                    <div class="news-content">
+                        <p>A股遭遇大幅回调，上证跌2.26%报4027.26点，深证跌3.44%，创业板跌4.07%，全天成交3.58万亿元。算力硬件（CPO、光纤）、电池产业链领跌。</p>
+                        <p>港股恒生指数周跌<span class="highlight-bold">5.24%</span>，创去年4月以来最大单周跌幅；恒生科技指数周跌7.57%。南向资金净卖出25.04亿港元。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">上证跌2.26%，深证跌3.44%，创业板跌4.07%</div>
+                        <div class="key-point">港股周跌5.24%，科技指数周跌7.57%</div>
+                        <div class="key-point">算力硬件、电池产业链领跌；南向资金净卖出25亿港元</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">5</div>
+                    <div class="news-title">5G自动驾驶行业标准发布：<span class="highlight-bold">9月1日起实施</span></div>
+                    <div class="news-content">
+                        <p>两项支持高级别自动驾驶的5G网络标准获工信部批准，填补国内相关标准空白。标准涵盖5G网络支持自动驾驶的通信需求、服务质量保障等核心内容。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">两项5G自动驾驶标准获批，9月1日起实施</div>
+                        <div class="key-point">填补高级别自动驾驶5G网络标准空白</div>
+                        <div class="key-point">为自动驾驶规模化商用提供通信基础设施支撑</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">6</div>
+                    <div class="news-title">养老服务师纳入<span class="highlight-bold">国家职业资格目录</span></div>
+                    <div class="news-content">
+                        <p>民政部、人社部公布《养老服务师职业资格制度暂行规定》，明确设置养老服务师职业资格，从考试、职业能力、登记等5方面作出23条具体规定。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">养老服务师正式纳入国家职业资格目录</div>
+                        <div class="key-point">暂行规定覆盖考试、职业能力、登记等23条</div>
+                        <div class="key-point">初级、中级养老服务职称评审不再开展</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <div class="section-title">国际时事热点</div>
+                    <div class="section-count">6条</div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">1</div>
+                    <div class="news-title">委内瑞拉百年最强地震：<span class="highlight-bold">遇难920人</span>，<span class="highlight-bold">7名中国公民遇难</span></div>
+                    <div class="news-content">
+                        <p>6月24日委内瑞拉北部沿海接连发生<span class="highlight-bold">7.2级和7.5级</span>两次浅源强震，系该国1900年以来最强地震。截至6月27日，遇难人数升至920人，另有3360人受伤。</p>
+                        <p>中国决定向委内瑞拉提供紧急人道主义地震救灾现汇援助。据中国驻委大使馆消息，已有7名中国公民遇难。国际社会迅速响应救援行动。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">双主震7.2级+7.5级，浅源10km，破坏力极强</div>
+                        <div class="key-point">遇难920人，受伤3360人，7名中国公民遇难</div>
+                        <div class="key-point">中国政府决定提供紧急人道主义现汇援助</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">2</div>
+                    <div class="news-title">美军打击伊朗：回应<span class="highlight-bold">霍尔木兹海峡</span>商船遭袭</div>
+                    <div class="news-content">
+                        <p>美军中央司令部6月26日宣布对伊朗导弹与无人机储存设施及沿海雷达站实施打击，起因是伊朗无人机袭击途经霍尔木兹海峡的"Ever Lovely"号货轮。</p>
+                        <p>特朗普称此举违反停火协议。美副总统同时警告：若伊朗诉诸暴力，将遭武力回击。霍尔木兹海峡恢复通行，地缘风险溢价被快速挤出。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">美军打击伊朗导弹、无人机设施及沿海雷达站</div>
+                        <div class="key-point">起因：伊朗无人机袭击霍尔木兹海峡货轮</div>
+                        <div class="key-point">海峡恢复通行，地缘风险溢价被快速挤出</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">3</div>
+                    <div class="news-title">布基纳法索宣布<span class="highlight-bold">与法国断交</span></div>
+                    <div class="news-content">
+                        <p>布基纳法索政府6月26日发布公报，决定即日起断绝与法国的外交关系。法国外交部回应称此决定"毫无根据"。此举标志着非洲前法国殖民地与巴黎关系的进一步疏远。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">布基纳法索宣布与法国断绝外交关系</div>
+                        <div class="key-point">法国外交部称决定"毫无根据"</div>
+                        <div class="key-point">非洲多国与法国外交裂痕持续加深</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">4</div>
+                    <div class="news-title">日韩股市暴跌：韩国<span class="highlight-bold">触发熔断</span>，芯片股重挫</div>
+                    <div class="news-content">
+                        <p>全球芯片股遭遇重挫。日经225跌4.15%，软银跌12.53%；韩国综合指数跌<span class="highlight-bold">5.81%</span>，盘中一度暴跌近9%触发熔断。费城半导体指数跌5.29%，安森美跌23.66%。</p>
+                        <p>美股科技七巨头逆势涨0.86%，微软涨超5%。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">日经225跌4.15%，韩国触发熔断盘中跌近9%</div>
+                        <div class="key-point">费城半导体指数跌5.29%，安森美跌23.66%</div>
+                        <div class="key-point">美股七巨头逆势涨0.86%，微软涨超5%</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">5</div>
+                    <div class="news-title">油价暴跌：布伦特原油跌至<span class="highlight-bold">73.6美元/桶</span></div>
+                    <div class="news-content">
+                        <p>美油跌2.34%报70.24美元/桶，周跌8.23%；布油跌2.52%报73.6美元/桶，周跌8.06%。霍尔木兹海峡恢复通行、中东供应逐步恢复、地缘风险溢价被挤出。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">美油周跌8.23%，布油周跌8.06%</div>
+                        <div class="key-point">霍尔木兹海峡恢复通行，中东供应逐步恢复</div>
+                        <div class="key-point">地缘风险溢价被快速挤出</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">6</div>
+                    <div class="news-title">世界杯：法国<span class="highlight-bold">4-1挪威</span>小组第一出线，登贝莱32分钟戴帽</div>
+                    <div class="news-content">
+                        <p>世界杯I组第三轮法国4-1大胜挪威，三战全胜积9分小组第一出线。登贝莱上半场32分钟完成帽子戏法。同组塞内加尔5-0大胜伊拉克。</p>
+                        <p>佛得角连续两场战平世界冠军，出线主动权在手。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">法国4-1挪威三战全胜，登贝莱32分钟戴帽</div>
+                        <div class="key-point">塞内加尔5-0伊拉克保留晋级希望</div>
+                        <div class="key-point">佛得角连平世界冠军掌握出线主动权</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: AI Coding + Robotics -->
+        <div class="sections">
+            <div class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <div class="section-title">AI Coding</div>
+                    <div class="section-count">4条</div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">1</div>
+                    <div class="news-title">OpenAI发布GPT-5.6系列：Sol/Terra/Luna三款模型，应美政府要求<span class="highlight-bold">限量开放</span></div>
+                    <div class="news-content">
+                        <p>OpenAI于6月26日正式发布GPT-5.6系列模型套装，包含旗舰版<span class="highlight">Sol</span>、均衡版<span class="highlight">Terra</span>和轻量版<span class="highlight">Luna</span>。Sol引入全新"max"深度推理模式和"ultra"子智能体协作模式。</p>
+                        <p>在Terminal-Bench 2.1编程测试中创纪录；在ExploitBench网络安全测试中，Sol表现接近Mythos预览版，但仅消耗约<span class="highlight-bold">1/3的Token</span>。</p>
+                        <p>应特朗普政府要求，采用"逐客户审批"方式限量开放。OpenAI明确表示<span class="highlight-bold">不希望政府干预成为常态</span>。Sol定价为Claude Fable 5的一半。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Sol旗舰（max深度推理+ultra子智能体）、Terra均衡、Luna轻量</div>
+                        <div class="key-point">应美国政府要求"逐客户审批"限量开放</div>
+                        <div class="key-point">Sol编程测试创纪录，ExploitBench接近Mythos但Token消耗仅1/3</div>
+                        <div class="key-point">Sol定价为Claude Fable 5的一半，发起价格战</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">2</div>
+                    <div class="news-title">IBM推出全球首款<span class="highlight-bold">亚1纳米芯片</span>：指甲盖面积近1000亿晶体管</div>
+                    <div class="news-content">
+                        <p>IBM宣布推出全球首款亚1纳米芯片技术，搭载面向<span class="highlight">0.7纳米（7埃）</span>节点的创新"纳米堆叠"3D晶体管架构，突破传统芯片缩放物理极限。</p>
+                        <p>指甲盖面积内集成近<span class="highlight-bold">1000亿个晶体管</span>，密度为2nm芯片的2倍，性能最高提升50%或能效提升70%，SRAM尺寸缩小40%。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">0.7纳米（7埃）节点，突破芯片缩放物理极限</div>
+                        <div class="key-point">指甲盖面积近1000亿晶体管，密度为2nm芯片的2倍</div>
+                        <div class="key-point">性能提升50%或能效提升70%，SRAM缩小40%</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">3</div>
+                    <div class="news-title">OpenAI倾向<span class="highlight-bold">推迟IPO至明年</span>：银行警告科技股波动剧烈</div>
+                    <div class="news-content">
+                        <p>据《纽约时报》援引三位参与决策人士消息，OpenAI正在考虑将IPO推迟至明年。银行家警告近期科技股波动剧烈，可能削弱散户投资热情。</p>
+                        <p>OpenAI在2025年巨亏<span class="highlight-bold">385亿美元</span>后，GPT-5.6被视为关键产品，旨在通过技术实力巩固市场地位。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenAI考虑推迟IPO至明年</div>
+                        <div class="key-point">银行家警告科技股波动影响散户热情</div>
+                        <div class="key-point">GPT-5.6是巨亏385亿美元后的关键产品</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">4</div>
+                    <div class="news-title">SpaceX星链将推出<span class="highlight-bold">移动通讯服务</span>：与电信运营商直接竞争</div>
+                    <div class="news-content">
+                        <p>SpaceX计划推出星链移动通讯服务，将面向美国消费者，可能与美国电信运营商直接竞争。标志着卫星互联网从固定宽带向移动通讯扩展。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">星链从固定宽带扩展至移动通讯</div>
+                        <div class="key-point">面向美国消费者，直接与电信运营商竞争</div>
+                        <div class="key-point">覆盖偏远地区和应急通讯场景</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🤖</div>
+                    <div class="section-title">具身智能</div>
+                    <div class="section-count">3条</div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">1</div>
+                    <div class="news-title">优必选U1系列预售近<span class="highlight-orange">5000台</span>：人形机器人C端时代来临？</div>
+                    <div class="news-content">
+                        <p>优必选全球首款全尺寸超仿生人形机器人U1系列将于<span class="highlight-orange">6月30日上市</span>。自6月2日开启预售以来预订量持续攀升，截至6月18日预售已超4600台，预计已接近5000台。</p>
+                        <p>对比2025年全尺寸人形机器人仅售出1079台，这是一次里程碑式突破。U1定位为陪伴类机器人，面向C端消费者，标志着人形机器人从工业场景向家庭场景的跨越。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">预售近5000台，6月30日正式上市</div>
+                        <div class="key-point">对比2025年全尺寸人形机器人仅售1079台，突破显著</div>
+                        <div class="key-point">从工业场景向家庭陪伴场景跨越</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">2</div>
+                    <div class="news-title">5G自动驾驶行业标准发布：填补<span class="highlight-orange">国内空白</span></div>
+                    <div class="news-content">
+                        <p>两项支持高级别自动驾驶的5G网络标准获工信部批准，2026年9月1日起实施。标准涵盖5G网络支持自动驾驶的通信需求、服务质量保障等核心内容，填补国内相关标准空白。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">两项5G自动驾驶标准获批，9月1日起实施</div>
+                        <div class="key-point">填补高级别自动驾驶5G网络标准空白</div>
+                        <div class="key-point">为自动驾驶规模化商用提供通信基础设施支撑</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">3</div>
+                    <div class="news-title">智源大会聚焦具身智能：<span class="highlight-orange">原生模型</span>加速涌现，两三年为关键转折期</div>
+                    <div class="news-content">
+                        <p>2026智源大会具身智能论坛上，多位专家一致认为未来两三年将成为具身技术从实验室走向规模化商用的关键转折点。</p>
+                        <p>银河通用创始人王鹤指出，行业亟需突破预编程机器人局限，通过"后训练"技术实现机器人自主作业能力，自主决策型服务机器人市场即将迎来爆发。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">未来两三年为具身智能从实验室到规模商用关键转折期</div>
+                        <div class="key-point">"后训练"技术突破预编程机器人局限</div>
+                        <div class="key-point">自主决策型服务机器人市场即将爆发</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trend Summary -->
+        <div class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日趋势洞察</h2>
+                <p>四大板块核心动向交叉分析</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-icon">⚡</div>
+                    <h3>能源×算力深度绑定</h3>
+                    <p>十五五20万亿能源规划明确"算力电力双向协同"，AI算力需求与绿色电力供给正在政策层面深度融合，算力不再只是科技议题。</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🔥</div>
+                    <h3>中东风险溢价快速消退</h3>
+                    <p>美军打击伊朗后霍尔木兹恢复通行，油价周跌8%+，地缘风险溢价被挤出。但美伊对抗态势未消，后续仍有反复可能。</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🤖</div>
+                    <h3>GPT-5.6遭遇政府审批门槛</h3>
+                    <p>美国政府首次以逐客户审批方式干预AI模型发布，Sol/Terra/Luna限量开放。监管与创新平衡成为行业新议题。</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🏠</div>
+                    <h3>人形机器人走进家庭</h3>
+                    <p>优必选U1预售近5000台、6月30日上市，人形机器人从工业走向C端家庭场景。配合5G自动驾驶标准落地，具身智能商用拐点逼近。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-sources">数据来源：新华网、央广网、陆家嘴财经早餐、央视体育、IT之家、搜狐科技、财联社</div>
+            <div class="footer-meta">NEWS DAILY · 2026-06-27 · 每日综合资讯推送</div>
+        </div>
+    </div>
+</body>
+</html>
