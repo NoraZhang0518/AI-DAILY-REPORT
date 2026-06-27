@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-27</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="date-badge">2026-06-27</div>
+            <h1>NEWS DAILY</h1>
+            <div class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</div>
+        </div>
+
+        <!-- Row 1: China + International -->
+        <div class="sections">
+            <div class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <div class="section-title">China Hot News</div>
+                    <div class="section-count">6 items</div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">1</div>
+                    <div class="news-title">"15th Five-Year" New Energy System: Total Investment Exceeds <span class="highlight-bold">¥20 Trillion</span></div>
+                    <div class="news-content">
+                        <p>The State Council Information Office held a press conference on June 26 on the "15th Five-Year Plan" new energy system. NEA Director Wang Hongzhi detailed the top-level planning with three core directions: <span class="highlight-bold">opening private enterprise energy investment access</span>, promoting computing-power-electricity bidirectional coordination, and expanding non-fossil energy supply.</p>
+                        <p>Through opening major energy project access, improving computing-electricity integration layout, and implementing over ¥20 trillion in key energy projects, the plan accelerates green low-carbon energy transformation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Total investment exceeds ¥20 trillion, covering the full new energy chain</div>
+                        <div class="key-point">Broadening private enterprise energy investment channels, breaking traditional access barriers</div>
+                        <div class="key-point">Computing-power-electricity coordination: AI computing demand deeply linked with green power supply</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">2</div>
+                    <div class="news-title">Consumer "Old-for-New" Subsidy: Third Batch of <span class="highlight-bold">¥62.5 Billion</span> Allocated</div>
+                    <div class="news-content">
+                        <p>The third batch of ¥62.5 billion in ultra-long-term special national bond funds has been allocated. By June 20, the subsidies have benefited 136 million people and driven over ¥1 trillion in sales. The leverage ratio improved from 1:7.8 to <span class="highlight-bold">1:10.3</span>.</p>
+                        <p>The program covers home appliances, automobiles, and home furnishings, effectively stimulating domestic consumption while promoting green low-carbon consumption transformation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Third batch ¥62.5 billion, cumulatively benefiting 136 million people</div>
+                        <div class="key-point">Driven over ¥1 trillion in sales, leverage ratio up to 1:10.3</div>
+                        <div class="key-point">Covering appliances, automobiles, home furnishings for green consumption</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">3</div>
+                    <div class="news-title">NPC Standing Committee Passes Revised <span class="highlight-bold">Trademark Law</span>; <span class="highlight-bold">Government Procurement Law</span> Gets First Systematic Revision in 23 Years</div>
+                    <div class="news-content">
+                        <p>The 14th NPC Standing Committee's 23rd session concluded, passing the revised Trademark Law (effective January 1, 2027). The Government Procurement Law received its first systematic revision in 23 years, <span class="highlight-bold">prohibiting differential or discriminatory treatment of suppliers</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Revised Trademark Law effective January 1, 2027</div>
+                        <div class="key-point">Government Procurement Law first revision in 23 years, prohibiting supplier discrimination</div>
+                        <div class="key-point">Authorized Hong Kong, China to administer Huanggang Port Hong Kong Port Area</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">4</div>
+                    <div class="news-title">A-Share & HK Market Sharp Correction: HK <span class="highlight-bold">Weekly Drop 5.24%</span></div>
+                    <div class="news-content">
+                        <p>A-shares suffered a sharp correction: SSE fell 2.26% to 4,027.26, SZSE fell 3.44%, ChiNext fell 4.07%, with daily turnover of ¥3.58 trillion. Computing hardware (CPO, fiber optics) and battery supply chains led the decline.</p>
+                        <p>Hang Seng Index weekly drop <span class="highlight-bold">5.24%</span>, the largest since April last year; Hang Seng Tech Index weekly drop 7.57%. Southbound capital net sold ¥2.504 billion HKD.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">SSE -2.26%, SZSE -3.44%, ChiNext -4.07%</div>
+                        <div class="key-point">HK weekly -5.24%, Tech Index weekly -7.57%</div>
+                        <div class="key-point">Computing hardware, battery chains led decline; southbound net sell ¥2.5B HKD</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">5</div>
+                    <div class="news-title">5G Autonomous Driving Industry Standards Published: <span class="highlight-bold">Effective September 1</span></div>
+                    <div class="news-content">
+                        <p>Two 5G network standards supporting high-level autonomous driving were approved by MIIT, filling domestic standard gaps. The standards cover 5G network communication requirements and service quality assurance for autonomous driving.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Two 5G autonomous driving standards approved, effective September 1</div>
+                        <div class="key-point">Filling domestic high-level autonomous driving 5G network standard gaps</div>
+                        <div class="key-point">Providing communication infrastructure support for autonomous driving commercialization</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">6</div>
+                    <div class="news-title">Elderly Care Service Practitioner Added to <span class="highlight-bold">National Vocational Qualification Directory</span></div>
+                    <div class="news-content">
+                        <p>Ministry of Civil Affairs and Ministry of Human Resources published the "Provisional Regulations on Elderly Care Service Practitioner Vocational Qualification System," establishing the qualification with 23 specific provisions across examination, professional capability, and registration.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Elderly care service practitioner officially added to national vocational qualification directory</div>
+                        <div class="key-point">Provisional regulations cover examination, professional capability, registration with 23 provisions</div>
+                        <div class="key-point">Junior and intermediate elderly care professional title evaluations discontinued</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <div class="section-title">International Affairs</div>
+                    <div class="section-count">6 items</div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">1</div>
+                    <div class="news-title">Venezuela Century's Strongest Earthquake: <span class="highlight-bold">920 Dead</span>, <span class="highlight-bold">7 Chinese Citizens Killed</span></div>
+                    <div class="news-content">
+                        <p>On June 24, Venezuela's northern coast experienced two shallow-focus earthquakes of <span class="highlight-bold">7.2 and 7.5 magnitude</span> in quick succession, the strongest since 1900. By June 27, the death toll rose to 920 with 3,360 injured.</p>
+                        <p>China decided to provide emergency humanitarian earthquake relief cash assistance to Venezuela. According to the Chinese embassy, 7 Chinese citizens have been killed. The international community rapidly responded to the rescue effort.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Dual main shocks 7.2+7.5, shallow focus 10km, extremely destructive</div>
+                        <div class="key-point">920 dead, 3,360 injured, 7 Chinese citizens killed</div>
+                        <div class="key-point">China government providing emergency humanitarian cash assistance</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">2</div>
+                    <div class="news-title">US Military Strikes Iran: Response to <span class="highlight-bold">Hormuz Strait</span> Ship Attack</div>
+                    <div class="news-content">
+                        <p>US Central Command announced on June 26 strikes against Iranian missile and drone storage facilities and coastal radar stations, triggered by an Iranian drone attack on the "Ever Lovely" cargo vessel transiting the Strait of Hormuz.</p>
+                        <p>Trump called this a violation of the ceasefire agreement. The US Vice President warned that if Iran resorts to violence, it will face a military response. The Strait of Hormuz has resumed navigation, and geopolitical risk premium was rapidly squeezed out.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">US strikes on Iranian missile, drone facilities and coastal radar stations</div>
+                        <div class="key-point">Triggered by Iranian drone attack on Hormuz Strait cargo vessel</div>
+                        <div class="key-point">Strait resumed navigation, geopolitical risk premium rapidly squeezed out</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">3</div>
+                    <div class="news-title">Burkina Faso Announces <span class="highlight-bold">Diplomatic Break with France</span></div>
+                    <div class="news-content">
+                        <p>Burkina Faso's government published a communiqué on June 26, deciding to immediately sever diplomatic relations with France. France's Foreign Ministry responded calling the decision "unfounded." This marks further alienation between former French African colonies and Paris.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Burkina Faso announced severing diplomatic relations with France</div>
+                        <div class="key-point">French Foreign Ministry called the decision "unfounded"</div>
+                        <div class="key-point">Multiple African countries' diplomatic rifts with France continue deepening</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">4</div>
+                    <div class="news-title">Japan & Korea Markets Plunge: Korea <span class="highlight-bold">Triggered Circuit Breaker</span>, Chip Stocks Hammered</div>
+                    <div class="news-content">
+                        <p>Global chip stocks suffered heavy losses. Nikkei 225 fell 4.15%, SoftBank dropped 12.53%; Korea Composite Index fell <span class="highlight-bold">5.81%</span>, plunging nearly 9% intraday triggering a circuit breaker. Philadelphia Semiconductor Index fell 5.29%, Onsemi dropped 23.66%.</p>
+                        <p>US Big Tech seven giants reversed upward 0.86%, with Microsoft up over 5%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Nikkei -4.15%, Korea circuit breaker triggered with intraday near -9%</div>
+                        <div class="key-point">Philly Semiconductor -5.29%, Onsemi -23.66%</div>
+                        <div class="key-point">US Big Tech seven giants reversed up 0.86%, Microsoft +5%</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">5</div>
+                    <div class="news-title">Oil Price Plunge: Brent Crude Drops to <span class="highlight-bold">$73.6/barrel</span></div>
+                    <div class="news-content">
+                        <p>WTI fell 2.34% to $70.24/barrel, weekly drop 8.23%; Brent fell 2.52% to $73.6/barrel, weekly drop 8.06%. Hormuz Strait resumed navigation, Middle East supply gradually recovering, geopolitical risk premium squeezed out.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WTI weekly -8.23%, Brent weekly -8.06%</div>
+                        <div class="key-point">Hormuz Strait resumed navigation, Middle East supply gradually recovering</div>
+                        <div class="key-point">Geopolitical risk premium rapidly squeezed out</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">6</div>
+                    <div class="news-title">FIFA World Cup: France <span class="highlight-bold">4-1 Norway</span> Top of Group, Dembélé Hat-trick in 32 Minutes</div>
+                    <div class="news-content">
+                        <p>World Cup Group I Round 3: France thrashed Norway 4-1, winning all three matches with 9 points as group leader. Dembélé completed a hat-trick in the first 32 minutes. In the same group, Senegal beat Iraq 5-0.</p>
+                        <p">Cape Verde drew with world champions for two consecutive matches, holding qualification initiative.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">France 4-1 Norway with three straight wins, Dembélé 32-minute hat-trick</div>
+                        <div class="key-point">Senegal 5-0 Iraq keeping knockout qualification hopes alive</div>
+                        <div class="key-point">Cape Verde drew with world champions twice, holding qualification initiative</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 2: AI Coding + Robotics -->
+        <div class="sections">
+            <div class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <div class="section-title">AI Coding</div>
+                    <div class="section-count">4 items</div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">1</div>
+                    <div class="news-title">OpenAI Releases GPT-5.6 Series: Sol/Terra/Luna, <span class="highlight-bold">Limited Access Under US Government Requirement</span></div>
+                    <div class="news-content">
+                        <p>OpenAI officially released the GPT-5.6 model suite on June 26, comprising flagship <span class="highlight">Sol</span>, balanced <span class="highlight">Terra</span>, and lightweight <span class="highlight">Luna</span>. Sol introduces the new "max" deep reasoning mode and "ultra" sub-agent collaboration mode.</p>
+                        <p>Sol set a new record on Terminal-Bench 2.1 coding tests; on ExploitBench cybersecurity tests, Sol matched Mythos Preview performance but consumed only about <span class="highlight-bold">1/3 of the tokens</span>.</p>
+                        <p>Under Trump administration requirements, GPT-5.6 adopts a "per-customer approval" limited access approach. OpenAI explicitly stated it <span class="highlight-bold">does not want government intervention to become the norm</span>. Sol is priced at half of Claude Fable 5.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Sol flagship (max deep reasoning + ultra sub-agent), Terra balanced, Luna lightweight</div>
+                        <div class="key-point">US government-required "per-customer approval" limited access</div>
+                        <div class="key-point">Sol coding test record, ExploitBench near Mythos with only 1/3 token consumption</div>
+                        <div class="key-point">Sol priced at half of Claude Fable 5, launching price war</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">2</div>
+                    <div class="news-title">IBM Launches World's First <span class="highlight-bold">Sub-1nm Chip</span> Technology: ~100 Billion Transistors on Fingernail Area</div>
+                    <div class="news-content">
+                        <p">IBM announced the world's first sub-1nm chip technology, featuring an innovative "nano-stacking" 3D transistor architecture for the <span class="highlight">0.7nm (7Å)</span> node, breaking through traditional chip scaling physical limits.</p>
+                        <p">Nearly <span class="highlight-bold">100 billion transistors</span> on a fingernail-sized area, with density 2× that of IBM's 2021 2nm chip. Performance up to 50% higher or 70% better energy efficiency, with SRAM size reduced by 40%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">0.7nm (7Å) node, breaking chip scaling physical limits</div>
+                        <div class="key-point">~100 billion transistors on fingernail area, 2× density of 2nm chip</div>
+                        <div class="key-point">Performance +50% or energy efficiency +70%, SRAM size -40%</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">3</div>
+                    <div class="news-title">OpenAI Leans Toward <span class="highlight-bold">Delaying IPO to Next Year</span>: Bankers Warn of Tech Stock Volatility</div>
+                    <div class="news-content">
+                        <p">According to the New York Times citing three decision-making insiders, OpenAI is considering delaying its IPO to next year. Bankers warned that recent tech stock volatility may dampen retail investor enthusiasm.</p>
+                        <p">After OpenAI's <span class="highlight-bold">$38.5 billion</span> loss in 2025, GPT-5.6 is viewed as a critical product to consolidate market position through technical capability.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenAI considering delaying IPO to next year</div>
+                        <div class="key-point">Bankers warn tech stock volatility affects retail investor enthusiasm</div>
+                        <div class="key-point">GPT-5.6 is critical product after $38.5B loss in 2025</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">4</div>
+                    <div class="news-title">SpaceX Starlink to Launch <span class="highlight-bold">Mobile Communications Service</span>: Direct Competition with Telecom Carriers</div>
+                    <div class="news-content">
+                        <p">SpaceX plans to launch Starlink mobile communications service for US consumers, potentially competing directly with US telecom carriers. This marks satellite internet expanding from fixed broadband to mobile communications.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Starlink expanding from fixed broadband to mobile communications</div>
+                        <div class="key-point">Targeting US consumers, directly competing with telecom carriers</div>
+                        <div class="key-point">Covering remote areas and emergency communication scenarios</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🤖</div>
+                    <div class="section-title">Embodied Intelligence</div>
+                    <div class="section-count">3 items</div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">1</div>
+                    <div class="news-title">UBTech U1 Series Pre-orders Near <span class="highlight-orange">5,000 Units</span>: Is Humanoid Robot Consumer Era Arriving?</div>
+                    <div class="news-content">
+                        <p">UBTech's world's first full-size ultra-bionic humanoid robot U1 series launches on <span class="highlight-orange">June 30</span>. Since pre-orders opened on June 2, bookings have continued climbing, exceeding 4,600 units by June 18, now estimated near 5,000.</p>
+                        <p">Compared to only 1,079 full-size humanoid robots sold in 2025, this represents a milestone breakthrough. The U1 is positioned as a companion robot for consumers, marking the transition from industrial to home scenarios.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Pre-orders near 5,000 units, official launch June 30</div>
+                        <div class="key-point">Compared to only 1,079 full-size humanoid robots sold in 2025, a significant breakthrough</div>
+                        <div class="key-point">Transition from industrial scenarios to home companion use</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">2</div>
+                    <div class="news-title">5G Autonomous Driving Standards Published: Filling <span class="highlight-orange">Domestic Gaps</span></div>
+                    <div class="news-content">
+                        <p">Two 5G network standards supporting high-level autonomous driving were approved by MIIT, effective September 1, 2026. The standards cover 5G network communication requirements and service quality assurance for autonomous driving, filling domestic standard gaps.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Two 5G autonomous driving standards approved, effective September 1</div>
+                        <div class="key-point">Filling high-level autonomous driving 5G network standard gaps in China</div>
+                        <div class="key-point">Providing communication infrastructure support for autonomous driving commercialization</div>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <div class="news-number">3</div>
+                    <div class="news-title">BAAI Conference Focuses on Embodied Intelligence: <span class="highlight-orange">Native Models</span> Accelerating, 2-3 Years as Critical Turning Point</div>
+                    <div class="news-content">
+                        <p">At the 2026 BAAI Conference Embodied Intelligence Forum, multiple experts agreed that the next 2-3 years will be the critical turning point for embodied technology moving from labs to scaled commercial deployment.</p>
+                        <p">Galaxy General Robotics founder Wang He noted the industry urgently needs to break through pre-programmed robot limitations, using "post-training" techniques to achieve autonomous robot operation. The market for service robots with autonomous decision-making capability is about to explode.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Next 2-3 years as critical turning point for embodied intelligence commercialization</div>
+                        <div class="key-point">"Post-training" techniques break through pre-programmed robot limitations</div>
+                        <div class="key-point">Autonomous decision-making service robot market about to explode</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trend Summary -->
+        <div class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Today's Trend Insights</h2>
+                <p>Cross-analysis of key movements across four sections</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-icon">⚡</div>
+                    <h3>Energy × Computing Power Deeply Linked</h3>
+                    <p>The 15th Five-Year ¥20T energy plan explicitly calls for "computing-power-electricity bidirectional coordination." AI computing demand is being deeply integrated with green power supply at the policy level—computing is no longer just a tech issue.</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🔥</div>
+                    <h3>Middle East Risk Premium Rapidly Dissolving</h3>
+                    <p>After US strikes on Iran, Hormuz resumed navigation. Oil prices weekly -8%+, geopolitical risk premium squeezed out. But US-Iran confrontation posture remains, with potential for future escalations.</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🤖</div>
+                    <h3>GPT-5.6 Hits Government Approval Barrier</h3>
+                    <p>The US government for the first time intervened in AI model release with a per-customer approval approach. Sol/Terra/Luna limited access. The balance between regulation and innovation becomes a new industry issue.</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🏠</div>
+                    <h3>Humanoid Robots Enter Homes</h3>
+                    <p>UBTech U1 pre-orders near 5,000 units, launching June 30. Humanoid robots shift from industrial to consumer home scenarios. Combined with 5G autonomous driving standards, embodied intelligence commercialization inflection point approaches.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-sources">Sources: Xinhua, CNR, Lujiazui Financial Breakfast, CCTV Sports, ITHome, Sohu Tech, Cailian Press</div>
+            <div class="footer-meta">NEWS DAILY · 2026-06-27 · Daily Comprehensive News Push</div>
+        </div>
+    </div>
+</body>
+</html>
