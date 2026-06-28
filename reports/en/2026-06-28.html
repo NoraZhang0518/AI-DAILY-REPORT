@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-28</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-06-28</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">11th China-Russia Joint Air Strategic Patrol: H-6K and Russian Tu-95 Fly Together Over Sea of Japan</h3>
+                    <div class="news-content">
+                        <p>On June 27, Chinese and Russian air forces conducted the <span class="highlight-bold">11th joint air strategic patrol</span> over the Sea of Japan, East China Sea, and western Pacific waters. Both sides deployed J-16, H-6K, KJ-500A, and Tu-95 multi-type fighter aircraft with live ammunition patrols.</p>
+                        <p>The H-6K and Tu-95 rendezvoused and flew in formation over the Sea of Japan, then jointly traversed the Miyako Strait. This patrol is a scheduled annual military exercise between China and Russia,常态化 since 2019.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">11 consecutive joint patrols have become a normalized China-Russia military cooperation mechanism</div>
+                        <div class="key-point">Multi-type fighters with live ammunition, J-16 and KJ-500A first joint appearance</div>
+                        <div class="key-point">Coverage spans Sea of Japan, East China Sea, and western Pacific, significant regional influence</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">8 Medicines Removed from Medical Insurance Coverage Starting July, 6-Month Transition Period Ensures Patient Continuity</h3>
+                    <div class="news-content">
+                        <p>Per the National Healthcare Security Administration's drug catalog adjustment, <span class="highlight-bold">8 medicines will be officially removed from the medical insurance catalog effective July 1</span>. A 6-month transition period ensures continuity — drugs will still be covered under insurance standards through the end of June.</p>
+                        <p>The removed medicines are mostly those already covered by superior alternatives. Experts advise: removal doesn't mean no alternatives exist; patients should follow medical guidance for substitutions.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">6-month transition period ensures patient access is uninterrupted, effective July 1</div>
+                        <div class="key-point">Removed drugs have comparable replacements; the insurance catalog continues iterative optimization</div>
+                        <div class="key-point">Patients with individual differences may purchase original drugs at their own expense</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">8 Chinese Citizens Confirmed Dead in Venezuela "June 24 Earthquake"</h3>
+                    <div class="news-content">
+                        <p>According to the Chinese Embassy in Venezuela, as of 17:00 local time on June 27, incomplete statistics confirm <span class="highlight-bold">8 Chinese citizens have died in the Venezuela "June 24 Earthquake"</span>. The embassy continues tracking rescue progress and assisting families of victims with post-disaster arrangements.</p>
+                        <p>Venezuela's June 24 twin 7.2+7.5 earthquakes have caused 1,430 local deaths and 3,238 injuries. China's Ministry of Foreign Affairs has activated emergency mechanisms.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">8 Chinese citizens dead (incomplete count), numbers may rise further</div>
+                        <div class="key-point">Chinese Embassy fully assisting with aftermath, emergency consular protection activated</div>
+                        <div class="key-point">Venezuela earthquake is the country's strongest in 126 years, disaster scale unprecedented</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Chen Yujie Runs 11.12s in Headwind 1.6m/s, Dominant Win at National Athletics Championships 100m</h3>
+                    <div class="news-content">
+                        <p>On June 27, at the 2026 National Athletics Championships women's 100m final in Rizhao, Shandong, 18-year-old Ningbo sprinter Chen Yujie clocked <span class="highlight-bold">11.12 seconds in a -1.6m/s headwind</span> to win, setting a season best. Runner-up Cai Zixian from Guangdong recorded 11.39s (personal best).</p>
+                        <p>Chen's 11.12s in adverse wind conditions demonstrates exceptional ability — breaking the 11-second barrier appears imminent.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">11.12s in -1.6m/s headwind, actual capability far exceeds the timed result</div>
+                        <div class="key-point">18-year-old shows dominant advantage, Chinese women's sprinting enters new era</div>
+                        <div class="key-point">Breaking 11-second barrier imminent, Asian Games and World Championships prospects strong</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Wan Shaofen, First Female Provincial Party Secretary in New China, Passes Away</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">Wan Shaofen</span>, the first female provincial party secretary in New China, has passed away. She served as Secretary of the Jiangxi Provincial Party Committee and was a landmark figure for women's political participation at the provincial level in China.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Wan Shaofen was a landmark figure for women's political participation in China's provincial governance</div>
+                        <div class="key-point">Her political career provided a model for subsequent female leadership cadres</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Hunan Miluo Police Confirm "Iron Cage Parade" Video Was Staged by 8 People for Internet Traffic</h3>
+                    <div class="news-content">
+                        <p>Hunan Miluo police investigation found that He and associates <span class="highlight-bold">staged vulgar scenes in public spaces 8 times since June 22</span> to generate internet traffic and illicit profit. The viral "women locked in iron cage and paraded" video was fabricated — all involved persons have been processed according to law.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">8-person group systematically staged vulgar content for traffic monetization</div>
+                        <div class="key-point">Police enforcement warns against crossing content creation boundaries</div>
+                        <div class="key-point">Traffic economy spawns disorder, platform regulation and social governance face new challenges</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">5 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Venezuela Twin 7.2+7.5 Earthquakes: Death Toll Rises to 1,430, 5.6 Magnitude Aftershock Strikes Aragua State</h3>
+                    <div class="news-content">
+                        <p>Venezuela experienced <span class="highlight-bold">its strongest earthquake in 126 years</span> on June 24: twin 7.2 and 7.5 magnitude quakes struck within 39 seconds, killing 1,430, injuring 3,238, with 157 missing. On June 27, a <span class="highlight">5.6 magnitude aftershock</span> hit offshore Aragua state (depth 10km), with 432 aftershocks continuing.</p>
+                        <p>The 72-hour golden rescue window has passed, further reducing survival hopes. UN and international rescue teams have arrived in Venezuela.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Twin quakes within 39 seconds — Venezuela's strongest earthquake in 126 years, unprecedented disaster scale</div>
+                        <div class="key-point">432 aftershocks ongoing, 5.6 magnitude aftershock strikes again, geological activity not subsiding</div>
+                        <div class="key-point">International rescue forces deployed, but 72-hour golden window passed, search situation grim</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">US-Iran Strait of Hormuz Conflict Escalation: Oil Tanker Attacked + Mutual Military Strikes, Ceasefire Under Stress</h3>
+                    <div class="news-content">
+                        <p>On June 27, an oil tanker was <span class="highlight-bold">attacked in the Strait of Hormuz</span>, with bridge damage but all crew safe. Earlier, Iran attacked a commercial vessel with a one-way attack drone on June 25; the US responded June 26 with airstrikes on Iranian missile and drone storage facilities.</p>
+                        <p>Iran's Revolutionary Guard Corps announced strikes on <span class="highlight">US military positions in the Middle East</span> on June 27 morning, responding to US airstrikes. This is the first military engagement since the US-Iran MOU, severely testing the ceasefire agreement.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First military engagement after US-Iran MOU, conflict escalation shatters ceasefire illusion</div>
+                        <div class="key-point">Strait of Hormuz oil tankers repeatedly attacked, global crude transport corridor security risk high</div>
+                        <div class="key-point">Oil price volatility intensifying, international energy markets closely monitoring developments</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Serbian President Vučić Announces Resignation in "A Few Weeks"</h3>
+                    <div class="news-content">
+                        <p>On June 27 local time, Serbia's ruling Progressive Party held a large rally in central Belgrade. President <span class="highlight-bold">Vučić announced he would remain president for a few more weeks before resigning</span>. He stated he would help the Progressive Party and its chairman Vučević win public trust in upcoming elections.</p>
+                        <p>Before resigning, Vučić visited Chinese-funded construction projects, posting thanks to Chinese friends. His resignation timing suggests a potential pivot to running for Prime Minister.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Vučić's resignation timing intriguing, possibly aiming to transition to Prime Minister role</div>
+                        <div class="key-point">Thanks to Chinese friends before resigning, China-Serbia relationship trajectory worth watching</div>
+                        <div class="key-point">Serbian political landscape facing major restructuring</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">World Cup Roundup: Modric's Oldest Assist Record, Ronaldo's 25th Match, Kane as England's Top Scorer</h3>
+                    <div class="news-content">
+                        <p>2026 World Cup group stage intensifies: <span class="highlight-bold">Modric set the oldest assist record at age 40</span>; Ronaldo completed 25 World Cup appearances, ranking second historically; Kane became England's all-time World Cup scoring leader as England advanced from the group stage.</p>
+                        <p>Cape Verde became the smallest-area nation ever to reach the knockout stage; Portugal vs Colombia group match in fierce competition; Uruguay canceled team charter flights with players returning individually.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Modric's assist at 40 sets record, legendary career continues</div>
+                        <div class="key-point">Ronaldo's 25 World Cup appearances ranks second, 6 editions unprecedented</div>
+                        <div class="key-point">Kane tops England's scoring chart, Three Lions group advancement secure</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Two 5G Autonomous Driving Network Standards Approved, Effective September 1, Filling Industry Gap</h3>
+                    <div class="news-content">
+                        <p>MIIT approved two industry standards for <span class="highlight-bold">5G network communication supporting high-level autonomous driving</span>: "5G Network Deployment and Testing Methods" and "5G Network Performance Requirements." Led by Shanghai Communications Administration, China Mobile, and CAICT, with 20+ organizations collaborating over three years.</p>
+                        <p>Effective September 1, 2026, these are China's first 5G vehicle-network industry standard system, filling the gap in 5G network construction quality evaluation for autonomous driving scenarios.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First 5G vehicle-network industry standard system, filling autonomous driving network evaluation gap</div>
+                        <div class="key-point">Effective September 1, paving the way for L3/L4 autonomous driving scale deployment</div>
+                        <div class="key-point">Combined with first L3/L4 mandatory national standard, forming policy package</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">3 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">GPT-5.6 Officially Released: Sol/Terra/Luna Three-Tier Launch, Terminal-Bench 91.9% Tops Global Rankings</h3>
+                    <div class="news-content">
+                        <p>OpenAI officially released the GPT-5.6 series on June 27, launching three differentiated models: flagship <span class="highlight-bold">Sol, balanced Terra, and cost-effective Luna</span>. GPT-5.6 Sol Ultra scored <span class="highlight">91.9%</span> on Terminal-Bench 2.1, topping global rankings — surpassing Claude Mythos 5 (88%) and predecessor GPT-5.5 (88%).</p>
+                        <p>Sol priced at $5/$30 (same as GPT-5.5, with cross-generation capability gains), Terra at half price $2.50/$15, Luna at extreme value $1/$6. Context window approximately 1.5M tokens. However, release was constrained by US government review: the White House required OpenAI to first open to ~20 vetted partners.</p>
+                        <p>Sol Ultra pioneered the <span class="highlight-bold">"Agent-of-Agents" paradigm</span>: the main model automatically spawns multiple sub-Agents for parallel collaboration. All three tiers were rated "High Risk" in cybersecurity and bio/chemical domains — OpenAI's first full-line rating at this level.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Terminal-Bench 91.9% tops global rankings, AI coding capability achieves cross-generation leap</div>
+                        <div class="key-point">Sol Ultra pioneers "Agent-of-Agents" paradigm: main model auto-spawns parallel sub-Agents</div>
+                        <div class="key-point">US government review constrains release pace, AI safety vs openness debate continues</div>
+                        <div class="key-point">1.5M token context window can hold a complete medium-scale software project's entire source code</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">IBM Releases World's First 0.7nm (7Å) Chip Technology: ~100 Billion Transistors, Semiconductors Enter "Å Era"</h3>
+                    <div class="news-content">
+                        <p>On June 25, IBM announced the <span class="highlight-bold">world's first sub-1 nanometer chip technology</span> at Yorktown Heights, NY, achieving a 0.7nm (7 Ångström) process node. The new chip uses revolutionary 3D "Nanostack" transistor architecture, packing <span class="highlight">~100 billion transistors</span> on a fingernail-sized area.</p>
+                        <p>Density nearly doubles IBM's 2021 2nm chip, with 50% performance improvement and 70% energy efficiency gain. IBM stated mass production is expected around 2031. This marks the semiconductor industry officially breaking through the nanometer scale limit, entering atomic-scale scaling.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">0.7nm process = 7Å, semiconductors officially transition from "nanometer era" to "Å era"</div>
+                        <div class="key-point">100 billion transistor density provides stronger compute foundation for AI large model training</div>
+                        <div class="key-point">+50% performance, +70% efficiency, mass production ~2031, clear technology roadmap</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Nanjing Software Conference Focuses on AI+Software Integration, Multiple Frontier Results Released</h3>
+                    <div class="news-content">
+                        <p>June 26-27, the 2026 Nanjing Software Conference opened under the theme <span class="highlight-bold">"AI Leading Software Industry Digital Intelligence Transformation"</span>. The AI Innovation & Industry Empowerment session released 4 core AI technology and product achievements covering embodied intelligence, decision intelligence, and intelligent programming.</p>
+                        <p>Tsinghua University researcher Chen Song noted developers' focus shifting from writing code to defining problems and verifying results, marking the arrival of the <span class="highlight">"Vibe Coding" era</span>. Nanjing's software industry scale exceeds ¥1,020 billion.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">¥1,020B software industry + AI-driven transformation, Nanjing conference becomes industry bellwether</div>
+                        <div class="key-point">4 core AI achievements released, covering embodied intelligence, decision intelligence, intelligent programming</div>
+                        <div class="key-point">"Vibe Coding" concept: developers shift from coding to problem definition and result verification</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">2 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">UBTECH U1 Pre-Sales Near 5,000 Units, Official Launch June 30 — Consumer Humanoid Robot Era Arriving?</h3>
+                    <div class="news-content">
+                        <p>UBTECH's world's first full-size ultra-bionic humanoid robot <span class="highlight-orange">U1 series officially launches June 30</span>. Since pre-sales opened June 2, cumulative orders exceeded 5,000 units in 17 days. Compared to only 1,079 full-size humanoid robots sold throughout 2025, this pre-sale is a milestone breakthrough.</p>
+                        <p>The U1 series stands 183cm tall, weighs 42kg, features <span class="highlight-orange">88 degrees of freedom</span> with an nurture-style emotional AI model, targeting emotional companion consumer scenarios. Market response enthusiastic: UBTECH stock rose over 6% in a single day.</p>
+                        <p>However, challenges persist: only 2-4 hours battery life, primarily chat-focused interaction, still-high pricing. Critics call this <span class="highlight-orange">"an exciting admission ticket, not the destination of success"</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">5,000 pre-orders vs 1,079 total in 2025, humanoid robot consumer market explosive growth</div>
+                        <div class="key-point">June 30 launch countdown, world's first full-size ultra-bionic humanoid robot targeting consumers</div>
+                        <div class="key-point">Short battery, limited functions, high price remain core challenges; consumer普及 still needs breakthrough</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Two 5G Autonomous Driving Network Standards Approved, Effective September 1, Paving Way for L3/L4</h3>
+                    <div class="news-content">
+                        <p>MIIT approved two <span class="highlight-orange">5G network communication industry standards</span> supporting high-level autonomous driving: "5G Network Deployment and Testing Methods" and "5G Network Performance Requirements." Developed over three years by Shanghai Communications Administration, China Mobile, CAICT, and 20+ organizations.</p>
+                        <p>Effective September 1, 2026, covering 5G network services, coverage, performance, testing, and communication security requirements — China's first 5G vehicle-network industry standard system. Combined with the first L3/L4 autonomous driving mandatory national standard (proposed July 2027), forming a policy package.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First 5G vehicle-network industry standard system, filling autonomous driving network evaluation gap</div>
+                        <div class="key-point">Three-year development, 20+ organizations collaborative, complete standard system from consortium to industry</div>
+                        <div class="key-point">Combined with first L3/L4 mandatory national standard, accelerating autonomous driving scale deployment</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Today's Core Trends</h2>
+                <p>Insights into the latest AI & technology trends</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Enters "Agent-of-Agents" Era</h3>
+                            <p>GPT-5.6 Sol Ultra pioneers multi-Agent parallel collaboration paradigm, Terminal-Bench 91.9% tops global rankings — AI evolves from single-point tool to collaborative intelligence network.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🔬</div>
+                        <div class="trend-desc">
+                            <h3>Semiconductors Break Nanometer Limit, Enter "Å Era"</h3>
+                            <p>IBM 0.7nm chip packs 100B transistors, +50% performance, +70% efficiency — Moore's Law writes a new chapter at atomic scale.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🦾</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robots at Consumer Breakout Eve</h3>
+                            <p>UBTECH U1 pre-sales 5,000 units exceeding 5x last year's total, June 30 launch opens consumer era — but battery life and functionality remain core bottlenecks.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🔥</div>
+                        <div class="trend-desc">
+                            <h3>US-Iran Ceasefire Agreement Under Stress</h3>
+                            <p>Strait of Hormuz oil tanker attacked + mutual military strikes, first engagement after MOU, global energy corridor security risk elevated.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Toutiao · Sina Finance · CCTV News · Sohu News · People's Daily · BBC News · Reuters · EMSC</p>
+            <p class="footer-meta">Compiled: 2026-06-28 09:40 | NEWS DAILY automated push</p>
+        </footer>
+    </div>
+</body>
+</html>
