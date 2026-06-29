@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-06-29</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+        .header .subtitle { font-size: 18px; color: rgba(255, 255, 255, 0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count {
+            background: rgba(255, 255, 255, 0.1); padding: 4px 12px;
+            border-radius: 20px; font-size: 12px; font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px;
+            position: relative; transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255, 255, 255, 0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '\2192'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255, 255, 255, 0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255, 255, 255, 0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px;
+            padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03); border-radius: 16px;
+            padding: 24px; transition: all 0.3s ease;
+        }
+        .trend-card:hover { background: rgba(255, 255, 255, 0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255, 255, 255, 0.6); line-height: 1.6; }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-desc { flex: 1; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-06-29</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Row 1: Hot News on Top -->
+        <div class="sections">
+            <!-- China Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">M5.5 Earthquake Hits Gaoxian County in Sichuan, 13 Slightly Injured</h3>
+                    <div class="news-content">
+                        <p>A <span class="highlight-bold">magnitude 5.5 earthquake</span> struck Gaoxian County in Yibin, Sichuan at 00:12 on June 29, with a depth of 10 km. Tremors were felt in Chengdu, Chongqing, and surrounding areas. <span class="highlight-bold">Thirteen people sustained minor injuries</span> and have been sent to hospitals; no serious casualties have been reported.</p>
+                        <p>Local authorities have activated emergency response protocols, conducting comprehensive inspections of building safety and secondary hazards such as landslides. This is one of the strongest tremors in Sichuan this year, and aftershock monitoring continues.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">M5.5 earthquake in Yibin, Gaoxian; tremors felt in Chengdu and Chongqing</div>
+                        <div class="key-point">13 people with minor injuries sent to hospital, no serious casualties</div>
+                        <div class="key-point">Emergency response activated, secondary disaster assessment underway</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">New Regulations Take Effect July 1: Toughest Vehicle Side-Impact Standards in 20 Years</h3>
+                    <div class="news-content">
+                        <p>Multiple new regulations take effect on July 1, including the <span class="highlight-bold">toughest upgrade to vehicle side-impact safety standards in 20 years</span>. Two new national standards for new energy vehicles covering battery safety and charging interface standardization also come into force, alongside medical insurance drug list adjustments.</p>
+                        <p>Industry analysts expect the side-impact rules to drive major upgrades in door structures and side airbag configurations, potentially raising costs for some models in the short term but significantly improving road safety in the long run.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Toughest vehicle side-impact standards upgrade in 20 years</div>
+                        <div class="key-point">Two new NEV national standards take effect July 1</div>
+                        <div class="key-point">Multi-sector regulation changes covering healthcare, autos, and more</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">China's Industrial Profits Rise 18.8% in Jan-May; Electronics Surges 103.9%</h3>
+                    <div class="news-content">
+                        <p>National Bureau of Statistics data shows profits of <span class="highlight-bold">industrial enterprises above designated size grew 18.8% year-on-year</span> in the first five months of 2026, continuing the recovery trend. The <span class="highlight-bold">electronics sector led with a staggering 103.9% profit surge</span>, serving as the core growth engine.</p>
+                        <p>Meanwhile, the top 30 foreign trade cities were released, with Shanghai, Suzhou, Beijing, and Dongguan ranking in the top four. Analysts link electronics growth to surging AI computing demand and accelerated domestic substitution, with strong momentum expected to persist into H2.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Industrial profits up 18.8% year-on-year in first five months</div>
+                        <div class="key-point">Electronics sector profits skyrocketed 103.9%, the standout performer</div>
+                        <div class="key-point">Top 30 foreign trade cities: Shanghai, Suzhou, Beijing, Dongguan lead</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Carbon Fiber Milestone: Three of the World's Largest Production Lines Go Live Simultaneously</h3>
+                    <div class="news-content">
+                        <p>China's carbon fiber industry achieved a major breakthrough as <span class="highlight-bold">three of the world's largest carbon fiber production lines went live on the same day</span>, filling critical gaps in high-end carbon fiber materials. This marks a pivotal step toward self-sufficiency in strategic materials.</p>
+                        <p>Carbon fiber is a core material for aerospace, new energy, rail transit, and other strategic industries, where premium grades previously relied heavily on imports. This capacity expansion will have far-reaching implications for domestic large aircraft, wind turbine blades, and hydrogen storage tanks.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Three of the world's largest carbon fiber lines go live simultaneously</div>
+                        <div class="key-point">Closing the gap in high-end carbon fiber, achieving self-reliance</div>
+                        <div class="key-point">Profound impact on aerospace, new energy, and strategic sectors</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Central Authorities Publicly Name 3 Cases of Misguided Performance Metrics; He Zhiliang Under Investigation</h3>
+                    <div class="news-content">
+                        <p>The central authorities publicly named <span class="highlight-bold">three cases of misguided performance evaluation practices</span> involving Nanning (Guangxi), Jiuquan (Gansu), and Xiaoshan (Zhejiang), signaling an intensified crackdown on formalism and bureaucratism.</p>
+                        <p>On the same day, the Ministry of Social Work announced that <span class="highlight-bold">He Zhiliang is under investigation</span>, reaffirming the Party's unwavering commitment to full and rigorous self-governance.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Three cases of misguided performance metrics named in Nanning, Jiuquan, Xiaoshan</div>
+                        <div class="key-point">He Zhiliang under investigation, Party discipline reaffirmed</div>
+                        <div class="key-point">Continued signal of rigorous internal governance</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Pang Donglai "Happy Marriage Bonus": 73 Employees Receive 3.65 Million Yuan</h3>
+                    <div class="news-content">
+                        <p>Pang Donglai, a renowned retail chain, announced results of its "Happy Marriage Bonus" policy after 18 months: <span class="highlight-bold">73 employees received a combined 3.65 million yuan</span>, averaging 50,000 yuan each. The initiative has drawn widespread attention as a benchmark for corporate employee welfare innovation.</p>
+                        <p>In another uplifting story, a 25-year-old food delivery rider was admitted to Chengdu University of Technology for graduate studies while working part-time, earning a 10,000-yuan scholarship from the delivery platform.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Pang Donglai marriage bonus: 73 employees receive 3.65M yuan total</div>
+                        <div class="key-point">25-year-old delivery rider admitted to grad school, gets platform scholarship</div>
+                        <div class="key-point">Corporate welfare innovation and personal perseverance stories resonate widely</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International Affairs -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US-Iran Clash Over Strait of Hormuz Reignites; Trump Threatens Iran "May Cease to Exist"</h3>
+                    <div class="news-content">
+                        <p>A dispute over <span class="highlight-bold">Article 5 of the US-Iran interim agreement regarding Strait of Hormuz transit jurisdiction</span> has triggered a new round of military strikes. The US insists the agreement requires internationally coordinated shipping routes, while Iran maintains it retains jurisdiction over strait transit. US forces struck Iranian missile and drone storage sites, and Trump threatened that Iran "may cease to exist."</p>
+                        <p>Iran responded fiercely, threatening "hellish" strikes on US military bases. With roughly one-fifth of global oil shipments passing through the Strait of Hormuz, this escalation injects extreme uncertainty into global energy markets and oil prices.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Article 5 dispute over strait jurisdiction ignites fresh US-Iran military conflict</div>
+                        <div class="key-point">US strikes Iranian missile facilities; Iran threatens retaliation on US bases</div>
+                        <div class="key-point">Global energy supply chains and oil prices face heightened uncertainty</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Venezuela Earthquake Death Toll Rises to 1,430; 8 Chinese Nationals Confirmed Dead</h3>
+                    <div class="news-content">
+                        <p>The death toll from Venezuela's devastating earthquake has <span class="highlight-bold">climbed to 1,430, with 3,238 injured</span>. President Xi Jinping sent a message of condolences to Venezuela's acting President Rodriguez. <span class="highlight-bold">Eight Chinese nationals</span> have been confirmed dead in the disaster, with rescue operations still underway.</p>
+                        <p>International rescue teams are mobilizing to assist, but damaged roads and disrupted communications are severely hampering relief efforts. The WHO warned of infectious disease outbreak risks in affected areas, citing urgent need for clean drinking water and temporary medical facilities.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Venezuela earthquake: 1,430 dead, 3,238 injured, numbers still rising</div>
+                        <div class="key-point">Xi Jinping sends condolences; 8 Chinese nationals confirmed dead</div>
+                        <div class="key-point">International rescue underway; infrastructure damage severe</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Record European Heatwave Kills Thousands; Chinese Air Conditioners Become "Lifesavers"</h3>
+                    <div class="news-content">
+                        <p>Extreme heat has swept across Europe in June, with over <span class="highlight-bold">1,300 excess deaths linked to high temperatures</span> already recorded. Chinese air conditioners have <span class="highlight-bold">sold out across multiple European countries</span>, with manufacturers scrambling to replenish stocks. The global heatwave underscores climate change's "amplifier" effect.</p>
+                        <p>The World Meteorological Organization urged nations to adopt urgent adaptation measures. However, air conditioner installation restrictions in many European countries (building codes, limited electrical capacity) mean that even those who buy units may not be able to use them, creating a new social dilemma.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">European heatwave linked to 1,300+ excess deaths</div>
+                        <div class="key-point">Chinese AC units sold out across Europe, manufacturers rush production</div>
+                        <div class="key-point">Climate change "amplifier" effect starkly visible</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Trump Threatens 100% Tariffs on Countries with Digital Services Taxes; EU Fires Back</h3>
+                    <div class="news-content">
+                        <p>Trump vowed to impose <span class="highlight-bold">100% retaliatory tariffs</span> on any country levying digital services taxes on US companies. The European Commission immediately responded, firmly defending its rights and warning that such action would severely damage transatlantic trade relations.</p>
+                        <p>The UK, France, Italy, and other European nations have already implemented digital services taxes targeting US tech giants like Google, Amazon, and Meta. This standoff risks igniting a new round of transatlantic trade friction, further dimming prospects for a global digital tax agreement.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Trump threatens 100% tariff retaliation on digital services tax countries</div>
+                        <div class="key-point">EU firmly defends its rights, warns of trade damage</div>
+                        <div class="key-point">Transatlantic trade friction risk escalates sharply</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Volkswagen Plans Up to 100,000 Job Cuts Globally, Closing 4 German Plants</h3>
+                    <div class="news-content">
+                        <p>Volkswagen Group announced a <span class="highlight-bold">radical restructuring: up to 100,000 job cuts globally</span> and the closure of four factories in Germany. This would be the largest layoff in VW's history, reflecting unprecedented pressure on legacy automakers from the EV transition.</p>
+                        <p>Unions have vowed to "do everything possible to block" the plan, but VW's CEO insists that competition from Chinese automakers forces drastic cost reductions. VW has already faced strong challenges from BYD and other Chinese brands, with its global market share steadily declining.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">VW plans up to 100,000 job cuts, largest in company history</div>
+                        <div class="key-point">Four German plants to close; EV transition pressure immense</div>
+                        <div class="key-point">Unions oppose; Chinese automaker competition intensifies legacy crisis</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Serbian President Vučić to Resign in Weeks; King Charles Reveals Tax Records</h3>
+                    <div class="news-content">
+                        <p>Serbian President <span class="highlight-bold">Aleksandar Vučić announced he will resign in a few weeks</span>, while affirming Serbia will continue its EU accession process. Vučić's sudden announcement, after years in power, introduces significant uncertainty into the Balkan political landscape.</p>
+                        <p>In a separate development, <span class="highlight-bold">King Charles III became the first British monarch to publicly disclose tax information</span>, revealing he paid 12.9 million pounds in taxes for the year. Pakistan's media regulator banned Geo News for 15 days over religious sensitivity concerns.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Vučić to resign in weeks, major shift in Serbian politics</div>
+                        <div class="key-point">Affirms continued EU accession process</div>
+                        <div class="key-point">King Charles first British monarch to disclose taxes: &pound;12.9M paid</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI & Embodied Below -->
+        <div class="sections">
+            <!-- AI Coding -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">DeepSeek & Peking University Open-Source DSpark: LLM Inference Speed Soars 60-85%</h3>
+                    <div class="news-content">
+                        <p>On June 27, DeepSeek and Peking University jointly open-sourced the <span class="highlight-bold">DSpark inference acceleration framework</span>, with founder <span class="highlight-bold">Liang Wenfeng</span> listed as a co-author. Using a semi-autoregressive generation + confidence-scheduled verification architecture, DSpark boosts single-user text generation speed by <span class="highlight">60-85%</span> without altering model capabilities.</p>
+                        <p>The release includes DeepSeek-V4-Pro-DSpark and V4-Flash-DSpark models, plus the <span class="highlight">DeepSpec training framework</span> (MIT licensed), enabling developers to train speculative decoding draft models for third-party models including Qwen3 and Gemma. Deployments are expected to significantly lower inference costs.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Inference speed up 60-85%, lossless acceleration, lower inference costs</div>
+                        <div class="key-point">Liang Wenfeng co-authored; Peking University collaboration; full MIT open-source</div>
+                        <div class="key-point">DeepSpec framework supports Qwen3, Gemma, and third-party model training</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">GPT-5.6 Officially Launches: Sol/Terra/Luna "Solar System" Trio Dominates Coding Benchmarks</h3>
+                    <div class="news-content">
+                        <p>On June 27, OpenAI officially unveiled the <span class="highlight-bold">GPT-5.6 series</span>, debuting Sol, Terra, and Luna naming for the first time. The flagship <span class="highlight-bold">Sol model surpassed Claude Mythos 5 to top coding benchmarks</span>, supporting a <span class="highlight">1.5 million token context window</span>.</p>
+                        <p>Under US national security review requirements, access is limited to select "trusted partners" for preview. API pricing is roughly half of Claude Fable 5: Sol charges $5/MT input and $30/MT output. From Fable 5's shutdown to GPT-5.6's restricted release, AI models are increasingly becoming the new front line of great-power competition.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Sol dominates coding benchmarks, 1.5M token context, reclaims #1 in 17 days</div>
+                        <div class="key-point">Restricted to "trusted partners" under US national security review</div>
+                        <div class="key-point">API pricing roughly half Fable 5; AI geopoliticization intensifies</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">GitHub Copilot's Usage-Based Pricing Drives Record Demand: Best Month Ever in June</h3>
+                    <div class="news-content">
+                        <p>Microsoft GitHub's CTO revealed that Copilot's switch to <span class="highlight-bold">usage-based pricing</span> triggered a massive surge in usage during June, making it the <span class="highlight-bold">best-performing month in the platform's history</span>. The new model unlocked elastic demand previously suppressed by fixed subscription pricing.</p>
+                        <p>Usage-based billing allows light users to access Copilot without being priced out by high subscriptions, while heavy users find the value far exceeds cost. This model sets a new benchmark for AI coding tool monetization and reflects AI coding demand shifting from novelty to necessity.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Copilot usage-based pricing drives record June performance</div>
+                        <div class="key-point">Elastic demand unlocked; AI coding tool business model innovation</div>
+                        <div class="key-point">AI coding demand shifts from novelty to necessity within GitHub ecosystem</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">SpaceX Acquires Cursor for $60B in All-Stock Deal: Musk Buys the AI Coding Gateway</h3>
+                    <div class="news-content">
+                        <p>On June 16, SpaceX announced the <span class="highlight-bold">$60 billion all-stock acquisition</span> of Anysphere, parent company of AI coding tool Cursor. With zero cash involved, analysts say Musk didn't buy a code editor &mdash; he bought <span class="highlight">the developer gateway to the entire AI era</span>.</p>
+                        <p>The deal combines SpaceX's computing infrastructure (Starlink, supercomputers) with Cursor's developer ecosystem. Cursor had already evolved from a tool vendor into a model vendor (Composer 2.5); under Musk's umbrella, it gains vastly more resources, potentially reshaping the AI coding tool landscape.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">SpaceX acquires Cursor parent Anysphere for $60B all-stock</div>
+                        <div class="key-point">Musk aims to control the developer gateway to the AI era</div>
+                        <div class="key-point">Compute + developer ecosystem integration could reshape competitive dynamics</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">OpenCode Tops AI Dev Tool Power Rankings; Open-Source Coding Agent Storms to #1</h3>
+                    <div class="news-content">
+                        <p>LogRocket's June 2026 <span class="highlight-bold">AI Dev Tool Power Rankings</span> placed OpenCode at <span class="highlight-bold">#1</span>, surpassing Cursor, Claude Code, and other rivals. With over <span class="highlight">128,000 GitHub stars</span> and monthly active developers approaching <span class="highlight">8 million</span>, OpenCode has become the most recognized open-source coding agent.</p>
+                        <p>From zero to 128K stars, OpenCode's fully open-source, community-driven, freely deployable model has created powerful network effects among developers. Its rise signals that in AI coding, community power is increasingly challenging the moats of proprietary commercial tools.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenCode claims #1 on LogRocket AI Dev Tool Power Rankings</div>
+                        <div class="key-point">128K GitHub stars, 8M monthly active developers, crushing commercial rivals</div>
+                        <div class="key-point">Open-source coding agent's rise challenges proprietary tool dominance</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Embodied Intelligence -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Humanoid Robot "Production Frenzy" Meets "Reality Check": 10,000 Units Produced vs. 200 Actually Deployed</h3>
+                    <div class="news-content">
+                        <p>June 2026 presents a stark contrast: <span class="highlight-orange">Zhiyuan announced the world's first 10,000-unit mass production milestone</span>, and Unitree's IPO seeks 4.2 billion yuan &mdash; but <span class="highlight-orange">fewer than 200 robots</span> are in regular trial operation in real industrial settings globally, a two-order-of-magnitude gap from production capacity.</p>
+                        <p>ROI analysis shows: 500K yuan procurement cost + 100-150K yuan annual maintenance means <span class="highlight-orange">5-8 years to break even</span> with human workers, far exceeding the 3-year benchmark. Star Ocean CEO predicts an industry shakeout within 6-18 months; roughly 80% of companies remain at the PPT or demo stage.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Zhiyuan hits 10K-unit mass production; real industrial deployment only ~200 globally</div>
+                        <div class="key-point">Full lifecycle cost requires 5-8 years to match human worker costs</div>
+                        <div class="key-point">Industry shakeout expected within 6-18 months; ~80% of firms still PPT-stage</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Embodied Intelligence Financing Surpasses 46B Yuan in First 5 Months; L1-L5 Intelligence Grading Takes Effect</h3>
+                    <div class="news-content">
+                        <p>China's embodied intelligence sector attracted <span class="highlight-orange">over 46 billion yuan in financing</span> in the first five months of 2026, more than double the 2024 total. On June 1, the industry standards YD/T 6770-2026 <span class="highlight-orange">"Embodied Intelligence Benchmark Test Methods" and "Humanoid Robot Intelligence Grading" (L1-L5) officially took effect</span>.</p>
+                        <p>L3 requires autonomous operation in specific scenarios with under 10% human intervention rate; current leaders are transitioning from L2 to L3 &mdash; "not yet ready" is the industry consensus. Production capacity expansion far outpaces order growth, with over 40% of financing consumed by inventory production and trade show marketing.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">46B+ yuan financing in first 5 months, over 2x full-year 2024</div>
+                        <div class="key-point">Humanoid robot L1-L5 intelligence grading standards effective June 1</div>
+                        <div class="key-point">Industry leaders at L2-to-L3 transition; genuine autonomy still distant</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Tesla Optimus Ramps Production: Target of 1,000+ Units Deployed by Year-End</h3>
+                    <div class="news-content">
+                        <p>Tesla Optimus Gen3 production continues to accelerate. In Q1, <span class="highlight-orange">two prototype units began battery sorting tests at the Fremont factory</span>. Tesla's internal target is to <span class="highlight-orange">deploy over 1,000 Optimus units</span> on actual factory production lines by the end of 2026.</p>
+                        <p>The Shanghai Gigafactory has already deployed 50 units, leveraging the FSD pure-vision AI model with HW4.0 chips and 4680 batteries for 10-hour continuous operation. Against the baseline of ~200 robots in global trial operation, Tesla's 1,000-unit target, if met, would push the industry from "demo validation" into scaled practice.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Tesla targets 1,000+ Optimus units deployed on production lines by end-2026</div>
+                        <div class="key-point">Battery sorting tests underway at Fremont; 50 units already at Shanghai factory</div>
+                        <div class="key-point">FSD AI + HW4.0 chip + 4680 battery enabling 10-hour continuous operation</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on global tech and geopolitical shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9889;</div>
+                        <div class="trend-desc">
+                            <h3>US-Iran Hormuz Standoff Reignites, Global Energy Chains on Edge</h3>
+                            <p>Article 5 dispute triggers fresh conflict; Strait of Hormuz security affects 1/5 of global oil shipments, new volatility ahead.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127777;</div>
+                        <div class="trend-desc">
+                            <h3>Extreme Heat Becomes the New Normal; Climate Adaptation a Global Imperative</h3>
+                            <p>1,300+ heat deaths in Europe, Chinese ACs sold out &mdash; the climate crisis has shifted from "future risk" to "present reality."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128161;</div>
+                        <div class="trend-desc">
+                            <h3>AI Models Become Geopolitical: From Tech Race to National Security</h3>
+                            <p>Fable 5 shutdown, GPT-5.6 restricted access, DSpark open-source &mdash; AI models are the new front line of great-power competition.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robots' Critical Leap: From "Dazzling Demos" to "Paying Customers"</h3>
+                            <p>10K produced vs. 200 deployed &mdash; the industry faces a 6-18 month shakeout. Those who deliver real-world value will survive.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua &middot; Huiyu Briefing &middot; 60-Second Daily &middot; Live Mint &middot; Sina Finance &middot; Tencent News &middot; Leaderobot</p>
+            <p class="footer-meta">Compiled: 2026-06-29 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
