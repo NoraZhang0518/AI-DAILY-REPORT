@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-02</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px;
+            font-weight: 500; margin-bottom: 20px; letter-spacing: 2px;
+        }
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+        .header .subtitle { font-size: 18px; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+
+        .section {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count {
+            background: rgba(255,255,255,0.1); padding: 4px 12px;
+            border-radius: 20px; font-size: 12px; font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px;
+            position: relative; transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '\2192'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(255,107,53,0.1));
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 24px;
+            padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255,255,255,0.5); font-size: 14px; }
+
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+
+        .trend-card {
+            background: rgba(255,255,255,0.03); border-radius: 16px;
+            padding: 24px; transition: all 0.3s ease;
+        }
+        .trend-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-desc { flex: 1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-07-02</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <div class="sections">
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">CPC 105th Anniversary Grand Celebration Held in Beijing, 8 Awarded "July 1 Medal"</h3>
+                    <div class="news-content">
+                        <p>On July 1, a grand ceremony commemorating the 105th anniversary of the founding of the Communist Party of China was held at the Great Hall of the People in Beijing. General Secretary Xi Jinping delivered an important speech calling for <span class="highlight-bold">"striving to create new historical glories."</span> Eight CPC members received the Party's highest honor, the "July 1 Medal," including combat hero Wang Yuchang, who twice participated in shooting down U-2 spy planes. Front-page editorials flooded state media, and the national summer railway travel season kicked off the same day, expecting 1.01 billion passenger trips.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Xi Jinping issues call to "create new historical glories" in landmark address</div>
+                        <div class="key-point">8 medal recipients span defense, research, and grassroots service</div>
+                        <div class="key-point">Summer rail season launched same day, 1.01B trips expected over 62 days</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">South China Sea Tropical Depression Upgrading to Typhoon, Expected to Hit Hainan and Guangxi</h3>
+                    <div class="news-content">
+                        <p>The Central Meteorological Observatory reports a strengthening tropical depression in the South China Sea that will escalate into <span class="highlight-bold">the first typhoon to make landfall in China this year</span>, projected to strike Hainan on July 3 and Guangxi on July 4. Heavy winds and rainfall are anticipated. Coastal regions have activated typhoon emergency protocols, and fishing vessels have been ordered back to port.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First landfall typhoon of 2026, threatening Hainan, Guangxi, and Guangdong</div>
+                        <div class="key-point">Coastal areas activate emergency response, fishing fleets recalled</div>
+                        <div class="key-point">July marks start of typhoon season, double pressure of flood and wind defense</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Nine Ministries Expand Occupational Injury Insurance to All Gig Workers Nationwide</h3>
+                    <div class="news-content">
+                        <p>Effective July 1, a joint initiative by the Ministry of Human Resources and eight other ministries <span class="highlight-bold">extends occupational injury protection pilot to the entire country</span>, covering tens of millions of gig workers including delivery riders, ride-hailing drivers, and couriers. The program provides both medical treatment and financial compensation. After successful pilots in seven provinces, this nationwide rollout marks a milestone for gig worker rights protection.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Covers tens of millions in delivery, ride-hailing, and courier sectors</div>
+                        <div class="key-point">Dual protection: medical treatment + financial compensation</div>
+                        <div class="key-point">Successful 7-province pilot now scaled to nationwide implementation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">China A-Share H1 Review: ChiNext Surges 35% to Record High, Top Stock +766%</h3>
+                    <div class="news-content">
+                        <p>China's A-share market closed H1 2026 with the <span class="highlight-bold">ChiNext index soaring over 35% to an all-time high</span>, while 362 stocks more than doubled in price. CSSC Specialty Gases led all gainers at +766%. June's manufacturing PMI returned to expansion at 50.3%, signaling strengthening economic recovery. Starting July 6, ST-stock price limits on main boards expand from 5% to 10%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">ChiNext +35% to record high, tech growth stocks leading the rally</div>
+                        <div class="key-point">June Manufacturing PMI returns to expansion at 50.3%</div>
+                        <div class="key-point">ST-stock trading rule changes effective July 6, limits expanded to 10%</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">2026 University Major Rankings: Electrical Engineering 4-Year Champion, Computer Science Drops to 4th</h3>
+                    <div class="news-content">
+                        <p>The 2026 undergraduate major popularity rankings show engineering dominating with 7 of 10 spots. <span class="highlight-bold">Electrical Engineering secured its fourth consecutive top position</span>, AI rose to 2nd, Clinical Medicine to 3rd, while Computer Science fell from 2nd to 4th. Psychology surged 135 positions into the top 10 as the biggest dark horse, reflecting surging societal demand for mental health services.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Electrical Engineering 4-year champion, driven by renewable energy and power sector boom</div>
+                        <div class="key-point">Computer Science drops to 4th as AI rises to 2nd — major landscape rapidly reshuffling</div>
+                        <div class="key-point">Psychology rockets up 135 spots, mirroring explosion in mental health demand</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Wang Jianlin Sells 2 More Wanda Plazas, Total Divestments Exceed 80 Since 2023</h3>
+                    <div class="news-content">
+                        <p>Wanda Group Chairman Wang Jianlin recently sold two additional Wanda Plazas, bringing the <span class="highlight-bold">cumulative total of divested properties to over 80</span> since 2023. The market interprets this as a continuation of Wanda's deleveraging and cash recovery strategy. Facing uneven consumption recovery and intensifying online competition, Wanda is accelerating its pivot to an asset-light operating model.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Over 80 Wanda Plazas sold, strategic deleveraging for cash recovery</div>
+                        <div class="key-point">Commercial property management faces consumption headwinds, asset-light pivot accelerates</div>
+                        <div class="key-point">Wanda continues portfolio contraction, focusing on core asset operations</div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">U.S. Supreme Court 6-3 Upholds Birthright Citizenship, Major Blow to Trump</h3>
+                    <div class="news-content">
+                        <p>The U.S. Supreme Court ruled 6-3 to uphold the 14th Amendment's <span class="highlight-bold">birthright citizenship guarantee</span>, striking down Trump's executive order attempting to abolish it. Chief Justice Roberts wrote: "Citizenship is the right to have rights." Conservative Justices Roberts, Barrett, and Kavanaugh sided with the three liberal justices. Trump vowed on social media to continue "fighting to end automatic citizenship for children of illegal immigrants."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">6-3 ruling with three conservative justices breaking ranks</div>
+                        <div class="key-point">14th Amendment birthright citizenship reaffirmed as constitutional bedrock</div>
+                        <div class="key-point">Trump's most significant judicial defeat on immigration policy to date</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">U.S.-Iran Hold Indirect Technical Talks in Doha, Tehran Demands MOU Compliance First</h3>
+                    <div class="news-content">
+                        <p>U.S. and Iranian delegations resumed indirect technical negotiations on July 1 in Doha, Qatar, with Qatar and Pakistan mediating. Iran's chief negotiator Ghalibaf <span class="highlight-bold">flatly rejected high-level direct talks</span>, demanding the U.S. first fully honor the previously signed Memorandum of Understanding. Iran simultaneously warned that its 60-day guarantee for free passage through the Strait of Hormuz has a limited clock, while a container ship grounded while attempting to bypass the strait heightened maritime safety concerns.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Indirect talks resume but trust deficit remains extremely wide</div>
+                        <div class="key-point">Iran insists U.S. honor MOU first, rejects direct high-level engagement</div>
+                        <div class="key-point">Strait of Hormuz 60-day countdown adds pressure on global energy markets</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Germany Stunned by Paraguay in Penalty Shootout, Third Straight World Cup without Round of 16</h3>
+                    <div class="news-content">
+                        <p>The 2026 FIFA World Cup Round of 16 delivered a massive shock as <span class="highlight-bold">Germany fell 3-4 on penalties to Paraguay</span>, marking their third consecutive tournament exit at this stage. Norway, led by Haaland, returned to the knockout rounds after 28 years. England advanced past DR Congo 2-1. German media decried an "identity crisis," as the team's fall from 2014 champions to three straight early exits demands systemic reform.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Germany's third straight Round of 16 exit — from 2014 glory to 2026 rock bottom</div>
+                        <div class="key-point">Norway back in knockouts after 28 years, the Haaland era officially begins</div>
+                        <div class="key-point">France (Mbappé) and England remain formidable, generational shift crystallizing</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">U.S.-Japan Mass Joint Military Exercise, Osprey Aircraft Lands on Miyako Island for First Time</h3>
+                    <div class="news-content">
+                        <p>Japan and the United States launched large-scale joint military exercises, with <span class="highlight-bold">U.S. MV-22 Osprey tiltrotor aircraft making their first-ever landing on Miyako Island</span> in Okinawa Prefecture. Drills include amphibious landings, island chain defense, and air strikes. Analysts note that this forward deployment in the first island chain may heighten tensions across East Asia.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Osprey's first Miyako landing signals significant forward military deployment</div>
+                        <div class="key-point">Amphibious + island chain defense drills highly targeted in nature</div>
+                        <div class="key-point">East Asian military tensions continue escalating, strategic maneuvering intensifies</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">UK Pledges £15B Defense Boost, Russia Shuts Baltic State Border Crossings</h3>
+                    <div class="news-content">
+                        <p>The UK government unveiled a new defense investment plan, <span class="highlight-bold">adding £15 billion to upgrade air, land, and naval forces</span> in response to an "increasingly complex security environment." Simultaneously, Russia announced closures of multiple border crossings with Latvia, Finland, and Estonia. Analysts note the Ukraine conflict's spillover is reshaping Europe's security architecture, with arms race risks rising sharply.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">UK's £15B defense boost is the largest since the Cold War</div>
+                        <div class="key-point">Russia closes Baltic state crossings, border standoff intensifies</div>
+                        <div class="key-point">European security architecture rapidly transforming, arms race risk growing</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Spot Gold Falls Below $4,000, Q2 Drop of 14% Is Worst Quarterly Decline Since 2013</h3>
+                    <div class="news-content">
+                        <p>Spot gold prices have once again fallen below the $4,000 mark, <span class="highlight-bold">down nearly 30% from January highs</span>. Gold fell over 11% in June alone, with Q2's ~14% decline marking the worst quarterly performance since 2013. Domestic jewelry prices in China dropped over 500 yuan per gram from peak levels. Persistently high global interest rates, a stronger dollar, and fading geopolitical risk premiums are the main drivers.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Gold down 30% from yearly highs, safe-haven halo fading rapidly</div>
+                        <div class="key-point">Q2 -14% is worst quarterly showing in 13 years, high rates punishing gold</div>
+                        <div class="key-point">China jewelry prices drop 500+ yuan/gram, bargain buying interest rising</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <div class="sections">
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic Launches Claude Sonnet 5: Strongest Agent Model with Autonomous Browser and Terminal Use</h3>
+                    <div class="news-content">
+                        <p>Anthropic officially launched <span class="highlight-bold">Claude Sonnet 5</span> on July 1, calling it the most capable agentic AI in the Sonnet family. Sonnet 5 can <span class="highlight">plan, use browsers and terminal tools, and operate autonomously</span>, with marked improvements over Sonnet 4.6 on BrowseComp agentic search and OSWorld-Verified computer use benchmarks.</p>
+                        <p>Performance on some tasks now <span class="highlight">approaches the premium Opus 4.8 model</span>, as high-end capabilities accelerate their migration to mid-tier models. Safety metrics also improved across the board: better malicious request rejection, stronger prompt injection resistance, and lower hallucination rates. Promotional pricing runs through August 31.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Sonnet 5 autonomously operates browser + terminal — a generational leap in agent capability</div>
+                        <div class="key-point">Some tasks approach Opus 4.8, high-end AI rapidly trickling down to mid-range models</div>
+                        <div class="key-point">Safety improves alongside capability — stronger AND safer, no longer a tradeoff</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">GPT-5.6 A/B Test Exposes 6x Compute Reduction, Opus 4.8 Hit by "Cliff Edge" Intelligence Drop</h3>
+                    <div class="news-content">
+                        <p>The AI community is experiencing what some call a "collective intelligence drought." OpenAI was caught on Codex routing some users from GPT-5.5 xhigh to <span class="highlight-bold">GPT-5.6-sol</span> in stealth, slashing reasoning budgets from 768 to 128 — a <span class="highlight">6x compute reduction</span>. The community invented the "Juice Test" to track hidden reasoning quotas, a landmark tool for AI service transparency.</p>
+                        <p>Meanwhile, Claude Opus 4.8 users report a <span class="highlight-bold">"catastrophic intelligence collapse"</span> — basic logic failures, memory loss, and even "gaslighting" users who point out errors. Community speculation suggests the initial stellar performance may have relied on temporary compute boosts quietly dialed back after launch.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 A/B test slashes reasoning 6x — "what we pay for" crisis erupts</div>
+                        <div class="key-point">"Juice Test" gives users first-ever tool to verify real compute behind AI services</div>
+                        <div class="key-point">Opus 4.8 collapse may reveal a "launch-brighten-then-degrade" pattern in large model releases</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">AI Coding Tool Rankings: Trae Tops at 98% Accuracy, AI Programming Enters "Autonomous" Era</h3>
+                    <div class="news-content">
+                        <p>Q2 2026 developer community polls show ByteDance's AI-native IDE <span class="highlight-bold">Trae</span> as the fastest-growing AI coding tool, with <span class="highlight">98% code generation accuracy and a permanent free tier</span>, surpassing 6 million registered users. Its SOLO mode achieves fully automated development from requirements to deployment. The industry is rapidly shifting from "AI-assisted coding" to "AI autonomous programming" — Claude Code already produces 100% AI-written code, redefining the developer role from coder to architecture reviewer and prompt engineer.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Trae reaches 6M users at 98% accuracy, Chinese AI coding tools leading globally</div>
+                        <div class="key-point">Claude Code is already 100% self-coded — AI leaps from assistant to autonomous developer</div>
+                        <div class="key-point">Developer role revolution: from writing code to reviewing architecture and crafting prompts</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Brown Professor Exposes Mass AI Cheating: Online Exam Avg 96 vs In-Person Avg 48</h3>
+                    <div class="news-content">
+                        <p>A Brown University professor revealed shocking data: the same course's take-home closed-book exam averaged <span class="highlight-bold">96 out of 100</span>, while the same students under in-person proctored conditions scored an average of just <span class="highlight-bold">48</span> — a staggering 48-point gap. The professor suspects mass AI-assisted cheating. The incident has ignited global debate in higher education on assessment integrity in the age of AI — when AI can ace every assignment, how must evaluation fundamentally change?</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">48-point gap between online and in-person averages suggests massive AI cheating</div>
+                        <div class="key-point">Global universities face existential challenge to assessment methods in the AI era</div>
+                        <div class="key-point">Traditional closed-book exams are being rendered obsolete by AI accessibility</div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">UBTECH Unveils Full-Size Bionic Humanoid UWORLD U1: 88 DOF + Emotional LLM, Starting at ¥119,800</h3>
+                    <div class="news-content">
+                        <p>UBTECH launched the <span class="highlight-orange">UWORLD U1 series</span> at its global event in Shenzhen on June 30, featuring three models — U1 Lite (half-body), U1 Pro, and U1 Ultra — with <span class="highlight-orange">88 degrees of freedom</span> and a dual-axis bionic cervical spine replicating 90% of basic human movements. It features the world's first emotional LLM for long-term companionship, recognizing 20+ emotional states with 90%+ accuracy, and lip-sync latency under 20ms.</p>
+                        <p>Starting at <span class="highlight-orange">¥119,800 (~$16,500)</span>, cumulative orders reached 13,361 units by launch day, making it the <span class="highlight-orange">world's first mass-produced full-size ultra-bionic humanoid robot</span>. Applications span companionship, elderly care, hospitality, education, and more, with a "Human-Robot Companionship Program" donating 100 units to vulnerable populations in 2026.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">88 DOF + Emotional LLM + ¥119,800 starting price — milestone for consumer embodied intelligence</div>
+                        <div class="key-point">13,361+ pre-orders, world's first mass-produced full-size ultra-bionic humanoid</div>
+                        <div class="key-point">100-unit donation program targets vulnerable populations including elderly and left-behind children</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">China Now Has 25 Embodied AI Unicorns, Morgan Stanley Doubles Shipment Forecast Again</h3>
+                    <div class="news-content">
+                        <p>According to 36Kr, China now has <span class="highlight-orange">25 embodied intelligence unicorns</span> valued at over ¥10 billion, with 15 of those emerging in just the first half of 2026. Gen2Square and Zibianliang Robotics both recently surpassed ¥20 billion valuations. Morgan Stanley <span class="highlight-orange">doubled its 2026 China humanoid robot shipment forecast for the second time this year</span> to 50,000 units. The investment thesis is shifting from "parameter competition" to "scenario dominance" as the sector enters its real-world validation phase.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">25 unicorns with 15 new in H1 2026 — embodied AI funding frenzy continues</div>
+                        <div class="key-point">Morgan Stanley forecasts 50K annual shipments, sector entering mass production cycle</div>
+                        <div class="key-point">Capital shifting focus from "tech metrics" to "real-world deployment capability"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">WAIC 2026 and WRC 2026 Back-to-Back: Mass-Produced Robots to Compete on Same Stage for First Time</h3>
+                    <div class="news-content">
+                        <p>The 2026 World AI Conference (WAIC) will take place in Shanghai this July, with humanoid robots and embodied intelligence remaining the headline attraction. In August, the World Robot Conference (WRC) will see <span class="highlight-orange">mass-produced robots compete side by side for the first time</span>, marking the sector's transition from demo prototypes to real products. Nearly 40 senior executives from autonomous driving have crossed over into embodied intelligence over the past two years, bringing battle-tested engineering and mass production expertise.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WAIC July + WRC August — the year's biggest showcase window for embodied intelligence</div>
+                        <div class="key-point">Mass-produced robots competing together for first time — from PowerPoint to real product showdown</div>
+                        <div class="key-point">40 autonomous driving executives crossing over, engineering + mass production expertise is key advantage</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest global and AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128259;</div>
+                        <div class="trend-desc">
+                            <h3>AI Model Trust Crisis Erupts</h3>
+                            <p>GPT-5.6 stealth compute cuts + Opus 4.8 cliff-edge degradation + student AI cheating — AI service transparency is now the industry's #1 challenge.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied Intelligence Enters Consumer Era</h3>
+                            <p>UBTECH U1 at ¥119,800 starting price with 13K orders — full-size bionic humanoids are moving from labs to living rooms.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128187;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Leaps from "Assist" to "Autonomous"</h3>
+                            <p>Sonnet 5 operates computers autonomously, Claude Code is 100% self-coded — the developer role faces fundamental transformation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128201;</div>
+                        <div class="trend-desc">
+                            <h3>Gold's Safe-Haven Halo Fading Fast</h3>
+                            <p>Q2 gold -14% is worst quarter in 13 years. High rates + strong dollar are rewriting the traditional safe-haven playbook.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: The Paper &middot; CNR News &middot; IT Home &middot; 36Kr &middot; Havana Times &middot; Sina Finance &middot; 163 News</p>
+            <p class="footer-meta">Compiled: 2026-07-02 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
