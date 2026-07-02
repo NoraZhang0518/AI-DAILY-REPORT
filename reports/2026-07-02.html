@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-02</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px;
+            font-weight: 500; margin-bottom: 20px; letter-spacing: 2px;
+        }
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+        .header .subtitle { font-size: 18px; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+
+        .section {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count {
+            background: rgba(255,255,255,0.1); padding: 4px 12px;
+            border-radius: 20px; font-size: 12px; font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px;
+            position: relative; transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '→'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(255,107,53,0.1));
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 24px;
+            padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255,255,255,0.5); font-size: 14px; }
+
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+
+        .trend-card {
+            background: rgba(255,255,255,0.03); border-radius: 16px;
+            padding: 24px; transition: all 0.3s ease;
+        }
+        .trend-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-desc { flex: 1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-07-02</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <div class="sections">
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">庆祝中国共产党成立105周年大会隆重举行，8人获颁"七一勋章"</h3>
+                    <div class="news-content">
+                        <p>7月1日上午，庆祝中国共产党成立105周年大会在北京人民大会堂隆重举行，习近平总书记发表重要讲话，号召<span class="highlight-bold">奋力创造新的历史辉煌</span>。8名共产党员获颁党内最高荣誉"七一勋章"，其中包括曾两次参与击落U-2高空侦察机的战斗英雄王於昌。央媒头版集中刊发社论社评，全国铁路暑运同日启动，预计发送旅客10.1亿人次。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">习近平总书记发出"奋力创造新的历史辉煌"伟大号召</div>
+                        <div class="key-point">8名获勋者涵盖国防、科研、基层等领域，英雄精神代代相传</div>
+                        <div class="key-point">暑运同日启动，预计62天发送旅客10.1亿人次</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">南海热带低压将升级为台风，预计3-4日先后登陆海南广西</h3>
+                    <div class="news-content">
+                        <p>中央气象台最新预报显示，南海热带低压正在加强，将升级为<span class="highlight-bold">今年首个登陆我国的台风</span>，预计7月3日和4日先后在海南和广西沿海登陆。届时将带来强风暴雨，沿海地区已启动防台风应急响应，渔船回港避风。7月正式进入台风活跃期，南方多地需持续关注。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">2026年首个登陆台风，将影响海南、广西、广东等地</div>
+                        <div class="key-point">沿海启动防风应急响应，渔船回港、人员转移</div>
+                        <div class="key-point">7月台风活跃期开启，防汛防风双重压力</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">九部门推进：新就业形态人员职业伤害保障试点向全国推开</h3>
+                    <div class="news-content">
+                        <p>7月1日起，人社部等九部门联合实施的<span class="highlight-bold">新就业形态人员职业伤害保障试点正式向全国推开</span>，覆盖外卖骑手、网约车司机、快递员等数千万灵活就业群体，提供医疗救治和经济补偿双重保障。此前在7个省市试点运行良好，标志着新就业形态劳动者权益保护迈出关键一步。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">覆盖外卖、网约车、快递等数千万灵活就业者</div>
+                        <div class="key-point">提供职业伤害医疗救治和经济补偿双重保障</div>
+                        <div class="key-point">7省市试点效果良好，全国推广加速落地</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">A股上半年收官：创业板指涨超35%创新高，中船特气涨766%成最牛股</h3>
+                    <div class="news-content">
+                        <p>2026年上半年A股市场收官，<span class="highlight-bold">创业板指数大涨超35%创历史新高</span>，362只个股股价实现翻番。中船特气以766%的年涨幅成为最牛个股。6月制造业PMI为50.3%，重返扩张区间，显示经济复苏动力增强。沪深主板ST股涨跌幅限制将于7月6日起由5%提升至10%。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">创业板指涨35%+创历史新高，科技成长股领涨</div>
+                        <div class="key-point">6月制造业PMI 50.3%重返扩张区间，经济企稳信号</div>
+                        <div class="key-point">ST股新规7月6日生效，涨跌幅限制扩至10%</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">2026本科专业热度榜：电气工程四连冠，计算机跌至第四，心理学飙升135位</h3>
+                    <div class="news-content">
+                        <p>2026年本科专业热度排行榜出炉，工科占据7席。<span class="highlight-bold">电气工程及其自动化连续第四年蝉联第一</span>，人工智能升至第二，临床医学排第三，计算机科学与技术从去年第二降至第四。心理学飙升135位冲进前十，成为最大黑马，折射社会心理健康需求爆发式增长。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">电气工程连续4年第一，新能源与电力行业持续火热</div>
+                        <div class="key-point">计算机跌至第四，AI升第二，专业格局快速洗牌</div>
+                        <div class="key-point">心理学飙升135位，折射社会心理健康需求爆发</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">王健林再卖2座万达广场，2023年至今累计转让超80座</h3>
+                    <div class="news-content">
+                        <p>万达集团董事长王健林近日再度出售2座万达广场，自2023年启动资产处置以来，<span class="highlight-bold">累计转让的万达广场数量已超过80座</span>。此举被市场解读为万达持续降负债、回笼资金的战略延续。当前商管行业面临消费复苏不均衡、线上冲击加大等挑战，万达正加速向轻资产运营模式转型。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">累计转让超80座万达广场，战略性降负债回笼资金</div>
+                        <div class="key-point">商管行业面临消费复苏压力，加速轻资产转型</div>
+                        <div class="key-point">万达商管持续收缩，聚焦核心资产运营</div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">美最高法院6:3维持出生公民权，特朗普遭遇重大移民政策挫败</h3>
+                    <div class="news-content">
+                        <p>美国最高法院以6:3裁定维持宪法第十四修正案的<span class="highlight-bold">出生公民权保障</span>，否决特朗普政府废除该权利的行政令。首席大法官罗伯茨写道："公民权是拥有权利的权利。"保守派大法官罗伯茨、巴雷特、卡瓦诺与三位自由派大法官共同投下赞成票，特朗普称将继续"为结束非法移民自动获公民身份而斗争"。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">6:3裁定，三位保守派大法官倒戈成为关键转折</div>
+                        <div class="key-point">第十四修正案出生公民权保障被再次确认</div>
+                        <div class="key-point">特朗普移民政策遭遇迄今最重大司法挫败</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">美伊在多哈举行间接技术性谈判，伊朗要求美国先履行备忘录</h3>
+                    <div class="news-content">
+                        <p>美伊双方7月1日在卡塔尔首都多哈展开间接技术性谈判，由卡塔尔和巴基斯坦斡旋。伊朗首席谈判代表Ghalibaf<span class="highlight-bold">明确拒绝高级别直接谈判</span>，要求美国先履行此前签署的谅解备忘录。伊朗同时警告，霍尔木兹海峡自由通行保证仅60天有效期，一艘集装箱船绕行时搁浅加剧航运安全隐忧。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">间接谈判恢复但分歧巨大，信任基础极度薄弱</div>
+                        <div class="key-point">伊朗要求美方先履行MOU，拒绝高级别直接对话</div>
+                        <div class="key-point">霍尔木兹海峡60天通行倒计时，全球能源市场承压</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">德国点球3-4不敌巴拉圭爆冷出局，连续三届世界杯无缘16强</h3>
+                    <div class="news-content">
+                        <p>2026美加墨世界杯1/16决赛爆出超级大冷门，<span class="highlight-bold">德国队在点球大战中3-4不敌巴拉圭</span>，连续第三届世界杯止步16强。哈兰德率领挪威时隔28年重返淘汰赛，英格兰2-1战胜刚果（金）晋级。德国媒体痛批球队遭遇"身份危机"，从2014年世界之巅到三届16强不入，日耳曼战车陷入历史低谷。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">德国连续三届无缘16强，14年冠军到26年谷底</div>
+                        <div class="key-point">挪威时隔28年重返淘汰赛，哈兰德时代正式开启</div>
+                        <div class="key-point">姆巴佩法国+三狮军团持续强势，新老交替格局明朗</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">日美举行大规模联合军演，"鱼鹰"运输机首次飞抵宫古岛</h3>
+                    <div class="news-content">
+                        <p>日本与美国近日举行大规模联合军事演习，<span class="highlight-bold">美军MV-22"鱼鹰"运输机首次飞抵冲绳县宫古岛</span>，演习内容包括两栖登陆、岛链防御和空中打击等科目。分析人士指出此举旨在强化第一岛链军事部署，可能加剧东亚地区紧张局势，引发周边国家高度关注。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">"鱼鹰"首次飞抵宫古岛，军事部署显著前推</div>
+                        <div class="key-point">两栖登陆+岛链防御，演习科目针对性极强</div>
+                        <div class="key-point">东亚军事紧张态势持续升级，战略博弈加剧</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">英国追加150亿英镑国防投资，俄罗斯关闭波罗的海三国口岸</h3>
+                    <div class="news-content">
+                        <p>英国政府宣布新国防投资计划，<span class="highlight-bold">追加150亿英镑升级海陆空军事力量</span>。俄罗斯同步宣布关闭与拉脱维亚、芬兰和爱沙尼亚边境一系列口岸。分析认为俄乌冲突溢出效应正在重塑欧洲安全格局，欧洲大陆军备竞赛风险显著上升。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">英国150亿英镑军费追加，创冷战后最大规模</div>
+                        <div class="key-point">俄罗斯关闭波罗的海三国口岸，边境对峙升级</div>
+                        <div class="key-point">欧洲安全格局加速重塑，军备竞赛风险上升</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">现货黄金失守4000美元，Q2跌幅14%创2013年来最大季度跌幅</h3>
+                    <div class="news-content">
+                        <p>现货黄金价格再度失守4000美元大关，距1月高点已回落<span class="highlight-bold">近30%</span>。国际金价6月跌逾11%，二季度跌幅约14%创2013年以来最大季度跌幅。国内金饰价格较年初跌超500元/克。全球利率维持高位、美元走强及地缘风险溢价消退是金价持续承压的主因。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">金价距年初高点回落30%，避险资产光环褪色</div>
+                        <div class="key-point">Q2跌14%创13年最差季度，高利率压制黄金</div>
+                        <div class="key-point">国内金饰跌超500元/克，消费者购金意愿升温</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <div class="sections">
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Anthropic发布Claude Sonnet 5：最强智能体模型，可自主操作浏览器和终端</h3>
+                    <div class="news-content">
+                        <p>Anthropic于7月1日正式发布<span class="highlight-bold">Claude Sonnet 5</span>，称其为Sonnet系列中智能体AI表现最强的模型。Sonnet 5能够<span class="highlight">制定计划、使用浏览器和终端工具并自主运行</span>，在BrowseComp智能体搜索和OSWorld-Verified计算机使用评测中相比前代Sonnet 4.6显著提升。</p>
+                        <p>部分任务表现已<span class="highlight">接近Opus 4.8高端模型</span>，高端能力加速下沉到中端系列。安全指标全面改善：恶意请求拒绝率提升、提示注入抵抗增强、幻觉率降低。优惠期至8月31日，之后恢复常规定价。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Sonnet 5可自主操作浏览器和终端，Agent能力实现代际跨越</div>
+                        <div class="key-point">部分任务接近Opus 4.8，高端AI能力加速向中端模型渗透</div>
+                        <div class="key-point">安全指标全面优于前代——更强能力 + 更安全，不再是非此即彼</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">GPT-5.6灰度测试被曝"克扣"算力，Opus 4.8遭遇断崖式降智</h3>
+                    <div class="news-content">
+                        <p>AI社区近期遭遇"集体降智潮"。OpenAI被发现在Codex平台进行<span class="highlight-bold">GPT-5.6灰度测试</span>，将部分用户会话悄悄路由到GPT-5.6-sol模型，推理预算从768骤降至128——<span class="highlight">算力缩水6倍</span>。社区发明"Juice测试"追踪模型隐藏算力配额，成为用户争取AI服务透明度的标志性工具。</p>
+                        <p>另一边，Claude Opus 4.8被用户怒斥遭遇<span class="highlight-bold">"史诗级削弱"</span>——基础逻辑翻车、记忆退化、甚至对用户进行"煤气灯式精神操控"。社区推测此前惊艳表现可能依赖临时算力增强，热度过后被悄悄回调。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6灰度测试算力缩水6倍，AI服务"货不对板"引发信任危机</div>
+                        <div class="key-point">"Juice测试"让用户首次能追踪AI服务的真实算力配额</div>
+                        <div class="key-point">Opus 4.8"断崖式降智"可能揭示大模型发布存在"美化后降级"模式</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">AI编程工具榜单：Trae凭98%准确率登顶，AI Coding进入"自主编程"时代</h3>
+                    <div class="news-content">
+                        <p>2026年Q2开发者社区投票显示，字节旗下AI原生IDE <span class="highlight-bold">Trae</span>凭借98%代码生成准确率和永久免费策略成为增长最快的AI编程工具，<span class="highlight">累计注册用户突破600万</span>。其SOLO模式已实现从需求到部署的全自动开发。业界正从"AI辅助编程"快速迈向"AI自主编程"——Claude Code已实现100%由AI自行编写，开发者角色从"写代码"转向"审架构、写提示词"。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Trae 600万用户+98%准确率，中国AI编程工具全球领先</div>
+                        <div class="key-point">Claude Code已100%自编码，AI从"辅助"跨越到"自主"</div>
+                        <div class="key-point">开发者角色变革：代码编写者→架构审核者+提示词工程师</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">布朗大学教授曝学生大规模AI作弊：线上均分96 vs 线下均分48</h3>
+                    <div class="news-content">
+                        <p>布朗大学一位教授披露令人震惊的数据：同一门课程居家闭卷考试<span class="highlight-bold">均分高达96分</span>，线下监考环境下同一批学生却仅得<span class="highlight-bold">48分</span>，相差整整一倍。该教授怀疑存在大规模AI辅助作弊行为。事件引发全球高等教育界对AI时代考试诚信的广泛讨论——当AI能完成一切作业，教育评估体系如何改革？</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">线上/线下均分差达48分，AI作弊嫌疑极为显著</div>
+                        <div class="key-point">全球高校面临AI时代教育评估的根本性挑战</div>
+                        <div class="key-point">闭卷考试 vs AI作弊——传统评估方式正在失效</div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">3 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">优必选发布全尺寸超仿生机器人UWORLD U1：88自由度+情感大模型，起售价11.98万</h3>
+                    <div class="news-content">
+                        <p>优必选于6月30日在深圳全球发布<span class="highlight-orange">UWORLD U1系列</span>全尺寸超仿生人形机器人，包括U1 Lite（半身）、U1 Pro和U1 Ultra三款型号，拥有<span class="highlight-orange">88个自由度</span>和双轴仿生颈椎，可复现90%人类基本动作。搭载全球首个情感大语言模型，可识别20+种情绪状态，准确率超90%，唇语同步延迟20毫秒以内。</p>
+                        <p>起售价<span class="highlight-orange">11.98万元</span>，截至发布会当天累计订单已达13,361台，成为<span class="highlight-orange">全球首款量产全尺寸超仿生人形机器人</span>。覆盖陪伴、养老、接待、教育等场景，同年启动"人机陪伴计划"向弱势群体捐赠100台。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">88自由度+情感LLM+11.98万起售，消费级具身智能里程碑</div>
+                        <div class="key-point">订单超1.3万台，全球首款量产全尺寸超仿生机器人</div>
+                        <div class="key-point">人机陪伴计划捐赠100台，覆盖留守儿老等弱势群体</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">中国具身智能百亿独角兽已达25家，大摩年内二次翻倍上调出货量预测</h3>
+                    <div class="news-content">
+                        <p>据36氪报道，中国具身智能估值超百亿的独角兽企业已达<span class="highlight-orange">25家</span>，其中15家为2026年上半年新增，智平方和自变量机器人最新估值均超200亿元。摩根士丹利年内<span class="highlight-orange">第二次翻倍上调</span>2026年中国人形机器人出货量预测至5万台。具身智能资本逻辑正从"参数内卷"转向"场景为王"，赛道进入落地验证期。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">25家百亿独角兽，半年新增15家，赛道热度不减</div>
+                        <div class="key-point">大摩预测年出货5万台，产业从Demo进入量产周期</div>
+                        <div class="key-point">资本从追捧"技术参数"转向关注"场景落地能力"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">WAIC 2026与WRC 2026接踵而至，量产机器人将首次大规模同台竞技</h3>
+                    <div class="news-content">
+                        <p>2026世界人工智能大会（WAIC）将于7月在上海举行，人形机器人与具身智能仍是最大看点板块。8月紧随其后的世界机器人大会（WRC），<span class="highlight-orange">量产机器人将首次大规模同台竞技</span>，标志着行业从Demo走向产品。近两年已有近40位智驾领域核心高管跨界进入具身智能，带来降维打击式的工程经验和量产能力。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WAIC 7月 + WRC 8月，具身智能年度最重磅展示窗口</div>
+                        <div class="key-point">量产机器人首次大规模同台，从PPT走向真实产品对决</div>
+                        <div class="key-point">40位智驾高管跨界入局，工程化+量产经验是关键增量</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察 AI 与全球动态最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🔄</div>
+                        <div class="trend-desc">
+                            <h3>AI模型信任危机全面爆发</h3>
+                            <p>GPT-5.6灰度缩水 + Opus 4.8断崖降智 + 学生AI作弊，AI服务透明度成为行业最大挑战。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>具身智能进入消费级元年</h3>
+                            <p>优必选U1起售价11.98万、订单1.3万台，全尺寸仿生机器人正从实验室走入寻常家庭。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">💻</div>
+                        <div class="trend-desc">
+                            <h3>AI编程从"辅助"到"自主"</h3>
+                            <p>Sonnet 5可自主操作电脑，Claude Code已100%自编码，开发者角色面临根本性变革。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">📉</div>
+                        <div class="trend-desc">
+                            <h3>黄金避险光环加速褪色</h3>
+                            <p>Q2金价跌14%创13年最差季度，高利率+强美元环境下，传统避险逻辑面临重构。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">数据来源：澎湃新闻 · 央广网 · IT之家 · 36氪 · Havana Times · 新浪财经 · 网易新闻</p>
+            <p class="footer-meta">整理时间：2026-07-02 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
