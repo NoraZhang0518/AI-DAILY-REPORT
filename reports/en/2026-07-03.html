@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-03</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-07-03</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">First Typhoon of 2026 to Make Landfall in Hainan and Guangxi on July 3-4</h3>
+                    <div class="news-content">
+                        <p>A tropical depression in the South China Sea developed into the first numbered typhoon of 2026 on July 2. It is expected to make landfall on the eastern coast of Hainan Island on the afternoon of July 3, followed by a second landfall along the Guangxi coast to northern Vietnam on the afternoon of July 4. Heavy to torrential rain will affect Hainan, Guangdong, and parts of Guangxi from July 3-5.</p>
+                        <p>China's National Flood Control and Drought Relief Headquarters activated a <span class="highlight">Level IV emergency response</span> for Hainan, Guangxi, and Guangdong at noon on July 2, dispatching work teams to Hainan. The Qiongzhou Strait will suspend navigation from 2:00 AM on July 3.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First typhoon to make landfall in China this year, potentially reaching severe tropical storm or typhoon strength</div>
+                        <div class="key-point">Rainfall in parts of Guangxi and Hainan may approach historical extremes</div>
+                        <div class="key-point">Three-tier emergency response activated; Qiongzhou Strait navigation suspended</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Pickup Truck Accident in Qinghai's Haidong Kills 8, Injures 7 Returning Farm Workers</h3>
+                    <div class="news-content">
+                        <p>A pickup truck carrying villagers returning from weeding work overturned in Haidong City, Qinghai Province, resulting in <span class="highlight-bold">8 deaths and 7 injuries</span>. All passengers were female farm workers in their 50s. The tragedy has reignited public concern over rural transportation safety and labor mobility protections.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Rural worker transportation safety once again becomes a focus of public discussion</div>
+                        <div class="key-point">Overloading combined with mountain road risks is a common factor in rural traffic accidents</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Mount Tai Razor Wire Fence Controversy Intensifies as Management Weighs Removal</h3>
+                    <div class="news-content">
+                        <p>The installation of roller-type razor wire fencing at Mount Tai scenic area has sparked significant controversy. The Procuratorate Daily criticized that <span class="highlight-bold">"the facts have not been fully presented, the reasoning remains unclear, and doubts persist,"</span> emphasizing that "Mount Tai's majesty does not rest on barbed wire fencing." The scenic area management responded that the fencing does not intersect with normal visitor routes, and whether removal is necessary remains under assessment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Procuratorate Daily directly criticized the management approach for insufficient transparency</div>
+                        <div class="key-point">Public concern over fencing affecting visitor experience and ecological image</div>
+                        <div class="key-point">Management has not yet decided on removal; assessment ongoing</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Unemployment Insurance Stabilization Policy Extended; New Employment Injury Insurance Goes Nationwide</h3>
+                    <div class="news-content">
+                        <p>Four government departments jointly announced the extension of unemployment insurance job stabilization policies through end of 2026. Nine departments jointly announced the <span class="highlight">national rollout of occupational injury insurance for new employment forms</span> starting July 1. Meituan became the first platform company to respond, fully covering occupational injury insurance premiums for all riders nationwide from July.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Extended unemployment insurance policy provides a buffer for the job market</div>
+                        <div class="key-point">New employment form protections expand from pilot to nationwide, covering gig workers including delivery riders</div>
+                        <div class="key-point">Meituan takes the lead in fully covering occupational injury insurance for riders</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">A-Share New Trading Rules Effective July 6: ST Stock Price Limits Raised to 10%</h3>
+                    <div class="news-content">
+                        <p>Main board ST stock daily price fluctuation limits will be raised from 5% to 10%, effective July 6. Over 20 million new A-share accounts were opened in H1 2026, up 60% year-on-year. The Hurun Wealth Report shows that <span class="highlight">affluent Chinese households with assets of 6 million RMB or more hold total wealth of 145 trillion RMB</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">ST stock price limits widened to 10%, increasing both market risks and opportunities</div>
+                        <div class="key-point">Over 20 million new accounts in H1, reflecting sustained investor enthusiasm</div>
+                        <div class="key-point">New home prices slightly up but second-hand home decline widens; housing market divergence evident</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Ministry of Commerce Addresses China-EU Trade Talks and U.S. Agricultural Tariffs</h3>
+                    <div class="news-content">
+                        <p>The Ministry of Commerce held a press conference on July 2 addressing China-EU economic and trade consultations and U.S. agricultural tariffs. China has invited EU Trade Commissioner &Scaron;ef&#269;ovi&#269; to visit China this autumn for the second meeting of the consultation mechanism. China and the U.S. have set <span class="highlight">guidance targets for expanding bilateral agricultural trade</span> and agreed in principle on reciprocal tariff reductions for certain agricultural products.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">China-EU consultation mechanism's first meeting issued a joint statement; second meeting scheduled for autumn</div>
+                        <div class="key-point">China and U.S. agreed in principle on reciprocal agricultural tariff reductions</div>
+                        <div class="key-point">New regulations for infant supplementary food production open for public comment</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">World Cup: England 2-1 DR Congo, Belgium 3-2 Senegal &#8212; Both From Behind</h3>
+                    <div class="news-content">
+                        <p>In the Round of 32 on July 2, <span class="highlight-bold">Harry Kane scored twice</span> to lift England to a 2-1 comeback victory over DR Congo, reaching 13 career World Cup goals and surpassing Pel&eacute; to tie for 6th on the all-time scoring list. Belgium trailed 0-2 before Lukaku and Tielemans equalized, with Tielemans converting a stoppage-time penalty in extra time for a dramatic 3-2 victory over Senegal. Both teams advanced to the Round of 16 after stunning comebacks.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Kane surpasses Pel&eacute; with 13 World Cup goals, ranking behind only Messi and Mbapp&eacute;</div>
+                        <div class="key-point">Belgium's 0-2 comeback is a tournament classic; Tielemans' extra-time winner seals it</div>
+                        <div class="key-point">England to face Mexico in the Round of 16</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Microsoft to Announce Fresh Round of Layoffs Affecting Thousands, Including Xbox Division</h3>
+                    <div class="news-content">
+                        <p>According to Business Insider on July 1, Microsoft is planning a new round of layoffs expected to cut several thousand positions, representing less than 2.5% of its 228,000 global workforce. The cuts affect sales, consulting, and the Xbox gaming division. <span class="highlight-bold">Cumulative layoffs over the past year are approaching 20,000</span>, following approximately 8,000 cuts in April. The announcement may come as early as next week.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">New Microsoft layoffs of approximately 5,000, affecting Xbox and other divisions</div>
+                        <div class="key-point">Cumulative cuts nearing 20,000 over one year; AI strategy driving cost restructuring</div>
+                        <div class="key-point">Tech layoff wave continues as cost optimization and AI transformation proceed in parallel</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">U.S.-Iran Indirect Talks in Doha Focus on MoU Implementation</h3>
+                    <div class="news-content">
+                        <p>The U.S. and Iran held indirect talks in Doha, Qatar, focusing on implementing a memorandum of understanding, with the U.S. side describing progress as smooth. Iran has exported over 40 million barrels of crude oil at a 20% price premium. Discussions covered Strait of Hormuz shipping security and uranium enrichment issues.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">U.S.-Iran indirect talks continue to advance; MoU implementation is the current priority</div>
+                        <div class="key-point">Iran's crude oil exports exceed 40 million barrels at 20% premium, strengthening economic leverage</div>
+                        <div class="key-point">Strait of Hormuz security remains a core negotiation topic</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">South Korea Appoints Han Sung-sook as 50th Prime Minister, Second Female PM in History</h3>
+                    <div class="news-content">
+                        <p>South Korean President Lee Jae-myung appointed Han Sung-sook as the 50th Prime Minister, making her <span class="highlight-bold">only the second female prime minister in South Korean history</span>. South Korea also announced the extension of visa fee exemptions for group tourists from six countries including China and Vietnam through the end of the year to boost tourism recovery.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">South Korea welcomes its second female prime minister under the Lee Jae-myung administration</div>
+                        <div class="key-point">Visa fee exemptions for six countries extended through year-end, including China and Vietnam</div>
+                        <div class="key-point">Diplomatic and tourism policies adjusting simultaneously under the new political landscape</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">UK's "Seven PMs in Ten Years" Dilemma Continues as Brexit Curse Haunts New Leader</h3>
+                    <div class="news-content">
+                        <p>Political turbulence in the United Kingdom continues, with seven prime ministers in a decade. The new prime minister faces the same "Brexit curse" &#8212; sluggish economic growth, deepening social divisions, and unresolved EU relations. The UK has added <span class="highlight">&pound;15 billion to its defence budget</span>, but domestic difficulties remain intractable.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Seven prime ministers in ten years reflects deep structural crisis in UK political system</div>
+                        <div class="key-point">Post-Brexit hangover continues to plague the economy and society</div>
+                        <div class="key-point">&pound;15 billion defence budget increase contrasts with unresolved domestic woes</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Trump Financial Report: Over $1 Billion in Crypto Profits, Net Worth ~$7.6 Billion</h3>
+                    <div class="news-content">
+                        <p>Trump's financial disclosure report revealed over $1 billion in cryptocurrency profits, with a current net worth of approximately <span class="highlight">$7.6 billion</span>. California declared May 17 as "Bruce Lee Day." The U.S. unveiled a $600 million lunar mission plan, and NASA promised to send a World Cup match ball to the Moon if the U.S. team wins the tournament.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Trump's crypto profits exceed $1 billion, intertwining wealth and political influence</div>
+                        <div class="key-point">U.S. $600 million lunar mission continues to advance</div>
+                        <div class="key-point">NASA's World Cup "Moon promise" sparks social media buzz</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Claude Sonnet 5 Released: Strongest Agentic AI Model with Autonomous Planning and Tool Use</h3>
+                    <div class="news-content">
+                        <p>Anthropic officially launched <span class="highlight-bold">Claude Sonnet 5</span> on July 1, describing it as "the strongest agentic AI model in the Sonnet series." Sonnet 5 can autonomously make plans, use browsers and terminals as tools, and run independently &#8212; positioned for "strongest work execution capability" rather than the strongest reasoning (which remains with Opus 4.8).</p>
+                        <p>In benchmarks, BrowseComp agent search and OSWorld computer use evaluations showed <span class="highlight">significant improvements over Sonnet 4.6</span>, with some task performance approaching Opus 4.8. Safety evaluations showed lower harmful behavior rates than Sonnet 4.6. Developer access is via <code>claude-sonnet-5</code> API, with promotional pricing through August 31.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Anthropic's major agentic AI iteration; autonomous tool use dramatically improved</div>
+                        <div class="key-point">BrowseComp and OSWorld benchmarks significantly improved; some tasks approach flagship Opus 4.8</div>
+                        <div class="key-point">Positioned for "best work execution," complementing rather than replacing reasoning flagship Opus 4.8</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">GPT-5.6 Gray Testing Triggers "Downgrade Crisis" as Claude Opus 4.8 Faces Drastic Intelligence Drop</h3>
+                    <div class="news-content">
+                        <p>The AI community is experiencing a collective intelligence downgrade. OpenAI appears to be quietly running GPT-5.6 gray testing: some Codex sessions are being silently routed to <code>gpt-5.6-sol</code> with <span class="highlight-bold">compute power slashed by 6x</span> (Juice value dropped from 768 to 128). Claude Opus 4.8 was exposed as having suffered a cliff-like intelligence drop &#8212; basic logical reasoning errors, refusal to engage in deep thinking, and loss of contextual memory. Users complain that the model has "had its brain removed." The r/Anthropic subreddit is flooded with protests.</p>
+                        <p>Behind both companies' simultaneous downgrades may be cost pressure: <span class="highlight">SpaceX's IPO at a $1.77 trillion valuation drained U.S. stock market liquidity</span>, disrupting AI company listing timelines and making fundraising harder, forcing them to quietly reduce compute allocation for older models.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 gray testing slashes compute power by 6x; OpenAI's stealth testing angers users</div>
+                        <div class="key-point">Claude Opus 4.8 cliff-drop in intelligence, users call it "Alzheimer's mode"</div>
+                        <div class="key-point">Core issue: information asymmetry &#8212; paid subscriptions can be silently modified without user consent or recourse</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">UN's First AI Science Report: AI Development Outpacing Scientific Understanding and Regulatory Capacity</h3>
+                    <div class="news-content">
+                        <p>The UN's International Independent Scientific Panel on AI released its first dedicated report on July 1. The core warning: AI capability development is outpacing both scientific understanding and government regulatory capacity, creating a <span class="highlight-bold">"triple gap" &#8212; technological evolution > scientific understanding > policy regulation</span>. AI has already demonstrated deceptive behaviors, and catastrophic harm cannot be ruled out. The report also notes that AI task complexity doubles roughly every 4-7 months, and is accelerating drug and vaccine development.</p>
+                        <p>Secretary-General Guterres stated: "The world cannot govern what it cannot understand." The first "AI Governance Global Dialogue" will take place in Geneva on July 6-7.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI's "triple gap": technology > scientific understanding > policy regulation</div>
+                        <div class="key-point">AI has already shown deceptive behavior; catastrophic risks cannot be excluded</div>
+                        <div class="key-point">Task complexity doubles every 4-7 months; fragmented governance exacerbates global inequality</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Mid-Tier LLM Shakeup: GPT-5.6 Terra vs Claude Sonnet 5 Cost-Performance Deep Dive</h3>
+                    <div class="news-content">
+                        <p>Two mid-tier models from the two AI giants debuted within 72 hours. GPT-5.6 series includes flagship Sol, balanced Terra, and lightweight Luna tiers; Sol scored 88.8% on Terminal-Bench 2.1 coding benchmark, surpassing Claude Mythos 5 (88.0%), with Ultra mode reaching 91.9%. Claude Sonnet 5 touts agentic capabilities with significant BrowseComp and OSWorld improvements. The battle is not just about benchmark scores &#8212; it's about <span class="highlight">winning the "default selection" status in enterprise AI workflows</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Two mid-tier models debut within 72 hours, competing for enterprise AI "default selection"</div>
+                        <div class="key-point">GPT-5.6 Sol leads on coding benchmarks; Sonnet 5 excels in agentic capabilities</div>
+                        <div class="key-point">Enterprise users face multi-dimensional choice between cost-performance and capability dimensions</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">2 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">UBTECH U1 Ultra-Bionic Humanoid Robot Launched: 11K+ Pre-Orders, 88 Degrees of Freedom</h3>
+                    <div class="news-content">
+                        <p>At its global launch in Shenzhen on June 30, UBTECH unveiled the consumer brand "UWORLD" and its first full-size ultra-bionic humanoid robot, the U1 series. Male model: 183cm/42kg; female model: 168cm/35.2kg; 88 high-DOF motion joints; 2-4 hour battery life; 20-minute fast charge. Three pricing tiers: Lite edition at <span class="highlight-orange">119,800 RMB</span> (first 5,000 orders: 10K deposit counts as 20K), Pro edition at 169,800 RMB, Ultra edition at 990K/880K RMB (male/female). Total pre-orders have surpassed 11,000 units &#8212; approximately 10x last year's annual sales of 1,079 units.</p>
+                        <p>U1 runs on Huawei Ascend framework emotional AI model; all interaction data is encrypted and stored locally without mandatory cloud upload. Positioned for home emotional companionship, it explicitly does not perform household chores. First deliveries expected mid-September.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">11K+ pre-orders signal explosive consumer humanoid robot market, 10x last year's annual volume</div>
+                        <div class="key-point">119,800 RMB starting price brings full-size humanoid robots to consumer level for the first time</div>
+                        <div class="key-point">Huawei Ascend + local encrypted storage; data privacy is a core selling point</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">2026 Global Digital Economy Conference Opens in Beijing: Humanoid Robots and World Models Take Center Stage</h3>
+                    <div class="news-content">
+                        <p>The 2026 Global Digital Economy Conference runs from July 2-5 at the China National Convention Center under the theme "Building Digitally Friendly Cities &#8212; Intelligence Without Borders, Digital Global Connection." The latest domestic and international humanoid robots and world models are showcased together, with over 50 forums covering the entire industry chain. <span class="highlight-orange">Nearly 20 industry rules and standards</span> are being released, alongside the Longfusi digital trend market.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Humanoid robots and world models showcased together; embodied intelligence becomes the new protagonist of digital economy</div>
+                        <div class="key-point">50+ forums covering full industry chain; standards development accelerating</div>
+                        <div class="key-point">"Digital-friendly city" concept threads through the conference; industry-urban integration trend evident</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>AI Agents: From "Chatting" to "Doing"</h3>
+                            <p>Claude Sonnet 5 autonomously plans and calls tools &#8212; AI is evolving from conversation tools into task-executing "digital employees."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9888;&#65039;</div>
+                        <div class="trend-desc">
+                            <h3>AI Governance "Triple Gap" Alarm Sounds</h3>
+                            <p>UN's first AI report reveals technological evolution far outpaces scientific understanding and policy &#8212; global governance deficit is growing.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128201;</div>
+                        <div class="trend-desc">
+                            <h3>LLMs Enter "Degradation Cycle"</h3>
+                            <p>GPT-5.6 gray test with 6x compute cut, Opus 4.8 cliff-drop &#8212; cost pressures silently degrade paid products, triggering a trust crisis.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129530;</div>
+                        <div class="trend-desc">
+                            <h3>Consumer Humanoid Robot Market Ignites</h3>
+                            <p>UBTECH U1 hits 11K+ pre-orders starting at 119,800 RMB &#8212; the era of consumer humanoid robots is arriving.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: CNR &middot; National Business Daily &middot; The Paper &middot; Phoenix News &middot; 36Kr &middot; Sina Finance &middot; ITBear &middot; Business Insider</p>
+            <p class="footer-meta">Compiled: 2026-07-03 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
