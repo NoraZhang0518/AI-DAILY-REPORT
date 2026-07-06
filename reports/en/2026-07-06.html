@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-06</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-07-06</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Chinese Navy Strategic Nuclear Submarine Successfully Test-Fires Submarine-Launched Strategic Missile</h3>
+                    <div class="news-content">
+                        <p>At 12:01 on July 6, a PLA Navy strategic nuclear submarine successfully launched a submarine-launched strategic missile carrying a training simulation warhead toward the Pacific Ocean's relevant public waters, accurately hitting the predetermined sea area. This test was <span class="highlight-bold">a routine annual military training arrangement</span>, with prior notification to relevant countries, complying with international law and practice, and not targeting any specific country or objective.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Demonstrates the reliable deterrence capability of China's naval strategic nuclear forces</div>
+                        <div class="key-point">Prior notification mechanism reflects military transparency and international compliance</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Typhoon Maysak Makes Second Landfall, Guangxi Binyang Hit by 50-Year Flood</h3>
+                    <div class="news-content">
+                        <p>After landing in Hainan on July 3, the 10th typhoon "Maysak" made a second landfall in Vietnam's Quang Ninh province on July 4, then combined with monsoon airflow to produce continuous heavy rainfall from South China to the middle and lower Yangtze River. The Dongban River in Binyang County, Guangxi experienced <span class="highlight-bold">a 50-year flood</span>. Gantang town was completely submerged with power and internet cut off, with floodwaters reaching the second floor of residential buildings. Fangchenggang activated Level II flood emergency response.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Maysak became the first typhoon to land in China in 2026</div>
+                        <div class="key-point">Continuous heavy rainfall affects Guangxi, Guizhou, Hunan, Hubei, Anhui and other provinces</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Orange Rainstorm Warning for 7 Provinces + Yellow Severe Convection Warning for 5 Provinces</h3>
+                    <div class="news-content">
+                        <p>The Central Meteorological Observatory simultaneously issued an orange rainstorm warning and a yellow severe convection weather warning on July 6: <span class="highlight-bold">Heavy rainstorms in parts of 7 provinces, with exceptional rainstorms in parts of Guangxi and Guangdong</span>; thunderstorm winds above Level 10 in parts of 5 provinces including Shandong and Henan. Since July 1, China has fully entered the main flood season with a dual rain belt pattern persisting.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Main flood season with both drought and flood challenges, dual rain belts叠加 typhoon remnants</div>
+                        <div class="key-point">Emergency response upgrades across multiple regions, disaster prevention situation severe</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Industrial Tourism Drives 300 Billion RMB New Track: Seven Departments Jointly Issue Policy</h3>
+                    <div class="news-content">
+                        <p>Seven government departments jointly issued the "Notice on Promoting Industrial Culture, Protecting Industrial Heritage, and Developing Industrial Tourism." Research institutions project China's industrial tourism annual growth at <span class="highlight-bold">18%</span>, with market scale potentially exceeding <span class="highlight-bold">300 billion RMB</span> by 2029. Shandong Haiyang's Eastern Aerospace Port created a "rocket launch viewing" IP attracting over 200,000 visitors. Globally, industrial tourism accounts for 10-15% of total tourism revenue, while China's share is below 5%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">From "assembly line sightseeing" to "understanding Chinese manufacturing" &#8212; tourist demand is evolving</div>
+                        <div class="key-point">Industrial tourism links dining, cultural products, wellness &#8212; not just ticket economics</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Yellow Severe Convection Warning: Level 10+ Thunderstorm Winds in 5 Provinces</h3>
+                    <div class="news-content">
+                        <p>Expected July 6 afternoon to night: Shandong, Henan, Anhui, Jiangsu, Hubei and other 5 provinces will experience <span class="highlight-bold">Level 10+ thunderstorm winds</span>, locally reaching Level 11+, accompanied by short-duration heavy precipitation and hail. Public should guard against impacts on transportation, agriculture and personal safety.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Simultaneous warnings across multiple provinces, extreme weather frequency linked to climate change</div>
+                        <div class="key-point">Severe convection叠加 typhoon remnants, disaster prevention pressure mounting</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">UN Global Dialogue on AI Governance Opens in Geneva (July 6-7)</h3>
+                    <div class="news-content">
+                        <p>The first-ever UN Global Dialogue on AI Governance opened on July 6-7 in Geneva, with <span class="highlight-bold">all 193 UN Member States</span> participating alongside the private sector, civil society, academia and the technical community. Established under UN General Assembly Resolution A/RES/79/325, the Dialogue aims to build shared principles on AI governance and improve interoperability across emerging national AI regulations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">For the first time, every country has a seat at the AI governance table</div>
+                        <div class="key-point">Runs alongside WSIS Forum and ITU AI for Good Summit, forming Geneva AI Governance Week</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Africa Ebola Outbreak Continues: WHO Declares PHEIC, China Dispatches Second Medical Expert Team</h3>
+                    <div class="news-content">
+                        <p>In May 2026, WHO declared the <span class="highlight-bold">Bundibugyo-type Ebola outbreak</span> in the Democratic Republic of Congo (DRC) and Uganda a Public Health Emergency of International Concern (PHEIC). UNDP estimates the outbreak could cost Africa $3.6 billion, pushing 985,000 people into poverty. On July 3, China's second medical expert team arrived in Kinshasa, DRC, continuing the work of the first team. WHO has designated 11 African countries as high-risk zones.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">No approved vaccines or specific treatments currently exist for Bundibugyo-type Ebola</div>
+                        <div class="key-point">50 years of global prevention systems built around Zaire-type Ebola face challenges with this new subtype</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Peru's Political Deadlock: Keiko Fujimori Wins Narrowly, Ninth President in a Decade</h3>
+                    <div class="news-content">
+                        <p>Right-wing candidate <span class="highlight-bold">Keiko Fujimori</span> narrowly defeated left-wing candidate Roberto Sanchez in Peru's presidential runoff, becoming the country's ninth president in a decade. She inherits a political system "designed for dysfunction" and may choose authoritarian consolidation as a survival strategy. Notably, the constitution creating this political trap was drafted by her father &#8212; former President Alberto Fujimori.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Peru's structurally dysfunctional political system raises authoritarian risk concerns</div>
+                        <div class="key-point">Fujimori inherits a constitution drafted by her father, extending family political influence</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">European Heatwave + South Asian Monsoon Anomaly: Climate Change Is a Global Problem</h3>
+                    <div class="news-content">
+                        <p>European nations face sustained extreme heat, while South Asia's monsoon &#8212; normally a period of abundant rainfall &#8212; has turned dry, bringing <span class="highlight-bold">agricultural losses, extreme heat and disaster fears</span> to farmers dependent on monsoon rains for rice cultivation. Analysis argues climate change should not be framed solely as a poor-country issue; European heatwaves prove it's a global crisis.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">European heatwaves challenge the narrative that climate change is primarily a poor-country issue</div>
+                        <div class="key-point">South Asian monsoon anomalies threaten food security, millions of farmers face existential pressure</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">FIFA World Cup Round of 16: Haaland's 7 Goals Match Messi and Mbappe</h3>
+                    <div class="news-content">
+                        <p>The 2026 FIFA World Cup enters the knockout phase. July 6 features key matchups including Brazil vs Norway and Mexico vs England. Haaland has scored <span class="highlight-bold">7 goals</span> in this tournament, tying Messi and Mbappe atop the scoring leaderboard. July 7 will see Portugal vs Spain and USA vs Belgium. Earlier results: Egypt eliminated Australia on penalties, Belgium beat Senegal 3-2 in extra time.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Haaland becomes the World Cup's most talked-about player, 7 goals matching historic scoring leaders</div>
+                        <div class="key-point">Knockout stage surprises continue, traditional powers vs emerging forces clash persists</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">GPT-5.6 Three-Model Series Set for July 7 Release: Sol/Terra/Luna Three Tiers Launch Together</h3>
+                    <div class="news-content">
+                        <p>OpenAI is set to officially release the GPT-5.6 series on July 7, featuring flagship <span class="highlight-bold">Sol</span>, balanced <span class="highlight-bold">Terra</span>, and lightweight <span class="highlight-bold">Luna</span> in three differentiated tiers. GPT-5.6 Sol Ultra scored <span class="highlight">91.9%</span> on Terminal-Bench 2.1 coding tests, topping the leaderboard. All three models add Max mode (extended reasoning time for better quality) and Ultra mode (multi-agent collaboration).</p>
+                        <p>For the first time, the entire series &#8212; including smaller, faster Terra and Luna &#8212; is flagged as <span class="highlight-bold">"High Risk" capability level</span> in both cybersecurity and biochemistry domains. Currently available only in limited preview via API and Codex.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First time in OpenAI's history: entire model series marked as high-risk capability level</div>
+                        <div class="key-point">GPT-5.6 Sol Ultra coding 91.9% tops leaderboard, challenging Claude Mythos 5's position</div>
+                        <div class="key-point">Max + Ultra dual modes introduce "extended reasoning + multi-agent" new paradigm</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Claude Sonnet 5 Launch Met with Flood of Negative Reviews: Cost-Effectiveness Fails</h3>
+                    <div class="news-content">
+                        <p>Anthropic released Claude Sonnet 5 on July 1, positioning it as "the most agentic Sonnet model yet," claiming near-Opus 4.8 performance at just <span class="highlight-bold">40% of the price</span>. However, within 24 hours, negative reviews flooded online &#8212; developers widely found its cost-effectiveness inferior to domestic models Qianwen and Minimax, with limited Agent capability improvements and questionable long-context stability.</p>
+                        <p>Sonnet 5 is now available on Claude Code and Claude Platform. Chinese developers face a "supply cutoff" dilemma &#8212; Claude updates may never appear in their clients.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Anthropic's "cheaper + stronger Agent" narrative falls short of expectations</div>
+                        <div class="key-point">Domestic models (Qianwen, Minimax) outperform on cost-effectiveness comparisons</div>
+                        <div class="key-point">Chinese developers face supply restrictions, domestic alternatives becoming necessary</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Alibaba Bans Claude Code for All Employees from July 10: Backdoor Risk Exposed, Recommends Self-Developed Qoder</h3>
+                    <div class="news-content">
+                        <p>On July 3, Alibaba issued an internal notice: <span class="highlight-bold">Claude Code was exposed as having implanted backdoor security risks</span>, and Alibaba has classified it as a high-risk software. Starting July 10, all employees are prohibited from using Claude Code and all Anthropic products (Sonnet, Opus, Fable series), with the self-developed <span class="highlight">Qoder</span> recommended as a replacement.</p>
+                        <p>Developers discovered Claude Code had an undisclosed environment identification mechanism that could determine user origin based on system timezone, proxy environment and specific keywords, raising enterprise-level data security and compliance concerns.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Claude Code backdoor risk triggers enterprise data security and compliance concerns</div>
+                        <div class="key-point">Alibaba's move signals domestic tech giants beginning systematic replacement of foreign AI coding tools</div>
+                        <div class="key-point">Self-developed Qoder alternative validates the rise of domestic AI coding tool ecosystem</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">UBTECH U1 Ultra-Biomimetic Humanoid Robot Orders Exceed 13,000: Starting at 119,800 RMB</h3>
+                    <div class="news-content">
+                        <p>On June 30, UBTECH launched its consumer brand "U-World" and the first product <span class="highlight-orange">U1 series</span>. Male model 183cm/42kg, female model 168cm/35.2kg, positioned for home emotional companionship, priced from <span class="highlight-orange">119,800 to 990,000 RMB</span>, with total pre-sale orders exceeding <span class="highlight-orange">13,000 units</span>. Morgan Stanley raised China's robot shipment forecast by 78.6% to 50,000 units.</p>
+                        <p>However, on-site reception was less enthusiastic than the promotional video suggested. The company acknowledged that fully functional home service robots still need 5-10 years, and the current product primarily provides emotional companionship. U1 does not support secondary development or household tasks.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">13,000 orders nearly match last year's total global consumer humanoid robot shipments</div>
+                        <div class="key-point">"Emotional companionship" rather than "household service" &#8212; current consumer humanoid positioning is clear</div>
+                        <div class="key-point">Mass production narrative vs reality gap: functional maturity still needs 5-10 years</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Tesla Optimus Production Accelerates: Musk Shares Factory Line Photo, VP Says Autonomy + Robots in Daily Life Within 5 Years</h3>
+                    <div class="news-content">
+                        <p>On July 2, Musk posted an <span class="highlight-orange">Optimus production line photo</span> on social media, triggering multiple A-share humanoid robot stocks to surge. Tesla VP Lars Moravy stated that within five years, <span class="highlight-orange">Robotaxi, Cybercab and Optimus</span> will form a "Real-World AI" that fully integrates into work, travel and home scenarios.</p>
+                        <p>Optimus Gen3 is confirmed for <span class="highlight-orange">July-August production</span>, with supply chain activated and multiple vendors receiving orders. Tesla has already applied autonomous driving technology to factory quality inspection, developing an "omnidirectional auditory system" for detecting subtle assembly defects.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Optimus transitions from R&D validation to scaled production milestone</div>
+                        <div class="key-point">Tesla's dual track of "building cars" and "building robots" &#8212; Real-World AI strategy fully deployed</div>
+                        <div class="key-point">Autonomous driving technology feeds back into factory quality inspection, AI capabilities cross-applied</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Automotive Supply Chain Accelerates Humanoid Robot布局: BYD Confirms R&D, He Xiaopeng Takes Dual Role as Robot CEO</h3>
+                    <div class="news-content">
+                        <p>2026 is defined as the critical year for embodied intelligence scaled deployment, with automotive supply chain players making the most密集 moves. <span class="highlight-orange">BYD confirms humanoid robot R&D</span>, He Xiaopeng concurrently serves as robot CEO pushing IRON mass production, and suppliers like Joyson Electronics see "automotive + robotics" strategic opportunities.</p>
+                        <p>As of June 24, China has <span class="highlight-orange">3,236 existing embodied intelligence enterprises</span>, with East China accounting for 44.68%. January-May embodied intelligence industry sales revenue grew 22.4% year-on-year.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Automotive supply chain advantages (actuators, sensors, motors) highly complement humanoid robots</div>
+                        <div class="key-point">3,236 embodied intelligence enterprises涌入, East China Yangtze Delta becomes core hub</div>
+                        <div class="key-point">"Car makers纷纷 make robots" &#8212; automakers entering humanoid robotics becomes 2026's defining trend</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128640;</div>
+                        <div class="trend-desc">
+                            <h3>LLMs Enter "Three-Tier + High-Risk" Era</h3>
+                            <p>GPT-5.6 entire series flagged as high-risk, AI coding tool security disputes intensify, tiered pricing becomes the new normal.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128737;</div>
+                        <div class="trend-desc">
+                            <h3>Domestic AI Tool Replacement Accelerates</h3>
+                            <p>Alibaba bans Claude Code and pushes Qoder; foreign tool security risks exposed, domestic substitution moves from choice to necessity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robot Mass Production Year Confirmed</h3>
+                            <p>UBTECH U1 13K orders + Tesla Optimus July production + automakers纷纷 "build robots" &#8212; mass production inflection reached.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127758;</div>
+                        <div class="trend-desc">
+                            <h3>Global AI Governance Enters Dialogue Era</h3>
+                            <p>First UN 193-nation AI governance dialogue opens &#8212; AI is no longer just a tech issue but a global governance agenda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua &middot; CCTV &middot; GMW &middot; Sina Finance &middot; IT Home &middot; Sohu &middot; Baidu Hot &middot; UN &middot; CNN &middot; 36Kr</p>
+            <p class="footer-meta">Compiled: 2026-07-06 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
