@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-07</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* KeyPoints */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-07-07</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Hubei Hit by Tornado-Level Severe Weather: 8 Dead, 1 Missing</h3>
+                    <div class="news-content">
+                        <p>On July 6 evening, eastern Hubei was struck by severe convective weather. From 19:00 to 23:00, Huangshi, Huanggang, Ezhou, and Xianning experienced thunderstorm winds with <span class="highlight-bold">53 townships reaching wind speeds of Level 8-13</span>, including 2 townships at Level 13, with tornadoes reported in some areas. As of 23:00 on July 6, the severe weather had caused <span class="highlight-bold">8 deaths and 1 person missing</span>, with multiple buildings collapsed and power outages.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">53 townships hit by Level 8-13 winds, tornadoes struck densely populated areas</div>
+                        <div class="key-point">8 dead, 1 missing, buildings collapsed, power outages, damage still being assessed</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">800 Billion Yuan "Two-Key" Construction Projects Fully Allocated: 1,417 Major Projects Supported</h3>
+                    <div class="news-content">
+                        <p>The third batch of 2026 "Two-Key" construction projects has been issued, allocating <span class="highlight-bold">193.5 billion yuan</span> in ultra-long-term special national debt. All project lists for this year are now complete. The National Development and Reform Commission, together with relevant departments, has allocated a total of <span class="highlight-bold">800 billion yuan</span> supporting <span class="highlight-bold">1,417 major projects</span> covering scientific innovation, Yangtze River ecological protection, major transportation infrastructure, urban underground networks, water conservancy, Western Land-Sea Corridor, higher education, and the "Three-North" shelterbelt project.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">800 billion yuan in ultra-long-term special national debt fully allocated for 1,417 projects across 8 key areas</div>
+                        <div class="key-point">Unprecedented investment scale for the "15th Five-Year Plan" opening year, accelerating new productive forces infrastructure</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Xiaoshu (Minor Heat) Today: Orange Rainstorm Warning Continues, Guangxi-Guangdong Extreme Rain 250-280mm</h3>
+                    <div class="news-content">
+                        <p>July 7 marks the Xiaoshu solar term. The National Meteorological Center continues its orange rainstorm warning: <span class="highlight-bold">eastern Guangxi faces extreme rainstorm (250-280mm)</span>, while western Guangdong coastal areas, Hunan, Hubei, northern Anhui, northern Jiangsu, eastern Henan, and central-southern Shandong experience heavy rainstorms. Shandong Meteorological Station issued a yellow severe convective weather warning with <span class="highlight-bold">Level 8-10 thunderstorm gusts up to Level 11+</span> in southern coastal areas.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Orange rainstorm warning on Xiaoshu day, Guangxi-Guangdong extreme rainstorm 250-280mm</div>
+                        <div class="key-point">Dual north-south rain belts persist, Shandong severe convective Level 8-10 gusts</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Three Quakes Above 4.0 in 30 Minutes in Sichuan Mianzhu: Confirmed Wenchuan Aftershocks, No Casualties</h3>
+                    <div class="news-content">
+                        <p>On July 5 at 23:03, 23:20, and 23:30, Mianzhu City in Deyang, Sichuan experienced <span class="highlight-bold">three earthquakes of 4.5, 4.0, and 4.5 magnitude</span> within half an hour. The Sichuan Emergency Management Department confirmed these were aftershocks of the 2008 Wenchuan earthquake, occurring 18 years after the main quake. No casualties were reported, but the tremors were felt strongly and sparked widespread public discussion on earthquake safety.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Three 4.0+ quakes in 30 minutes confirmed as Wenchuan aftershocks after 18 years</div>
+                        <div class="key-point">Large earthquake aftershocks can persist for decades; fault zone regions require long-term vigilance</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">A-Share Semi-Annual Report Boom: 92 Companies Disclose Forecasts, 90% Pre-Increase, Yahua Group Surges 710%-857%</h3>
+                    <div class="news-content">
+                        <p>As of July 6, 92 A-share listed companies have disclosed 2026 semi-annual earnings forecasts, with <span class="highlight-bold">83 pre-increase (90.22%)</span>. <span class="highlight-bold">Yahua Group</span> projected net profit growth of 710.17% to 857.48%, becoming the "pre-increase champion." Zhongwu Gaoxin closed at a limit-down of 80.46 yuan/share with a market cap of 183.3 billion yuan, showing institutional tug-of-war on the dragon-tiger list.</p>
+                        <p>This week brings heavy events: Fed meeting minutes, SpaceX index inclusion, earnings season opening, and SK Hynix's $29.4B ADR issuance—market volatility may intensify.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">92 companies disclosed semi-annual forecasts, 90% pre-increase, earnings season officially started</div>
+                        <div class="key-point">Yahua Group's 710%-857% growth becomes "pre-increase champion," lithium industry prosperity validated</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Chinese Navy Successfully Test-Fires Submarine-Launched Strategic Missile: Prior Notification Demonstrates Military Transparency</h3>
+                    <div class="news-content">
+                        <p>On July 6 at 12:01, a PLA Navy strategic nuclear submarine successfully launched a submarine-launched strategic missile carrying a training simulated warhead toward the Pacific Ocean, landing accurately in the designated area. This missile test was <span class="highlight-bold">a routine annual military training arrangement</span>, with prior notification given to relevant countries, complying with international law and practice, and not targeting any specific country or objective.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Demonstrating reliable deterrence capability of Chinese Navy's strategic nuclear forces</div>
+                        <div class="key-point">Prior notification mechanism reflects military transparency and international compliance</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">5 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Trump Calls Putin and Zelenskyy Separately on US 250th Independence Day: Russia-Ukraine Consultation Signal</h3>
+                    <div class="news-content">
+                        <p>On July 4, the 250th anniversary of US independence, President Trump held separate phone calls with Russian President Putin and Ukrainian President Zelenskyy. Putin outlined the Russia-Ukraine conflict situation, emphasizing Russian forces' offensive across all fronts. Analysis suggests Trump's choice of Independence Day for these calls carries deep timing considerations and political intent, but <span class="highlight-bold">short-term prospects for a peace deal remain minimal</span> given the enormous divergence on territorial and security issues.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">US-Russia-Ukraine "triangle" calls on Independence Day release peace consultation signals</div>
+                        <div class="key-point">Massive divergence on territorial and security底线, short-term peace deal prospects minimal</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Spain Stoppage-Time Winner Eliminates Portugal 1-0: Ronaldo's Final World Cup Dance Ends</h3>
+                    <div class="news-content">
+                        <p>In the 2026 World Cup Round of 16 on July 7, the Iberian Derby ended dramatically: <span class="highlight-bold">Spain scored a stoppage-time winner to eliminate Portugal 1-0</span> and advance to the quarterfinals. 41-year-old Ronaldo completed his final World Cup appearance—Portugal manager Martinez stubbornly kept Ronaldo for the full match, refusing to give Ramos (who scored a stoppage-time winner in the previous game) any chance.</p>
+                        <p>Ronaldo's 6 World Cup campaigns officially conclude with <span class="highlight-bold">25 appearances and goals in 6 consecutive tournaments</span>—a legendary record.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Spain stoppage-time winner 1-0 eliminates Portugal, Iberian Derby dramatic finale</div>
+                        <div class="key-point">41-year-old Ronaldo's final World Cup ends: 6 tournaments, 25 matches, consecutive 6-tournament scoring legend</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">World Cup USA vs Belgium Round of 16: De Ketelaere Double in First Half</h3>
+                    <div class="news-content">
+                        <p>In the World Cup Round of 16 between USA and Belgium on July 7, <span class="highlight-bold">De Ketelaere</span> scored first and then doubled his tally. Balogun created a free-kick opportunity with Tillman equalizing from the free kick. Belgium led 2-1 at halftime. Onana's injury exit created defensive uncertainty for Belgium's second half. The match was still in progress at time of reporting.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">De Ketelaere's first-half brace makes him Belgium's attacking core</div>
+                        <div class="key-point">Onana injury exit creates defensive uncertainty for Belgium's second half</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Philippines Senate Launches Impeachment Trial Against Vice President Sara: Political Crisis Continues</h3>
+                    <div class="news-content">
+                        <p>The Philippine Senate formally launched impeachment trial proceedings against Vice President <span class="highlight-bold">Sara Duterte</span>. Sara did not attend the first hearing. The impeachment stems from charges of misuse of public funds and threats against President Marcos. This marks the legal escalation of the open confrontation between the two major political families—the Duterte family and the Marcos family—with political uncertainty continuing to intensify.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">VP impeachment trial formally launched, open confrontation between Duterte and Marcos families</div>
+                        <div class="key-point">Impeachment outcome will profoundly shape Philippine political landscape</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Ukraine Strikes Russian Energy Facilities, Russia Hits Ukrainian Military-Industrial Sites: Conflict Escalates</h3>
+                    <div class="news-content">
+                        <p>Xinhua reported on July 7 that <span class="highlight-bold">Ukraine struck multiple Russian energy facilities</span>, while <span class="highlight-bold">Russia conducted airstrikes on Ukrainian military-industrial facilities</span>. Both sides continue targeting each other's critical infrastructure, with conflict intensity unabated. Meanwhile, Trump claimed a "very good call" with Putin to discuss ending the conflict, but frontline conditions continue deteriorating.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Russia and Ukraine continue targeting each other's critical infrastructure, conflict intensity unabated</div>
+                        <div class="key-point">Energy and military-industrial facilities remain priority targets for both sides</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">3 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">GPT-5.6 Launches July 7: Sol/Terra/Luna Three Tier + Speed Dial, US Government Requires Phased Rollout</h3>
+                    <div class="news-content">
+                        <p>OpenAI officially launches the GPT-5.6 series on July 7 with three models: flagship <span class="highlight-bold">Sol</span>, balanced <span class="highlight-bold">Terra</span>, and lightweight <span class="highlight-bold">Luna</span>. GPT-5.6 Sol Ultra scored <span class="highlight">91.9%</span> on Terminal-Bench 2.1 coding test, tying with Claude Fable 5. All three models feature the new <span class="highlight">"Speed Dial"</span> function, allowing users to flexibly adjust between speed and quality.</p>
+                        <p>However, the US government requires <span class="highlight-bold">phased rollout of GPT-5.6</span>, only providing preview access to select "trusted partners" with government approval for all customers. For the first time, the entire series is tagged as "high-risk capability" level. The launch date coincides precisely with Anthropic's billing adjustment—widely interpreted as a calculated intercept move.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 Sol/Terra/Luna three tiers launch July 7, Sol coding 91.9% ties Fable 5</div>
+                        <div class="key-point">US government requires phased rollout + trusted partner approval, entire series first-ever "high-risk" tag</div>
+                        <div class="key-point">"Speed Dial" opens new paradigm of flexible inference duration adjustment, precisely timed against Anthropic billing change</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Claude Mythos 5/Fable 5 Unblocked: Anthropic Acknowledges Proxy Detection of Chinese Accounts, Security Controversy Continues</h3>
+                    <div class="news-content">
+                        <p>On June 30, Anthropic announced the US Commerce Department lifted export controls on Claude Fable 5 and Mythos 5, restoring global access from July 1. However, security researchers discovered <span class="highlight-bold">Claude Code secretly embedded Unicode markers in system prompts to detect Chinese timezone and proxy domain requests</span>. Anthropic acknowledged intermediaries using hidden code to detect Chinese and other account origins, raising enterprise data security and compliance concerns.</p>
+                        <p><span class="highlight-bold">Alibaba banned Claude Code for all employees effective July 10</span>, recommending self-developed Qoder as replacement—marking the beginning of systematic substitution of foreign AI coding tools by Chinese tech giants. Claude Sonnet 5 faced widespread negative reviews within 24 hours, with cost-effectiveness surpassed by domestic models Qianwen and Minimax.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Fable 5/Mythos 5 unblocked restoring global access, but Claude Code's Chinese account detection sparks security controversy</div>
+                        <div class="key-point">Alibaba bans Claude Code from July 10, promotes Qoder—Chinese tech giants begin systematic substitution of foreign AI tools</div>
+                        <div class="key-point">Sonnet 5 bombarded with negative reviews, domestic models (Qianwen, Minimax) win on cost-effectiveness</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">AI Coding Tools Accelerate Agent Transformation: Cursor Composer + Agent Mode Leads</h3>
+                    <div class="news-content">
+                        <p>In the first half of 2026, AI coding tools evolved from "code completion" to <span class="highlight-bold">"full-project Agent"</span> mode. Cursor leads with Composer + Agent mode, Windsurf pursues with multi-file collaborative editing, GitHub Copilot has the broadest ecosystem integration. OpenCode retains the top spot on AI developer tool rankings, Trae serves <span class="highlight">6 million users with 98% accuracy</span>.</p>
+                        <p>The Agent transformation marks AI's critical leap from "assistive completion" to "autonomous execution"—developers can now complete tasks that previously required hours with a single instruction.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI coding tools evolve from "code completion" to "full-project Agent" with autonomous execution capability leap</div>
+                        <div class="key-point">Cursor Composer + Agent mode leads, Copilot has broadest ecosystem, OpenCode tops rankings</div>
+                        <div class="key-point">Agent transformation reshapes software construction methods, developer workflows fully restructured</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">2 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">NVIDIA Robotics Team Hiring in Beijing, Shanghai, Shenzhen: Four Directions Focus on Embodied Intelligence, Jensen Huang Mentions "Physical AI" 17 Times</h3>
+                    <div class="news-content">
+                        <p>On June 29, NVIDIA's robotics team opened recruitment across <span class="highlight-orange">four core directions: embodied intelligence, simulation, deployment, and solution architecture</span>, with positions in Beijing, Shanghai, and Shenzhen. The embodied intelligence team focuses on dexterous manipulation, wearable sensor human modeling, whole-body mobile manipulation and control—aiming to build next-generation universal robot systems. The simulation team leverages NVIDIA Isaac platform and Omniverse simulation technology to accelerate lab-to-industry deployment.</p>
+                        <p>Jensen Huang has <span class="highlight-orange">mentioned "Physical AI" 17 times</span> in 2026, declaring "generative AI is past, the future belongs to agentic AI and physical AI," defining robots as the next trillion-dollar growth opportunity.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">NVIDIA hiring robotics teams in Beijing/Shanghai/Shenzhen, four directions: embodied intelligence/simulation/deployment/architecture</div>
+                        <div class="key-point">Jensen Huang mentions "Physical AI" 17 times, declares it as next trillion-dollar growth opportunity</div>
+                        <div class="key-point">Isaac + Omniverse simulation platform supports full-stack framework from perception-decision to execution</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Humanoid Robot Triple Catalyst Resonance: Optimus V3 Production Imminent + UBTECH U1 Pre-orders Exceed 10K + Agibot 10K-level Delivery</h3>
+                    <div class="news-content">
+                        <p>On July 1, humanoid robot concepts showed strong momentum. Tesla <span class="highlight-orange">Optimus Gen3 confirmed for July-August production</span> with multiple supply chain vendors receiving orders. UBTECH U1 series all-channel pre-orders exceeded <span class="highlight-orange">11,000 units</span> (male model 183cm/42kg, female model 168cm/35.2kg), priced from ¥119,800 to ¥990,000. Agibot achieved 10K-level delivery capacity. Morgan Stanley raised China robot shipment forecast by <span class="highlight-orange">78.6% to 50,000 units</span>.</p>
+                        <p>The triple catalyst resonance—mass production launch, consumer pre-order breakthrough, and industrial 10K delivery—marks 2026 as the critical pivot from "concept explosion" to "mass production delivery."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Optimus V3 July-Aug production + UBTECH U1 11K pre-orders + Agibot 10K delivery: triple catalyst resonance</div>
+                        <div class="key-point">Morgan Stanley raises China robot shipment forecast to 50K units, mass production inflection confirmed</div>
+                        <div class="key-point">Critical pivot from "concept explosion" to "mass delivery," consumer and industrial dual-track advancement</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Today's Core Trends</h2>
+                <p>Insights into the latest directions</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🚀</div>
+                        <div class="trend-desc">
+                            <h3>GPT-5.6 Launch Opens "Three-Tier + High-Risk Control" Era for Large Models</h3>
+                            <p>GPT-5.6 entire series tagged high-risk + US government approval mechanism, Claude Code security controversy intensifies, tiered pricing becomes the new norm.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🛡️</div>
+                        <div class="trend-desc">
+                            <h3>Domestic AI Tool Substitution Accelerates: Alibaba Bans Claude Code, Promotes Qoder</h3>
+                            <p>Foreign tool security risks exposed, Chinese tech giants shift from optional to mandatory substitution, domestic AI coding tool ecosystem rising.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robot Mass Production Inflection Confirmed: Triple Catalyst Resonance</h3>
+                            <p>Optimus V3 production + UBTECH U1 10K+ pre-orders + Agibot 10K delivery: mass production year narrative narrowing the reality gap.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🌧️</div>
+                        <div class="trend-desc">
+                            <h3>Extreme Weather Frequency: Hubei Tornado 8 Dead + Orange Rainstorm Warning Continues</h3>
+                            <p>Main flood season with dual north-south rain belts, severe convective weather and typhoon remnants叠加, disaster prevention situation critical.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua · CCTV · Xinhua International · China News · Sina Finance · Sohu · IT Home · 36Kr · Caixin · Zhibo8 · CNN</p>
+            <p class="footer-meta">Compiled: 2026-07-07 09:40 | NEWS DAILY Automated Push</p>
+        </footer>
+    </div>
+</body>
+</html>
