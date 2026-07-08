@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-08</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* KeyPoints */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-07-08</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 articles</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Xi Jinping Issues Directive on Flood Control: Guangxi Hengzhou Rescue Ongoing Amid Frequent Severe Convection</h3>
+                    <div class="news-content">
+                        <p>On July 7, several villages in Hengzhou, Guangxi were severely affected by flooding with rescue operations continuing. Multiple agencies deployed emergency forces, ensuring essential supplies, relocating affected residents, and accelerating power and communication restoration. President Xi Jinping issued a directive demanding <span class="highlight-bold">strict accountability for disaster relief responsibilities</span> and calling for grassroots Party organizations to serve as strongholds.</p>
+                        <p>Meteorological analysis shows high-frequency severe convective weather across both northern and southern China, with the dual-rainbelt pattern persisting as orange rainstorm and yellow severe-convection warnings overlap.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Xi Jinping demands accountability for flood control as heavy rain batters multiple provinces</div>
+                        <div class="key-point">Hengzhou villages severely flooded with rescue operations and power restoration underway</div>
+                        <div class="key-point">Dual rainbelt pattern persists across northern and southern China with warnings stacked</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">PBOC Unveils 11 Measures to Support Hong Kong Markets: More IPOs, Higher Reserve Allocations</h3>
+                    <div class="news-content">
+                        <p>PBOC Governor Pan Gongsheng announced at the Hong Kong Monetary and Fixed Income Summit on July 7 that the central bank, together with HKMA and SFC, will launch <span class="highlight-bold">11 measures</span> supporting Hong Kong's fixed-income, money, and offshore RMB markets. Pan confirmed continued support for quality mainland enterprises to list and issue bonds in Hong Kong, with foreign exchange reserves continuing to increase <span class="highlight-bold">asset allocation in Hong Kong</span>.</p>
+                        <p>The Hang Seng TECH Index surged 5.72% last week, marking its largest weekly gain of the year.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">11 measures boost Hong Kong fixed-income and offshore RMB market development</div>
+                        <div class="key-point">Higher FX reserve allocation in Hong Kong to sustain capital market momentum</div>
+                        <div class="key-point">Hang Seng TECH Index up 5.72%, largest weekly gain in 2026</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">89th Anniversary of National War of Resistance Commemorated in Beijing</h3>
+                    <div class="news-content">
+                        <p>On July 7, the 89th anniversary commemoration of the National War of Resistance was held at the Museum of the War of Chinese People's Resistance Against Japanese Aggression in Beijing. The ceremony, presided over by Politburo member Yin Li, marked the 89th anniversary of the July 7 Incident. Memorials were held nationwide under the theme of <span class="highlight-bold">remembering history and carrying forward the great spirit of resistance</span>. Meanwhile, a Japanese company's marketing campaign on this sensitive date sparked public outrage.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">89th anniversary ceremony held in Beijing, honoring the great spirit of resistance</div>
+                        <div class="key-point">Japanese company's insensitive marketing on historical anniversary sparks backlash</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">China's Forex Reserves at $3.416 Trillion; Gold Reserves Rise for 20th Consecutive Month</h3>
+                    <div class="news-content">
+                        <p>China's foreign exchange reserves stood at <span class="highlight-bold">$3,416.3 billion</span> at end-June 2026, down $26 billion (0.75%) from May, primarily due to a stronger US dollar and mixed global asset prices. Gold reserves reached <span class="highlight-bold">75.44 million ounces (~2,346.4 tonnes)</span>, up 480,000 ounces (~14.93 tonnes) month-on-month — marking the 20th consecutive month of gold purchases.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Forex reserves at $3.416 trillion end-June, $26 billion monthly decline due to dollar strength</div>
+                        <div class="key-point">PBOC marks 20th straight month of gold purchases, reserves at 75.44 million ounces</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">State Council Approves "15th Five-Year" Tourism Powerhouse Plan to Unleash Consumption</h3>
+                    <div class="news-content">
+                        <p>The State Council approved the "15th Five-Year Plan for Building a Tourism Powerhouse," calling for modernizing the tourism system, optimizing spatial layout, cultivating new growth drivers, enriching supply, and <span class="highlight-bold">unleashing consumption potential</span>. Tourism has been elevated with five missions: serving a better life, promoting economic growth, building a spiritual home, showcasing China's image, and enhancing mutual learning among civilizations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">State Council approves tourism powerhouse plan with five strategic missions</div>
+                        <div class="key-point">Tourism elevated to national development priority for consumption and cultural outreach</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Apple Foldable iPhone Enters Mass Production: 7-8M Units H2 Shipment; Domestic Fuel Prices Slashed</h3>
+                    <div class="news-content">
+                        <p>Multiple sources confirm Apple's first foldable iPhone has <span class="highlight-bold">entered mass production</span>. Supply chain analyst Ming-Chi Kuo forecasts <span class="highlight">7-8 million units</span> of foldable iPhone assembly shipments in H2 2026, with 500K-1M in Q3. Domestically, gasoline prices dropped ¥950/tonne and diesel ¥915/tonne from July 3, translating to ¥0.76-0.82 per liter reductions.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Apple foldable iPhone in mass production, H2 shipments of 7-8 million units forecast</div>
+                        <div class="key-point">Domestic gasoline down ¥950/ton, 92/95 octane ¥0.76-0.82 cheaper per liter</div>
+                        <div class="key-point">Foldable iPhone shaping up as the biggest consumer electronics story of H2 2026</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">5 articles</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Russia-Ukraine Escalation Ahead of NATO Summit: Mutual Strikes on Critical Infrastructure Intensify</h3>
+                    <div class="news-content">
+                        <p>Ahead of the NATO summit, Russia-Ukraine hostilities have escalated sharply. Ukraine struck multiple Russian energy facilities while Russia bombarded Ukrainian military-industrial sites, with both sides targeting critical infrastructure. The NATO Secretary-General urged members to <span class="highlight-bold">increase defense spending to agreed GDP levels</span>. Analysts note the cycle of "fighting while talking" is unlikely to break in the short term.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Mutual strikes on energy and military infrastructure escalate ahead of NATO summit</div>
+                        <div class="key-point">NATO pushes members to meet defense spending commitments as security architecture reshapes</div>
+                        <div class="key-point">Near-term peace remains elusive with fundamental territorial and security disagreements</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">World Cup Quarterfinals Set: Belgium 4-1 USA Eliminates All Three Hosts; Norway Stuns Brazil 2-0</h3>
+                    <div class="news-content">
+                        <p>The Round of 16 concludes with all quarterfinalists confirmed. Headline: <span class="highlight-bold">Belgium thrashed hosts USA 4-1</span>, meaning all three co-hosts (USA, Canada, Mexico) are out — a historic first. Biggest upset: <span class="highlight-bold">Norway stunned title favorites Brazil 2-0</span>. Argentina edged Egypt 3-2 with Messi scoring and assisting, 10-man England beat Mexico 3-2, Spain eliminated Portugal 1-0 in stoppage time ending Ronaldo's final World Cup, and Switzerland defeated Colombia on penalties.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Belgium 4-1 USA: all three co-hosts eliminated for the first time in World Cup history</div>
+                        <div class="key-point">Norway 2-0 Brazil is the biggest Round of 16 upset</div>
+                        <div class="key-point">Spain's stoppage-time winner ends Ronaldo's legendary 6-tournament World Cup career</div>
+                        <div class="key-point">Quarterfinals: France, Argentina, England, Spain, Belgium, Norway, Switzerland</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Massive Wildfires Ravage Europe: Southern France, Spain, Greece Hit Hard by Prolonged Heatwave</h3>
+                    <div class="news-content">
+                        <p>A prolonged heatwave has triggered large-scale wildfires across Europe, with southern France, Spain, Italy, and Greece severely impacted. The <span class="highlight-bold">unprecedented duration and breadth of extreme heat</span> is seen as a direct consequence of accelerating climate change. European nations have mobilized firefighting forces, with some requesting EU civil protection mechanism activation. Experts warn the wildfire risk may persist through the entire summer.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Major wildfires across France, Spain, and Greece amid record-length heatwave</div>
+                        <div class="key-point">Climate change impacts accelerating with fire risk expected to last all summer</div>
+                        <div class="key-point">EU civil protection mechanism activated as member states request mutual aid</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">USMCA Stalled + Japan-Philippines Military Ties Alarm SE Asia + Norway Seeks Deeper China Ties</h3>
+                    <div class="news-content">
+                        <p>The USMCA renewal negotiations are deadlocked, with major disagreements over automotive rules of origin and digital trade provisions. <span class="highlight-bold">Japan-Philippines military cooperation</span> is intensifying, causing unease in Southeast Asia. <span class="highlight-bold">Norway's Prime Minister expressed willingness to deepen multi-field cooperation with China</span>. China-EU trade is achieving "dynamic balance through development," while global hotel chains aggressively expand into lower-tier Chinese cities.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">USMCA renewal stalled, North American trade facing significant uncertainty</div>
+                        <div class="key-point">Japan-Philippines military cooperation fuels regional anxiety in Southeast Asia</div>
+                        <div class="key-point">Norway-China cooperation deepens as China-EU trade achieves dynamic balance</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">US Companies Quietly Pivot to Chinese AI on Cost Advantage; Japan Begins New Fukushima Water Release</h3>
+                    <div class="news-content">
+                        <p>An increasing number of US companies are quietly procuring and using Chinese AI models and infrastructure, driven primarily by <span class="highlight-bold">significant cost advantage</span> — Chinese AI services are priced at just 1/3 to 1/5 of US equivalents, with continuously improving inference efficiency. Meanwhile, Japan has begun a new round of Fukushima nuclear-contaminated water discharge, drawing sustained strong opposition from the international community and neighboring countries.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">US firms pivot to Chinese AI with 3-5x cost advantage reshaping infrastructure landscape</div>
+                        <div class="key-point">Japan begins new Fukushima water release amid international condemnation</div>
+                        <div class="key-point">"Eastern cost depression" effect increasingly prominent in AI infrastructure</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 articles</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 Opens July 17-20 in Shanghai: Record 100,000 sqm, Dual Tracks of Compute & Embodied AI</h3>
+                    <div class="news-content">
+                        <p>The 2026 World AI Conference & High-Level Meeting on AI Global Governance will be held in Shanghai from July 17-20 under the theme "Intelligent Partners, Co-Creating the Future." This year's exhibition space <span class="highlight">exceeds 100,000 sqm for the first time</span>, with 1,100+ exhibitors, 3,000+ exhibits, and 300+ global debuts. The compute and embodied intelligence tracks each feature 200+ enterprises.</p>
+                        <p>Shanghai's AI industry scale now surpasses <span class="highlight">¥637 billion</span> (+39.5% YoY), with 394 above-scale AI enterprises, 169 registered large models, and smart computing exceeding 16 EFLOPS. The conference debuts "WAIC Academic," its first international academic conference.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WAIC 2026 opens July 17 in Shanghai at record scale: 100K sqm / 1,100 exhibitors / 300 global debuts</div>
+                        <div class="key-point">Shanghai AI industry hits ¥637 billion (+39.5%) with 169 registered large models, 16 EFLOPS computing</div>
+                        <div class="key-point">Compute + Embodied tracks each attracting 200+ enterprises; WAIC Academic debuts</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">AI Coding Tools Go Agentic: Cursor Composer+Agent Leads as GPT-5.6 Hits 91.9% on Coding Benchmarks</h3>
+                    <div class="news-content">
+                        <p>In H1 2026, AI coding tools evolved from "code completion" to <span class="highlight-bold">"full-project Agents."</span> Cursor leads with Composer+Agent mode, Windsurf follows with multi-file collaborative editing, and GitHub Copilot offers the broadest ecosystem integration. GPT-5.6 Sol scored <span class="highlight">91.9%</span> on Terminal-Bench 2.1, tied with Claude Fable 5, while introducing "Speed Dial" for flexible inference intensity adjustment.</p>
+                        <p>OpenCode retains its #1 ranking among AI dev tools, with Unisound U2 (266B MoE) achieving 72.2% on SWE-bench Verified. The Agentic shift enables developers to complete hours-long tasks with a single prompt.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI coding tools leap from assistive completion to autonomous execution, reshaping development workflows</div>
+                        <div class="key-point">GPT-5.6 Sol scores 91.9% on Terminal-Bench; Speed Dial + Ultra mode for flexible reasoning</div>
+                        <div class="key-point">OpenCode stays #1, Cursor Composer+Agent leads the market in agentic coding</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Alibaba Bans All Claude Products from July 10: Qoder Replacement Accelerates China's Independent AI Tools Ecosystem</h3>
+                    <div class="news-content">
+                        <p>Alibaba internally announced a <span class="highlight-bold">complete ban on all Anthropic products from July 10</span>, covering Sonnet, Opus, Fable, and Claude Code Agent products, recommending its in-house Qoder as replacement. This marks a systematic shift by China's major tech firms away from overseas AI coding tools. The ban follows revelations that Claude Code detected Chinese account origins through hidden code in system prompts, raising data security and compliance alarms.</p>
+                        <p>Claude Sonnet 5 received negative reviews within 24 hours of launch, with price-performance falling behind domestic rivals Qianwen and Minimax — a dual driver accelerating China's independent AI ecosystem.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Alibaba's complete Claude ban from July 10, recommending Qoder as replacement</div>
+                        <div class="key-point">Dual drivers: Claude Code security controversy (China account detection) + Sonnet 5 underperformance</div>
+                        <div class="key-point">China's major tech firms systematically replacing overseas AI tools with domestic alternatives</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">OpenAI & Broadcom Unveil Custom AI Chip Jalapeño: Design-to-Tapeout in 9 Months, Deployment Q4 2026</h3>
+                    <div class="news-content">
+                        <p>OpenAI and Broadcom jointly unveiled their first custom AI accelerator chip, <span class="highlight">Jalapeño</span>, on June 24, optimized specifically for LLM inference. Design-to-tapeout took just 9 months, with early testing showing <span class="highlight-bold">significantly higher performance-per-watt than current state-of-the-art</span>. The chip will begin deployment in gigawatt-scale data centers by end-2026, marking OpenAI's formal entry into the AI chip market and reducing reliance on NVIDIA GPUs.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenAI × Broadcom Jalapeño ASIC for LLM inference: 9-month design-to-tapeout</div>
+                        <div class="key-point">Gigawatt-scale data center deployment from end-2026, per-watt performance dramatically superior</div>
+                        <div class="key-point">OpenAI's vertical expansion from software to hardware reshapes the AI compute landscape</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">NVIDIA Audex Unified Audio-Text Model + Meta Muse Image Generator: Multimodal LLMs Expand</h3>
+                    <div class="news-content">
+                        <p>NVIDIA released <span class="highlight">Nemotron-Labs-Audex-30B-A3B</span>, a MoE-based unified audio-text LLM integrating audio understanding, speech recognition, translation, TTS, and audio generation. Meta launched <span class="highlight">Muse</span>, an image generator with Content Seal invisible watermarking — but Instagram's default opt-in policy allowing others to use public photos for AI generation sparked privacy controversy.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">NVIDIA Audex 30B MoE model unifies audio understanding, speech, translation, TTS, and generation</div>
+                        <div class="key-point">Meta Muse adds invisible watermarking but Instagram's default photo-use policy raises privacy concerns</div>
+                        <div class="key-point">Multimodal LLMs expanding from text to audio and image modalities</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 articles</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Tesla Optimus Gen-3 Mass Production Begins July-August: Fremont Facility Targets 1M Units/Year</h3>
+                    <div class="news-content">
+                        <p>Tesla has officially launched mass production of the Optimus Gen-3 humanoid robot, <span class="highlight-orange">starting July-August at the Fremont factory</span>. The production line targets 1 million units per year, with manufacturing equipment already shipped from Germany. Initial Optimus Gen-3 units have rolled off the line for internal testing, with Musk personally visiting to confirm progress.</p>
+                        <p>Priced at approximately <span class="highlight-orange">$20,000 per unit</span>, Optimus Gen-3 becomes the world's first humanoid robot designed for true mass production. Musk calls physical AI "the next trillion-dollar opportunity," viewing Optimus as potentially larger than Tesla's automotive business.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Optimus Gen-3 mass production begins July-August at Fremont, targeting 1M units/year</div>
+                        <div class="key-point">Manufacturing equipment shipped from Germany; Musk personally confirms production progress</div>
+                        <div class="key-point">~$20K/unit pricing makes Optimus the first mass-production humanoid robot globally</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">ASD & Agibot Sign Strategic Cooperation: Five-Pronged Partnership; Agibot's 15,000th Robot Rolls Off Line</h3>
+                    <div class="news-content">
+                        <p>On July 6, ASD (002403.SZ) subsidiary and Agibot signed a strategic cooperation agreement covering <span class="highlight-orange">procurement and delivery, contract manufacturing, supply chain collaboration, technical support and scenario empowerment, and equity investment & joint ventures</span>. Agibot announced its <span class="highlight-orange">15,000th robot (Agibot G2 industrial model) has officially rolled off the production line</span>, marking a critical leap from R&D to industrial-scale delivery.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">ASD × Agibot five-pronged strategic partnership: traditional manufacturing meets AI robotics</div>
+                        <div class="key-point">Agibot's 15,000th robot milestone validates 10,000-unit industrial delivery capability</div>
+                        <div class="key-point">Humanoid robot commercialization shifting from technology-driven to scenario-driven</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Humanoid Robot "Super Catalyst Window": Unitree IPO Approved + UBTECH U1 Launch + Government 10K Deployment Plan</h3>
+                    <div class="news-content">
+                        <p>June-August brings a dense catalyst period for humanoid robots: <span class="highlight-orange">Unitree's 73-day express IPO approval on the STAR Board</span> with Lenovo investment; UBTECH U1 full-size bionic humanoid robot launched at ¥119,800 starting price with 13,000+ pre-orders; MIIT and SASAC jointly launched the "Humanoid Robot and Embodied Intelligence Real-Scene Training" initiative targeting 10,000-unit deployment.</p>
+                        <p>Morgan Stanley raised its 2026 China robot shipment forecast to <span class="highlight-orange">50,000 units</span>, with Nomura maintaining 40,000-50,000. The triple catalyst — capital markets (Unitree IPO) + consumer demand (UBTECH pre-orders) + policy (government training initiative) — is closing the gap between the "year of mass production" narrative and reality.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Unitree IPO express approval + UBTECH U1 13K pre-orders: capital market and consumer catalysts converge</div>
+                        <div class="key-point">MIIT initiative targets 10,000-unit deployment, government policy accelerates commercialization</div>
+                        <div class="key-point">Jun-Aug "super catalyst window": mass-production narrative is closing the reality gap</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Today's Key Trends</h2>
+                <p>Latest Directional Insights</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🌐</div>
+                        <div class="trend-desc">
+                            <h3>WAIC 2026: China's AI Industry Enters the "100K sqm Exhibition Era"</h3>
+                            <p>Dual compute & embodied tracks with 200+ enterprises each; Shanghai AI industry at ¥637B growing 39.5% — China's AI power accelerating.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🛡️</div>
+                        <div class="trend-desc">
+                            <h3>China's Independent AI Tools Ecosystem Accelerates: Alibaba Bans Claude, Launches Qoder</h3>
+                            <p>Overseas AI tool security risks + declining price-performance drive China's systematic shift from optional to mandatory substitution.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robot Inflection Point: Optimus Production + Agibot 15K + Unitree IPO Triple Resonance</h3>
+                            <p>Tesla Optimus mass production, Agibot's 15,000th unit, and Unitree IPO approval — the mass-production year narrative is gaining substance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🌧️</div>
+                        <div class="trend-desc">
+                            <h3>Extreme Weather Persists: China Flood Response + European Wildfires Mirror Global Climate Crisis</h3>
+                            <p>Simultaneous extreme weather across continents — China's flood disaster response and Europe's heatwave fires are dual faces of accelerating climate change.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua · CCTV · China News · Huanqiu · ThePaper · Sina Finance · IT Home · ScienceNet · LLM Stats · LiveScore</p>
+            <p class="footer-meta">Compiled: 2026-07-08 09:40 | NEWS DAILY Automated Delivery</p>
+        </footer>
+    </div>
+</body>
+</html>
