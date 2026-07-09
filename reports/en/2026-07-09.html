@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-09</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+
+        .header .subtitle { font-size: 18px; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+
+        .section {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count { background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+
+        .news-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px; position: relative;
+            transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '→'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255,255,255,0.5); font-size: 14px; }
+
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+
+        .trend-card {
+            background: rgba(255,255,255,0.03); border-radius: 16px; padding: 24px;
+            transition: all 0.3s ease;
+        }
+        .trend-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-07-09</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <!-- Row 1: China Hot News + International Affairs -->
+        <div class="sections">
+
+            <!-- 🇨🇳 China Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Super Typhoon Bavi Approaches East China, Expected Landfall This Weekend, Multiple Provinces Activate Highest-Level Emergency Response</h3>
+                    <div class="news-content">
+                        <p>The 9th typhoon of the year, "Bavi," has intensified into a <span class="highlight-bold">super typhoon</span> with maximum sustained winds exceeding Category 17. It is highly likely to make landfall along the Zhejiang-Fujian coast between July 10-12. The National Meteorological Center has issued consecutive red typhoon warnings, and the National Flood Control Headquarters has activated Level-IV emergency response. Schools across Taizhou, Zhejiang have been suspended for three days, with Fujian and Shanghai urgently evacuating residents from low-lying coastal areas.</p>
+                        <p>The Ministry of Water Resources has simultaneously issued flash flood warnings, with multiple rivers across Zhejiang, Fujian, Jiangxi, and Anhui provinces at risk of exceeding warning levels. Meteorologists note that Bavi's intensity and trajectory closely resemble Typhoon Saomai (2006), warranting heightened vigilance.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Super Typhoon Bavi with Category 17+ winds expected to land in Zhejiang-Fujian July 10-12</div>
+                        <div class="key-point">National emergency response activated; Taizhou schools closed for 3 days</div>
+                        <div class="key-point">Meteorologists draw parallels to Typhoon Saomai (2006), urging maximum preparedness</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Guangxi Guigang Severe Flooding Continues: Over 10,000 Students and Teachers Stranded, Villages Become "Islands"</h3>
+                    <div class="news-content">
+                        <p>Guigang City in Guangxi continues to endure torrential rainfall, with the Yu River exceeding the warning level by <span class="highlight-bold">3.2 meters</span> and multiple towns submerged. <span class="highlight-bold">Over 10,000 teachers and students</span> are stranded across primary, secondary, and tertiary institutions, with armed police and fire rescue forces deploying inflatable boats for emergency evacuations. Remote villages have been cut off by road damage and communication outages, becoming "islands in the water."</p>
+                        <p>The autonomous region has activated Level-I natural disaster relief response and allocated ¥250 million in emergency funds. The meteorological bureau forecasts continued heavy rain across central and southern Guangxi over the next three days.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Yu River exceeds warning level by 3.2m; 10,000+ students and teachers stranded</div>
+                        <div class="key-point">Remote villages isolated with no communications; rescue boats deployed</div>
+                        <div class="key-point">Guangxi activates Level-I response, ¥250M in emergency relief; more rain forecast</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">2025 National Science and Technology Awards Announced: Chen Liquan and Ben De Win Top Prize, Wei Dongyi Wins Natural Science Award</h3>
+                    <div class="news-content">
+                        <p>The 2025 National Science and Technology Award ceremony was held in Beijing. Lithium battery pioneer <span class="highlight-bold">Chen Liquan</span> (who spent 50 years making China a global leader in lithium batteries) and radar technology expert <span class="highlight-bold">Ben De</span> (who created "beyond-visual-range eyes" for Chinese fighter jets) received the State Preeminent Science and Technology Award. The highly-watched "Peking University math prodigy" Wei Dongyi won the second prize in the National Natural Science Award.</p>
+                        <p>Other recognized breakthroughs include full-chain autonomous carbon-14 nuclear batteries and Southwest Petroleum University's photovoltaic efficiency record. Newly elected academicians collectively remarked, "Thinking of our predecessors, we have no reason to retreat."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Chen Liquan (lithium battery pioneer) and Ben De (radar expert) win China's top science prize</div>
+                        <div class="key-point">Wei Dongyi wins Natural Science Award for partial differential equations research</div>
+                        <div class="key-point">Multiple indigenous innovations including C-14 nuclear batteries and solar breakthroughs honored</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">4.8 Magnitude Earthquake Hits Yibin, Sichuan; Gansu Longnan Landslide Death Toll Rises to 21</h3>
+                    <div class="news-content">
+                        <p>In the early hours of July 9, a <span class="highlight-bold">magnitude 4.8 earthquake</span> struck Gao County in Yibin, Sichuan, at a depth of 10 kilometers. Tremors were felt in Chengdu and Chongqing, though no major casualties have been reported. The Sichuan Earthquake Administration has dispatched a work team to the epicenter.</p>
+                        <p>Meanwhile, rescue operations continue at the major landslide site in Wudu District, Longnan, Gansu, which occurred on July 7. As of the morning of July 9, <span class="highlight-bold">21 fatalities and 6 missing persons</span> have been confirmed. Continued rainfall heightens the risk of secondary slides, severely complicating search and rescue efforts.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">M4.8 Yibin quake felt in Chengdu and Chongqing; no major casualties reported</div>
+                        <div class="key-point">Gansu landslide: 21 dead, 6 missing; rainfall increases secondary slide risk</div>
+                        <div class="key-point">Ministry of Natural Resources issues nationwide geological hazard warning</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">China's MIIT Warns of Security Backdoor in Anthropic's Claude Code, Accelerating Domestic AI Tool Substitution</h3>
+                    <div class="news-content">
+                        <p>On July 8, China's Ministry of Industry and Information Technology (MIIT) issued a cybersecurity risk advisory, stating that Anthropic's AI programming tool <span class="highlight-bold">Claude Code contains security backdoor vulnerabilities</span>. The MIIT reported detecting instances where Claude Code may upload user code to overseas servers under certain conditions, posing data export and information leakage risks.</p>
+                        <p>This follows earlier warnings from Chinese regulators about overseas AI tools. Alibaba has already announced it will <span class="highlight-bold">ban Claude starting July 10</span>, promoting its self-developed Qoder as an alternative. The Beijing municipal government has also committed to building 10,000-card computing clusters with 70,000 PFlops of new intelligent computing power this year.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">MIIT warns Claude Code has security backdoors; user code may be exported overseas</div>
+                        <div class="key-point">Alibaba bans Claude from July 10, promoting domestic Qoder alternative</div>
+                        <div class="key-point">Heightened security reviews open a substitution window for Chinese AI coding tools</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">National Summer Cultural Tourism Season Launched: ¥450M+ in Consumption Vouchers, Multiple Scenic Spots Offer Free Entry</h3>
+                    <div class="news-content">
+                        <p>The 2026 National Summer Cultural and Tourism Consumption Season officially launched on July 8. The Ministry of Culture and Tourism, together with major platforms, will distribute <span class="highlight-bold">over ¥450 million in cultural tourism vouchers</span> covering scenic spot tickets, hotel stays, and performance tickets. Multiple provinces and cities are offering complimentary attraction entry and student half-price discounts.</p>
+                        <p>Henan's Laojun Mountain scenic area made headlines by recruiting a "Cloud Sea Observer" with a monthly salary of ¥60,000 including accommodation, sparking nationwide summer tourism buzz. The central bank reaffirmed its commitment to "moderately accommodative monetary policy" and strengthened counter-cyclical adjustments to boost consumption recovery.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">¥450M+ in cultural tourism vouchers distributed nationwide; free entry at many scenic spots</div>
+                        <div class="key-point">Laojun Mountain ¥60K/month "Cloud Observer" job goes viral; summer tourism booms</div>
+                        <div class="key-point">PBOC reaffirms accommodative monetary policy to support consumption recovery</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 🌍 International Affairs -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US Launches Fresh Strikes on Iran, Trump Threatens "It Will Get Much Worse," Strait of Hormuz Faces Total Blockade</h3>
+                    <div class="news-content">
+                        <p>On July 7, the US military unleashed a new wave of large-scale airstrikes against Iran, with <span class="highlight-bold">Iranshahr Airport directly hit</span>. US Central Command stated the operation was to "hold Iran accountable for its reckless aggression against commercial shipping." This follows attacks on three oil tankers in the Strait of Hormuz, which Washington blamed on Iran, and the revocation of Iran's oil export license.</p>
+                        <p>Trump warned on social media: "If Iran does not stop its aggression, the bombing will get much worse — we will complete the job." Iran's Supreme Leader Khamenei responded with threats of <span class="highlight-bold">"large-scale strikes on US military bases and their allies."</span> Tanker traffic through the Strait of Hormuz has virtually ceased, endangering roughly one-third of the world's seaborne oil supply.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">US strikes hit Iranshahr Airport; Iran's oil export license revoked</div>
+                        <div class="key-point">Trump escalates threats; Khamenei vows massive retaliation against US bases</div>
+                        <div class="key-point">Strait of Hormuz tanker traffic virtually halted; global oil supply chain in crisis</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Oil Prices Surge Past $90 as Global Financial Markets Rocked by Middle East Escalation</h3>
+                    <div class="news-content">
+                        <p>Amid the full-scale escalation of US-Iran military conflict, Brent crude breached the <span class="highlight-bold">$90/barrel</span> mark on July 8, surging over 7% in a single day. WTI crude simultaneously spiked above $87, reaching 2026 highs. Major global shipping companies have suspended all transit through the Strait of Hormuz.</p>
+                        <p>Asia-Pacific markets bore the brunt: South Korea's KOSPI entered a technical bear market after a cumulative 20%+ drop over 13 trading days. Japan's Nikkei plunged 4.2% in a single session. Safe-haven assets surged, with spot gold <span class="highlight-bold">breaking through $4,600/oz</span> to new all-time highs.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Brent crude breaks $90, WTI surges to $87 — both hitting 2026 highs</div>
+                        <div class="key-point">Shipping giants suspend Hormuz routes; global trade severely disrupted</div>
+                        <div class="key-point">South Korea enters bear market; gold breaks $4,600 to new record</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">South Korean Stock Market Enters Bear Territory After 13-Day 20%+ Plunge, Won Hits 15-Year Low</h3>
+                    <div class="news-content">
+                        <p>South Korea's KOSPI index has suffered a sustained rout since late June, with a <span class="highlight-bold">cumulative decline exceeding 20% over 13 trading days</span>, officially entering a technical bear market. The Korean won has weakened past 1,480 per US dollar — its lowest level since 2009. Analysts attribute the collapse to a double blow: US-China trade frictions and surging energy costs from the Strait of Hormuz crisis, hitting Korea's export-driven economy.</p>
+                        <p>The Bank of Korea convened an emergency monetary policy meeting, but market confidence remains severely eroded. Samsung Electronics and other heavyweights led the decline, with foreign investors recording net selling of Korean equities for 18 consecutive trading days.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">KOSPI plunges 20%+ in 13 days entering bear market; won at 15-year low</div>
+                        <div class="key-point">Soaring energy costs and shrinking exports deliver double blow to Korean economy</div>
+                        <div class="key-point">Foreign investors sell for 18 straight days; BOK emergency meeting fails to stem rout</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Argentina Stuns Egypt 3-2 with Last-Minute Comeback in World Cup Classic</h3>
+                    <div class="news-content">
+                        <p>In a Round of 16 thriller at the 2026 World Cup, Argentina came back from a 0-2 deficit to defeat Egypt <span class="highlight-bold">3-2</span> with a stoppage-time winner and advance to the quarterfinals. Messi contributed a goal and an assist, while Di Maria scored the <span class="highlight-bold">94th-minute winner</span>. Hailed as one of the greatest comebacks in World Cup history, Argentina dominated with 68% possession and 24 shots, showcasing the defending champion's unbreakable spirit.</p>
+                        <p>Egypt went down fighting — Salah's brace nearly carried the African side to a historic upset. Argentina will face the winner of Belgium vs. Paraguay in the quarterfinals.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Argentina storms back from 0-2 down with Di Maria's 94th-minute winner</div>
+                        <div class="key-point">Messi delivers 1 goal + 1 assist in legendary performance for defending champions</div>
+                        <div class="key-point">Salah's brace not enough for valiant Egypt, who fought to the last bullet</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">FIVB Allows Russian Athletes to Return to International Competition, Sparking Global Controversy</h3>
+                    <div class="news-content">
+                        <p>The International Volleyball Federation (FIVB) officially announced on July 8 that <span class="highlight-bold">Russian and Belarusian athletes and teams may return to international volleyball competitions under neutral status</span>, effective immediately. This marks the first major international sports federation to implement the IOC's recommendation for the gradual reintegration of Russian and Belarusian athletes.</p>
+                        <p>The decision drew immediate backlash. Ukraine's Foreign Ministry issued a strong condemnation, calling it "a reward for aggression." Poland's Volleyball Federation announced a boycott of any events featuring Russian participation, while USA Volleyball expressed "respect for the decision but deep disappointment."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">FIVB allows Russian and Belarusian athletes back under neutral status</div>
+                        <div class="key-point">Ukraine strongly condemns; Poland announces boycott</div>
+                        <div class="key-point">First major sports body to implement IOC recommendation on Russian reintegration</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Turkey Formally Applies to Join BRICS, First NATO Member to Turn East</h3>
+                    <div class="news-content">
+                        <p>Turkish President Erdogan formally signed the application documents on July 8, making Turkey the <span class="highlight-bold">first NATO member state to apply for BRICS membership</span>. Erdogan stated, "The global center of power is shifting, and Turkey must find balance between East and West." Thailand and Malaysia had previously become BRICS partner countries in 2025.</p>
+                        <p>Analysts view this as both a response to the EU's prolonged stalling of Turkey's accession negotiations and a reflection of emerging economies' push for greater voice in global governance. Russian President Putin welcomed the move, saying "BRICS' appeal to the Global South continues to strengthen."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Turkey becomes first NATO member to apply for BRICS membership</div>
+                        <div class="key-point">Erdogan cites shifting global power dynamics; seeks East-West balance</div>
+                        <div class="key-point">Russia welcomes the move; reflects rising influence of emerging economies</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI Coding + Embodied Intelligence -->
+        <div class="sections">
+
+            <!-- 💻 AI Coding -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">GPT-5.6 Sol Officially Launches Today: Ultra Multi-Agent Mode, 750 Tokens/Second Inference Speed</h3>
+                    <div class="news-content">
+                        <p>OpenAI's flagship model <span class="highlight-bold">GPT-5.6 Sol</span> launches today, July 9, featuring an all-new "ultra multi-agent mode" and "max reasoning intensity." It has set new records across coding, biology, and cybersecurity benchmarks, with inference speeds reaching <span class="highlight">750 tokens per second</span> on Cerebras hardware.</p>
+                        <p>Pricing: $5 per million input tokens / $30 per million output tokens — positioning it at the premium tier within the GPT-5.6 family. OpenAI is adopting a phased rollout, initially granting API and Codex access to select trusted partners, with broader availability over the coming weeks.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 Sol launches July 9 with 750 tok/s inference and multi-agent capabilities</div>
+                        <div class="key-point">Sets new coding benchmarks; ultra-agent + max reasoning are key innovations</div>
+                        <div class="key-point">$5/$30 per million tokens (input/output); phased rollout to partners first</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Grok 4.5 Opens to Public Today: 1.5 Trillion Parameters + Cursor Data, Aiming for Coding Dominance</h3>
+                    <div class="news-content">
+                        <p>Elon Musk's SpaceX AI announced <span class="highlight-bold">Grok 4.5</span> will open to the public on July 9. Built on the <span class="highlight">1.5 trillion parameter</span> V9 foundation model, it incorporates high-quality coding data from AI programming tool Cursor. Early evaluations suggest performance approaching or potentially exceeding Anthropic's flagship Claude Opus, with faster speeds and better token efficiency.</p>
+                        <p>SpaceX AI and Cursor plan to jointly release their first co-developed AI model, with SpaceX's $60 billion all-stock acquisition of Cursor advancing. Musk promises "a completely new model trained from scratch every month for the rest of the year."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Grok 4.5 built on 1.5T parameter V9; integrates Cursor coding data</div>
+                        <div class="key-point">Performance nears Claude Opus with faster speed and lower cost</div>
+                        <div class="key-point">Musk commits to monthly new model releases; AI arms race intensifies</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">DeepSeek Secretly Developing Custom Inference Chips for Over a Year; V4 Official Release Mid-July with Peak/Off-Peak Pricing</h3>
+                    <div class="news-content">
+                        <p>According to QbitAI and other media reports, DeepSeek has secretly launched a <span class="highlight-bold">custom inference chip</span> project that has been underway for over a year, with recruitment conducted entirely in secrecy. This marks a critical move to reduce dependence on NVIDIA, following DeepSeek V4's full-chain adaptation to Huawei's Ascend 950P.</p>
+                        <p>DeepSeek V4's official release is set for mid-July, introducing a novel <span class="highlight">peak/off-peak pricing strategy</span>: peak hours (9:00-12:00, 14:00-18:00) at 2x the standard rate. The DSpark inference acceleration framework (co-developed with Peking University) is now fully deployed, boosting V4-Flash generation speed by 60%-85%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">DeepSeek secretly developing custom inference chips; V4 already adapted to Huawei Ascend 950P</div>
+                        <div class="key-point">V4 official release mid-July; first-ever peak/off-peak pricing strategy</div>
+                        <div class="key-point">DSpark acceleration framework fully deployed; 60%-85% speed improvement</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Gemini 3.5 Pro Confirmed for July 17: Google Abandons Previous Base for Full Retraining, Prioritizes Quality Over Speed</h3>
+                    <div class="news-content">
+                        <p>Google DeepMind confirmed <span class="highlight-bold">Gemini 3.5 Pro</span> will launch on July 17. Surprisingly, Google abandoned the existing 2.5 Pro base and conducted a complete pretraining from scratch. Front-end and visual code generation capabilities have seen <span class="highlight">leapfrog improvements</span>, surpassing Anthropic's Fable 5 in multiple tests. However, it still trails competitors in hard reasoning and complex engineering tasks.</p>
+                        <p>Google is choosing a "quality over speed" strategy to counter pressure from GPT-5.6 and Fable 5. A new image model, Nano Banana Pro, is being developed on the same base, with Google fighting on dual fronts: text/code and image generation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Gemini 3.5 Pro abandons 2.5 Pro base for full retraining from scratch</div>
+                        <div class="key-point">Front-end and visual code generation leapfrog ahead, surpassing Fable 5</div>
+                        <div class="key-point">Launching July 17; dual-front strategy in text/code + image generation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">MIIT Claude Code Warning Opens Substitution Window; Chinese AI Coding Tools Undergo Major Restructuring</h3>
+                    <div class="news-content">
+                        <p>Following the MIIT's Claude Code security advisory, China's AI coding tool ecosystem is accelerating restructuring. <span class="highlight-bold">Alibaba will ban Claude entirely starting July 10 (tomorrow)</span>, promoting its self-developed Qoder as the replacement. Baidu Qianfan's Coding Plan also terminated renewals at end-June, fully transitioning to a pay-per-use Token Plan.</p>
+                        <p>Industry analysis describes a 2026 "universal Codex" phenomenon — major internet companies and model vendors are all launching proprietary AI coding tools. What began as competition against Claude Code has rapidly evolved into building <span class="highlight">autonomous and controllable tool ecosystems</span>. China's AI programming tool landscape is undergoing an unprecedented reshuffling.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Alibaba bans Claude July 10, promotes Qoder; Baidu terminates Coding Plan</div>
+                        <div class="key-point">2026 "universal Codex" phenomenon: major players all building proprietary tools</div>
+                        <div class="key-point">Dual drivers — security reviews + tech autonomy — reshape China's AI coding landscape</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 🦾 Embodied Intelligence -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Unitree Technology IPO Registered: 104-Day Record Review, "A-Share Embodied Intelligence First Stock" Ready to List</h3>
+                    <div class="news-content">
+                        <p>On July 6, Unitree Technology's STAR Market IPO registration became effective, completing the process from acceptance to registration in just <span class="highlight-orange">104 days</span> — a new speed record. Unitree posted 2025 revenue exceeding <span class="highlight-orange">¥1.6 billion</span>, becoming the first global humanoid robot company to achieve scaled profitability. It ranks first worldwide in humanoid robot shipments, with a gross margin of <span class="highlight-orange">60%</span>. Meituan, Sequoia, Tencent, and Alibaba are among its investors.</p>
+                        <p>As of May 2026, Unitree's flagship bipedal humanoid robot has surpassed <span class="highlight-orange">11,000 units</span> in cumulative production. The IPO prospectus outlines plans to raise funds for next-generation humanoid robot R&D and capacity expansion. Unitree is also dominant in quadruped robots and consumer-grade robotics, making it a rare pure-play humanoid robot listing on the A-share market.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">104-day review sets STAR Market record; A-shares welcome "Embodied Intelligence First Stock"</div>
+                        <div class="key-point">2025 revenue ¥1.6B; world's first profitable humanoid robot company; #1 in global shipments</div>
+                        <div class="key-point">11,000+ units produced; Tencent, Alibaba, Sequoia among backers</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Zhiyuan Robot Hits 15,000 Units in Mass Production; 8 Genie G2 Robots "On the Job" at Nanchang Factory</h3>
+                    <div class="news-content">
+                        <p>Zhiyuan Robot (Agibot) announced on June 28 its <span class="highlight-orange">15,000th</span> general-purpose embodied robot rolling off the production line, covering both the Yuanzheng series of bipedal humanoids and the Genie series of wheeled dual-arm robots. From June 23-28, <span class="highlight-orange">8 Genie G2 robots</span> were deployed at Nanchang Longcheer Technology's factory, working standard "8 AM to 7 PM" shifts covering the entire tablet mass-production quality inspection workflow.</p>
+                        <p>This marks the transition of Chinese humanoid robots from "demonstration" to "stable real-world production deployment." Zhiyuan's collaborations with SAIC-GM and other automakers validate the feasibility of scaled humanoid robot application in industrial scenarios including 3C quality inspection, logistics sorting, and automotive manufacturing.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Zhiyuan hits 15,000-unit production milestone; covers bipedal + wheeled dual-arm robots</div>
+                        <div class="key-point">8 Genie G2s on standard shifts at Nanchang factory covering full QC workflow</div>
+                        <div class="key-point">Validates real-world industrial deployment of humanoid robots — a milestone achievement</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">2026 World Robot Conference Set for August in Beijing: 300+ Exhibitors, First-Ever "Procurement Day" to Drive Industry Demand</h3>
+                    <div class="news-content">
+                        <p>The 2026 World Robot Conference will take place <span class="highlight-orange">August 19-23</span> at Beijing E-Town, themed "Human-Robot Symbiosis, Production-Demand Integration." Over <span class="highlight-orange">300 enterprises</span> will exhibit (up 36% YoY), with 150+ debut products and 30% international guest participation. For the first time, the conference features four themed days: Release Day, Procurement Day, Developer Day, and Public Open Day.</p>
+                        <p>The conference will launch the "Global Robotics Application Exploration Program," matching mass-produced products with global innovation teams for trial use at no cost. Industry representatives from the UK, Singapore, Thailand, and other countries will publish scenario requirements. Humanoid robot applications are accelerating from entertainment and marketing toward <span class="highlight-orange">3C quality inspection, logistics sorting, and automotive manufacturing</span>, with nearly 10 major automakers conducting production-line deployment trials.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">August 19-23 in Beijing; 300+ exhibitors, 150+ debut products</div>
+                        <div class="key-point">First-ever "Procurement Day" to drive supply-demand matching across multiple countries</div>
+                        <div class="key-point">Industry focus shifts from "showing capability" to "matching demand" — commercialization accelerates</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Key Trends Today</h2>
+                <p>Insights across today's four major domains</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-icon">🤖</div>
+                    <h3>AI Competition Escalates from "Model Race" to "Full-Stack Race"</h3>
+                    <p>GPT-5.6 Sol, Grok 4.5, Gemini 3.5 Pro, and DeepSeek V4 launch in rapid succession. Competition no longer centers on parameters and benchmarks alone, but extends across inference speed, pricing strategy, and ecosystem integration.</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🛢️</div>
+                    <h3>Middle East Crisis Reshapes Global Asset Pricing</h3>
+                    <p>The near-total shutdown of the Strait of Hormuz triggers a "triple shock": oil above $90, shipping disruption, and emerging market currency collapse. South Korea enters a bear market and gold breaks $4,600 — geopolitical risk is the defining variable of H2 2026.</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🏭</div>
+                    <h3>Embodied Intelligence: The Leap from "Demo" to "Deployment"</h3>
+                    <p>Unitree's IPO approval + Zhiyuan's 15,000-unit production milestone + WRC "Procurement Day" — these three milestones mark the humanoid robot industry's transition from storytelling to commercial闭环 (closed loop).</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🇨🇳</div>
+                    <h3>China's AI Self-Reliance Accelerates</h3>
+                    <p>MIIT's Claude Code warning, DeepSeek's custom chips, and the rise of domestic coding tools all point in one direction: driven by security reviews and computing autonomy, China's AI ecosystem is rapidly moving toward "de-Americanization."</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: Global Times · Sina Finance · The Paper · IT Home · QQ News · QbitAI · Military Times · Al-Monitor · Politico</p>
+            <p class="footer-meta">Generated: 2026-07-09 09:40 | NEWS DAILY Automated Push</p>
+        </footer>
+    </div>
+</body>
+</html>
