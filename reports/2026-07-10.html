@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-10</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+
+        .header .subtitle { font-size: 18px; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+
+        .section {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count { background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+
+        .news-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px; position: relative;
+            transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '→'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255,255,255,0.5); font-size: 14px; }
+
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+
+        .trend-card {
+            background: rgba(255,255,255,0.03); border-radius: 16px; padding: 24px;
+            transition: all 0.3s ease;
+        }
+        .trend-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-07-10</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <!-- Row 1: China Hot News + International Affairs -->
+        <div class="sections">
+
+            <!-- 🇨🇳 中国国内综合热搜 -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">OpenAI GPT-5.6 系列今晨全球开放，国产大模型同日集体迎战"七七AI大乱斗"</h3>
+                    <div class="news-content">
+                        <p>OpenAI 今日凌晨正式向全球用户推送 <span class="highlight-bold">GPT-5.6 系列三档模型</span>：旗舰 Sol、均衡 Terra、低成本 Luna。Sol 支持"Ultra 模式"可默认协调 4 个 AI Agent 并行处理复杂任务，定价 $5/$30 每百万 token（输入/输出）。同步上线 ChatGPT Work 原生智能体，Codex 编码工具整合进统一桌面客户端。微软纳德拉确认 Copilot 同步接入。</p>
+                        <p>国内厂商同日"迎战"：阿里今日起全面禁用 Claude 推 Qoder，DeepSeek V4 正式版本周内上线并引入"峰谷定价"（高峰 9:00-12:00/14:00-18:00 价格翻倍），字节豆包回应"内测社交功能"传闻：并无相关计划。<span class="highlight-bold">一日内中外模型集中亮相，史称"七七AI大乱斗"</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 Sol Ultra 模式支持 4 Agent 并行，Codex 整合进 ChatGPT 桌面客户端</div>
+                        <div class="key-point">微软 Copilot 同步接入 GPT-5.6，纳德拉确认深度集成</div>
+                        <div class="key-point">阿里今起禁用 Claude 推 Qoder，国产大模型集体迎战</div>
+                        <div class="key-point">DeepSeek V4 正式版本周上线，引入"高峰时段价格 2 倍"机制</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">6月 CPI 同比 +1.0%、PPI 同比 +4.1%，PPI 寻顶回落信号显现</h3>
+                    <div class="news-content">
+                        <p>国家统计局 7 月 9 日发布最新数据，6 月份 <span class="highlight-bold">CPI 同比上涨 1.0%</span>，<span class="highlight-bold">PPI 同比上涨 4.1%、环比下降 0.3%</span>。工业生产者出厂价格出现"寻顶"信号，反映工业新旧动能转换成效显著。消费端温和回升，工业品价格高位回落。</p>
+                        <p>央行年内继续实施"适度宽松的货币政策"，7 月 5 日降准 0.25 个百分点释放约 5000 亿元长期资金。多家银行美元定存年化利率突破 3%，机构扎堆调研 AI 产业链上游企业，订单充足业绩逐步兑现。专项科创债年内合计发行 54.7 亿元，<span class="highlight-bold">已超去年全年水平</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">6 月 CPI +1.0%，PPI 同比 +4.1%、环比 -0.3%，工业品价格寻顶</div>
+                        <div class="key-point">央行 7 月降准 0.25 个百分点释放 5000 亿，多家银行美元定存利率破 3%</div>
+                        <div class="key-point">专项科创债年内发行 54.7 亿元超去年全年，机构扎堆调研 AI 产业链</div>
+                        <div class="key-point">央行重申"适度宽松"基调，加大对实体经济支持</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">伊朗反击 85 个美军目标击落 MQ-9 无人机，中东局势再度紧绷</h3>
+                    <div class="news-content">
+                        <p>伊朗革命卫队宣布对美军在中东的 <span class="highlight-bold">85 个重要目标</span>发动反击，并击落一架美军 MQ-9"死神"无人机。这是针对美军 7 月 7-8 日连续两夜空袭伊朗本土（命中 80 多个目标）后的强硬回应。特朗普称美伊停火协议"已终结"，恢复对伊全部石油制裁。</p>
+                        <p>国际油价 7 月 8 日飙升 7%，<span class="highlight-bold">布伦特原油突破 90 美元/桶</span>创年内新高；美股半导体、存储概念股深夜拉升，费城半导体指数涨超 2%，<span class="highlight-bold">英伟达涨超 3%</span>。中国外交部呼吁各方保持克制，通过对话协商化解分歧。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">伊朗反击 85 个美军目标，击落一架 MQ-9 无人机，局势再度升级</div>
+                        <div class="key-point">布伦特原油飙升 7% 突破 90 美元，全球避险情绪升温</div>
+                        <div class="key-point">费城半导体指数涨超 2%，英伟达 +3%，科技股成避险资金新宠</div>
+                        <div class="key-point">中国外交部呼吁各方克制，通过对话协商化解分歧</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">GPT-5.6 Sol 国内同步上线，国产 AI 编程工具 7 月 10 日集体"应战"</h3>
+                    <div class="news-content">
+                        <p>阿里今日正式全面禁用 Claude Code，推荐自研 <span class="highlight-bold">Qoder</span> 作为内部替代方案，工信部此前已发出 Claude Code"安全后门"风险提示。百度千帆 Coding Plan 6 月底终止续费，<span class="highlight-bold">7 月起全面转向 Token Plan 按量计费</span>。腾讯、字节、商汤等大厂 7 月以来密集发布编程工具新版本。</p>
+                        <p>数据显示，<span class="highlight-bold">中国部分 AI 大模型比美国同类产品便宜 90%</span>，国产性价比优势在美国企业端调用占比持续攀升。北京经信局明确打造万卡算力集群，年内新增 7 万 P 智能算力。<span class="highlight-bold">2026 年"万国造 Codex"现象</span>进入白热化阶段。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">阿里 7 月 10 日全面禁用 Claude 推 Qoder，工信部安全后门警告升级</div>
+                        <div class="key-point">百度千帆 Coding Plan 终止，全面转向 Token Plan 按量计费</div>
+                        <div class="key-point">中国 AI 大模型比美国便宜 90%，性价比优势成为出海名片</div>
+                        <div class="key-point">北京 7 万 P 智能算力+万卡集群，"去美化"算力底座加速形成</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">国家基本药物目录（2026 版）9 月 1 日起实施，共收录 794 种药品</h3>
+                    <div class="news-content">
+                        <p>国家卫健委发布通知，<span class="highlight-bold">《国家基本药物目录（2026 版）》</span>将于 9 月 1 日起正式实施。新版目录共收录药品 <span class="highlight-bold">794 种</span>，其中化学药品和生物制品 476 种、中成药 318 种，相比 2018 版目录数量增加近 70 种。</p>
+                        <p>调整重点聚焦肿瘤、慢性病、儿童用药、罕见病等重大疾病领域，<span class="highlight-bold">新增 80 余种创新药</span>，覆盖病种进一步扩大。医保部门将同步推进"双通道"管理，确保目录药品在定点医院和药店"买得到、用得上、能报销"。这一调整被业内视为"医改深水区的关键一步"。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">新版国家基本药物目录 9 月 1 日实施，药品数量从 685 种增至 794 种</div>
+                        <div class="key-point">重点扩容肿瘤、慢病、儿童药、罕见病，新增 80 余种创新药</div>
+                        <div class="key-point">同步推进"双通道"管理，确保基层买得到、用得上、能报销</div>
+                        <div class="key-point">业内称"医改深水区关键一步"，强化基本药物主导地位</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">暑期文旅消费季热度升温：老君山 6 万元月薪招"云海观察员"引热议</h3>
+                    <div class="news-content">
+                        <p>2026 年全国暑期文化和旅游消费季启动以来，<span class="highlight-bold">全国发放超 4.5 亿元文旅消费券</span>，覆盖景区门票、酒店、演出等领域。河南老君山景区高薪招聘"<span class="highlight-bold">云海观察员</span>"（月薪 6 万元、包吃包住）持续成为网络热议话题。</p>
+                        <p>文旅部数据显示，<span class="highlight-bold">暑期国内跨城出行订单同比+18%</span>，亲子游、避暑游、夜经济成为三大主力。央行重申"继续实施适度宽松的货币政策"，加大逆周期调节力度保障消费复苏。专家指出，文旅消费券与高温避暑需求叠加，正在释放暑期消费潜力。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">全国发放 4.5 亿元文旅消费券，暑期出行订单同比+18%</div>
+                        <div class="key-point">老君山 6 万元月薪招"云海观察员"出圈，避暑游持续升温</div>
+                        <div class="key-point">央行重申适度宽松货币政策，护航消费复苏</div>
+                        <div class="key-point">亲子游、避暑游、夜经济成为暑期三大主力</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 🌍 国际时事热点 -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">美伊战事全面升级：美军连夜空袭伊朗本土，伊朗反击 85 个目标击落 MQ-9</h3>
+                    <div class="news-content">
+                        <p>美国中央司令部 7 月 7 日发布声明，<span class="highlight-bold">美军完成对伊朗新一轮进攻性打击</span>，使用精确制导武器命中 80 多个目标，火力是此前 4 倍。特朗普称美伊停火协议"已终结"，恢复对伊全部石油制裁，吊销伊朗石油出口许可。</p>
+                        <p>伊朗革命卫队宣布反击 85 个美军重要目标，击落一架 MQ-9 无人机，伊朗最高领袖哈梅内伊誓言"<span class="highlight-bold">大规模打击美军基地及其盟友</span>"。霍尔木兹海峡油轮通行基本停止，全球约三分之一海运石油路线面临中断风险。国际油价飙涨 7%，布伦特原油突破 90 美元/桶。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">美军对伊朗 80+ 目标连夜空袭，火力是此前 4 倍</div>
+                        <div class="key-point">伊朗反击 85 个美军目标，击落 MQ-9 无人机</div>
+                        <div class="key-point">特朗普称停火协议"已终结"，恢复全部石油制裁</div>
+                        <div class="key-point">霍尔木兹海峡油轮基本停运，全球石油供应链告急</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">布伦特原油突破 90 美元创年内新高，全球金融市场剧烈震荡</h3>
+                    <div class="news-content">
+                        <p>受美伊军事冲突全面升级影响，<span class="highlight-bold">布伦特原油 7 月 8 日突破 90 美元/桶</span>关口，单日涨幅超 7%。WTI 原油同步飙升至 87 美元上方，创 2026 年以来新高。全球航运巨头宣布暂停所有通过霍尔木兹海峡的航线。</p>
+                        <p>亚太市场首当其冲：<span class="highlight-bold">韩国综合指数 13 个交易日内累计下跌超 20%</span>，正式进入技术性熊市，韩元跌至 15 年新低（1 美元兑 1480 韩元）。日经指数单日暴跌 4.2%。避险资产飙升，<span class="highlight-bold">现货黄金突破 4600 美元/盎司</span>再创历史新高。机构警告：地缘风险成为 2026 下半年最大变量。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">布伦特原油突破 90 美元，WTI 飙至 87 美元，均创年内新高</div>
+                        <div class="key-point">航运巨头暂停霍尔木兹航线，全球贸易面临重大冲击</div>
+                        <div class="key-point">韩国股市进入技术性熊市，韩元跌至 15 年新低</div>
+                        <div class="key-point">黄金突破 4600 美元创历史新高，地缘风险成最大变量</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">韩国政经"三重危机"：股市入熊、韩元崩盘、出口骤降</h3>
+                    <div class="news-content">
+                        <p>韩国经济正在经历<span class="highlight-bold">自 2008 年以来最严峻的"三重危机"</span>。KOSPI 指数 13 个交易日内累计下跌超 20%，<span class="highlight-bold">正式跌入技术性熊市</span>；韩元对美元汇率跌破 1480:1，创 2009 年以来最低水平；6 月出口同比骤降 7.2%（半导体出口下滑尤为严重）。</p>
+                        <p>分析指出，韩国作为出口导向型经济体，受中美贸易摩擦、霍尔木兹海峡危机导致的能源成本飙升双重打击。韩国央行已紧急召开货币政策会议，但市场信心严重不足。<span class="highlight-bold">三星电子等权重股领跌</span>，外资连续 18 个交易日净卖出韩国股票。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">KOSPI 13 天暴跌超 20% 进入熊市，韩元跌至 15 年新低</div>
+                        <div class="key-point">能源成本飙升+出口萎缩双重打击韩国经济</div>
+                        <div class="key-point">外资连续 18 天净卖出，韩国央行紧急会议难阻跌势</div>
+                        <div class="key-point">三星、SK 等权重股领跌，6 月半导体出口同比骤降</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">特朗普威胁"轰炸将更加猛烈"，全球航运业全面停摆</h3>
+                    <div class="news-content">
+                        <p>特朗普 7 月 8 日在社交媒体上警告："<span class="highlight-bold">如果伊朗不停止侵略，轰炸将更加猛烈——我们会完成这项工作</span>。"伊朗最高领袖哈梅内伊强硬回应，称将"大规模打击美军基地及其盟友"。</p>
+                        <p>霍尔木兹海峡油轮通行已基本停止，全球约三分之一海运石油路线面临中断。马士基、MSC、达飞等航运巨头已暂停所有通过霍尔木兹海峡的航线。<span class="highlight-bold">全球供应链警报</span>已拉响，欧洲、北亚炼油厂纷纷启动应急预案。国际能源署（IEA）紧急释放 6000 万桶战略石油储备以稳定市场。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">特朗普威胁"轰炸将更加猛烈"，哈梅内伊誓言大规模报复</div>
+                        <div class="key-point">霍尔木兹海峡油轮通行基本停止，全球航运全面停摆</div>
+                        <div class="key-point">马士基、MSC、达飞暂停霍尔木兹航线</div>
+                        <div class="key-point">IEA 紧急释放 6000 万桶战略储备以稳定市场</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">阿根廷 3-2 绝杀埃及晋级八强，梅西 1 球 1 助攻封神</h3>
+                    <div class="news-content">
+                        <p>2026 世界杯 1/8 决赛，<span class="highlight-bold">阿根廷在 0-2 落后的绝境中完成惊天逆转</span>，以 3-2 绝杀埃及晋级八强。梅西贡献 1 球 1 助攻，<span class="highlight-bold">迪马利亚补时第 94 分钟打入绝杀进球</span>。这场比赛被评为世界杯历史上最伟大的逆转之一。</p>
+                        <p>阿根廷全场控球率 68%、射门 24 次，展现了卫冕冠军的顽强意志。埃及虽败犹荣，<span class="highlight-bold">萨拉赫梅开二度</span>一度让非洲雄狮看到创造历史的希望。阿根廷将在 1/4 决赛对阵比利时与巴拉圭的胜者。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">阿根廷 0-2 落后连扳 3 球，迪马利亚 94 分钟绝杀</div>
+                        <div class="key-point">梅西 1 球 1 助攻封神表现，卫冕冠军展顽强意志</div>
+                        <div class="key-point">萨拉赫双响虽败犹荣，埃及打光最后一颗子弹</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">国际排联允许俄罗斯运动员重返国际比赛，乌克兰强烈谴责</h3>
+                    <div class="news-content">
+                        <p>国际排联（FIVB）7 月 8 日正式宣布，<span class="highlight-bold">即日起允许俄罗斯及白俄罗斯运动员和球队以中立身份</span>重返国际排球赛事。这是继国际奥委会建议各单项体育联合会逐步接纳俄白运动员后，<span class="highlight-bold">首个做出实质性决定的主要国际体育组织</span>。</p>
+                        <p>决定引发多方争议。乌克兰外交部发表声明强烈谴责，称这是"对侵略行为的奖励"。波兰排协宣布将抵制有俄罗斯参加的赛事，美国排协则表态"尊重决定但深感失望"。分析认为，这一决定可能引发连锁反应，网球、田径等其他项目或将跟进。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">国际排联允许俄白运动员以中立身份重返国际比赛</div>
+                        <div class="key-point">乌克兰强烈谴责，波兰排协宣布抵制</div>
+                        <div class="key-point">系首个执行国际奥委会建议的主要单项体育组织</div>
+                        <div class="key-point">业内担忧连锁反应，网球、田径等项目或跟进</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI Coding + Embodied Intelligence -->
+        <div class="sections">
+
+            <!-- 💻 AI Coding -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">OpenAI GPT-5.6 系列今日全球开放：Sol 旗舰 + Codex 整合 + ChatGPT Work 智能体</h3>
+                    <div class="news-content">
+                        <p>OpenAI 今日（7 月 10 日）正式宣布 <span class="highlight-bold">GPT-5.6 系列三档模型全球全面开放</span>：旗舰 Sol、均衡 Terra、低成本 Luna。Sol 引入全新"Ultra 模式"可默认协调 4 个 AI Agent 并行处理复杂任务，在编码、生物、网络安全基准全面刷新纪录。GPT-5.6 Sol 定价 $5/$30 每百万 token（输入/输出）。</p>
+                        <p>同步上线 <span class="highlight-bold">ChatGPT Work 原生智能体</span>，<span class="highlight-bold">独立 Codex 编码工具整合进统一 ChatGPT 桌面客户端</span>，覆盖网页、移动端、Windows 与 macOS 全终端。微软纳德拉确认 Copilot 同步接入。GPT-5.6 经历了 6 月底少量合作伙伴预览+美国政府安全审查后正式面向全部用户推送。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 Sol/Terra/Luna 三档模型全球开放，Ultra 模式支持 4 Agent 并行</div>
+                        <div class="key-point">独立 Codex 整合进统一 ChatGPT 桌面客户端，覆盖全终端</div>
+                        <div class="key-point">微软 Copilot 同步接入 GPT-5.6，纳德拉确认深度集成</div>
+                        <div class="key-point">美国政府安全审查通过后正式推送，从预览走向全面商用</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">阿里禁用 Claude、百度停售 Coding Plan，国产 AI 编程工具 7 月集体"洗牌"</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">阿里今日（7 月 10 日）正式全面禁用 Claude Code</span>，要求内部员工统一切换至自研 Qoder。工信部此前发出 Claude Code"安全后门"风险提示后，<span class="highlight-bold">百度千帆 Coding Plan</span> 6 月底已终止续费，7 月起全面转向 <span class="highlight-bold">Token Plan 按量计费</span>。</p>
+                        <p>行业分析指出，2026 年出现"<span class="highlight-bold">万国造 Codex</span>"现象——互联网大厂和模型厂商纷纷推出自有 AI 编程工具，从对抗 Claude Code 开始，迅速演变为构建<span class="highlight">自主可控工具体系</span>。腾讯、字节、商汤、智谱等密集发布编程工具新版本，国产 AI 编程格局正经历前所未有的大洗牌。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">阿里 7 月 10 日全面禁用 Claude 推 Qoder，10 万内部员工统一切换</div>
+                        <div class="key-point">百度千帆 Coding Plan 终止，全面转向 Token Plan 按量计费</div>
+                        <div class="key-point">2026 年"万国造 Codex"现象：大厂纷纷自研编程工具</div>
+                        <div class="key-point">安全审查+自主可控双驱动，国产 AI 编程格局大洗牌</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">DeepSeek V4 正式版本周上线：高峰时段价格翻倍，DSpark 加速框架提效 60-85%</h3>
+                    <div class="news-content">
+                        <p>DeepSeek 官宣 <span class="highlight-bold">V4 正式版将于 7 月中旬正式上线</span>，本次更新将带来更多功能优化和性能提升。<span class="highlight-bold">正式版发布后将同步调整 API 定价策略，引入峰谷定价机制</span>：高峰时段（9:00-12:00/14:00-18:00）价格是平时的 2 倍。</p>
+                        <p>推理加速框架 <span class="highlight">DSpark</span>（与北京大学联合开发）已全量上线，<span class="highlight">V4-Flash 生成速度提升 60%-85%</span>。DeepSeek 已秘密启动<span class="highlight">自研推理芯片</span>项目，研发已持续一年有余，已完成与华为昇腾 950P 的全链路适配。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">DeepSeek V4 正式版本周上线，引入"高峰 2 倍定价"机制</div>
+                        <div class="key-point">DSpark 推理加速框架全量上线，速度提升 60%-85%</div>
+                        <div class="key-point">DeepSeek 秘密自研推理芯片，已适配华为昇腾 950P</div>
+                        <div class="key-point">峰谷定价为业内首创，意在引导用户错峰使用、稳定算力供给</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">7 月 AI 大乱斗：GPT-5.6、Grok 4.5、Gemini 3.5 Pro、DeepSeek V4 接连登场</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">7 月全球 AI 大模型竞赛进入密集发布窗口期</span>，国内外头部玩家几乎同步亮出新牌：OpenAI 旗舰 GPT-5.6 Sol 已于 7 月 9-10 日正式发布，<span class="highlight-bold">马斯克旗下 SpaceX AI 宣布 Grok 4.5 明日（7 月 11 日）向公众开放</span>（基于 1.5 万亿参数 V9 基础模型+Cursor 数据），<span class="highlight-bold">谷歌 Gemini 3.5 Pro 据悉将于 7 月 17 日上线</span>，国内 DeepSeek V4 正式版本周内发布。</p>
+                        <p>竞争不再仅比参数和基准，而是延伸到<span class="highlight">推理速度、定价策略、生态整合等全维度</span>。<span class="highlight">GPT-5.6 Sol 推理速度达 750 token/s</span>（基于 Cerebras 硬件），DeepSeek V4-Flash 提效 60-85%，Grok 4.5 强调 Cursor 数据加持。AI 进入"<span class="highlight-bold">全栈竞赛</span>"时代。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 Sol 已发布，Grok 4.5 7 月 11 日开放，Gemini 3.5 Pro 7 月 17 日</div>
+                        <div class="key-point">DeepSeek V4 正式版本周内上线，国内厂商"四天三连发"</div>
+                        <div class="key-point">竞争从参数扩展到推理速度、定价、生态整合等全维度</div>
+                        <div class="key-point">GPT-5.6 Sol 推理速度 750 tok/s 创纪录</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 🦾 具身智能 -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">3 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">特斯拉 Optimus 进入量产关键期：弗里蒙特工厂改装完毕，马斯克晒产线合照</h3>
+                    <div class="news-content">
+                        <p>特斯拉 CEO 埃隆·马斯克 7 月 1 日在社交媒体发布了一张与近 30 位员工在 <span class="highlight-orange">Optimus 机器人生产线</span>前的大合照，并配文"在弗里蒙特工厂参观 Optimus 机器人生产线"。这一动作标志着<span class="highlight-orange">特斯拉人形机器人 Optimus 正式进入量产关键阶段</span>。</p>
+                        <p>在 Model S 和 Model X 停产后，工作人员<span class="highlight-orange">拆除了原有的车辆生产线</span>，并在大约四个月内安装了全新的模块化设备，包括从德国采购的生产线以及数十条用于执行器、关节、传感器的专用产线。机构预测 Optimus V3 将于 <span class="highlight-orange">7-8 月小规模投产</span>，2027 年产能爬升至 <span class="highlight-orange">年产 100 万台</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">马斯克晒 Optimus 产线合照，特斯拉正式进入量产关键阶段</div>
+                        <div class="key-point">弗里蒙特工厂用 4 个月完成车辆产线→机器人产线改造</div>
+                        <div class="key-point">7-8 月小规模投产，2027 年产能目标年产 100 万台</div>
+                        <div class="key-point">德国进口核心设备+数十条执行器/关节/传感器专用产线</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">宇树科技 IPO 注册生效后股价引爆 A 股：人形机器人板块 50 余股涨停</h3>
+                    <div class="news-content">
+                        <p>证监会 7 月 3 日同意宇树科技科创板 IPO 注册申请，<span class="highlight-orange">宇树 IPO 从 3 月 20 日受理到注册生效仅用 104 天</span>，刷新科创板审核速度纪录。当日 A 股人形机器人板块整体涨幅超 3%，<span class="highlight-orange">超 50 只个股涨停或涨幅超过 10%</span>。绿的谐波、拓普集团、均胜电子、光洋股份、丰光精密等 40 余股封涨停。</p>
+                        <p><span class="highlight-orange">宇树本次 IPO 新股发行比例不低于 10%</span>，目标融资金额 <span class="highlight-orange">42.02 亿元</span>，所募资金将投入智能机器人模型、本体研发，新型智能机器人产品开发以及智能机器人制造基地建设。截至 7 月 3 日，机器人相关概念股已有 <span class="highlight-orange">13 股年内涨超 100%</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">宇树 IPO 注册生效，104 天刷新科创板审核速度纪录</div>
+                        <div class="key-point">融资金额 42.02 亿元，重点投向模型/本体研发+制造基地建设</div>
+                        <div class="key-point">人形机器人板块 50 余股涨停，13 股年内涨幅超 100%</div>
+                        <div class="key-point">A 股迎来"具身智能第一股"，板块长期价值获重估</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">WAIC 2026 开幕倒计时一周：万台量产、路线归一，具身智能进入"产业真干活"分水岭</h3>
+                    <div class="news-content">
+                        <p>2026 世界人工智能大会（WAIC）将于 <span class="highlight-orange">7 月 17-19 日</span>在上海举办，其中<span class="highlight-orange">具身智能展区规模创历届之最</span>。从产业现状看，2025 年被业内称为"量产元年"，2026 年则站在"<span class="highlight-orange">从 Demo 到量产、从讲故事到商业闭环</span>"的关键切换窗口。</p>
+                        <p>2026 年 1-5 月，<span class="highlight-orange">全国具身智能产业企业销售收入同比增长 22.4%</span>，工业企业购进具身智能机器人订单激增。政策窗口已打开：2025 年具身智能首次写入政府工作报告，2026 年"十五五"规划将其纳入国家未来产业重点战略布局。<span class="highlight-orange">武汉</span>走"数据与场景"非典型路径，<span class="highlight-orange">京沪深杭汉</span>五城形成各具特色的产业生态。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WAIC 2026 7 月 17 日开幕，具身智能展区规模历届之最</div>
+                        <div class="key-point">2026 年 1-5 月具身智能企业销售收入同比+22.4%</div>
+                        <div class="key-point">产业进入"标准体系完善+产品价格下探+资本持续加码"三重驱动</div>
+                        <div class="key-point">京沪深杭汉五城差异化竞争：武汉押注"数据+场景"非典型路径</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察今日四大领域最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-icon">🤖</div>
+                    <h3>AI 从"模型竞赛"升级为"全栈竞赛"</h3>
+                    <p>GPT-5.6 Sol、Grok 4.5、Gemini 3.5 Pro、DeepSeek V4 四款旗舰模型集中发布/开放，竞争不再仅比参数和基准，而是延伸到推理速度、定价策略、生态整合等全维度。</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🛢️</div>
+                    <h3>中东危机重塑全球资产定价</h3>
+                    <p>霍尔木兹海峡基本停运引发"三重冲击"：油价突破 $90、海运中断、新兴市场货币暴跌。韩国进入熊市、黄金突破 $4600，地缘风险成为下半年最大变量。</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🏭</div>
+                    <h3>具身智能从"Demo"到"部署"的关键一跃</h3>
+                    <p>宇树 IPO 注册生效+特斯拉 Optimus 量产关键期+WAIC 2026 倒计时，三重里程碑标志着人形机器人产业从"讲故事"正式进入"商业闭环"阶段。</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🇨🇳</div>
+                    <h3>中国 AI 自主替代加速</h3>
+                    <p>工信部对 Claude Code 发出安全警告、阿里禁用 Claude 推 Qoder、DeepSeek 自研芯片、国产编程工具崛起，在安全审查+算力自主双重驱动下，中国 AI 生态正在快速走向"去美化"。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">数据来源：新华网 · 财新网 · 36 氪 · 量子位 · IT 之家 · 新浪财经 · 澎湃新闻 · 21 世纪经济报道 · 投资界 · Al-Monitor · Politico · Mint · 路透社</p>
+            <p class="footer-meta">整理时间：2026-07-10 09:30 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
