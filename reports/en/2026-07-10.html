@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-10</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+
+        .header .subtitle { font-size: 18px; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+
+        .section {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count { background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+
+        .news-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px; position: relative;
+            transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .key-point {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px;
+        }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '→'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255,255,255,0.5); font-size: 14px; }
+
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+
+        .trend-card {
+            background: rgba(255,255,255,0.03); border-radius: 16px; padding: 24px;
+            transition: all 0.3s ease;
+        }
+        .trend-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-07-10</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News · International Affairs · AI Coding · Embodied Intelligence</p>
+        </header>
+
+        <!-- Row 1: China Hot News + International Affairs -->
+        <div class="sections">
+
+            <!-- 🇨🇳 China Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">OpenAI GPT-5.6 Series Global Launch Today, Chinese Models Counterattack in "July 7th AI Showdown"</h3>
+                    <div class="news-content">
+                        <p>OpenAI officially launched its <span class="highlight-bold">three-tier GPT-5.6 series</span> to global users in the early hours of today: flagship Sol, balanced Terra, and low-cost Luna. Sol features an "Ultra Mode" that defaults to coordinating 4 AI Agents in parallel for complex tasks, priced at $5/$30 per million tokens (input/output). ChatGPT Work native agents also launched, with the Codex coding tool integrated into a unified desktop client. Microsoft CEO Nadella confirmed Copilot will be simultaneously integrated.</p>
+                        <p>Chinese vendors counter on the same day: Alibaba fully banned Claude and promoted Qoder starting today; DeepSeek V4 official version launches this week with "peak-valley pricing" (peak hours 9:00-12:00/14:00-18:00 at 2x the standard rate); ByteDance's Doubao responded to rumors of "internal social features testing": no such plans. The concentration of domestic and international model launches in a single day has been dubbed the "<span class="highlight-bold">July 7th AI Showdown</span>."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 Sol Ultra Mode supports 4 parallel Agents; Codex integrated into ChatGPT desktop</div>
+                        <div class="key-point">Microsoft Copilot simultaneously integrates GPT-5.6; Nadella confirms deep integration</div>
+                        <div class="key-point">Alibaba bans Claude today and promotes Qoder; Chinese models counterattack</div>
+                        <div class="key-point">DeepSeek V4 launches this week with "peak hours 2x pricing" mechanism</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">June CPI +1.0% YoY, PPI +4.1% YoY: PPI Tops Out and Begins to Decline</h3>
+                    <div class="news-content">
+                        <p>China's National Bureau of Statistics released data on July 9: June <span class="highlight-bold">CPI rose 1.0% year-on-year</span>, while <span class="highlight-bold">PPI rose 4.1% year-on-year but fell 0.3% month-on-month</span>. The producer price index shows a "topping out" signal, reflecting significant progress in industrial transformation between old and new growth drivers. The consumption side warmed moderately while industrial product prices retreated from highs.</p>
+                        <p>The central bank continues to implement a "moderately accommodative monetary policy" this year, with a 0.25 percentage point RRR cut on July 5 releasing approximately ¥500 billion in long-term funds. Multiple banks' USD time deposit rates have broken 3% annualized, and institutions are intensively researching AI industry chain upstream enterprises with sufficient orders and gradually realized performance. Special sci-tech innovation bonds have issued ¥5.47 billion this year, <span class="highlight-bold">already exceeding last year's full-year total</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">June CPI +1.0%, PPI +4.1% YoY / -0.3% MoM; industrial prices top out</div>
+                        <div class="key-point">PBOC RRR cut 0.25pp on July 5 releases ¥500B; USD time deposit rates break 3%</div>
+                        <div class="key-point">Special sci-tech bonds issue ¥5.47B this year, surpassing 2025 full-year; institutions scout AI chains</div>
+                        <div class="key-point">PBOC reaffirms "moderately accommodative" stance, increases real economy support</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Iran Retaliates Against 85 US Military Targets, Shoots Down MQ-9 Drone; Middle East Tensions Reignite</h3>
+                    <div class="news-content">
+                        <p>Iran's Revolutionary Guard Corps announced retaliation against <span class="highlight-bold">85 important US military targets</span> in the Middle East and shot down a US MQ-9 "Reaper" drone. This is a hard response to the US military's two consecutive overnight airstrikes on Iranian territory on July 7-8 (hitting 80+ targets). Trump declared the US-Iran ceasefire agreement "terminated" and restored all oil sanctions on Iran.</p>
+                        <p>International oil prices surged 7% on July 8, with <span class="highlight-bold">Brent crude breaking through $90/barrel</span> to a 2026 high; US semiconductor and memory concept stocks surged in late trading, with the Philadelphia Semiconductor Index up over 2% and <span class="highlight-bold">NVIDIA up over 3%</span>. China's Ministry of Foreign Affairs called on all parties to exercise restraint and resolve differences through dialogue and consultation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Iran retaliates against 85 US military targets, shoots down MQ-9 drone, tensions escalate</div>
+                        <div class="key-point">Brent crude surges 7% past $90; global risk aversion intensifies</div>
+                        <div class="key-point">Philadelphia Semiconductor Index up 2%+, NVIDIA +3%; tech becomes new safe haven</div>
+                        <div class="key-point">China's MOFA urges restraint and resolution through dialogue</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">GPT-5.6 Sol Launches Domestically, Chinese AI Coding Tools "Counterattack" on July 10</h3>
+                    <div class="news-content">
+                        <p>Alibaba officially fully banned Claude Code today, recommending its self-developed <span class="highlight-bold">Qoder</span> as an internal alternative, following MIIT's earlier security backdoor risk advisory on Claude Code. Baidu Qianfan Coding Plan stopped renewals at the end of June, <span class="highlight-bold">fully transitioning to Token Plan pay-per-use from July</span>. Tencent, ByteDance, SenseTime and other majors have intensively released new versions of coding tools since July.</p>
+                        <p>Data shows that <span class="highlight-bold">some Chinese AI large models are 90% cheaper than US peers</span>, with domestic cost-performance advantages continuing to climb in the US enterprise market. Beijing's Municipal Bureau of Economy and Information Technology has committed to building 10,000-card computing clusters, adding 70,000 PFlops of intelligent computing power this year. The <span class="highlight-bold">2026 "Universal Codex" phenomenon</span> has entered a white-hot stage.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Alibaba fully bans Claude and promotes Qoder from July 10; MIIT backdoor warning escalates</div>
+                        <div class="key-point">Baidu Qianfan Coding Plan terminated, fully transitions to Token Plan pay-per-use</div>
+                        <div class="key-point">Chinese AI models 90% cheaper than US peers; cost-performance is a global calling card</div>
+                        <div class="key-point">Beijing 70,000 PFlops intelligent computing + 10,000-card cluster; "de-Americanized" foundation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">National Essential Medicines List (2026 Edition) Takes Effect September 1, Including 794 Drugs</h3>
+                    <div class="news-content">
+                        <p>China's National Health Commission issued a notice that the <span class="highlight-bold">National Essential Medicines List (2026 Edition)</span> will officially take effect on September 1. The new catalog includes <span class="highlight-bold">794 drugs</span>, comprising 476 chemical drugs and biological products and 318 Chinese patent medicines, an increase of nearly 70 from the 2018 edition.</p>
+                        <p>Adjustments focus on major disease areas such as tumors, chronic diseases, pediatric medications, and rare diseases, <span class="highlight-bold">adding 80+ innovative drugs</span> with significantly expanded disease coverage. Medical insurance departments will simultaneously promote "dual-channel" management to ensure that listed drugs are "available, usable, and reimbursable" in designated hospitals and pharmacies. This adjustment is seen by the industry as a "key step in the deep waters of healthcare reform."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">New National Essential Medicines List takes effect Sept 1, with drug count rising from 685 to 794</div>
+                        <div class="key-point">Key expansion in oncology, chronic disease, pediatric, rare disease drugs; 80+ new innovative drugs</div>
+                        <div class="key-point">"Dual-channel" management ensures availability, usability, and reimbursement at the grassroots</div>
+                        <div class="key-point">Industry calls it a "key step in healthcare reform deep waters," strengthening essential drug dominance</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Summer Cultural Tourism Season Heats Up: Laojun Mountain's ¥60,000/Month "Cloud Sea Observer" Goes Viral</h3>
+                    <div class="news-content">
+                        <p>Since the launch of the 2026 National Summer Cultural and Tourism Consumption Season, <span class="highlight-bold">over ¥450 million in cultural tourism vouchers</span> have been distributed nationwide, covering scenic spot tickets, hotels, and performances. Henan Province's Laojun Mountain scenic area's high-paying recruitment of a "<span class="highlight-bold">Cloud Sea Observer</span>" (monthly salary ¥60,000 with room and board) continues to generate online buzz.</p>
+                        <p>Ministry of Culture and Tourism data shows that <span class="highlight-bold">summer domestic inter-city travel orders are up 18% year-on-year</span>, with family travel, summer escape tourism, and night economy becoming the three main forces. The central bank reaffirmed its commitment to "continuing to implement moderately accommodative monetary policy" and increasing counter-cyclical adjustments to safeguard consumption recovery. Experts point out that the combination of cultural tourism vouchers and high-temperature summer escape needs is unleashing summer consumption potential.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">National ¥450M in cultural tourism vouchers distributed; summer travel orders up 18% YoY</div>
+                        <div class="key-point">Laojun Mountain's ¥60K/month "Cloud Sea Observer" goes viral; summer escape tourism heats up</div>
+                        <div class="key-point">PBOC reaffirms moderately accommodative monetary policy, supporting consumption recovery</div>
+                        <div class="key-point">Family travel, summer escape tourism, and night economy become the three main forces</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 🌍 International Affairs -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US-Iran War Fully Escalates: US Overnight Airstrikes on Iranian Soil, Iran Retaliates 85 Targets and Shoots Down MQ-9</h3>
+                    <div class="news-content">
+                        <p>US Central Command issued a statement on July 7 confirming <span class="highlight-bold">completion of a new round of offensive strikes against Iran</span>, using precision-guided weapons to hit 80+ targets with four times the previous firepower. Trump declared the US-Iran ceasefire "terminated," restored all oil sanctions on Iran, and revoked Iran's oil export license.</p>
+                        <p>Iran's Revolutionary Guard Corps announced retaliation against 85 important US military targets and shot down an MQ-9 drone. Iran's Supreme Leader Khamenei vowed to <span class="highlight-bold">"launch large-scale strikes on US military bases and their allies."</span> Tanker traffic through the Strait of Hormuz has essentially stopped, putting about one-third of the world's seaborne oil routes at risk of disruption. International oil prices surged 7%, with Brent crude breaking $90/barrel.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">US airstrikes hit 80+ Iranian targets overnight, with 4x previous firepower</div>
+                        <div class="key-point">Iran retaliates against 85 US military targets, shoots down MQ-9 drone</div>
+                        <div class="key-point">Trump declares ceasefire "terminated," restores all oil sanctions</div>
+                        <div class="key-point">Strait of Hormuz tanker traffic essentially halted; global oil supply chain in crisis</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Brent Crude Breaks $90 to 2026 High, Global Financial Markets Shocked</h3>
+                    <div class="news-content">
+                        <p>Driven by the full escalation of the US-Iran military conflict, <span class="highlight-bold">Brent crude broke the $90/barrel mark on July 8</span>, surging over 7% in a single day. WTI crude simultaneously spiked above $87, reaching a 2026 high. Global shipping giants announced suspension of all routes through the Strait of Hormuz.</p>
+                        <p>Asia-Pacific markets bore the brunt: <span class="highlight-bold">South Korea's KOSPI index has fallen over 20% in 13 trading days</span>, officially entering a technical bear market, with the won hitting a 15-year low (1 USD to 1,480 KRW). Japan's Nikkei plunged 4.2% in a single session. Safe-haven assets surged, with <span class="highlight-bold">spot gold breaking $4,600/oz</span> to new all-time highs. Institutions warn: geopolitical risk is the biggest variable for the second half of 2026.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Brent breaks $90, WTI surges to $87 — both 2026 highs</div>
+                        <div class="key-point">Shipping giants suspend Hormuz routes; global trade severely disrupted</div>
+                        <div class="key-point">South Korean stocks enter technical bear market; won at 15-year low</div>
+                        <div class="key-point">Gold breaks $4,600 to record; geopolitical risk is the biggest variable</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">South Korea Faces "Triple Crisis": Stocks in Bear Market, Won Collapses, Exports Plunge</h3>
+                    <div class="news-content">
+                        <p>South Korea's economy is experiencing <span class="highlight-bold">its most severe "triple crisis" since 2008</span>. The KOSPI index has fallen over 20% in 13 trading days, <span class="highlight-bold">officially entering a technical bear market</span>; the won has broken past 1,480 per US dollar, its lowest level since 2009; June exports plunged 7.2% year-on-year (with semiconductor exports particularly weak).</p>
+                        <p>Analysts point out that as an export-oriented economy, South Korea has been hit by a double blow from US-China trade frictions and soaring energy costs from the Strait of Hormuz crisis. The Bank of Korea has convened an emergency monetary policy meeting, but market confidence is severely lacking. <span class="highlight-bold">Samsung Electronics and other heavyweights led the decline</span>, with foreign investors recording net selling of Korean stocks for 18 consecutive trading days.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">KOSPI plunges 20%+ in 13 days to enter bear market; won at 15-year low</div>
+                        <div class="key-point">Soaring energy costs + shrinking exports deliver double blow to Korean economy</div>
+                        <div class="key-point">Foreign investors sell for 18 straight days; BOK emergency meeting fails to stem rout</div>
+                        <div class="key-point">Samsung, SK and other heavyweights lead decline; June semiconductor exports drop sharply</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Trump Threatens "Bombing Will Get Much Worse," Global Shipping Industry Grinds to Halt</h3>
+                    <div class="news-content">
+                        <p>Trump warned on social media on July 8: "<span class="highlight-bold">If Iran does not stop its aggression, the bombing will get much worse — we will complete the job.</span>" Iran's Supreme Leader Khamenei responded firmly, vowing to "launch large-scale strikes on US military bases and their allies."</p>
+                        <p>Tanker traffic through the Strait of Hormuz has essentially stopped, with about one-third of global seaborne oil routes facing disruption. Maersk, MSC, CMA CGM, and other shipping giants have suspended all Hormuz routes. The <span class="highlight-bold">global supply chain alarm</span> has been raised, with European and North Asian refineries activating emergency plans. The International Energy Agency (IEA) urgently released 60 million barrels of strategic petroleum reserves to stabilize the market.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Trump threatens "bombing will get much worse"; Khamenei vows massive retaliation</div>
+                        <div class="key-point">Strait of Hormuz tanker traffic essentially halted; global shipping grinds to a halt</div>
+                        <div class="key-point">Maersk, MSC, CMA CGM suspend Hormuz routes</div>
+                        <div class="key-point">IEA urgently releases 60M barrels of strategic reserves to stabilize the market</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Argentina Stuns Egypt 3-2 with Last-Minute Comeback to Reach Quarters, Messi 1 Goal 1 Assist</h3>
+                    <div class="news-content">
+                        <p>In a 2026 World Cup Round of 16 thriller, <span class="highlight-bold">Argentina completed a stunning comeback from 0-2 down</span> to defeat Egypt 3-2 with a stoppage-time winner and advance to the quarterfinals. Messi contributed 1 goal and 1 assist, with <span class="highlight-bold">Di Maria scoring the 94th-minute winner</span>. The match has been called one of the greatest comebacks in World Cup history.</p>
+                        <p>Argentina dominated with 68% possession and 24 shots, showcasing the defending champion's unbreakable spirit. Egypt went down fighting — <span class="highlight-bold">Salah's brace</span> nearly carried the African side to a historic upset. Argentina will face the winner of Belgium vs. Paraguay in the quarterfinals.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Argentina storms back from 0-2 down; Di Maria's 94th-minute winner</div>
+                        <div class="key-point">Messi delivers 1 goal + 1 assist in legendary performance for defending champions</div>
+                        <div class="key-point">Salah's brace not enough for valiant Egypt, who fought to the last bullet</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">FIVB Allows Russian Athletes to Return to International Competition, Ukraine Strongly Condemns</h3>
+                    <div class="news-content">
+                        <p>The International Volleyball Federation (FIVB) officially announced on July 8 that <span class="highlight-bold">Russian and Belarusian athletes and teams may return to international volleyball competitions under neutral status</span>, effective immediately. Following the IOC's recommendation for sports federations to gradually reintegrate Russian and Belarusian athletes, this marks <span class="highlight-bold">the first major international sports organization to make a substantive decision</span>.</p>
+                        <p>The decision has triggered widespread controversy. Ukraine's Foreign Ministry issued a strong condemnation, calling it "a reward for aggression." Poland's Volleyball Federation announced it would boycott events featuring Russian participation, while USA Volleyball said it "respects the decision but is deeply disappointed." Analysts believe this decision may trigger a chain reaction, with tennis, athletics, and other sports potentially following suit.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">FIVB allows Russian and Belarusian athletes back under neutral status</div>
+                        <div class="key-point">Ukraine strongly condemns; Poland announces boycott</div>
+                        <div class="key-point">First major sports body to implement IOC recommendation on Russian reintegration</div>
+                        <div class="key-point">Concerns over chain reaction; tennis, athletics and other sports may follow</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Row 2: AI Coding + Embodied Intelligence -->
+        <div class="sections">
+
+            <!-- 💻 AI Coding -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">OpenAI GPT-5.6 Series Goes Global Today: Flagship Sol + Codex Integration + ChatGPT Work Agents</h3>
+                    <div class="news-content">
+                        <p>OpenAI officially announced today (July 10) that the <span class="highlight-bold">three-tier GPT-5.6 series is now globally available</span>: flagship Sol, balanced Terra, and low-cost Luna. Sol introduces an all-new "Ultra Mode" that defaults to coordinating 4 AI Agents in parallel for complex tasks, breaking records across coding, biology, and cybersecurity benchmarks. GPT-5.6 Sol is priced at $5/$30 per million tokens (input/output).</p>
+                        <p>Simultaneously launching are <span class="highlight-bold">ChatGPT Work native agents</span>, with <span class="highlight-bold">the standalone Codex coding tool integrated into a unified ChatGPT desktop client</span>, covering web, mobile, Windows, and macOS across all platforms. Microsoft CEO Nadella confirmed Copilot integration. GPT-5.6 underwent limited partner previewing at the end of June and US government security review before being formally pushed to all users.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 Sol/Terra/Luna three tiers globally available; Ultra Mode supports 4 parallel Agents</div>
+                        <div class="key-point">Standalone Codex integrated into unified ChatGPT desktop client across all platforms</div>
+                        <div class="key-point">Microsoft Copilot simultaneously integrates GPT-5.6; Nadella confirms deep integration</div>
+                        <div class="key-point">After US government security review approval, formal push from preview to full commercial use</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Alibaba Bans Claude, Baidu Discontinues Coding Plan, Chinese AI Coding Tools "Reshuffle" in July</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">Alibaba officially fully banned Claude Code today (July 10)</span>, requiring all internal employees to switch to its self-developed Qoder. Following MIIT's earlier security backdoor risk advisory on Claude Code, the <span class="highlight-bold">Baidu Qianfan Coding Plan</span> stopped renewals at the end of June and has <span class="highlight-bold">fully transitioned to Token Plan pay-per-use from July</span>.</p>
+                        <p>Industry analysis points to a 2026 "<span class="highlight-bold">Universal Codex</span>" phenomenon — internet giants and model vendors are all launching their own AI coding tools, evolving from competing against Claude Code to building <span class="highlight">autonomous and controllable tool ecosystems</span>. Tencent, ByteDance, SenseTime, and Zhipu have intensively released new versions of coding tools, and the Chinese AI programming landscape is undergoing an unprecedented reshuffling.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Alibaba fully bans Claude and promotes Qoder from July 10; 100K+ internal employees switch</div>
+                        <div class="key-point">Baidu Qianfan Coding Plan terminated; fully transitions to Token Plan pay-per-use</div>
+                        <div class="key-point">2026 "Universal Codex" phenomenon: major players all build proprietary coding tools</div>
+                        <div class="key-point">Security reviews + autonomous controllability drive Chinese AI coding landscape reshuffling</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">DeepSeek V4 Official Version Launches This Week: Peak Hours 2x Pricing, DSpark Acceleration Boosts 60-85%</h3>
+                    <div class="news-content">
+                        <p>DeepSeek officially announced that the <span class="highlight-bold">V4 official version will launch in mid-July</span>, bringing more functional optimizations and performance improvements. <span class="highlight-bold">The official version will simultaneously adjust API pricing strategy, introducing a peak-valley pricing mechanism</span>: peak hours (9:00-12:00/14:00-18:00) will be priced at 2x the standard rate.</p>
+                        <p>The inference acceleration framework <span class="highlight">DSpark</span> (co-developed with Peking University) is now fully deployed, <span class="highlight">boosting V4-Flash generation speed by 60%-85%</span>. DeepSeek has secretly launched a <span class="highlight">self-developed inference chip</span> project that has been underway for over a year, having completed full-chain adaptation with Huawei Ascend 950P.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">DeepSeek V4 official version launches this week with "peak 2x pricing" mechanism</div>
+                        <div class="key-point">DSpark inference acceleration framework fully deployed, boosting speed 60-85%</div>
+                        <div class="key-point">DeepSeek secretly developing self-developed inference chips; already adapted to Huawei Ascend 950P</div>
+                        <div class="key-point">Industry-first peak-valley pricing aims to guide off-peak usage and stabilize computing supply</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">July AI Showdown: GPT-5.6, Grok 4.5, Gemini 3.5 Pro, DeepSeek V4 Take the Stage in Succession</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">The global AI large model competition has entered an intensive release window in July</span>, with domestic and international head players almost simultaneously unveiling new cards: OpenAI's flagship GPT-5.6 Sol officially launched July 9-10, <span class="highlight-bold">Musk's SpaceX AI announced Grok 4.5 will open to the public tomorrow (July 11)</span> (based on a 1.5 trillion parameter V9 foundation model + Cursor data), <span class="highlight-bold">Google Gemini 3.5 Pro is reportedly launching July 17</span>, and domestic DeepSeek V4 official version is releasing this week.</p>
+                        <p>Competition no longer just compares parameters and benchmarks, but extends to <span class="highlight">inference speed, pricing strategy, and ecosystem integration across all dimensions</span>. <span class="highlight">GPT-5.6 Sol achieves 750 token/s inference speed</span> (based on Cerebras hardware), DeepSeek V4-Flash improves 60-85%, and Grok 4.5 emphasizes Cursor data enhancement. AI has entered the "<span class="highlight-bold">full-stack competition</span>" era.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 Sol launched; Grok 4.5 opens July 11; Gemini 3.5 Pro on July 17</div>
+                        <div class="key-point">DeepSeek V4 official version launches this week; domestic vendors "three releases in four days"</div>
+                        <div class="key-point">Competition expands from parameters to inference speed, pricing, ecosystem integration</div>
+                        <div class="key-point">GPT-5.6 Sol inference speed hits record 750 tok/s</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 🦾 Embodied Intelligence -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 items</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Tesla Optimus Enters Critical Mass Production Period: Fremont Factory Modification Complete, Musk Posts Production Line Photo</h3>
+                    <div class="news-content">
+                        <p>Tesla CEO Elon Musk posted a group photo on social media on July 1 with nearly 30 employees in front of the <span class="highlight-orange">Optimus robot production line</span>, captioned "Visiting the Optimus robot production line at the Fremont factory." This action marks <span class="highlight-orange">Tesla's humanoid robot Optimus officially entering the critical mass production stage</span>.</p>
+                        <p>Following the discontinuation of Model S and Model X production, workers <span class="highlight-orange">removed the original vehicle production lines</span> and installed all-new modular equipment in approximately four months, including production lines imported from Germany and dozens of dedicated lines for actuators, joints, and sensors. Institutions predict Optimus V3 will begin <span class="highlight-orange">small-scale production in July-August</span>, with capacity ramping up to <span class="highlight-orange">1 million units annually by 2027</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Musk posts Optimus production line photo; Tesla officially enters critical mass production</div>
+                        <div class="key-point">Fremont factory completes vehicle-to-robot production line transformation in 4 months</div>
+                        <div class="key-point">Small-scale production in July-August; 2027 capacity target of 1 million units annually</div>
+                        <div class="key-point">German-imported core equipment + dozens of dedicated lines for actuators/joints/sensors</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Unitree Technology IPO Registration Triggers A-Share Frenzy: Humanoid Robot Sector Sees 50+ Stocks Hit Daily Limit</h3>
+                    <div class="news-content">
+                        <p>The China Securities Regulatory Commission approved Unitree Technology's STAR Market IPO registration on July 3, with <span class="highlight-orange">Unitree's IPO taking only 104 days from acceptance on March 20 to registration approval</span>, a new speed record. That day, A-share humanoid robot stocks rose over 3% overall, with <span class="highlight-orange">50+ stocks hitting the daily limit or rising over 10%</span>. Laird Harmonic, Tuopu Group, Joyson Electronics, Guangyang Shares, Fenggang Precision and 40+ others all hit the limit.</p>
+                        <p><span class="highlight-orange">Unitree's IPO will issue no less than 10% new shares</span>, targeting a fundraising amount of <span class="highlight-orange">¥4.202 billion</span>, to be invested in intelligent robot model and ontology R&D, new intelligent robot product development, and intelligent robot manufacturing base construction. As of July 3, <span class="highlight-orange">13 robot-related concept stocks have more than doubled year-to-date</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Unitree IPO registration approved; 104-day review sets STAR Market speed record</div>
+                        <div class="key-point">Fundraising of ¥4.202B focused on model/ontology R&D + manufacturing base construction</div>
+                        <div class="key-point">Humanoid robot sector sees 50+ daily limits; 13 stocks up 100%+ YTD</div>
+                        <div class="key-point">A-shares welcome "Embodied Intelligence First Stock"; sector long-term value reassessed</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">WAIC 2026 Opens in One Week: 10,000-Unit Mass Production, Route Convergence, Embodied AI at "Real Industrial Work" Watershed</h3>
+                    <div class="news-content">
+                        <p>The 2026 World Artificial Intelligence Conference (WAIC) will be held in Shanghai from <span class="highlight-orange">July 17-19</span>, with the <span class="highlight-orange">embodied intelligence exhibition area reaching its largest scale ever</span>. Looking at the industry landscape, 2025 is called the "first year of mass production" by the industry, and 2026 stands at the critical switching window for "<span class="highlight-orange">moving from Demo to mass production, from storytelling to commercial closed loops</span>."</p>
+                        <p>From January-May 2026, <span class="highlight-orange">national embodied intelligence industry enterprise sales revenue grew 22.4% year-on-year</span>, with surging orders for embodied intelligent robots from industrial enterprises. The policy window has opened: embodied intelligence was first written into the government work report in 2025, and the "15th Five-Year Plan" in 2026 includes it as a national strategic layout for future industries. <span class="highlight-orange">Wuhan</span> pursues a "data and scenarios" atypical path, while <span class="highlight-orange">Beijing, Shanghai, Shenzhen, Hangzhou, and Wuhan</span> form distinctive industrial ecosystems.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WAIC 2026 opens July 17; embodied intelligence exhibition area largest ever</div>
+                        <div class="key-point">Jan-May 2026 embodied intelligence enterprise sales revenue up 22.4% YoY</div>
+                        <div class="key-point">Industry enters "standards system improvement + product price decline + capital continues to add" triple driver</div>
+                        <div class="key-point">Five cities differentiated competition: Wuhan bets on "data + scenarios" atypical path</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 Key Trends Today</h2>
+                <p>Insights across today's four major domains</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-icon">🤖</div>
+                    <h3>AI Competition Escalates from "Model Race" to "Full-Stack Race"</h3>
+                    <p>GPT-5.6 Sol, Grok 4.5, Gemini 3.5 Pro, and DeepSeek V4 launch in rapid succession. Competition no longer centers on parameters and benchmarks alone, but extends across inference speed, pricing strategy, and ecosystem integration.</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🛢️</div>
+                    <h3>Middle East Crisis Reshapes Global Asset Pricing</h3>
+                    <p>The near-total shutdown of the Strait of Hormuz triggers a "triple shock": oil above $90, shipping disruption, and emerging market currency collapse. South Korea enters a bear market and gold breaks $4,600 — geopolitical risk is the defining variable of H2 2026.</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🏭</div>
+                    <h3>Embodied Intelligence: The Leap from "Demo" to "Deployment"</h3>
+                    <p>Unitree's IPO approval + Tesla Optimus mass production critical period + WAIC 2026 countdown — these three milestones mark the humanoid robot industry's transition from storytelling to commercial closed loops.</p>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-icon">🇨🇳</div>
+                    <h3>China's AI Self-Reliance Accelerates</h3>
+                    <p>MIIT's Claude Code warning, Alibaba's Claude ban and Qoder promotion, DeepSeek's custom chips, and the rise of domestic coding tools all point in one direction: driven by security reviews and computing autonomy, China's AI ecosystem is rapidly moving toward "de-Americanization."</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua · Caixin · 36Kr · QbitAI · IT Home · Sina Finance · The Paper · 21st Century Business Herald · VCBeat · Al-Monitor · Politico · Mint · Reuters</p>
+            <p class="footer-meta">Generated: 2026-07-10 09:30 | NEWS DAILY Automated Push</p>
+        </footer>
+    </div>
+</body>
+</html>
