@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-15</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+
+        .header .subtitle { font-size: 18px; color: rgba(255, 255, 255, 0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count { background: rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px; position: relative;
+            transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255, 255, 255, 0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .key-point { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 6px; }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '\2192'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255, 255, 255, 0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255, 255, 255, 0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+        .trend-card { background: rgba(255, 255, 255, 0.03); border-radius: 16px; padding: 24px; transition: all 0.3s ease; }
+        .trend-card:hover { background: rgba(255, 255, 255, 0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255, 255, 255, 0.6); line-height: 1.6; }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-desc { flex: 1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-07-15</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <div class="sections">
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">China's H1 Foreign Trade Surpasses 25 Trillion Yuan, Surging 16.9% YoY</h3>
+                    <div class="news-content">
+                        <p>China's General Administration of Customs reported on July 14 that H1 2026 total import and export value reached <span class="highlight-bold">25.47 trillion yuan</span>, breaking the 25-trillion mark for the first time in a comparable period with <span class="highlight-bold">16.9% year-on-year growth</span>. Q2 trade reached 13.61 trillion yuan, up 18.4%, the highest quarterly growth since Q3 2021.</p>
+                        <p>Exports grew 13.4% while imports surged 22.1%, outpacing exports by 8.7 percentage points. Smart bionic robots, lithium batteries, wind turbines and "cooling" home appliances precisely matched global demand. June alone saw 4.78 trillion yuan in trade, up 24.2%, marking <span class="highlight">17 consecutive months of growth</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Imports topped 10 trillion yuan for the first time in H1, improving trade balance</div>
+                        <div class="key-point">China's vast consumer market is becoming a global growth engine through imports</div>
+                        <div class="key-point">Smart robots, green energy, and appliances led export growth, showcasing manufacturing resilience</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">China Enters "Sanfu" Period as Extreme Heat Sweeps Nation, Tianjin Upgrades to Orange Alert</h3>
+                    <div class="news-content">
+                        <p>July 15 marks the official start of China's "<span class="highlight-bold">Sanfu</span>" (dog days of summer), lasting <span class="highlight-bold">40 days</span> through August 23. The National Meteorological Center maintained a yellow heat alert, with temperatures reaching <span class="highlight-bold">above 40°C</span> in Turpan Basin, southern Shaanxi, eastern Sichuan, and western Chongqing.</p>
+                        <p>Tianjin upgraded its heat alert from yellow to <span class="highlight">orange</span> at 9:00 AM, with downtown temperatures expected to exceed 37°C. Over ten provinces from Hubei to Zhejiang are experiencing 37-39°C heat, while southern regions face simultaneous heavy rainfall from tropical disturbances.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">40-day extended Sanfu tests power grid resilience across a dozen provinces</div>
+                        <div class="key-point">Heatwave overlapping with torrential rain in Guangxi and Guangdong creates compound disaster risks</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Typhoon Bavi Dissipates, Songhua River Sees First Flood of 2026, China Allocates 430M Yuan in Disaster Relief</h3>
+                    <div class="news-content">
+                        <p>Typhoon Bavi (No. 9 of the season) dissipated into an extratropical cyclone over southern North Korea at 20:00 on July 14, and the National Meteorological Center ceased tracking. Yangtze River shipping has fully resumed between Hubei and Anhui.</p>
+                        <p>However, residual risks persist: the <span class="highlight-bold">Songhua River (Jilin section) recorded its first flood of 2026</span>. The State Flood Control Headquarters elevated emergency response to Level 3 for five provinces including Beijing, Tianjin, and Liaoning. <span class="highlight">The Ministry of Finance and Ministry of Emergency Management urgently allocated 430 million yuan</span> to support 10 provinces and regions.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Post-typhoon secondary disaster risks remain with a new flood on the Songhua River</div>
+                        <div class="key-point">National response escalated to Level 3 with 430M yuan and multiple task forces deployed</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Foreign Ministry Denounces South China Sea Arbitration Ruling on 10th Anniversary</h3>
+                    <div class="news-content">
+                        <p>On July 14, Foreign Ministry Spokesperson Lin Jian addressed the 10th anniversary of the so-called South China Sea Arbitration ruling, calling it <span class="highlight-bold">"a political farce dressed in legal garb."</span> He stated the illegal "award" will not change China's sovereignty, sovereign rights, and jurisdiction over the South China Sea islands and adjacent waters.</p>
+                        <p>China reiterated its position: <span class="highlight">non-acceptance, non-participation, and non-recognition</span> of any claims or actions based on this ruling. China will continue working with ASEAN nations to resolve disputes through negotiation and maintain peace in the South China Sea.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">CPC Central Committee Expels Ma Xingrui from Party and Public Office, Multiple Provincial-Level Cases Filed</h3>
+                    <div class="news-content">
+                        <p>CCTV reported on July 15 that the <span class="highlight-bold">CPC Central Committee decided to expel Ma Xingrui from the Party and remove him from public office</span>. Additionally, prosecutors indicted former State Tobacco Monopoly Administration deputy head Han Zhanwu and former Guizhou CPPCC vice chairman Tang Dezhi on bribery charges.</p>
+                        <p>The dense announcements of <span class="highlight">provincial and ministerial-level corruption cases</span> signal that the central anti-corruption campaign continues at full force with no signs of easing.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Shenzhen Metro Addresses Controversial Ads, Hunan Rice Fraud Exposed, Hohhot Revokes AI-Generated Photo Award</h3>
+                    <div class="news-content">
+                        <p>Shenzhen Metro responded to citizen complaints about "visually offensive" advertisements and launched <span class="highlight-bold">station-by-station inspections and optimizations across all 15 lines</span>. CCTV's Focus Report exposed fraudulent rice acreage reporting in Jianghua County, Hunan; a municipal task force has been dispatched for a full investigation.</p>
+                        <p>Hohhot Literary Federation revoked all competition recognitions after an award-winning photograph was found to be <span class="highlight">AI-generated rather than original real-scene photography</span>, extending AI content governance from policy to cultural events.</p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US-Iran Conflict Fully Escalates: Third Night of Strikes, Naval Blockade Restored, Iran Destroys US Fifth Fleet Radar</h3>
+                    <div class="news-content">
+                        <p>On July 14, the US military launched a "<span class="highlight-bold">third consecutive night</span>" of strikes on Iran and announced restoration of the maritime blockade against Iranian ports and coastal vessels. Iran's Revolutionary Guard retaliated with <span class="highlight-bold">missile strikes</span> on US military bases in Bahrain and Jordan, releasing video of a destroyed US Fifth Fleet radar installation.</p>
+                        <p>Iran's Supreme Leader military advisor Rezaei declared "<span class="highlight">the US-Iran Memorandum of Understanding no longer exists; the enemy has formally entered a state of war.</span>" The MoU, signed less than a month ago, has collapsed with both sides accusing each other of violations. Global Times editorial warned: the bills for great-power strategic mistakes are always astronomical.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">MoU collapses within one month of signing, Middle East security architecture faces total restructuring</div>
+                        <div class="key-point">US maritime blockade + Iranian missile retaliation make the Strait of Hormuz a powder keg again</div>
+                        <div class="key-point">Global Times: The world will be dragged into sustained "blood loss," urges rational "stop the bleeding"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Oil Prices Surge Over 9% in a Single Day, Brent Breaches $87, Two Tankers Attacked in Strait of Hormuz</h3>
+                    <div class="news-content">
+                        <p>International oil prices soared on the escalating US-Iran conflict. Brent crude surged past <span class="highlight-bold">$87/barrel</span> and WTI broke <span class="highlight-bold">$81/barrel</span>, with single-day gains exceeding 9%. Abu Dhabi National Oil Company confirmed <span class="highlight">two tankers were attacked in the Strait of Hormuz</span>.</p>
+                        <p>Analysts warn the geopolitical conflict could become a "chronic pain point" for oil markets, compounding an already fragile global supply chain. Global inflation pressures and supply chain risks are forming a dangerous resonance.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Brent at $87 marks a new high for this conflict cycle, energy market panic spreading</div>
+                        <div class="key-point">Strait of Hormuz carries ~1/3 of global seaborne oil, crisis reverberating worldwide</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Fed Chair Warsh Delivers Hawkish Congressional Debut: Zero Tolerance on Inflation, Forms Five Task Forces for Full Policy Review</h3>
+                    <div class="news-content">
+                        <p>Kevin Warsh made his first Congressional testimony as Fed Chair with a decidedly <span class="highlight-bold">hawkish stance</span>. He declared "<span class="highlight">zero tolerance</span>" for the five-year inflation spell and explicitly rejected market views that June's CPI dip meant victory over inflation.</p>
+                        <p>Warsh announced five task forces to review the Fed's policy framework "<span class="highlight-bold">starting from a blank sheet of paper</span>," while rebuffing Trump administration pressure for rate cuts. He emphasized the Fed's commitment to data-dependent, independent decision-making. US June CPI fell to 3.5% YoY from May's 4.2%, but remains well above the 2% target.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Warsh's "three noes": no rate cuts, no commitments, no compromises &mdash; hawkishness exceeded market expectations</div>
+                        <div class="key-point">Five task forces conducting a full framework review could reshape Fed policy for years to come</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Trump Announces "Massive" Oil Deal with Iraq, Replacing Hormuz Transit Fees with Trade &amp; Investment Agreements</h3>
+                    <div class="news-content">
+                        <p>President Trump announced on July 14 a decision to <span class="highlight-bold">replace the proposed 20% fee on Hormuz Strait cargo transit with trade and investment agreements</span> with Gulf nations. Iraqi PM Al-Zaidi's visit to Washington yielded a preview of what both sides call "<span class="highlight">one of the largest-ever</span>" oil deals, expected this week or next.</p>
+                        <p>Al-Zaidi explicitly demanded US troop withdrawal by September 30 with American companies entering Iraq simultaneously &mdash; representing a tectonic shift from military-led to economic-led US-Iraq relations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Shift from military coercion to economic cooperation: trade agreements replace forced transit fees</div>
+                        <div class="key-point">Iraq demands timeline for US withdrawal plus American business entry, reshaping Middle East power dynamics</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Spain Defeats France 2-0, First to Reach World Cup Final</h3>
+                    <div class="news-content">
+                        <p>In the 2026 FIFA World Cup semifinals, <span class="highlight-bold">Spain eliminated France 2-0</span>, becoming the first team to book a spot in the final &mdash; Spain's first World Cup final appearance in 16 years. The other semifinal pits <span class="highlight">Argentina against England</span>, with the winner facing Spain for the title.</p>
+                        <p>This World Cup has already delivered historic moments: Cristiano Ronaldo scoring in a sixth consecutive tournament, Haaland's seven goals tying Messi and Mbappe. If Argentina advances, Messi could play his "last dance" in a World Cup final.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Ten European Nations Form Anti-Missile Defense Alliance, Russia Says 5-10 Years from Reality</h3>
+                    <div class="news-content">
+                        <p>During the Paris "Coalition of the Willing" summit, <span class="highlight-bold">Denmark, France, Germany, Italy, the Netherlands, Norway, Spain, Sweden, Ukraine, and the UK</span> signed a joint declaration establishing a purely defensive anti-ballistic missile alliance. President Macron also announced international forces would conduct joint military exercises with Ukraine in a neighboring country.</p>
+                        <p>Russia responded coolly, saying such plans are <span class="highlight">5-10 years from practical implementation</span>. Meanwhile, Hungary's parliament passed a constitutional amendment to impeach the president, highlighting political turbulence within Europe itself.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">European defense autonomy milestone: first 10-nation joint anti-missile pact</div>
+                        <div class="key-point">Macron pushes for international force exercises with Ukraine, accelerating European security architecture reform</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <div class="sections">
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Meta Launches Muse Spark 1.1: 1M-Token Context, Multimodal Agent Model with Free Credits to Woo Developers</h3>
+                    <div class="news-content">
+                        <p>Meta Superintelligence Labs launched <span class="highlight-bold">Muse Spark 1.1</span> on July 9, the biggest upgrade in three months under AI chief Alexandr Wang. Positioned as a <span class="highlight">multimodal reasoning and agentic model</span>, it features a 1-million-token context window with proactive context management, multi-agent orchestration where it can serve as a master agent delegating to sub-agents in parallel.</p>
+                        <p>Each new API account receives <span class="highlight-bold">$20 in free credits</span>, with pricing below GPT-5.6 and Claude competitors. The model handles visual, audio, video, and PDF inputs and can auto-select between script automation and direct UI interaction for computer-use tasks. This marks Meta's evolution from open-source model provider to <span class="highlight">Agent platform competitor</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">1M-token context + multimodal input + multi-agent orchestration &mdash; Meta's Agent capabilities see a comprehensive upgrade</div>
+                        <div class="key-point">Free credits + low-price API directly targets the high-volume agent market, competing head-on with OpenAI/Anthropic</div>
+                        <div class="key-point">MCP server and custom skill support make agent ecosystem openness a new competitive dimension</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Perplexity's Secret AI Coding Tool "Teammate" Revealed: Model-Agnostic, Full-Stack Development, CTO Predicts No More Manual Coding by Year-End</h3>
+                    <div class="news-content">
+                        <p>Perplexity, the AI search startup valued at <span class="highlight-bold">$20 billion</span>, is internally testing a coding tool codenamed "<span class="highlight">Teammate</span>." Designed for long-horizon engineering, it covers project-wide management, code debugging, and real-time production service monitoring.</p>
+                        <p>Key differentiator: <span class="highlight-bold">model-agnostic</span> &mdash; not locked into any single LLM provider. CTO Denis Yarats made the radical prediction: "<span class="highlight">By the end of this year, and maybe sooner, software engineers should stop looking at code</span>" and simply rely on AI. He pushed back against "AI slop" criticism, arguing that as long as AI-generated code passes all quality tests, slop "is not going to be a thing."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">$20B-valued search company enters AI coding, directly competing with Cursor, Claude Code, and Copilot</div>
+                        <div class="key-point">Model-agnostic strategy is a key differentiator as the AI coding market shifts from model lock-in to open ecosystems</div>
+                        <div class="key-point">CTO's "stop looking at code" declaration shakes the industry, igniting debate on AI code quality</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Mistral Leanstral 1.5: 119B MoE Model Achieves 100% on miniF2F, Finds 11 Real Bugs Including 5 New Discoveries</h3>
+                    <div class="news-content">
+                        <p>Mistral AI released <span class="highlight-bold">Leanstral 1.5</span>, a 119B-total / 6B-active Mixture-of-Experts model specialized for formal verification in Lean 4, open-sourced under Apache 2.0. It saturated <span class="highlight">miniF2F at 100% on both validation and test sets</span> and solved 587 of 672 PutnamBench problems.</p>
+                        <p>Most strikingly, the model identified <span class="highlight-bold">11 genuine bugs</span> across 57 open-source repositories, 5 of which were previously unreported &mdash; including an <span class="highlight">integer overflow</span> in the Rust library datrs/varinteger that could cause crashes or silent data corruption. At roughly $4 per PutnamBench problem versus $300+ for comparable systems, Leanstral 1.5 makes formal verification practical at scale.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">100% on miniF2F + 587/672 PutnamBench marks a milestone in formal verification</div>
+                        <div class="key-point">11 real bugs with 5 brand-new discoveries proves AI's ability to find real security vulnerabilities</div>
+                        <div class="key-point">$4/problem vs $300+ represents a 75x cost reduction, moving formal verification from academic to industrial scale</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">ByteDance EdgeBench: AI Agent Learning Speed Doubles Every Three Months, Near-Perfect Logistic Fit</h3>
+                    <div class="news-content">
+                        <p>ByteDance's Seed team published a landmark study on July 7 (arXiv:2607.05155). <span class="highlight-bold">EdgeBench</span> encompasses 134 real-world long-horizon tasks with <span class="highlight">38,000 hours</span> of cumulative agent-environment interaction data across five frontier models.</p>
+                        <p>Core finding: AI agents' in-environment <span class="highlight-bold">learning speed doubles approximately every three months</span> (R&sup2; = 0.998, near-perfect logistic sigmoid fit). From September 2025 to April 2026, the rate at which agents learned from environmental interaction doubled each quarter. The "learning to learn" capability is now proven to scale predictably &mdash; deployed AI systems will require progressively less human supervision.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">R&sup2; = 0.998 near-perfect fit confirms exponential growth in agent learning speed is highly regular</div>
+                        <div class="key-point">If sustained, this trend means AI systems adapting to novel situations will need exponentially less human intervention</div>
+                        <div class="key-point">134 real-world tasks + 38,000 hours of data represent the most comprehensive agent learning evaluation to date</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">GPT-5.6 Becomes Default Model Across Microsoft 365 Copilot: Hundreds of Millions Now Use the Most Powerful Model</h3>
+                    <div class="news-content">
+                        <p>OpenAI announced on July 9 that <span class="highlight-bold">GPT-5.6 is now the preferred model across all Microsoft 365 Copilot products</span> &mdash; Word, Excel, PowerPoint, Chat, and Cowork. Users can draft and edit with fewer prompting rounds in Word, perform deeper data analysis in Excel, and turn early ideas into polished presentations in PowerPoint.</p>
+                        <p>Microsoft Copilot President Nitin Agrawal stated: "<span class="highlight">Customers will be able to produce more polished outputs across all Office scenarios.</span>" This marks the definitive transition of large language models from developer tools into the daily workflow of hundreds of millions of regular users.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6 fully integrated into the Office ecosystem, directly benefiting hundreds of millions of Word/Excel/PPT users</div>
+                        <div class="key-point">From coding tools to office productivity, LLM penetration enters an exponential growth phase</div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">LimX Dynamics Closes Nearly $200M Pre-IPO Round at $2.1B Valuation, Becoming a Super Unicorn</h3>
+                    <div class="news-content">
+                        <p>General-purpose humanoid robot company <span class="highlight-orange">LimX Dynamics</span> has closed a Pre-IPO round of <span class="highlight-orange">nearly $200 million</span>, reaching a post-money valuation of <span class="highlight-bold">15 billion yuan ($2.1B)</span>. The company has raised a cumulative $400 million in the past six months alone, attracting top-tier global investors including IDG Capital, Lens Technology, GGG Group, and WestSummit Capital.</p>
+                        <p>Proceeds will focus on <span class="highlight-orange">breakthroughs in brain-body fusion technology</span> and scaling deployment of <span class="highlight-bold">thousands of fully autonomous humanoid robots</span>, while accelerating Middle East, European, and Asian market expansion. LimX is considered "China's most product-driven embodied intelligence company."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">$400M in six months from Middle East/Europe/North America investors reflects global capital's conviction in embodied AI</div>
+                        <div class="key-point">Thousands of fully autonomous humanoid robots at scale accelerates the funding &rarr; product &rarr; deployment flywheel</div>
+                        <div class="key-point">Chinese embodied AI companies earning global top-tier capital recognition, overseas strategy accelerating</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">WAIC 2026 Opens in 2 Days: Zhiyuan to Debut 6 New Products, Cumulative Production Reaches 15,000 Units</h3>
+                    <div class="news-content">
+                        <p>The <span class="highlight-bold">2026 World AI Conference (WAIC)</span> will be held <span class="highlight-orange">July 17-20</span> at the Shanghai World Expo Center, with exhibition space exceeding <span class="highlight-orange">100,000 sqm</span> for the first time and over 1,100 exhibiting companies. <span class="highlight-bold">Embodied intelligence debuts as a core track alongside intelligent computing</span>, each featuring over 200 companies.</p>
+                        <p>Zhiyuan Robotics will showcase a 200sqm booth with the global debut of the <span class="highlight-orange">Yuanzheng A3 Ultra humanoid robot, Jingling G2 Max quadruped robot</span>, and four other new products. Its total robot production has reached <span class="highlight-bold">15,000 units</span> (up from 10,000 in March, just 3 months ago). The WAIC booth will feature a 1:1 replica of a precision assembly and logistics factory floor, letting visitors see if "robots can truly do real work."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WAIC opens July 17 with embodied intelligence as a core track for the first time, gaining official recognition</div>
+                        <div class="key-point">Zhiyuan's "5,000 units in 3 months" pace demonstrates China's embodied AI mass production capability</div>
+                        <div class="key-point">From "lab tricks" to "factory floor work," embodied intelligence enters the critical deployment window</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Ant Group Lingbo Releases Industry's First Embodied-Native World Action Model LingBot-VA 2.0</h3>
+                    <div class="news-content">
+                        <p>Ant Group's <span class="highlight-orange">Lingbo Technology</span> released <span class="highlight-orange">LingBot-VA 2.0</span>, positioned as the industry's <span class="highlight-bold">first embodied-native world action model</span>. The model is designed from first principles around dynamic modeling, causal prediction, and real-time execution &mdash; rather than "grafting" capabilities from digital-world large models onto physical robots.</p>
+                        <p>CEO Zhu Xing stated: "<span class="highlight-orange">Problems in physical intelligence must be solved through physical intelligence's own foundational pathways.</span>" Lab environments, digital simulations, and standard benchmarks cannot fully replicate the diverse challenges of real-world physical deployment. This represents a critical fork in embodied AI: native physical route vs. digital transfer route.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Moving beyond digital-world "grafting," embodied AI charts a new physically-native path forward</div>
+                        <div class="key-point">The technology route debate intensifies: "physical-native" vs. "digital transfer" as two parallel development paths</div>
+                        <div class="key-point">Real-world physical data acquisition and model generalization remain the biggest technical challenges</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9876;</div>
+                        <div class="trend-desc">
+                            <h3>US-Iran Conflict Becomes Biggest Global Uncertainty</h3>
+                            <p>MoU collapse + naval blockade + oil price surge place extreme pressure on global supply chains and financial markets.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128640;</div>
+                        <div class="trend-desc">
+                            <h3>AI Agents Enter "Accelerated Learning" Phase</h3>
+                            <p>ByteDance EdgeBench proves agent learning speed doubles every quarter; deployed agents need less human supervision over time.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127959;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Tools Market Heats Up</h3>
+                            <p>Meta Spark 1.1, Perplexity Teammate, and Mistral Leanstral advance on three fronts; competition expands from models to full-stack development.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied AI: Funding &amp; Mass Production Accelerating Together</h3>
+                            <p>LimX Pre-IPO at $2.1B + Zhiyuan 15K units + WAIC opening; industry crosses the critical threshold from lab to factory.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: CCTV News &middot; People's Daily &middot; Xinhua &middot; Sina Finance &middot; Global Times &middot; National Business Daily &middot; Dev.to &middot; Wall Street CN</p>
+            <p class="footer-meta">Compiled: 2026-07-15 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
