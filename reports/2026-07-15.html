@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-15</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+
+        .header .subtitle { font-size: 18px; color: rgba(255, 255, 255, 0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count { background: rgba(255, 255, 255, 0.1); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px; position: relative;
+            transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255, 255, 255, 0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .key-point { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: rgba(255, 255, 255, 0.6); margin-bottom: 6px; }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '\2192'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255, 255, 255, 0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255, 255, 255, 0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255, 255, 255, 0.5); font-size: 14px; }
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+        .trend-card { background: rgba(255, 255, 255, 0.03); border-radius: 16px; padding: 24px; transition: all 0.3s ease; }
+        .trend-card:hover { background: rgba(255, 255, 255, 0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255, 255, 255, 0.6); line-height: 1.6; }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-desc { flex: 1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-07-15</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <div class="sections">
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">上半年外贸进出口破25万亿，同比劲增16.9%</h3>
+                    <div class="news-content">
+                        <p>海关总署14日发布数据显示，2026年上半年我国货物贸易进出口总值达<span class="highlight-bold">25.47万亿元</span>，历史同期首次突破25万亿元大关，<span class="highlight-bold">同比增长16.9%</span>。二季度进出口13.61万亿元，同比增长18.4%，创2021年三季度以来季度最高增速。</p>
+                        <p>其中出口增长13.4%，进口增长22.1%，增速高于出口8.7个百分点。智能仿生机器人、锂电池、风力发电机组等"中国制造"精准适配全球需求，成为外贸增长动力引擎。6月进出口4.78万亿元，同比增24.2%，<span class="highlight">连续17个月保持增长</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">进口首破10万亿：上半年进口10.74万亿元历史同期新高，贸易平衡持续改善</div>
+                        <div class="key-point">中国大市场红利：消费红利和合作空间为全球经济提供发展机遇</div>
+                        <div class="key-point">外贸韧性强劲：智能仿生机器人、绿色能源、"清凉家电"三大品类精准适配全球需求</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">今日入伏全国多地极端高温，天津升级橙色预警</h3>
+                    <div class="news-content">
+                        <p>7月15日正式入伏，<span class="highlight-bold">2026年三伏共40天</span>（初伏7.15-7.24，中伏7.25-8.13，末伏8.14-8.23）。中央气象台继续发布高温黄色预警，新疆吐鲁番盆地、陕西南部、四川东部、重庆西部等地局地可达<span class="highlight-bold">40℃以上</span>。</p>
+                        <p>天津市气象台9时将高温黄色预警升级为橙色，中心城区最高气温将升至37℃以上。湖北、湖南中北部、江西东部、浙江中北部、河南中南部等十余省市出现37~39℃高温。多部门启动防暑降温准备工作。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">入伏首日全国十余省市进入"烧烤模式"，40天加长版三伏考验电力保供</div>
+                        <div class="key-point">高温叠加南海热带扰动：广西广东未来三天大到暴雨、局地特大暴雨</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">台风"巴威"停止编号，松花江1号洪水形成，国家预拨4.3亿救灾</h3>
+                    <div class="news-content">
+                        <p>今年第9号台风"巴威"于14日20时在朝鲜南部变性为温带气旋，中央气象台停止编号。巴威对长江中下游影响基本结束，长江干线湖北至安徽段全面恢复双向通航。</p>
+                        <p>但后续风险仍在：<span class="highlight-bold">松花江吉林段发生2026年第1号洪水</span>，海河防总启动防汛三级应急响应。国家防总将针对北京、天津、辽宁等五省市防汛应急响应提升至三级，<span class="highlight">财政部、应急管理部紧急预拨4.3亿元</span>中央自然灾害救灾资金支持10省区市。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">"巴威"影响结束但次生灾害风险持续，松花江新发1号洪水</div>
+                        <div class="key-point">国家响应力度升级：4.3亿元资金+多路工作组+五省三级响应</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">外交部驳斥"南海仲裁案"10周年：非法裁决不会改变中国主权</h3>
+                    <div class="news-content">
+                        <p>7月14日，外交部发言人林剑就"南海仲裁案裁决"出台10周年表示，该仲裁<span class="highlight-bold">本质上是一出披着法律外衣的政治闹剧</span>。一纸非法"裁决"不会改变中国对南海诸岛及其附近海域拥有主权的历史和事实，不会动摇中国维护主权和海洋权益的决心和意志。</p>
+                        <p>中方明确表示，<span class="highlight">不接受、不参与、不承认</span>任何基于该"裁决"的主张和行动，将继续同东盟国家通过谈判协商解决争议，维护南海和平与安全。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">中央决定给予马兴瑞开除党籍公职处分，多起省部级案件密集通报</h3>
+                    <div class="news-content">
+                        <p>据央视新闻7月15日报道，<span class="highlight-bold">中共中央决定给予马兴瑞开除党籍、开除公职处分</span>。此外，检察机关依法对国家烟草专卖局原党组成员、副局长韩占武涉嫌受贿案提起公诉，贵州省政协原党组成员、副主席唐德智涉嫌受贿案也被提起公诉。</p>
+                        <p>今年以来中央反腐力度持续加大，<span class="highlight">多起省部级案件密集通报</span>，释放高压态势不减的明确信号。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">深圳地铁回应争议广告，江华县水稻虚假台账被查，呼市文联撤销AI获奖作品</h3>
+                    <div class="news-content">
+                        <p>深圳地铁回应市民反馈部分广告"辣眼睛"，<span class="highlight-bold">已对15条线路展开逐站排查、逐项优化</span>。央视《焦点访谈》曝光湖南江华县水稻虚假台账问题，当地成立市级工作专班全面核查。</p>
+                        <p>呼和浩特市文联回应摄影比赛获奖作品被质疑AI生成：<span class="highlight">经核实非实景原创拍摄，撤销一切赛事认定</span>——AI内容治理从政策层面扩展到文化赛事领域。</p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">美伊战事全面升级：美军连续打击伊朗恢复海上封锁，伊朗反击摧毁美第五舰队雷达</h3>
+                    <div class="news-content">
+                        <p>7月14日，美军对伊朗发动"<span class="highlight-bold">连续第三晚</span>"打击行动，并宣布恢复对伊朗港口及沿海地区船只的海上封锁。伊朗革命卫队自凌晨起对巴林、约旦境内美军基地展开<span class="highlight-bold">导弹打击</span>，发布摧毁美军第五舰队雷达的视频。</p>
+                        <p>伊朗最高领袖军事顾问雷扎伊宣布"<span class="highlight">伊美谅解备忘录已不再存在，敌人正式进入战争状态</span>"。美伊谅解备忘录签署不足一月即破裂，双方互指对方破坏协议。《环球时报》社评警告：大国战略失误的账单从来都是天价。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">谅解备忘录签署不足一月破裂，中东安全架构面临全面重塑</div>
+                        <div class="key-point">美军恢复海上封锁+伊朗导弹反击，霍尔木兹海峡再成火药桶</div>
+                        <div class="key-point">《环球时报》：世界将被拖入持续"失血"状态，呼吁"止血"理性</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">国际油价单日暴涨超9%，布伦特突破87美元，两艘油轮霍尔木兹遭袭</h3>
+                    <div class="news-content">
+                        <p>受美伊冲突升级影响，国际油价连续暴涨。布伦特原油突破<span class="highlight-bold">87美元/桶</span>，WTI原油突破<span class="highlight-bold">81美元/桶</span>，单日涨幅超9%。阿联酋阿布扎比国家石油公司确认<span class="highlight">两艘油轮在霍尔木兹海峡遭袭</span>。</p>
+                        <p>分析人士指出，地缘冲突可能成为油市的"长期痛点"，全球供应链本就脆弱的神经再受狠狠一掐。全球通胀压力与供应链风险形成共振效应。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">布伦特87美元创本轮冲突新高，能源市场恐慌情绪蔓延</div>
+                        <div class="key-point">霍尔木兹海峡承担全球约1/3海运石油，通航危机牵动全球</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">美联储新主席沃什国会首秀"放鹰"：零容忍高通胀，成立五工作组全面审查政策框架</h3>
+                    <div class="news-content">
+                        <p>凯文·沃什就任美联储主席后首次出席国会半年度听证会，展现极为强硬的<span class="highlight-bold">鹰派立场</span>。他对持续五年的高通胀表示"<span class="highlight">零容忍</span>"，明确驳斥因6月CPI环比下滑而认为抗通胀"大功告成"的市场论调。</p>
+                        <p>沃什宣布成立五个工作组"<span class="highlight-bold">从一张白纸开始</span>"全面审查现行政策框架，同时拒绝特朗普政府降息施压，强调美联储将坚持依据经济数据独立决策。美国6月CPI同比从5月的4.2%降至3.5%，但仍远高于2%目标。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">沃什"三不"：不降息、不承诺、不妥协——鹰派立场超市场预期</div>
+                        <div class="key-point">五个工作组全面审查，可能重塑美联储未来数年政策框架</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">特朗普宣布与伊拉克将达成"大规模"石油协议，以贸易协议替代霍尔木兹收费</h3>
+                    <div class="news-content">
+                        <p>美国总统特朗普14日宣布，<span class="highlight-bold">用海湾各国与美国贸易和投资协议</span>取代对经由霍尔木兹海峡运输货物收取20%费用。伊拉克总理扎伊迪访美与特朗普会晤，双方预告<span class="highlight">"本周或下周"达成史上最大规模之一的石油协议</span>。</p>
+                        <p>扎伊迪明确要求美军须于9月30日前撤出伊拉克，美国企业同步进入——美伊关系从军事主导转向经济合作模式。这一方案被视为霍尔木兹危机下的"经济解方"尝试。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">从军事手段转向经济合作：用贸易协议替代强制收费</div>
+                        <div class="key-point">伊拉克要求美军限期撤出+美企进入，中东力量格局加速重塑</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">西班牙2-0淘汰法国，率先挺进世界杯决赛</h3>
+                    <div class="news-content">
+                        <p>2026美加墨世界杯半决赛，<span class="highlight-bold">西班牙队以2-0淘汰法国队</span>，率先拿到决赛入场券。这是西班牙时隔16年再进世界杯决赛。另一场半决赛将在<span class="highlight">阿根廷与英格兰</span>之间展开，胜者将与西班牙争夺本届世界杯冠军。</p>
+                        <p>本届世界杯已录得C罗连续六届进球、哈兰德7球追平梅西姆巴佩等多项历史纪录。若阿根廷晋级，梅西有望迎来世界杯决赛"最后一舞"。</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">欧洲十国组建"反导联盟"，俄称5-10年难落地</h3>
+                    <div class="news-content">
+                        <p>法国巴黎"志愿联盟"峰会期间，<span class="highlight-bold">丹、法、德、意、荷、挪、西、瑞、乌、英十国</span>签署联合声明，组建纯防御性反弹道导弹联盟。法国总统马克龙宣布国际部队将与乌克兰在邻国举行联合军演。</p>
+                        <p>俄罗斯回应称该计划<span class="highlight">5至10年内难以实际落地</span>。此外匈牙利国会通过宪法修正案推动罢免总统，欧洲内部政治也在经历震荡。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">欧洲防务自主里程碑：纯防御性反导联盟首次十国联署</div>
+                        <div class="key-point">马克龙推动国际部队与乌克兰联合军演，欧洲安全架构加速重构</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <div class="sections">
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Meta发布Muse Spark 1.1：100万token上下文、多模态Agent模型，免费额度抢开发者</h3>
+                    <div class="news-content">
+                        <p>Meta Superintelligence Labs于7月9日发布<span class="highlight-bold">Muse Spark 1.1</span>，这是AI负责人Alexandr Wang领导下三个月来的重大升级。模型定位<span class="highlight">多模态推理与Agentic任务</span>，100万token上下文窗口，支持主动管理长上下文、在多智能体工作流中可作主Agent委派子Agent执行并行任务。</p>
+                        <p>每个新API账户获<span class="highlight-bold">20美元免费额度</span>，定价低于GPT-5.6和Claude竞品。模型可处理视觉、音频、视频、PDF等多模态输入，电脑使用任务中可自动选择脚本自动化或直接界面操作。这标志着Meta从开源模型提供者升级为<span class="highlight">Agent平台竞争者</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">100万token上下文+多模态输入+多Agent编排，Meta Agent能力全面升级</div>
+                        <div class="key-point">免费额度+低价API，目标直指高容量Agent市场，与OpenAI/Anthropic正面竞争</div>
+                        <div class="key-point">支持MCP servers和自定义技能，Agent生态开放性成为新竞争维度</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Perplexity自研AI编程工具Teammate曝光：模型无关，覆盖全流程开发，CTO预言年底替代人工编码</h3>
+                    <div class="news-content">
+                        <p>估值<span class="highlight-bold">200亿美元</span>的AI搜索企业Perplexity内部曝光代号"<span class="highlight">Teammate</span>"的自研AI编程工具。工具面向长期工程研发场景，覆盖项目整体管理、代码故障排查、线上服务实时监控等核心开发环节。</p>
+                        <p>关键差异化：<span class="highlight-bold">模型无关（model-agnostic）</span>，不绑定任何单一大模型，开发者可自由选择最优模型。CTO丹尼斯·亚拉茨做出激进预测："<span class="highlight">最晚今年年底，软件工程师可依托AI完成开发工作，无需人工逐行查阅代码</span>"，并反驳"AI代码劣质论"——只要AI产出通过所有标准质检就不存在质量问题。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">200亿估值搜索公司跨界入局AI编程，与Cursor/Claude Code/Copilot直接竞争</div>
+                        <div class="key-point">模型不锁定策略差异化显著，AI编程工具市场从模型绑定走向开放生态</div>
+                        <div class="key-point">CTO"不看代码"宣言引发行业震动，AI编码质量争议白热化</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Mistral Leanstral 1.5：119B MoE模型miniF2F满分，发现11个真实bug含5个新发现</h3>
+                    <div class="news-content">
+                        <p>Mistral AI发布<span class="highlight-bold">Leanstral 1.5</span>，119B参数/6B活跃的混合专家模型，专精形式化验证（Lean 4），Apache 2.0开源。在<span class="highlight">miniF2F验证集和测试集上双双达到100%</span>饱和分数，解决672道PutnamBench中的587题。</p>
+                        <p>最令人震惊的是实践成果：模型在57个开源仓库中发现<span class="highlight-bold">11个真实bug</span>（5个此前从未被报告），包括Rust库datrs/varinteger中可能导致崩溃或静默数据损坏的<span class="highlight">整数溢出</span>。每个PutnamBench问题仅需约4美元，而同类系统需300美元+——形式化验证大规模实用化迈出关键一步。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">miniF2F 100%满分+PutnamBench 587/672，形式化验证领域里程碑</div>
+                        <div class="key-point">11个真实bug含5个全新发现，AI发现真实安全漏洞的能力得到验证</div>
+                        <div class="key-point">4美元/题 vs 300美元+，成本降低75倍，形式化验证从学术走向工业</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">字节跳动EdgeBench重磅发现：AI Agent学习速度每三个月翻倍，完美拟合S形曲线</h3>
+                    <div class="news-content">
+                        <p>字节跳动Seed团队7月7日发布重磅研究（arXiv:2607.05155）。<span class="highlight-bold">EdgeBench</span>覆盖134个真实长周期任务，累积<span class="highlight">38000小时</span>Agent-环境交互数据，横跨五大前沿模型。</p>
+                        <p>核心发现：AI Agent在环境中的<span class="highlight-bold">学习速度约每三个月翻一倍</span>（R²=0.998，完美拟合Logistic S形曲线）。从2025年9月到2026年4月，Agent从环境交互中学习的速率每个季度翻倍。"学会学习"能力被证明是可预测缩放的——部署后的AI系统将越来越不需要人类监督。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">R²=0.998完美拟合，Agent学习速度的指数增长趋势高度规律</div>
+                        <div class="key-point">若趋势持续，自适应新场景的AI系统将指数级减少对人类干预的依赖</div>
+                        <div class="key-point">134个真实长周期任务+38000小时数据，业界最全面Agent学习评估</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">GPT-5.6全面融入Microsoft 365 Copilot：数亿Office用户默认使用最强模型</h3>
+                    <div class="news-content">
+                        <p>OpenAI 7月9日宣布，<span class="highlight-bold">GPT-5.6已成为Microsoft 365 Copilot全系产品的首选模型</span>——覆盖Word、Excel、PPT、Chat和Cowork。用户可在Word中用更少轮次完成草稿编辑、在Excel中进行更深层数据分析、在PPT中将早期想法转化为精美演示。</p>
+                        <p>Microsoft Copilot总裁Nitin Agrawal表示："<span class="highlight">客户可在所有Office场景中产出更高质量的结果</span>。"这标志着大模型从开发者工具正式走向数亿普通用户的日常办公，AI办公生产力进入新阶段。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">GPT-5.6全面接入Office生态，数亿Word/Excel/PPT用户直接受益</div>
+                        <div class="key-point">从编程工具到办公生产力全覆盖，大模型渗透率进入指数增长期</div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">3 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">逐际动力完成近2亿美元Pre-IPO轮融资，估值150亿元成超级百亿独角兽</h3>
+                    <div class="news-content">
+                        <p>通用人形机器人公司<span class="highlight-orange">逐际动力（LimX Dynamics）</span>近日完成Pre-IPO轮融资<span class="highlight-orange">近2亿美元</span>，投后估值达<span class="highlight-bold">150亿元</span>，过去半年累计融资4亿美元。本轮汇集全球头部投资机构：IDG资本、蓝思科技、GGG Group、华山资本等，阿联酋磊石资本连续多轮追投。</p>
+                        <p>资金将重点用于<span class="highlight-orange">大小脑融合技术突破</span>和产品化，推动<span class="highlight-bold">数千台全自主人形机器人</span>的规模化部署，加强中东、欧洲及亚洲市场布局。逐际动力被视为"最具产品基因的中国具身智能公司"。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">半年累计4亿美元融资，中东/欧洲/北美全球资本争相布局</div>
+                        <div class="key-point">数千台全自主人形机器人规模化部署，融资→产品→规模化闭环加速</div>
+                        <div class="key-point">中国具身智能公司获全球顶级资本认可，出海战略全面提速</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">WAIC 2026倒计时2天：智元6款新品全球首发，累计量产已达15000台</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">2026世界人工智能大会（WAIC）</span>将于<span class="highlight-orange">7月17-20日</span>在上海世博中心启幕，展览面积首破<span class="highlight-orange">10万平方米</span>，超1100家企业参展。<span class="highlight-bold">具身智能首次与智算并列两大核心赛道</span>，各汇聚超200家企业同台竞技。</p>
+                        <p>智元机器人将以200平方米展台全球首发<span class="highlight-orange">远征A3 Ultra人形机器人、精灵G2 Max四足机器人</span>等6款新品。其全系列机器人累计下线已达<span class="highlight-bold">15000台</span>（距3月10000台仅不到3个月），速度惊人。WAIC现场将1:1复刻工厂精密装配、物流搬运场景，让观众直观感受"机器人到底能不能干真活"。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WAIC 7月17日开幕，具身智能首次成为核心赛道，行业地位获官方认可</div>
+                        <div class="key-point">智元"3个月5000台"速度展现中国具身智能量产实力</div>
+                        <div class="key-point">从"实验室炫技"到"工厂真干活"，具身智能进入规模化落地关键窗口期</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">蚂蚁灵波发布业界首个具身原生世界动作模型LingBot-VA 2.0</h3>
+                    <div class="news-content">
+                        <p>蚂蚁集团旗下<span class="highlight-orange">灵波科技</span>发布<span class="highlight-orange">LingBot-VA 2.0</span>，定位为业界<span class="highlight-bold">首个具身原生世界动作模型</span>。该模型从动态建模、因果预测、实时执行等与环境交互的原始需求出发进行原生设计，而非依托数字世界模型能力的"嫁接"。</p>
+                        <p>CEO朱兴指出：<span class="highlight-orange">"物理智能领域的技术难题仍需回归物理智能底层路径求解"</span>——实验室环境、数字仿真场景无法完整复现真实物理场景的各类难题。这代表了具身智能发展的关键路线选择：从物理出发 vs 从数字迁移。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">告别数字世界"嫁接"，具身智能走向物理原生新路线</div>
+                        <div class="key-point">技术路线之争白热化："物理原生"vs"数字迁移"两条路径并行发展</div>
+                        <div class="key-point">真实物理场景数据获取与模型泛化仍是最大技术挑战</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察 AI 领域最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">⚔️</div>
+                        <div class="trend-desc">
+                            <h3>美伊冲突成全球最大不确定性</h3>
+                            <p>谅解备忘录破裂+海上封锁+油价暴涨，全球供应链和金融市场高度承压。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🚀</div>
+                        <div class="trend-desc">
+                            <h3>AI Agent进入"学习加速"阶段</h3>
+                            <p>字节EdgeBench证明学习速度每季度翻倍，Agent越来越不需要人类干预。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🏗️</div>
+                        <div class="trend-desc">
+                            <h3>AI编程工具赛道白热化</h3>
+                            <p>Meta Spark 1.1、Perplexity Teammate、Mistral Leanstral三路并进，竞争从模型层扩展到全流程开发。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>具身智能融资+量产双加速</h3>
+                            <p>逐际动力Pre-IPO 150亿+智元15000台+WAIC开幕在即，行业跨越实验室到工厂的关键节点。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">数据来源：央视新闻 · 人民日报 · 新华社 · 新浪财经 · 环球时报 · 每日经济新闻 · Dev.to · 华尔街见闻</p>
+            <p class="footer-meta">整理时间：2026-07-15 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
