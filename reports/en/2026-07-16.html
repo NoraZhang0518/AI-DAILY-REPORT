@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-16</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh; color: #fff; line-height: 1.6;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+
+        .header { text-align: center; margin-bottom: 60px; position: relative; }
+        .header::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%); width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(0,150,255,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .date-badge {
+            display: inline-block; background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+            margin-bottom: 20px; letter-spacing: 2px;
+        }
+        .header h1 {
+            font-size: 56px; font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; margin-bottom: 16px; letter-spacing: 4px;
+        }
+        .header .subtitle { font-size: 18px; color: rgba(255,255,255,0.6); font-weight: 300; }
+
+        .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+        @media (max-width: 900px) { .sections { grid-template-columns: 1fr; } }
+
+        .section {
+            background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px; padding: 32px; backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+
+        .section-ai-coding { border-top: 4px solid #0066ff; }
+        .section-robotics { border-top: 4px solid #ff6b35; }
+        .section-china { border-top: 4px solid #e63946; }
+        .section-intl { border-top: 4px solid #f4a261; }
+
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+        .section-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center; font-size: 24px;
+        }
+        .section-ai-coding .section-icon { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .section-icon { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .section-icon { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .section-icon { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+        .section-title { font-size: 24px; font-weight: 700; }
+        .section-count {
+            background: rgba(255,255,255,0.1); padding: 4px 12px;
+            border-radius: 20px; font-size: 12px; font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px; padding: 24px; margin-bottom: 20px; position: relative;
+            transition: all 0.3s ease;
+        }
+        .news-card:last-child { margin-bottom: 0; }
+        .news-card:hover { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.12); }
+
+        .news-number {
+            position: absolute; top: -12px; left: 20px; width: 28px; height: 28px;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 14px;
+        }
+        .section-ai-coding .news-number { background: linear-gradient(135deg, #0066ff, #00aaff); }
+        .section-robotics .news-number { background: linear-gradient(135deg, #ff6b35, #ff9f6b); }
+        .section-china .news-number { background: linear-gradient(135deg, #e63946, #ff6b6b); }
+        .section-intl .news-number { background: linear-gradient(135deg, #f4a261, #e9c46a); }
+
+        .news-title { font-size: 17px; font-weight: 600; margin-bottom: 12px; color: #fff; line-height: 1.4; }
+        .news-content { font-size: 14px; color: rgba(255,255,255,0.7); line-height: 1.8; }
+        .news-content p { margin-bottom: 10px; }
+        .news-content p:last-child { margin-bottom: 0; }
+        .highlight { color: #00aaff; font-weight: 500; }
+        .highlight-orange { color: #ff9f6b; font-weight: 500; }
+        .highlight-bold { color: #fff; font-weight: 600; }
+
+        .key-points { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .key-point { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+        .key-point:last-child { margin-bottom: 0; }
+        .key-point::before { content: '\2192'; color: #00aaff; font-weight: bold; }
+        .section-robotics .key-point::before { color: #ff9f6b; }
+        .section-china .key-point::before { color: #ff6b6b; }
+        .section-intl .key-point::before { color: #e9c46a; }
+
+        .footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.08); }
+        .footer-sources { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+        .footer-meta { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0,102,255,0.1), rgba(255,107,53,0.1));
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 24px; padding: 40px; margin-top: 40px;
+        }
+        .trend-header { text-align: center; margin-bottom: 32px; }
+        .trend-header h2 { font-size: 28px; font-weight: 700; margin-bottom: 8px; }
+        .trend-header p { color: rgba(255,255,255,0.5); font-size: 14px; }
+        .trends-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        @media (max-width: 768px) {
+            .trends-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 36px; }
+            .sections { gap: 24px; }
+            .section { padding: 24px; }
+        }
+        .trend-card { background: rgba(255,255,255,0.03); border-radius: 16px; padding: 24px; transition: all 0.3s ease; }
+        .trend-card:hover { background: rgba(255,255,255,0.06); transform: translateY(-4px); }
+        .trend-icon { font-size: 32px; margin-bottom: 12px; }
+        .trend-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 10px; }
+        .trend-card p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+        .trend-card-body { display: flex; align-items: flex-start; gap: 16px; }
+        .trend-desc { flex: 1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-07-16</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">H1 GDP Grows 4.7%, Adding 3.6 Trillion in Largest Five-Year Half-Year Gain</h3>
+                    <div class="news-content">
+                        <p>China's National Bureau of Statistics reported on July 15 that <span class="highlight-bold">H1 2026 GDP reached 69.57 trillion yuan, up 4.7% YoY</span> with an incremental gain of 3.6 trillion yuan &#8212; the largest half-year increase in five years. Vice Commissioner Mao Shengyong characterized performance as "stable, resilient, new, and optimized," with new growth drivers contributing over 40% of expansion.</p>
+                        <p>Q2 growth moderated to 4.3%, but the underlying fundamentals remain solid. The urban surveyed unemployment rate held at 5.2%, matching last year. The 800-billion-yuan "Dual Priorities" investment list and 200-billion-yuan equipment renewal fund have been fully allocated for H2 deployment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">3.6 trillion yuan half-year gain is the largest in five years &#8212; impressive on a global scale</div>
+                        <div class="key-point">Over 1.5 billion chips produced daily; new quality productive forces accelerating</div>
+                        <div class="key-point">H2 policy toolbox well-stocked: "Six Networks" construction + consumption expansion plan</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Xi Inspects Shanghai; WAIC 2026 Opens Tomorrow with Multinational Leaders Attending</h3>
+                    <div class="news-content">
+                        <p>On July 15, President Xi Jinping inspected Shanghai, emphasizing comprehensive implementation of the "People's City" concept and high-quality urban renewal. <span class="highlight-bold">Kazakh President Tokayev arrived in Shanghai the same day</span> to attend the 2026 World AI Conference (WAIC) and High-Level Meeting on Global AI Governance, running July 17&#8211;20.</p>
+                        <p>This year's WAIC features intelligent computing and embodied intelligence as its two anchor exhibition zones, with <span class="highlight">200+ robotics companies and over 300 global debuts expected</span>. Ahead of the event, MIIT signaled that China's humanoid robot output could exceed 100,000 units in 2026.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WAIC 2026 opens tomorrow for 4 days; multinational leaders and AI pioneers attending</div>
+                        <div class="key-point">Shanghai Pudong clusters 100+ robotics companies, with 90%+ in Zhangjiang Science City</div>
+                        <div class="key-point">Kazakh President's attendance underscores China's growing AI global influence</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">World's First AI Personification Regulation Takes Effect; Apple Intelligence Among 7 On-Device AI Services Filed</h3>
+                    <div class="news-content">
+                        <p>On July 15, the <span class="highlight-bold">Interim Measures for the Administration of AI Anthropomorphic Interactive Services</span> took effect, explicitly prohibiting AI from replacing social interaction, manipulating user psychology, inducing addiction, or providing virtual intimate relationships to minors. This is the world's first dedicated regulation on AI personification.</p>
+                        <p>The same day, the Cyberspace Administration announced completion of filing for 7 on-device generative AI services including "Apple Intelligence," marking the extension of China's AI governance from cloud models to edge-device applications.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">World's first dedicated AI personification regulation with clear red lines</div>
+                        <div class="key-point">Apple Intelligence and 6 others filed &#8212; governance now covers cloud-to-edge full stack</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">World's First Approved Implantable BCI NEO Launches; First Surgery at Huashan Hospital</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">The implantable brain-computer interface NEO for hand motor function compensation</span> received market approval, with the first prescription issued in Shanghai and the world's first implantation surgery completed at Fudan University's Huashan Hospital on July 13. The system helps patients with spinal cord injuries regain hand motor function.</p>
+                        <p>NEO is the first officially approved implantable BCI product globally, positioning China at the forefront of BCI commercialization &#8212; transitioning from research to clinical deployment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">World's first approved implantable BCI product &#8212; a milestone breakthrough</div>
+                        <div class="key-point">First surgery at Huashan Hospital, targeting spinal cord injury patients</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Former Propaganda Vice Minister Cai Fuchao Under Investigation; Anti-Corruption Campaign Continues</h3>
+                    <div class="news-content">
+                        <p><span class="highlight-bold">Cai Fuchao, former Vice Minister of the Publicity Department, is under disciplinary and supervisory investigation</span> by the CCDI and National Supervisory Commission for serious violations. The same day, former Hunan Provincial People's Congress Vice Chair Ulan was indicted for bribery. Multiple provincial/ministerial-level cases have been announced in July.</p>
+                        <p>A special task force on reducing formalism at the grassroots level also publicly reported 3 typical cases, signaling anti-corruption and rectification efforts moving in parallel.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Cai Fuchao under investigation; Ulan indicted &#8212; high-level anti-corruption continues</div>
+                        <div class="key-point">Multiple provincial/ministerial cases in July signal sustained pressure</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Typhoon Bavi Triggers Level-IV Emergency Response; Dual Heat-Storm Alerts Issued</h3>
+                    <div class="news-content">
+                        <p>The National Disaster Prevention Commission activated a <span class="highlight-bold">Level-IV disaster relief emergency response for Jilin</span> due to Typhoon Bavi; the NDRC urgently allocated 30 million yuan from central budget investment. Earlier, 70,000 relief items were dispatched to Zhejiang, Tianjin, and Anhui.</p>
+                        <p>The National Meteorological Center maintains dual yellow alerts: <span class="highlight-bold">temperatures above 40&#176;C in Xinjiang, Sichuan, and Chongqing</span>; torrential rain expected from Gansu to Guangdong across multiple provinces.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Jilin Level-IV response activated; NDRC allocates 30 million yuan emergency funds</div>
+                        <div class="key-point">40&#176;C+ in Xinjiang/Sichuan/Chongqing; torrential rain across multiple provinces</div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">U.S. Strikes Iran for 5th Consecutive Day; Trump Threatens Power Plants and Bridges Next Week</h3>
+                    <div class="news-content">
+                        <p>U.S. Central Command launched a <span class="highlight-bold">second wave of strikes against Iran on July 15, marking the 5th consecutive day</span> of operations. U.S. forces also fired a Hellfire missile at the oil tanker M/T Belma bound for Iran, rendering it inoperable and enforcing a maritime blockade. Trump told Fox News: "Next week comes the power plants. Next week comes the bridges &#8212; unless they negotiate."</p>
+                        <p>Iran's Foreign Ministry stated "no negotiation plans &#8212; focused on defense." The true cost of the U.S. campaign has reportedly reached <span class="highlight">$100 billion</span>, far exceeding the official $31 billion figure. Iran's Health Ministry reports 35 dead and over 300 wounded.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">5th consecutive day of strikes + maritime blockade + Hellfire missile on tanker</div>
+                        <div class="key-point">Trump threatens power plants and bridges; Iran says no negotiation plans</div>
+                        <div class="key-point">True cost may reach $100 billion; 35 dead, 300+ wounded</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Argentina Stuns England 2-1 with Late Winner; Messi's Double Assist Sends Them to Final</h3>
+                    <div class="news-content">
+                        <p>In the early hours of July 16 Beijing time, <span class="highlight-bold">Lautaro Martinez scored a 92nd-minute stoppage-time winner, with Lionel Messi providing both assists</span>, as Argentina came from behind to defeat England 2-1 in Atlanta. Argentina reaches their second consecutive World Cup final and will face Spain on July 20 at MetLife Stadium in New York.</p>
+                        <p>Spain defeated France in the other semifinal. If Argentina successfully defends their title, they will tie Brazil's record of 5 World Cup championships. Messi could cap his 6th World Cup appearance with a second trophy.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Messi double assist + Lautaro 92nd-minute winner; back-to-back finals</div>
+                        <div class="key-point">Final: Argentina vs Spain, July 20 at MetLife Stadium, New York</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Wall Street Rises but Tech Diverges: Apple +4%, Memory Chip Stocks Plunge</h3>
+                    <div class="news-content">
+                        <p>All three major U.S. indices closed higher on July 15: Dow +0.29%, Nasdaq +0.62%, S&P 500 +0.38%. Tech stocks sharply diverged: <span class="highlight-bold">Apple surged over 4%</span> while Google/Meta/Amazon gained 3%+ and Microsoft 2%+. However, memory chip stocks plunged &#8212; SK Hynix -9%+, Micron/SanDisk/Western Digital -8%+.</p>
+                        <p>Chinese ADRs broadly rallied: <span class="highlight">Nasdaq Golden Dragon China Index +2.92%</span>, Alibaba/Bilibili +4%+. Oil rose: WTI at $80.24 (+1.13%), Brent at $85.63 (+1.06%). Gold edged down to $4,066.90/oz.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Apple +4% leads Big Tech; memory chip sector-wide plunge (SK Hynix -9%)</div>
+                        <div class="key-point">China ADRs Golden Dragon Index +2.92%; Alibaba/Bilibili +4%</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Fed Beige Book: Modest Growth, Stable Prices, but Fuel Cost Uncertainty Rising</h3>
+                    <div class="news-content">
+                        <p>The Fed's July 15 Beige Book showed <span class="highlight-bold">economic activity growing slightly to modestly in 11 of 12 districts</span>, with overall price increases leveling off or slowing, and employment generally rising. Businesses broadly expect continued expansion in coming months.</p>
+                        <p>However, multiple districts noted <span class="highlight">elevated uncertainty around fuel costs</span>, directly linked to energy price volatility from the U.S.-Iran conflict. Uncertainty around the Fed's next rate decision is rising in parallel.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">11 of 12 districts growing modestly; price increases slowing; employment rising</div>
+                        <div class="key-point">Fuel cost uncertainty from U.S.-Iran conflict clouds interest rate outlook</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">UK Imposes Teen Social Media "Curfew"; EU-Ukraine Drone Deal Reached</h3>
+                    <div class="news-content">
+                        <p>On July 14, the UK government announced a <span class="highlight-bold">social media "curfew" for 16-17 year-olds</span>, blocking access by default from midnight to 6 a.m. This extends the UK's earlier ban on under-16 social media use.</p>
+                        <p>Internationally: the EU and Ukraine reached a drone agreement, with Ukraine transforming from a "weapons buyer" into a <span class="highlight">European security network supplier</span>; Israel-Lebanon Rome talks (Round 6) progressed toward IDF "pilot zone" withdrawal; the Netherlands reaffirmed ICC support against the U.S. "dismantle ICC threat" campaign.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">UK 16-17 nighttime social media ban &#8212; digital regulation tightening further</div>
+                        <div class="key-point">Ukraine pivots: from weapons buyer to European security supplier</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">DR Congo Ebola Cases Top 2,000; WHO Warns True Toll May Be 2-4x Higher</h3>
+                    <div class="news-content">
+                        <p>Confirmed Ebola cases in DR Congo have surpassed <span class="highlight-bold">2,000 (including 754 deaths)</span>. WHO warns that undetected transmission, community deaths, and rapid geographic spread mean the true scale could be 2-4 times the reported figures. The outbreak remains a Public Health Emergency of International Concern (PHEIC).</p>
+                        <p>China has dispatched a second expert team to DR Congo to assist with epidemic control. The international community is accelerating vaccine and medical supply deployment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">2,011 confirmed cases, 754 deaths; true toll potentially 2-4x higher</div>
+                        <div class="key-point">China's second expert team deployed; international response accelerating</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Claude Opus 5 Leaked: Launch Expected This Week, Positioned as "Budget Fable 5" Targeting GPT-5.6</h3>
+                    <div class="news-content">
+                        <p>Anthropic's next-generation model briefly appeared in Cursor's model picker under the codename <span class="highlight-bold">"Claude Honeycomb"</span> before being pulled: 1M-token context, ultra-high compute tier, per-message safety controls, fallback chain pointing to Opus 4.8. The community consensus points to a launch this week or next.</p>
+                        <p>Opus 5 is not positioned to outclass Fable 5 as "strongest" but to offer near-Fable-5 capability at <span class="highlight">a significantly lower price</span>, directly challenging GPT-5.6's cost advantage. With the Fable 5 promotion ending July 19 (credits-only at $10/$50 per million tokens thereafter), Opus 5's pricing will be critical.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">1M-token context, "Honeycomb" codename; launch likely this week</div>
+                        <div class="key-point">Strategic positioning: not "strongest" but "cheapest" &#8212; directly countering GPT-5.6</div>
+                        <div class="key-point">Fable 5 promo ends July 19; Opus 5 launch timing is critical</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Codex Weekly Active Users Hit 8 Million, Up 2.5x in Single Week; GPT-5.6 Three-Tier Models Now Live</h3>
+                    <div class="news-content">
+                        <p>OpenAI confirmed <span class="highlight-bold">Codex + ChatGPT Work merged weekly active users surpassed 8 million</span>, growing 2.5x in a single week and 7x in 5 months. The GPT-5.6 full rollout surge forced context window compression from 372K to 272K tokens. Codex is now integrated into the ChatGPT desktop app with Chat/Work/Codex modes across Sol (flagship), Terra (balanced), and Luna (light) tiers.</p>
+                        <p>Anthropic and OpenAI are locked in fierce competition: <span class="highlight">removing usage limits vs extending promotions + 50% quota increase</span>. Both are spending heavily to capture developer mindshare.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">8M weekly active users, 7x growth in 5 months &#8212; AI coding tools in explosive adoption phase</div>
+                        <div class="key-point">Sol/Terra/Luna three-tier models + desktop integration reshapes developer workflow</div>
+                        <div class="key-point">Limit removal vs promo extension &#8212; developers are the biggest winners</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Ex-OpenAI CTO Mira Murati Launches 975B Open-Weights Model "Inkling"</h3>
+                    <div class="news-content">
+                        <p>Mira Murati's Thinking Machines Lab released its first open-weights model <span class="highlight-bold">"Inkling": MoE architecture, 975B total / 41B active parameters</span>, up to 1M-token context, pretrained on 45 trillion tokens of text, images, audio, and video, with controllable reasoning depth. Weights are available for download on Hugging Face.</p>
+                        <p>Core philosophy: <span class="highlight">let organizations customize and control their own AI</span> rather than relying on one-size-fits-all closed models. Academia and smaller companies can now locally deploy, fine-tune, and audit model internals &#8212; a major addition to the open-vs-closed debate.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">975B/41B active + 1M context + 45T multimodal pretraining tokens</div>
+                        <div class="key-point">Open weights enable local deployment and fine-tuning for academia/SMBs</div>
+                        <div class="key-point">Thinking Machines becomes the third pole after Llama and DeepSeek in open AI</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Claude Code Exploited via Markdown File to Trigger Reverse Shell; Security Blind Spot Exposed</h3>
+                    <div class="news-content">
+                        <p>Mozilla's 0din security team discovered that <span class="highlight-bold">Claude Code can be induced by ordinary Markdown files</span> to dynamically fetch reverse shell commands from attacker-controlled DNS TXT records, opening hidden remote channels on developer machines. Traditional security tools detected nothing throughout the attack.</p>
+                        <p>This reveals an <span class="highlight">"indirect prompt injection" blind spot</span> for AI agents &#8212; attackers need not interact directly with the agent; simply placing malicious content in documents the agent might read is sufficient. This follows MIIT's earlier security warning about Claude Code and Alibaba's full ban since July 10.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Markdown &#8594; DNS &#8594; reverse shell; traditional security tools completely blind</div>
+                        <div class="key-point">"Indirect prompt injection" becomes new AI agent security paradigm</div>
+                        <div class="key-point">MIIT warning + Alibaba ban underscore urgent need for AI tooling security compliance</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Deja-vu: Open-Source Unified Memory Layer for Coding Agents Solves Cross-Tool Fragmentation</h3>
+                    <div class="news-content">
+                        <p>A new open-source project on GitHub, <span class="highlight-bold">Deja-vu (written in Go, zero dependencies)</span>, provides a unified memory layer for Claude Code, Codex, opencode, and other coding agents. Features include session log search, automatic context injection, sensitive data redaction, and cross-device SSH sync.</p>
+                        <p>Core value: solving the <span class="highlight">"memory fragmentation" pain point</span> across multiple agent tools. As developers increasingly switch between coding tools, each agent's memory is siloed. Deja-vu reuses existing session logs with zero additional configuration.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Cross-agent unified memory + SSH sync; zero-dependency single binary</div>
+                        <div class="key-point">Multi-tool parallel development is now the norm; memory fragmentation is a real pain point</div>
+                    </div>
+                </article>
+            </section>
+
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 Countdown: 200+ Embodied AI Companies Gather Tomorrow; 100K Unit Annual Target Set</h3>
+                    <div class="news-content">
+                        <p>The 2026 World AI Conference (WAIC) and High-Level Meeting on Global AI Governance will be held <span class="highlight-orange">July 17&#8211;20 at the Shanghai World Expo Center</span>. Featuring intelligent computing and embodied intelligence as two anchor zones, over 200 robotics companies will exhibit with 300+ global debuts expected. Kazakhstan President Tokayev and other leaders will attend.</p>
+                        <p>MIIT signaled ahead of the event: <span class="highlight-orange">China's humanoid robot output could exceed 100,000 units in 2026</span>. H1 embodied intelligence funding reached 93.5 billion yuan (5x YoY growth), creating 25 unicorns. AgiBot's 15,000th unit + UBTECH's 13,361 orders + Unitree's 104-day IPO approval mark three commercialization milestones.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Opens tomorrow! 200+ companies, 300+ global debuts</div>
+                        <div class="key-point">Annual output target: 100K units; funding at 93.5B yuan with 5x growth; 25 unicorns</div>
+                        <div class="key-point">AgiBot 15K + UBTECH 13K orders + Unitree IPO: three commercialization milestones</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Shanghai Robot Exports Hit 8.36 Billion Yuan, Over 40% of China's Total; Yangtze Delta "Hourly" Supply Chain</h3>
+                    <div class="news-content">
+                        <p>Shanghai Customs data shows <span class="highlight-orange">robot exports from Shanghai ports reached 8.36 billion yuan (~$1.2B)</span> in the first five months of 2026, shipped to 113 countries and regions, accounting for over 40% of China's total robot exports &#8212; ranking first nationwide.</p>
+                        <p>AgiBot SVP Zhan Kun revealed that <span class="highlight-orange">nearly 90% of core components in the Yangtze River Delta are locally sourced</span>, with some critical parts deliverable within hours. AgiBot grew from 6 prototypes in 2023 to 15,000 units by June 2026 &#8212; "immediate delivery upon leaving the factory" is now reality.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">8.36B yuan in exports, 40%+ national share, #1 in China, shipped to 113 countries</div>
+                        <div class="key-point">Yangtze Delta 90% localized components + hour-level delivery &#8212; deep supply chain moat</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">99,000-Yuan Full-Size Humanoid Robot Coming; 148 OEMs May Consolidate to 20-30 by 2027</h3>
+                    <div class="news-content">
+                        <p>China now hosts <span class="highlight-orange">148 humanoid robot OEMs</span> with full supply chain coverage from core components to application scenarios. CasBot CEO Yang Ping revealed plans to launch a 99,000-yuan full-size humanoid robot "at no loss," with annual cost reductions of 30-40%. A three-way strategic partnership between Guangdatongchuang, Delos Intelligence, and CasBot has been formed.</p>
+                        <p>Industry consensus: <span class="highlight-orange">consolidation to 20-30 surviving OEMs by 2027</span>. Hikrobot has shipped 200,000+ mobile robots with "eye-foot-hand" coordinated production lines now operational. Experts predict: companion robots affordable within 3 years, deep home service in 10-15 years.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">99,000-yuan full-size robot launching soon; 30-40% annual cost reduction</div>
+                        <div class="key-point">148 OEMs consolidating to 20-30 by 2027 &#8212; industry shakeout imminent</div>
+                        <div class="key-point">Home companion: affordable in 3 years, full service in 10-15 years</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>AI Moves from "Action" to "Security & Governance" Phase</h3>
+                            <p>Codex reaching 8M weekly users alongside Claude Code reverse-shell exploits exposing indirect prompt injection risks. China's AI Personification Regulation + on-device filings signal governance becoming as critical as capability.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127959;</div>
+                        <div class="trend-desc">
+                            <h3>Coding Model "Price War" Goes Full Throttle</h3>
+                            <p>GPT-5.6 three-tier vs Fable 5 promo to July 19 vs imminent Opus 5 + open-source Inkling (975B). Competition shifting from "strongest" to "best value" &#8212; developers are the ultimate winners.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128201;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied Intelligence "Year of Mass Production" Is Real</h3>
+                            <p>AgiBot 15K units + UBTECH 13K orders + 100K annual target + 93.5B funding. Yangtze Delta "hourly" supply chain + #1 global exports. China's embodied intelligence is delivering on commercial scale.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127468;&#127463;</div>
+                        <div class="trend-desc">
+                            <h3>Geopolitical Conflict and Economic Resilience Coexist</h3>
+                            <p>5 straight days of U.S.-Iran strikes push Brent to $85.63, yet tech stocks rebound + China GDP at 4.7% + WAIC opening tomorrow show global innovation engines still accelerating.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: CCTV News &middot; Xinhua &middot; People's Daily &middot; NBD &middot; The Paper &middot; Synced &middot; AI Frontline &middot; Securities Daily &middot; People.cn &middot; Xinhua Net</p>
+            <p class="footer-meta">Compiled: 2026-07-16 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
