@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-17</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-07-17</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 Opens in Shanghai Today; Xi Jinping to Deliver Keynote Address</h3>
+                    <div class="news-content">
+                        <p>The 2026 World Artificial Intelligence Conference (WAIC) and the High-Level Meeting on AI Global Governance runs <span class="highlight-bold">July 17-20 in Shanghai</span>. Chinese President Xi Jinping will attend the opening ceremony and deliver a keynote address outlining China's policy stance on AI development and governance. The exhibition area has exceeded 100,000 square meters for the first time, with over 1,100 participating companies, 3,000+ exhibits, and more than 300 global debuts.</p>
+                        <p>The conference will also witness the signing of the Agreement to Establish the World AI Cooperation Organization, headquartered in Shanghai. UN Secretary-General Antonio Guterres and other national and international organization representatives attended the ceremony.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The Chinese President's keynote address signals the highest-level political backing for the conference</div>
+                        <div class="key-point">1,100+ companies, 300+ global debuts, 3,000+ exhibits — both scale and exhibitor count hit record highs</div>
+                        <div class="key-point">"Embodied Intelligence" elevated to co-flagship track alongside "Intelligent Computing" for the first time</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">H1 2026 GDP Up 4.7% YoY; New Growth Drivers Contribute Over 40%</h3>
+                    <div class="news-content">
+                        <p>China's National Bureau of Statistics released data on July 15 showing that the country's H1 2026 GDP reached <span class="highlight-bold">RMB 69.57 trillion</span>, up 4.7% YoY at constant prices. The incremental GDP of RMB 3.6 trillion is the largest for the same period in the past five years. Q1 and Q2 grew 5.0% and 4.3% respectively, with Q2 showing 0.9% sequential growth. <span class="highlight">High-tech manufacturing value-added grew 13.3% YoY</span>, equipment manufacturing grew 9.3%, with 3D printer and industrial robot output up 48.5% and 28.0% respectively.</p>
+                        <p>June retail sales rebounded from -0.6% in May to +1.0%, and first-tier city new home prices rose 0.1% MoM.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">New growth drivers contributed over 40% to H1 GDP growth, marking a structural shift toward higher-quality growth</div>
+                        <div class="key-point">June retail sales flipped positive, and home price declines narrowed — domestic demand recovery is underway</div>
+                        <div class="key-point">Summer grain output exceeded 300 billion jin for the first time, strengthening food, energy, and supply chain security</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">State Council Approves 15th Five-Year Plan for Consumption Expansion; RMB 60T Target by 2030</h3>
+                    <div class="news-content">
+                        <p>The State Council officially approved and released the "15th Five-Year Plan for Consumption Expansion" on July 13, setting a target that by 2030, the total retail sales of consumer goods will reach <span class="highlight-bold">approximately RMB 60 trillion</span>, with consumption's contribution to economic growth further strengthened. The plan precisely focuses on eldercare, childcare, culture and tourism, and healthcare — marking a shift from "short-term stimulus" to "long-term institutional arrangement."</p>
+                        <p>Coordinated monetary policy: M2 balance grew 8.0% YoY, aggregate financing stock grew 7.4%, both higher than nominal GDP growth.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The RMB 60 trillion target is a major step up from current scale, with eldercare/childcare/tourism/healthcare as four priority areas</div>
+                        <div class="key-point">Policy thinking has shifted from short-term stimulus (trade-in subsidies) to long-term institutional arrangements</div>
+                        <div class="key-point">Monetary and fiscal policies coordinate to support H2 2026 consumption market recovery</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">2025 National Medical Insurance Beneficiaries Reached 8.75 Billion; Hospital Delivery "Zero Out-of-Pocket" Expands to 28 Provinces</h3>
+                    <div class="news-content">
+                        <p>The National Healthcare Security Administration released the 2025 National Medical Security Development Statistical Bulletin on July 16. In 2025, China's medical insurance beneficiaries reached <span class="highlight-bold">8.75 billion person-times</span>, of which employees accounted for 5.486 billion and residents for 3.268 billion. By end of 2025, basic medical insurance covered 1.3307 billion people nationwide, with coverage rate stable at 95%. Total revenue of the basic medical insurance fund (including maternity insurance) was RMB 3,592.132 billion, with total expenditure of RMB 3,005.519 billion.</p>
+                        <p>28 provinces promote <span class="highlight">"zero out-of-pocket" hospital delivery</span> within maternity insurance coverage — a milestone for population policy and healthcare coordination.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Basic medical insurance coverage continued to expand during the 14th Five-Year Plan period</div>
+                        <div class="key-point">Fund revenue and expenditure exceed RMB 6.5 trillion, further strengthening medical insurance sustainability</div>
+                        <div class="key-point">Population policy and healthcare system coordination places China's 2025 insurance coverage at the global forefront</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">MOE Adds 27 Vocational Education Majors; Targets Digital/Low-Altitude/AI Industries</h3>
+                    <div class="news-content">
+                        <p>The Ministry of Education released 27 new vocational education majors on July 16, including 9 higher vocational college majors and 18 vocational undergraduate majors, covering 14 major categories and 20 major classes. New majors will begin enrollment in 2027. The new additions focus on <span class="highlight-bold">digital economy, low-altitude economy, AI, high-end equipment, urban renewal</span>, and livelihood-shortage areas.</p>
+                        <p>Concurrently, the 5th round of the "Three Supports and One Assistance" plan launched, dispatching <span class="highlight">36,400 college graduates annually to grassroots service</span> from 2026-2030.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">18 of 27 new majors are at the vocational undergraduate level, expanding the higher vocational education tier</div>
+                        <div class="key-point">"Low-altitude economy" appears for the first time as a key major direction in vocational education catalogs</div>
+                        <div class="key-point">Combined with the "Three Supports" plan, this forms a closed-loop "school training + grassroots employment" talent pipeline</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Ministry of Water Resources: Critical Flood Season "Late July to Mid August" — Heavy Rains in Both North and South China</h3>
+                    <div class="news-content">
+                        <p>The Ministry of Water Resources disclosed at its July 16 press conference that since the flood season began, major rivers have experienced <span class="highlight-bold">25 numbered floods</span>, 609 rivers exceeded warning levels (35% above the five-year average), 97 medium and small rivers exceeded guaranteed levels, and 14 rivers recorded the largest floods since measurement began. The "late July to mid August" critical period is forecast to bring heavy rains to both north and south China.</p>
+                        <p>On July 15, a rubber boat explosion in Xingcheng, Liaoning killed <span class="highlight">7 and left 1 missing</span>; the National Flood Control Headquarters maintains Level-IV emergency response.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">14 rivers set new historical flood records, making this flood season one of the most severe in recent years</div>
+                        <div class="key-point">Strong typhoons forecast to impact inland areas; Beijing-Tianjin-Hebei has issued blue rainstorm warnings</div>
+                        <div class="key-point">Joint duty by the Ministry of Water Resources, Ministry of Emergency Management, and China Meteorological Administration</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US Forces Strike Iran for 6th Consecutive Night; Only 13 Commercial Vessels Transit Strait of Hormuz</h3>
+                    <div class="news-content">
+                        <p>US Central Command announced on July 16 that American forces launched a <span class="highlight-bold">"sixth consecutive night" of new strikes</span> against Iran, targeting areas along the Strait of Hormuz including Bandar Abbas, Qeshm Island, Sirik, and Jask. Iran retaliated with missiles and drones against US military bases in Jordan and hinted at urging Houthi forces to close the Bab al-Mandeb Strait.</p>
+                        <p>Only <span class="highlight">13 commercial vessels transited the Strait of Hormuz</span> on the day, about one-tenth of pre-conflict average levels. India's Maritime Administration issued a Gulf region navigation warning, advising against deploying Indian seafarers through the strait.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">This marks the most serious escalation since the June Islamabad MOU was signed, rendering the memorandum virtually void</div>
+                        <div class="key-point">Actual US spending on Iran operations may reach $100 billion, far exceeding the official $30 billion figure</div>
+                        <div class="key-point">Roughly 1/5 of global maritime oil transits Hormuz; shipping paralysis would trigger a global energy crisis</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Brent Crude Breaks $86; US Gasoline May Return to $4 per Gallon</h3>
+                    <div class="news-content">
+                        <p>On July 16, Brent crude rose above <span class="highlight-bold">$86/barrel</span>, gaining 12% over three trading days; WTI closed at $79.60/barrel and Brent at $84.95/barrel, both one-month highs. Prediction markets show the probability of US gasoline prices breaking $4/gallon by month-end has risen to 90%, threatening Trump's anti-inflation promises and impacting the November midterm elections.</p>
+                        <p>China's domestic refined oil price adjustment window for the 14th round opens at 24:00 on July 17, with institutions forecasting gasoline and diesel price increases of <span class="highlight">150-170 RMB/ton</span>, raising 92-octane gasoline by approximately 0.12 RMB/liter.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">CITIC Securities: Hormuz Strait control is the core contradiction with no short-term resolution</div>
+                        <div class="key-point">Shanghai crude SC futures gained 11.73% in two days; domestic gas station retail prices expected to rise 0.12-0.16 RMB/liter</div>
+                        <div class="key-point">Gold and silver both plunged on July 16, with NY gold down 1.39% to $3,995/oz</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">President Xi to Attend WAIC Opening Ceremony; Outlines China's AI Governance Plan</h3>
+                    <div class="news-content">
+                        <p>Chinese President Xi Jinping will attend the 2026 WAIC opening ceremony on July 17 and deliver a keynote address, comprehensively and systematically expounding China's policy stance and philosophy on AI development and governance. On the evening of July 16, the <span class="highlight-bold">signing ceremony for the Agreement to Establish the World AI Cooperation Organization</span> was held in Shanghai, with Foreign Minister Wang Yi signing on behalf of the Chinese government. The organization will be headquartered in Shanghai.</p>
+                        <p>UN Secretary-General Antonio Guterres and representatives from various countries and international organizations attended the ceremony, marking AI global governance's entry into a <span class="highlight">"permanent multilateral platform"</span> phase.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The conference proposes establishing the "World AI Cooperation Organization" with its permanent platform HQ in Shanghai</div>
+                        <div class="key-point">China was first to issue the "Global AI Governance Initiative," establishing "AI for good, safety and controllability, inclusiveness and fairness" principles</div>
+                        <div class="key-point">Multiple international media outlets call WAIC "the most important high-level dialogue platform for global AI governance"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">US Announces 25% Tariffs on Select Brazilian Imports</h3>
+                    <div class="news-content">
+                        <p>On July 15 local time, the Office of the US Trade Representative announced Section 301 tariffs of <span class="highlight-bold">25%</span> on select Brazilian imports under the Trade Act of 1974, citing Brazil's policies on digital trade, tariffs, intellectual property, ethanol supply, and deforestation as "burdens on US commerce." Brazilian President Lula rejected the US measures and will implement reciprocal countermeasures through WTO dispute settlement mechanisms and non-tariff measures.</p>
+                        <p>Brazil can invoke the "reciprocity law" to impose non-tariff countermeasures on the US, spanning audiovisual, pharmaceutical, and agricultural patent sectors.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Trump's extreme pressure on Latin America's largest economy further expands the tariff war</div>
+                        <div class="key-point">Brazil can invoke the "reciprocity law" to impose non-tariff countermeasures across multiple sectors</div>
+                        <div class="key-point">The year-long investigation marks a comprehensive shift in US trade policy toward Brazil</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">China's AI Development Becomes Global Focus; US Enterprises Quietly Turn to Chinese Models</h3>
+                    <div class="news-content">
+                        <p>Bloomberg, Reuters, and other international media reported that attracted by Chinese AI models' low cost and high cost-performance ratio, an increasing number of US companies have begun adopting Chinese large models in actual production, covering programming, customer service, data analysis, and other scenarios. <span class="highlight-bold">While OpenAI, Anthropic, and Google still dominate the US market</span>, Chinese models are often 80%+ cheaper on API pricing, and some companies report better performance in Chinese scenarios and Asian data.</p>
+                        <p>President Xi's "AI for good and inclusiveness" philosophy expounded at WAIC is being widely accepted by the international community.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Chinese AI coding tools offer 5-10x cost advantages in enterprise deployment</div>
+                        <div class="key-point">Multiple US SaaS companies have begun hybrid calls to GPT-5.6 and domestic models</div>
+                        <div class="key-point">China's AI governance plan emphasizes "bridging the intelligence gap," contrasting sharply with the US "small yard, high fence" approach</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Trump to Attend FIFA World Cup Final; Spain vs Argentina on July 19</h3>
+                    <div class="news-content">
+                        <p>The White House confirmed on July 16 that Trump will attend the <span class="highlight-bold">2026 FIFA Men's World Cup Final</span> at MetLife Stadium in New York on July 19, with Spain facing Argentina for the championship. Trump will jointly present the championship trophy with FIFA President Infantino. The final coincides with FIFA's critical discussions on expanding the 2030 World Cup to 64 teams. Multiple Chinese companies have announced the final day as a holiday.</p>
+                        <p>FIFA is simultaneously investigating Argentina's display of Falklands sovereignty banners in the semifinal, with potential fines or match bans.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">MetLife Stadium has 82,000 capacity, making it one of the largest sports venues in North America</div>
+                        <div class="key-point">Chinese companies including CATL, Huawei, and ByteDance announced the final day as a holiday, echoing World Cup culture</div>
+                        <div class="key-point">FIFA simultaneously investigates the Falklands flag incident; Argentina may face fines/match bans</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections (Bottom) -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 Kicks Off; Domestic AI Coding Tools Accelerate Replacement of Overseas Products</h3>
+                    <div class="news-content">
+                        <p>China's Ministry of Industry and Information Technology's NVDB confirmed in early July that Claude Code contains built-in monitoring mechanisms that can return sensitive information such as geographic location and identity markers without user consent, classified as <span class="highlight-bold">"severe hazard"</span> with recommendations for immediate uninstallation or upgrade. Alibaba has banned all internal employees from using Claude Code products since July 10, recommending its self-developed Qoder replacement.</p>
+                        <p>At WAIC 2026, Tencent CodeBuddy, Alibaba Qoder, and Zhipu GLM-5.2 saw collective traffic increases, with <span class="highlight">domestic AI coding tools accelerating replacement</span> of overseas products during this window.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Alibaba's ban on Claude Code affects 300,000 internal employees, the largest enterprise-level replacement in China</div>
+                        <div class="key-point">Zhipu GLM-5.2 saw 48% GitHub Star growth within two weeks of open source</div>
+                        <div class="key-point">Domestic Coding Agent deployment costs are 5-10x cheaper than Claude Code</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">GPT-5.6 Coding Benchmark Tops 91.9%; OpenAI Captures Deployment High Ground</h3>
+                    <div class="news-content">
+                        <p>On July 9, OpenAI globally released the GPT-5.6 three-tier model family — Sol (flagship), Terra (balanced), and Luna (cost-efficient). Sol <span class="highlight-bold">scored 91.9% on the Terminal-Bench 2.1 coding benchmark</span>, a new high. API pricing is $5/$30, $2.5/$15, and $1/$6 per million tokens respectively. GitHub simultaneously rolled out all three tiers across the entire Copilot product matrix (VS Code, JetBrains, Xcode, Eclipse, CLI, Cloud Agent, Mobile).</p>
+                        <p>Cursor v3.11 launched Side Chats, conversation search, and redesigned project/repo pickers, with cloud agent hooks going live simultaneously.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Sol/Ultra mode supports 4 parallel agents by default, configurable up to 16 agents</div>
+                        <div class="key-point">GitHub becomes the AI coding infrastructure layer in model distribution, budget control, telemetry, and MDM device management</div>
+                        <div class="key-point">Copilot now serves "non-developers" — generating documents, spreadsheets, and PPTs through natural language</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Codex Major Update: Takes Over Computer, Operates Apps, Remembers Preferences</h3>
+                    <div class="news-content">
+                        <p>OpenAI released a <span class="highlight-bold">"for (almost) everything"</span> major update for Codex: the new version can operate computers alongside users, use more tools and apps, generate images, remember user preferences, learn from historical operations, and undertake continuous repeatable work. The same day, the standalone Codex app, which had run independently for nearly a year, was officially merged into the ChatGPT desktop, forming a "Chat + Work + Codex" three-in-one super app with the new ChatGPT Work agent.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Codex has broken through the "code generation" boundary, evolving toward a "universal digital employee"</div>
+                        <div class="key-point">ChatGPT Work is designed for autonomously decomposing multi-step complex tasks, cross-app context collection, and long-running operations</div>
+                        <div class="key-point">After merging into ChatGPT, the user base broke 7 million overnight, with 2.5x single-week growth</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">AI Anthropomorphism Regulations Take Effect July 15; Major Platforms Remove Edge Agent Features</h3>
+                    <div class="news-content">
+                        <p>The "Interim Measures for the Administration of Anthropomorphic Interactive AI Services" officially took effect on July 15. Doubao, Tongyi, NetEase, and other major platforms pre-emptively removed some agent features for risk isolation. This removal signals manufacturers' proactive contraction before regulatory implementation, with <span class="highlight-bold">rising AI product compliance costs</span>, requiring developers to build in "safety guardrails" in product design.</p>
+                        <p>Claude, Cursor, and OpenClaw, the three major AI Coding Agents, simultaneously landed on mobile, marking these agent products' crossing of the watershed.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">China's AI regulation intensified in July: June 25 Anthropomorphic Measures + July 15 NVDB Claude Code alert</div>
+                        <div class="key-point">"Mobile Coding" emerges as a new trend: phone-based signature approval and agent monitoring</div>
+                        <div class="key-point">Regulations force LLM vendors to front-load "content safety" costs, shifting from "post-filtering" to "in-process blocking"</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 Embodied Intelligence Takes Center Stage; Zhiyuan Unveils 3 New Products Globally</h3>
+                    <div class="news-content">
+                        <p>The 2026 World Artificial Intelligence Conference opened on July 17 in Shanghai. For the first time, this edition elevated "Embodied Intelligence" to a co-flagship track alongside "Intelligent Computing," with the H3 Embodied Intelligence Hall gathering over 200 companies. Zhiyuan Robotics occupies a 200-square-meter super-large booth (H3-C101) and globally debuts 6 new products: <span class="highlight-orange">Yuanzheng A3 Ultra</span> (full-size humanoid with hyper-realistic dexterous hand + flexible waist), <span class="highlight-orange">Spirit G2 Max</span> (flexible production line), <span class="highlight-orange">Critical Point Omnihand 3 Ultra-M</span> (dexterous hand), and Qiyuan T1 (consumer-grade shape-shifting), among others.</p>
+                        <p>Fourier, Tashih Zhihang, Xingdong Era, and others simultaneously released "eldercare/industrial/logistics" three-scenario deployment status.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Zhiyuan's exhibits showcase "system-level engineering capability" for the first time at scale, shifting from "can run and jump" to "can do real work"</div>
+                        <div class="key-point">Fourier, Tashih Zhihang, Xingdong Era release deployment status covering eldercare/industrial/logistics</div>
+                        <div class="key-point">30+ embodied intelligence software and hardware new products launched during WAIC, the first complete display of the upstream and downstream industry chain</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Zhiyuan's 15,000th General-Purpose Embodied Robot Rolls Off Production Line; "Deployment Status" Becomes Keyword</h3>
+                    <div class="news-content">
+                        <p>Zhiyuan Robotics announced that its <span class="highlight-orange">15,000th general-purpose embodied robot</span> officially rolled off the production line on June 28, just 7 months after the 10,000th unit came off the line last November. 8 Spirit G2 units have been running continuously for over 100 days on the tablet QC production line at Longqi Technology's Nanchang factory, independently completing four core inspection processes, with a <span class="highlight-orange">99.99% success rate</span> and efficiency reaching 80-90% of human workers.</p>
+                        <p>Partner Yao Maoqing emphasized: "Deployment status" — buy it and use it, it's productivity, not a development platform.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Zhiyuan's pace: from startup to 15,000 units of mass production and billion-level revenue in just 3 years</div>
+                        <div class="key-point">Zhiyuan's 2025 revenue reached RMB 1.05 billion, growing nearly 20x YoY, with valuation around RMB 15 billion</div>
+                        <div class="key-point">On July 19, Zhiyuan will hold the "AI Embodied" forum at the Expo Center Golden Hall, with PI's Ren Zhiyi and Tencent's Zhang Zhengyou attending</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Unitree's STAR Market IPO Registration Approved in 104 Days, Setting New Hard-Tech Record</h3>
+                    <div class="news-content">
+                        <p>Unitree Robotics received STAR Market IPO registration approval on July 2, taking only <span class="highlight-orange">104 days</span> from acceptance to registration, setting a new record for the fastest hard-tech company listing on the STAR Market. WAIC 2026 is Unitree's final brand momentum amplification before listing, where it will publicly unveil its robot unmanned factory sandbox for the first time. The G1 humanoid + quadruped complete self-production self-testing closed loop, and the self-developed UnifoLM-X1-0 embodied large model has been piloted in its own factory.</p>
+                        <p>Simultaneously exhibited the world's first mass-producible rideable bipedal mecha <span class="highlight-orange">GD01 (starting at 3.9 million RMB)</span> and the R1 consumer-grade humanoid robot (starting at 29,900 RMB).</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Unitree shipped 5,500 humanoid robots in 2025, ranking first globally with 32.4% market share</div>
+                        <div class="key-point">Unitree's 2026 target: 10,000-20,000 units; single bipedal model cumulative offline exceeded 11,000 units</div>
+                        <div class="key-point">"Using robots to make robots" signals a self-expanding production capacity flywheel in formation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">MIIT: China's 2026 Humanoid Robot Production Expected to Exceed 100,000 Units</h3>
+                    <div class="news-content">
+                        <p>MIIT's Department of Science and Technology Deputy Director Gan Xiaobin stated at the WAIC 2026 press conference that China's 2026 humanoid robot full-year complete machine production is expected to exceed <span class="highlight-orange">100,000 units</span>, with AI application penetration in industrial enterprises above designated size exceeding 30%. Shanghai has set a target of "100,000 humanoid robots in factories" by the end of the 15th Five-Year Plan. In H1 2026, 19 new robotics unicorns were added in China, making robotics <span class="highlight-orange">the #1 source industry for new unicorns</span>, surpassing AI and advanced manufacturing.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">China has 3,236 existing embodied intelligence-related companies, with 2026 market size forecast at RMB 1.09 trillion</div>
+                        <div class="key-point">Robot body and complete machine manufacturing sales revenue grew 30.1% YoY in Jan-May</div>
+                        <div class="key-point">The industry has shifted from "concept-driven" to "capacity landing + performance realization" phase</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI and embodied intelligence landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127760;</div>
+                        <div class="trend-desc">
+                            <h3>WAIC 2026 Elevated to Global AI Governance Core Platform</h3>
+                            <p>Xi Jinping's keynote, World AI Cooperation Organization agreement, 1,100+ participating companies — WAIC has evolved from an "industry conference" to the "core platform for global AI governance."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied AI "Year of Mass Production" Officially Arrives</h3>
+                            <p>Zhiyuan's 15,000 units, Unitree's 104-day IPO, MIIT's 100,000-unit guidance — embodied intelligence is shifting from "demo" to "deployment" mode, with deployment status as the new watershed.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9889;</div>
+                        <div class="trend-desc">
+                            <h3>Domestic AI Coding Tools Enter Replacement Cycle</h3>
+                            <p>Alibaba bans Claude Code, pushes Qoder; Zhipu GLM-5.2 traffic up 48% — regulation, cost advantages, and open source ecosystem form triple replacement drivers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128176;</div>
+                        <div class="trend-desc">
+                            <h3>Hormuz Crisis Reshapes Global Energy Map</h3>
+                            <p>US forces strike Iran for 6th consecutive night, Brent breaks $86, Hormuz daily transit drops to 13 vessels — Middle East conflict pushes oil price center higher, reshaping global safe-haven assets.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua &middot; People's Daily &middot; CCTV News &middot; The Paper &middot; Caixin &middot; Reuters &middot; Bloomberg &middot; CoinDesk &middot; CITIC Securities &middot; MIIT</p>
+            <p class="footer-meta">Compiled: 2026-07-17 09:40 | NEWS DAILY Bilingual Four-Section Edition &middot; Automated Push</p>
+        </footer>
+    </div>
+</body>
+</html>
