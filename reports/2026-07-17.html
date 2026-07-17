@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-17</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="date-badge">2026-07-17</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 今日上海开幕 习近平将发表主旨讲话</h3>
+                    <div class="news-content">
+                        <p>2026 世界人工智能大会暨人工智能全球治理高级别会议 <span class="highlight-bold">7 月 17 日至 20 日在上海举行</span>，国家主席习近平将出席开幕式并发表主旨讲话，全面系统阐述中方对于人工智能发展和治理的政策立场。本届大会展览面积首次突破 10 万平方米，1100 余家企业参展，3000 多项展品集中亮相，超过 300 款是全球首发，9 位图灵奖、诺奖得主到场。</p>
+                        <p>大会期间将签署《成立世界人工智能合作组织协定》，组织总部设在中国上海，联合国秘书长古特雷斯等国家和国际组织代表出席仪式。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">国家主席时隔多年再次出席 WAIC 开幕式并发表主旨讲话，规格创历届之最</div>
+                        <div class="key-point">1100+ 企业、300+ 全球首发、3000+ 展品，展览规模与展商数双双破纪录</div>
+                        <div class="key-point">首次将"具身智能"与"智算"并列为两大核心赛道，H3 馆汇聚 200+ 家企业</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">上半年 GDP 同比增长 4.7% 新动能贡献率超四成</h3>
+                    <div class="news-content">
+                        <p>国家统计局 7 月 15 日发布数据，2026 年上半年国内生产总值 <span class="highlight-bold">69.57 万亿元</span>，按不变价格计算同比增长 4.7%，GDP 增量 3.6 万亿元为近五年同期最大。一、二季度分别增长 5.0%、4.3%，二季度环比增长 0.9%。<span class="highlight">高技术制造业增加值同比增长 13.3%</span>，装备制造业增长 9.3%，3D 打印设备、工业机器人产量分别增长 48.5%、28.0%。</p>
+                        <p>6 月社零总额由 5 月的 -0.6% 回升至 +1.0%，消费市场重回增长轨道，6 月一线城市新房价格环比上涨 0.1%。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">上半年新动能对经济增长贡献率超 40%，经济向新向优特征鲜明</div>
+                        <div class="key-point">6 月社零增速由负转正、6 月房价同比降幅收窄，国内需求修复进行时</div>
+                        <div class="key-point">夏粮产量首破 3000 亿斤，能源、粮食、产业链三大安全进一步夯实</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">国务院批复《扩大消费"十五五"规划》提出 60 万亿元目标</h3>
+                    <div class="news-content">
+                        <p>国务院 7 月 13 日正式批复并发布《扩大消费"十五五"规划》，提出到 2030 年消费市场总体规模持续扩大，<span class="highlight-bold">社会消费品零售总额达到 60 万亿元左右</span>，消费对经济增长的拉动作用进一步增强。《规划》精准聚焦养老、托育、文旅、健康等民生痛点，标志着促消费政策从"短期刺激"转向"长期制度性安排"。</p>
+                        <p>配套金融政策协同发力：M2 余额同比 +8.0%，社融存量 +7.4%，均高于名义 GDP 增速。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">60 万亿元目标较当前规模再上一个台阶，养老/托育/文旅/健康为四大重点</div>
+                        <div class="key-point">政策思路从"以旧换新"等短期刺激升级为"扩消费"长期制度安排</div>
+                        <div class="key-point">货币政策与财政政策协同，2026 下半年消费市场预期持续回暖</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">2025 年医保待遇享受人次达 87.5 亿 住院分娩"无自付"扩至 28 省</h3>
+                    <div class="news-content">
+                        <p>国家医保局 7 月 16 日发布《2025 年全国医疗保障事业发展统计公报》。2025 年我国医保待遇享受达 <span class="highlight-bold">87.5 亿人次</span>，其中职工 54.86 亿人次、居民 32.68 亿人次。截至 2025 年底，全国基本医保参保 133069.39 万人，参保率巩固在 95%。基本医保基金（含生育保险）总收入 35921.32 亿元、总支出 30055.19 亿元。</p>
+                        <p>28 个省份推动实施生育保险政策范围内<span class="highlight">住院分娩个人"无自付"</span>，与 WAIC 同日发布的医保统计公报是本周民生领域最重要的两份数据之一。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">"十四五"期间基本医保覆盖范围持续扩大，住院分娩"无自付"省份扩至 28 个</div>
+                        <div class="key-point">基金收支总规模超 6.5 万亿元，医保制度可持续性进一步增强</div>
+                        <div class="key-point">人口政策与医保制度协同，2025 年医保参保率稳居全球前列</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">教育部新增 27 个职教专业 锚定数字/低空/AI 等新产业</h3>
+                    <div class="news-content">
+                        <p>教育部 7 月 16 日发布新增补的 27 个职业教育本专科专业，含高职专科 9 个、职业本科 18 个，涉及 14 个专业大类、20 个专业类，新增专业将于 2027 年开始招生。重点增设<span class="highlight-bold">数字经济、低空经济、人工智能、高端装备、城市更新</span>以及民生紧缺等领域专业。</p>
+                        <p>同期启动第五轮"三支一扶"计划，2026—2030 年<span class="highlight">每年选派 3.64 万名高校毕业生</span>赴基层服务，与新专业形成人才供给闭环。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">27 个新专业中 18 个为职业本科层次，本科层次职业教育再扩容</div>
+                        <div class="key-point">"低空经济"首次作为重点专业方向被写入职业教育目录</div>
+                        <div class="key-point">与"三支一扶"计划形成"学校培养+基层就业"的人才供给闭环</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">水利部:"七下八上"防汛关键期 南北方均多雨</h3>
+                    <div class="news-content">
+                        <p>水利部 7 月 16 日新闻发布会披露，今年入汛以来主要江河共发生 <span class="highlight-bold">25 次编号洪水</span>，609 条河流发生超警洪水（较近五年同期均值偏多 35%），97 条中小河流出现超保证水位洪水，14 条河流发生有实测记录以来最大洪水。预计"七下八上"防汛关键期，南北方均有多雨区，涝重于旱。</p>
+                        <p>7 月 15 日辽宁兴城一载 13 人橡皮艇闪爆致 <span class="highlight">7 死 1 失联</span>，国家防总维持防汛四级应急响应。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">14 条河流刷新历史最大洪水记录，防汛形势为近年最严峻</div>
+                        <div class="key-point">"七下八上"预计有较强台风北上影响内陆，京津冀已启动暴雨蓝色预警</div>
+                        <div class="key-point">水利部、应急部、气象局联合值守，防汛四级应急响应持续</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">美军连续第 6 晚打击伊朗 霍尔木兹海峡仅 13 艘商船通行</h3>
+                    <div class="news-content">
+                        <p>美国中央司令部 7 月 16 日宣布，美军于美东时间下午 2 时对伊朗发起<span class="highlight-bold">"连续第 6 晚"新一波打击</span>，目标涵盖阿巴斯港、格什姆岛、锡里克、贾斯克等霍尔木兹海峡沿岸区域。伊朗以导弹和无人机反击，袭击约旦境内美军空军基地，并暗示可能敦促胡塞武装关闭曼德海峡。</p>
+                        <p>霍尔木兹海峡当日仅 <span class="highlight">13 艘商船通行</span>，约为冲突前平均水平的一成。印度海事管理局发布海湾地区航行警告，建议避免派遣印度海员经该海峡。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">这是 6 月《伊斯兰堡谅解备忘录》签署以来最严重升级，备忘录几近失效</div>
+                        <div class="key-point">美军对伊朗实际支出或达 1000 亿美元，远超官方公布 300 亿美元</div>
+                        <div class="key-point">全球约 1/5 海运石油经霍尔木兹海峡，航运瘫痪将引发全球能源危机</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">布伦特原油突破 86 美元 美国汽油或重返 4 美元</h3>
+                    <div class="news-content">
+                        <p>7 月 16 日布伦特原油升至 <span class="highlight-bold">86 美元/桶上方</span>，三日累计上涨 12%；WTI 收于 79.60 美元/桶、布伦特 84.95 美元/桶，均创一个月新高。预测市场显示美国汽油价格月底破 4 美元/加仑概率升至 90%，油价上涨动摇特朗普压通胀承诺并冲击 11 月中期选举。</p>
+                        <p>国内成品油 7 月 17 日 24 时开启第 14 轮调价窗口，<span class="highlight">机构预测汽柴油上调 150-170 元/吨</span>，92 号汽油每升涨 0.12 元。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">中信证券：霍尔木兹海峡控制权矛盾是核心，短期无解</div>
+                        <div class="key-point">上海原油 SC 两日累计涨 11.73%，国内加油站零售价预计涨 0.12-0.16 元/升</div>
+                        <div class="key-point">黄金白银 7 月 16 日双双暴跌，纽约金跌 1.39% 至 3995 美元/盎司</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">习近平主席将出席 WAIC 开幕式 阐释中国 AI 治理方案</h3>
+                    <div class="news-content">
+                        <p>国家主席习近平 7 月 17 日出席 2026 世界人工智能大会开幕式并发表主旨讲话，全面系统阐述中方对于人工智能发展和治理的政策立场和理念主张。7 月 16 日晚，<span class="highlight-bold">成立世界人工智能合作组织协定签署仪式</span>在上海举行，外交部长王毅代表中国政府签署协定，组织总部设在上海。</p>
+                        <p>联合国秘书长古特雷斯等国家和国际组织代表出席仪式，标志着 AI 全球治理进入<span class="highlight">"多边平台常设化"</span>新阶段。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">大会期间倡议成立"世界人工智能合作组织"，常设多边平台总部落地上海</div>
+                        <div class="key-point">中方率先发布《全球人工智能治理倡议》，确立"智能向善、安全可控、普惠公平"导向</div>
+                        <div class="key-point">多家国际媒体评价 WAIC 为"全球 AI 治理最重要的高级别对话平台"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">美国宣布对部分巴西进口商品加征 25% 关税</h3>
+                    <div class="news-content">
+                        <p>当地时间 7 月 15 日，美国贸易代表办公室宣布根据《1974 年贸易法》第 301 条对来自巴西的部分商品加征 <span class="highlight-bold">25% 关税</span>，理由是巴西在数字贸易、关税、知识产权、乙醇供应和森林砍伐方面的政策"对美国商业造成了负担"。巴西总统卢拉对美方措施表示拒绝，将通过 WTO 争端解决机制和非关税措施实施对等反制。</p>
+                        <p>巴西可动用"对等法"对美实施非关税反制，涉及视听、医药、农业专利等领域。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">特朗普对拉美第一大经济体的极限施压，关税战范围再度扩大</div>
+                        <div class="key-point">巴西可动用"对等法"对美实施非关税反制，多领域反击</div>
+                        <div class="key-point">此次调查耗时一年，是美国对巴经贸政策全面转向的标志性事件</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">中国 AI 发展成国际焦点 美企悄然转向中国模型</h3>
+                    <div class="news-content">
+                        <p>彭博、路透等多家国际媒体报道，受中国 AI 模型低成本高性价比的吸引，越来越多美国企业开始在实际生产中采用中国大模型，涵盖编程、客服、数据分析等场景。<span class="highlight-bold">OpenAI、Anthropic、谷歌虽仍主导美国市场</span>，但中国模型在 API 价格上往往便宜 80% 以上，部分企业反映中国模型在中文场景和亚洲数据上表现更优。</p>
+                        <p>习近平主席在 WAIC 上阐释的"普惠向善"理念正在被国际社会广泛接受。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">中国 AI 编程工具在企业部署成本上具有 5-10 倍优势</div>
+                        <div class="key-point">多家美国 SaaS 公司已开始混合调用 GPT-5.6 与国产模型</div>
+                        <div class="key-point">中方 AI 治理方案强调"弥合智能鸿沟"，与美方"小院高墙"形成鲜明对比</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">特朗普将出席世界杯决赛 西班牙对阿根廷 7 月 19 日开球</h3>
+                    <div class="news-content">
+                        <p>白宫 7 月 16 日确认特朗普将出席 7 月 19 日在纽约大都会人寿体育场举行的 <span class="highlight-bold">2026 FIFA 男足世界杯决赛</span>，西班牙与阿根廷争夺冠军。特朗普将与 FIFA 因凡蒂诺共同颁发冠军奖杯。决赛恰逢国际足联 2030 世界杯扩军至 64 队的关键讨论期，多家中国企业宣布决赛日放假。</p>
+                        <p>国际足联同步调查阿根廷队半决赛展示马岛主权横幅事件，或罚款/禁赛。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">决赛场地大都会人寿体育场可容纳 8.2 万人，是北美最大的体育场馆之一</div>
+                        <div class="key-point">中国"宁德时代、华为、字节"等多家企业宣布决赛日放假，呼应世界杯文化</div>
+                        <div class="key-point">国际足联同步调查马岛旗帜事件，阿根廷或遭罚款/禁赛</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections (Bottom) -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 启幕 国产 AI 编程工具加速替代海外产品</h3>
+                    <div class="news-content">
+                        <p>工信部网络安全威胁和漏洞信息共享平台（NVDB）7 月初确认 Claude Code 内置监控机制，未经用户同意可回传地域、身份标识等敏感信息，定性<span class="highlight-bold">"危害严重"</span>建议立即卸载或升级。阿里自 7 月 10 日起全面禁止内部员工使用 Claude Code 全系产品，推荐自研 Qoder 替代。</p>
+                        <p>WAIC 2026 上，腾讯 CodeBuddy、阿里 Qoder、智谱 GLM-5.2 流量集体上涨，<span class="highlight">国产 AI 编程工具正借助窗口期加速替代</span>海外产品。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">阿里禁用 Claude Code 涉及 30 万内部员工，是国内最大规模企业级替代</div>
+                        <div class="key-point">智谱 GLM-5.2 开源后 GitHub Star 数两周内上涨 48%</div>
+                        <div class="key-point">国产工具在 Coding Agent 部署成本上较 Claude Code 便宜 5-10 倍</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">GPT-5.6 编程基准 91.9% 登顶 OpenAI 全面占据部署制高点</h3>
+                    <div class="news-content">
+                        <p>OpenAI 7 月 9 日全球开放 GPT-5.6 三档模型——Sol（旗舰）、Terra（均衡）、Luna（低成本），Sol 在 Terminal-Bench 2.1 编程基准测试中<span class="highlight-bold">得分 91.9% 创新高</span>，API 定价 $5/$30、$2.5/$15、$1/$6 每百万 token。GitHub 同步将三档模型铺到 Copilot 全产品矩阵（VS Code、JetBrains、Xcode、Eclipse、CLI、Cloud Agent、Mobile）。</p>
+                        <p>Cursor v3.11 推出 Side Chats、对话搜索、重新设计的项目/仓库选择器，云端 Agent Hooks 同步上线。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Sol/Ultra 模式支持 4 个 Agent 并行，最多可配置 16 个 Agent</div>
+                        <div class="key-point">GitHub 在模型分发、预算管控、遥测、MDM 设备管理方面成为 AI 编程基础设施层</div>
+                        <div class="key-point">Copilot 现在可以服务"非开发人员"——通过自然语言生成文档、表格、PPT</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Codex 重大更新 接管电脑、操作应用、记忆偏好</h3>
+                    <div class="news-content">
+                        <p>OpenAI 为 Codex 推出<span class="highlight-bold">"for (almost) everything"</span>重大更新：新版 Codex 可与用户并肩操作电脑、使用更多工具和应用、生成图片、记住用户偏好、从历史操作中学习，并承担持续可重复的工作。同日，独立运行近一年的 Codex 应用正式并入 ChatGPT 桌面端，与全新智能体 ChatGPT Work 构成"Chat + Work + Codex"三合一超级应用。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Codex 已突破"代码生成"边界，向"通用数字员工"演进</div>
+                        <div class="key-point">ChatGPT Work 专为自主拆解多步骤复杂任务、跨应用收集上下文、长期运行而设计</div>
+                        <div class="key-point">并入 ChatGPT 后用户基数一夜突破 700 万，单周增长 2.5 倍</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">AI 拟人化监管新规 7/15 施行 大厂下架边缘智能体功能</h3>
+                    <div class="news-content">
+                        <p>7 月 15 日《人工智能拟人化互动服务管理暂行办法》正式施行，豆包、千问、网易等大厂提前下架部分智能体功能以做风险隔离。此次下架是监管落地前厂商主动收缩的信号，<span class="highlight-bold">AI 产品合规成本上升</span>，开发者需要在产品设计中预留"安全护栏"接口。</p>
+                        <p>Claude/Cursor/OpenClaw 三大主流 AI 编程 Agent 同步登陆移动端，标志 Agent 产品跨过分水岭。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">中国 AI 监管在 7 月密集落地：6/25《拟人化管理办法》+ 7/15 NVDB Claude Code 警示</div>
+                        <div class="key-point">"Mobile Coding"成为新趋势：手机上可签字审批、监控 Agent</div>
+                        <div class="key-point">监管落地倒逼大模型厂商将"内容安全"成本前置，从"事后过滤"转向"事中阻断"</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">4 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 具身智能首登 C 位 智元三款新品全球首发</h3>
+                    <div class="news-content">
+                        <p>2026 世界人工智能大会 7 月 17 日在上海启幕，本届首次将"具身智能"与"智算"并列为两大核心赛道，<span class="highlight-orange">具身智能馆 H3 汇聚超 200 家企业</span>。智元机器人占据 200 平方米超大展台（H3-C101），全球首发 6 款新品：远征 A3 Ultra（全尺寸人形，超拟人灵巧手+柔性腰）、精灵 G2 Max（柔性产线）、临界点 Omnihand 3 Ultra-M（灵巧手）、启元 T1（消费级可变形）等。</p>
+                        <p>傅利叶、它石智航、星动纪元等同步发布"康养/工业/物流"三大场景部署态。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">智元展品首次大规模以"系统级工程化能力"为卖点，从"会跑会跳"转向"会干活"</div>
+                        <div class="key-point">傅利叶、它石智航、星动纪元等同步发布部署态，覆盖康养/工业/物流</div>
+                        <div class="key-point">30+ 具身智能软硬件新品在 WAIC 期间集中发布，产业链上下游首次完整展示</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">智元第 15000 台通用具身机器人量产下线 部署态成关键词</h3>
+                    <div class="news-content">
+                        <p>智元机器人宣布第 <span class="highlight-orange">15000 台通用具身机器人</span>于 6 月 28 日正式量产下线，距去年 11 月第 10000 台下线仅 7 个月。8 台精灵 G2 已在龙旗科技南昌工厂的平板质检产线上连续运行超 100 天，独立完成四大核心检测工序，作业成功率 99.99%，效率达人工的 80% 到 90%。</p>
+                        <p>合伙人姚卯青强调："部署态"——买了就能用，是生产力不是开发平台。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">智元速度：从创业到 15000 台量产、十亿级营收，仅用 3 年</div>
+                        <div class="key-point">智元 2025 年营收 10.5 亿元同比增长近 20 倍，估值约 150 亿元</div>
+                        <div class="key-point">7 月 19 日智元将在世博中心金厅举办"智启具身"论坛，PI 任至意、腾讯张正友等出席</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">宇树科创板 IPO 注册生效 104 天刷新硬科技纪录</h3>
+                    <div class="news-content">
+                        <p>宇树科技 7 月 2 日科创板 IPO 注册获批，从受理到注册仅 <span class="highlight-orange">104 天</span>，刷新科创板硬科技企业上市最快纪录。WAIC 2026 是宇树上市前最后一次品牌势能放大，将首次公开机器人无人工厂沙盘，G1 人形 + 四足协同完成自产自测闭环，自研 UnifoLM-X1-0 具身大模型已在自有工厂试点。</p>
+                        <p>同步展出全球首款可量产载人双足机甲 <span class="highlight-orange">GD01（390 万起）</span>与 R1 消费级人形机器人（2.99 万起）。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">宇树 2025 年人形机器人出货 5500 台全球第一，市占率 32.4%</div>
+                        <div class="key-point">2026 年宇树目标出货 1-2 万台，单款双足累计下线已突破 1.1 万台</div>
+                        <div class="key-point">"用机器人造机器人"意味着自我扩张的产能飞轮正在形成</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">工信部：2026 年中国人形机器人产量有望突破 10 万台</h3>
+                    <div class="news-content">
+                        <p>工信部科技司副司长甘小斌在 WAIC 2026 新闻发布会上表示，2026 年中国人形机器人全年整机产量有望突破 <span class="highlight-orange">10 万台</span>，规上工业企业 AI 应用普及率已超 30%。上海明确"十五五"末实现"十万台人形机器人进工厂"目标。2026 上半年国内新增 19 家机器人独角兽，使机器人超越 AI、超越先进制造，成为新晋独角兽<span class="highlight-orange">第一大来源行业</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">国内现存具身智能相关企业 3236 家，市场规模 2026 年预计达 1.09 万亿元</div>
+                        <div class="key-point">1-5 月机器人本体与整机制造销售收入同比增长 30.1%</div>
+                        <div class="key-point">行业从"概念催化"阶段切换至"产能落地 + 业绩兑现"新阶段</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; 今日核心趋势</h2>
+                <p>洞察 AI 与具身智能最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127760;</div>
+                        <div class="trend-desc">
+                            <h3>WAIC 2026 升格全球 AI 治理核心平台</h3>
+                            <p>习近平主席发表主旨讲话、世界人工智能合作组织协定签署、1100+ 企业参展——WAIC 已从"行业大会"升级为"全球 AI 治理核心平台"。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>具身智能"量产元年"正式到来</h3>
+                            <p>智元 15000 台、宇树 104 天 IPO、工信部 10 万台指引——具身智能正从"演示"切换至"上岗"模式，部署态成为新的分水岭。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9889;</div>
+                        <div class="trend-desc">
+                            <h3>国产 AI 编程工具进入替代周期</h3>
+                            <p>阿里禁用 Claude Code 推 Qoder、智谱 GLM-5.2 流量上涨 48%——监管落地+成本优势+开源生态形成三重替代动力。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128176;</div>
+                        <div class="trend-desc">
+                            <h3>霍尔木兹危机重塑全球能源版图</h3>
+                            <p>美军连续 6 晚打击伊朗、布伦特突破 86 美元、霍尔木兹日通行跌至 13 艘——中东冲突推动油价中枢上移，全球避险资产重构。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p class="footer-sources">数据来源：新华社 · 人民日报 · 央视新闻 · 澎湃新闻 · 财新 · 路透社 · 彭博社 · CoinDesk · 中信证券 · 工信部</p>
+            <p class="footer-meta">整理时间：2026-07-17 09:40 | NEWS DAILY 双语四板块版 · 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
