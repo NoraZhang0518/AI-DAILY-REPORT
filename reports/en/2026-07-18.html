@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-18</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-07-18</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Xi Jinping Addresses WAIC 2026 Opening, Calls for Open and Innovative AI Development</h3>
+                    <div class="news-content">
+                        <p>The 2026 World Artificial Intelligence Conference and the High-Level Meeting on Global AI Governance opened in Shanghai on July 17. Chinese President Xi Jinping attended the opening ceremony and delivered a keynote speech, emphasizing <span class="highlight-bold">openness, mutual benefit, and innovation-driven development</span> to promote AI technology, industry, and application.</p>
+                        <p>During the conference, the Agreement on the Establishment of the World AI Cooperation Organization was signed. The organization will be the world's first intergovernmental AI organization, with headquarters in Shanghai. The Global AI Governance Index 2026 was also released, ranking <span class="highlight">China second in the world</span> in comprehensive AI governance.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WAIC 2026 covers over 100,000 square meters with 1,100+ exhibitors</div>
+                        <div class="key-point">The World AI Cooperation Organization is the first intergovernmental AI organization, headquartered in Shanghai</div>
+                        <div class="key-point">China ranks second globally in the AI Governance Index</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Landslide in Pengshui, Chongqing: Xi Jinping Orders All-Out Rescue Efforts</h3>
+                    <div class="news-content">
+                        <p>At approximately 9:10 a.m. on July 17, a landslide occurred in Pengshui County, Chongqing, burying multiple people. President Xi Jinping issued important instructions, calling for <span class="highlight-bold">scientific rescue operations, enhanced monitoring and early warning, and risk investigation</span> to protect lives and property.</p>
+                        <p>As of press time, 18 people have been rescued, including 8 fatalities, with 34 others still missing. A national Level-II geological disaster emergency response and a Level-IV disaster relief response have been activated. The Ministry of Finance and Ministry of Emergency Management have <span class="highlight">allocated 50 million yuan</span> in emergency relief funds.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">National Level-II geological disaster response activated</div>
+                        <div class="key-point">Professional rescue teams and 206 firefighters deployed</div>
+                        <div class="key-point">50 million yuan emergency funds allocated by central government</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">China Railways to Pilot 60-Day Advance Train Ticket Reservation</h3>
+                    <div class="news-content">
+                        <p>Starting July 20, China Railways will pilot a new reservation service on the Beijing-Shanghai high-speed railway and Beijing-Shanghai railway, allowing passengers to book tickets from <span class="highlight-bold">60 days to 17 days before departure</span>.</p>
+                        <p>The pilot is seen as an important step toward a reservation-based ticketing system. The railway authority will refine the rules based on the pilot results and gradually expand to more routes.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Pilot routes: Beijing-Shanghai high-speed railway and Beijing-Shanghai railway</div>
+                        <div class="key-point">Booking window: 60 to 17 days before departure</div>
+                        <div class="key-point">Gradual expansion planned based on pilot results</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Domestic Gasoline and Diesel Prices Rise Starting July 17</h3>
+                    <div class="news-content">
+                        <p>From 24:00 on July 17, retail prices of gasoline and diesel in China will increase by 300 yuan and 290 yuan per ton respectively. Nationally, <span class="highlight-bold">92-octane gasoline, 95-octane gasoline, and 0-grade diesel will rise by 0.24, 0.25, and 0.25 yuan per liter</span> respectively.</p>
+                        <p>Analysts attribute the hike to rising international crude oil prices. Tensions in the Middle East have pushed Brent crude above $88 per barrel, directly affecting China's refined oil pricing mechanism.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">92-octane gasoline up 0.24 yuan per liter</div>
+                        <div class="key-point">95-octane gasoline and 0-grade diesel up 0.25 yuan per liter</div>
+                        <div class="key-point">Price increase driven by international crude oil prices</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Express Delivery Exceeds 100 Billion Pieces in First Half of 2026</h3>
+                    <div class="news-content">
+                        <p>China's postal sector handled <span class="highlight-bold">108.89 billion</span> mail and express delivery items in the first half of the year, up 4.2% year-on-year. Express delivery volume exceeded 100 billion pieces, up 5.0% year-on-year.</p>
+                        <p>Experts credit the steady growth to e-commerce promotions, improved rural delivery networks, and rapid cross-border logistics development. The second half of the year is expected to maintain growth momentum as the peak shopping season approaches.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Postal sector volume: 108.89 billion items, up 4.2% YoY</div>
+                        <div class="key-point">Express delivery exceeded 100 billion pieces, up 5.0% YoY</div>
+                        <div class="key-point">Rural and cross-border logistics are key growth engines</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">China to Adjust Battery Consumption Tax in Phases from September 1</h3>
+                    <div class="news-content">
+                        <p>The Ministry of Finance, Customs, and Taxation announced that battery consumption tax policies will be adjusted in phases from September 1. <span class="highlight-bold">Photovoltaic batteries will be taxed at 2%</span>, while six categories including sodium-ion and solid-state batteries will be exempt until the end of 2028.</p>
+                        <p>Analysts view the adjustment as precise regulation of the new energy sector: modest taxation on high-energy-consuming PV batteries to encourage efficiency improvements, and exemptions for emerging battery technologies to lower costs and accelerate industrialization.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">PV batteries taxed at 2% starting April 2027</div>
+                        <div class="key-point">Sodium-ion and solid-state batteries exempt until end of 2028</div>
+                        <div class="key-point">Policy balances industrial regulation with support for emerging tech</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">U.S.-Iran Conflict Escalates as Both Sides Target Infrastructure</h3>
+                    <div class="news-content">
+                        <p>The U.S. military continued airstrikes against Iran on July 17, marking the <span class="highlight-bold">seventh consecutive night</span> of attacks. Iran responded with large-scale strikes on U.S. facilities in Kuwait, Syria, and Bahrain. Both sides have expanded targets to infrastructure, raising the risk of further escalation.</p>
+                        <p>IEA Executive Director Fatih Birol warned that global energy security could face a severe threat if oil transport through the Strait of Hormuz cannot resume within weeks. <span class="highlight">Strait traffic has fallen to a three-week low</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">U.S. launches seventh consecutive night of strikes on Iran</div>
+                        <div class="key-point">Iran targets Syria and Kuwait power/desalination facilities</div>
+                        <div class="key-point">Strait of Hormuz traffic at three-week low, energy security risks rise</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Andy Burnham Elected Labour Leader, Set to Become UK's Seventh PM in a Decade</h3>
+                    <div class="news-content">
+                        <p>The UK's Labour Party officially announced <span class="highlight-bold">Andy Burnham</span> as its new leader on July 17. He is scheduled to succeed Keir Starmer as Prime Minister on July 20, becoming the UK's seventh prime minister in the past decade.</p>
+                        <p>Burnham previously served as Health Secretary and Mayor of Greater Manchester. British officials assess that the U.S.-Iran conflict could escalate during his first week in office, presenting an early foreign policy test.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Andy Burnham to become Prime Minister on July 20</div>
+                        <div class="key-point">He will be the UK's seventh PM in ten years</div>
+                        <div class="key-point">U.S.-Iran escalation may test his diplomacy in the first week</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Israeli Parliament Dissolves, New Elections Set for October 27</h3>
+                    <div class="news-content">
+                        <p>The Israeli parliament dissolved in the early hours of July 17, with <span class="highlight-bold">new parliamentary elections scheduled for October 27</span>. Prime Minister Benjamin Netanyahu's government will continue as a caretaker administration until a new government is formed.</p>
+                        <p>Analysts note that the dissolution reflects intensified internal contradictions within the ruling coalition. With the U.S.-Iran conflict escalating, Israel's political uncertainty could have ripple effects on regional security and foreign policy.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">New Israeli parliamentary elections on October 27</div>
+                        <div class="key-point">Netanyahu government to serve as caretaker administration</div>
+                        <div class="key-point">Political uncertainty may affect Middle East security dynamics</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">International Oil Prices Surge, Brent Rises Nearly 16% This Week</h3>
+                    <div class="news-content">
+                        <p>International oil prices rose sharply amid Middle East tensions. On July 17, Brent crude for September delivery settled at <span class="highlight-bold">$88.10 per barrel</span>, up 4.59% for the day and 15.90% for the week. WTI crude for August delivery rose 4.48% to $82.49 per barrel, up 15.51% for the week.</p>
+                        <p>Markets fear a prolonged closure of the Strait of Hormuz could severely disrupt global oil supply. The IEA warned that sustained disruption could put global energy security on "red alert."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Brent crude up 15.90% this week to $88.10 per barrel</div>
+                        <div class="key-point">WTI crude up 15.51% this week to $82.49 per barrel</div>
+                        <div class="key-point">Price surge driven by Strait of Hormuz transit risks</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Meta in Talks to Rent Computing Power to Anthropic in Deal Worth Up to $10 Billion</h3>
+                    <div class="news-content">
+                        <p>Meta is in preliminary discussions with Anthropic to rent data center computing capacity, according to people familiar with the matter. The potential deal could be worth up to <span class="highlight-bold">$10 billion</span> over two years.</p>
+                        <p>If finalized, the agreement would mark a landmark computing-sharing deal between AI labs. Meta has extensive data center infrastructure, while Anthropic needs to expand compute capacity for training more powerful AI models.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Meta and Anthropic discussing compute leasing deal up to $10 billion</div>
+                        <div class="key-point">Potential two-year agreement still in early stages</div>
+                        <div class="key-point">Compute resources are becoming a critical variable in AI competition</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Trump to Attend World Cup Final and Present Trophy</h3>
+                    <div class="news-content">
+                        <p>The White House press secretary said U.S. President Donald Trump will attend the FIFA World Cup final and present the championship trophy alongside FIFA President Gianni Infantino. The final will be held on <span class="highlight-bold">July 19</span> between Spain and Argentina.</p>
+                        <p>Argentina defeated Egypt 3-2 in the semifinal, with Lionel Messi contributing one goal and one assist. Spain beat France 2-1 to advance. Trump's attendance is seen as part of his diplomatic outreach efforts.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Trump to attend July 19 World Cup final and present trophy</div>
+                        <div class="key-point">Final matchup: Spain vs Argentina</div>
+                        <div class="key-point">Messi contributed one goal and one assist in the semifinal</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Moonshot AI Releases Kimi K3: 2.8 Trillion Parameters, Largest Open-Weight Model Yet</h3>
+                    <div class="news-content">
+                        <p>On July 16, Moonshot AI launched <span class="highlight-bold">Kimi K3</span>, a model with 2.8 trillion parameters, making it the largest open-weight model to date. It uses a Mixture-of-Experts architecture, supports a 1-million-token context window, and accepts native multimodal inputs. The API is already live.</p>
+                        <p>In blind testing, developers preferred K3 over leading U.S. models, though third-party benchmarks still place it behind GPT-5.6 Sol and Claude Fable 5 in some tasks. Priced at around $12 per million tokens, <span class="highlight">weights will be publicly released on July 27</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Kimi K3 has 2.8 trillion parameters, the largest open-weight model to date</div>
+                        <div class="key-point">Supports 1M token context and native multimodal input</div>
+                        <div class="key-point">Weights to be released on July 27, API already live</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Microsoft Accelerates MAI Model Rollout, Replacing Third-Party Models in Excel and Outlook</h3>
+                    <div class="news-content">
+                        <p>Microsoft is accelerating deployment of its self-developed MAI models in core Office products. <span class="highlight-bold">Excel and Outlook now handle tens of thousands of AI prompt requests per week</span> entirely with MAI models, replacing previous reliance on OpenAI and Anthropic models.</p>
+                        <p>At the June Build conference, Microsoft released seven new self-developed AI models, including a coding model that approaches Anthropic Opus 4.6 capability at significantly lower cost. <span class="highlight">MAI models have also been integrated into GitHub Copilot</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">MAI models now handle tens of thousands of weekly AI requests in Excel and Outlook</div>
+                        <div class="key-point">Microsoft aims to reduce dependence on OpenAI and Anthropic</div>
+                        <div class="key-point">Self-developed coding model approaches Anthropic Opus 4.6 capability</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">AI Coding Tools Add Guardrails: Copilot CLI, Claude Code, and Codex Update Security</h3>
+                    <div class="news-content">
+                        <p>From July 14 to 16, <span class="highlight-bold">GitHub Copilot CLI, Anthropic Claude Code, and OpenAI Codex</span> all released security updates with a common theme: tightening control over AI agents. Copilot CLI hard-blocks workspace-mutating tool calls during plan mode; Claude Code fixed a vulnerability where zero-width characters could spoof permission previews; Codex improved detection of dangerous commands.</p>
+                        <p>The updates followed an attack on AsyncAPI release pipelines that pushed five trojanized npm packages. The incidents highlight that AI coding agents with broad permissions can become a major supply-chain attack vector.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Three major AI coding tools released security updates within one week</div>
+                        <div class="key-point">AsyncAPI attack exposes agent supply-chain risks</div>
+                        <div class="key-point">"Harness Engineering" is becoming key to reliable AI agents</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Peking University Publishes "Harness Engineering" Handbook for Taming Agents</h3>
+                    <div class="news-content">
+                        <p>Peking University and partners released a 69-page handbook titled "Harness Engineering" for managing AI agents, proposing the core formula <span class="highlight-bold">"Agent = Model + Harness"</span>. It argues that models provide intelligence while harnesses provide reliability, outlining three design principles: small and clear constraints, recoverable loops, and verifiable quality.</p>
+                        <p>The publication signals an industry shift from pure model competition to engineering systems that can safely control and deploy AI agents in production environments.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Proposes "Agent = Model + Harness" formula</div>
+                        <div class="key-point">Defines three principles: constraints, recovery, and verification</div>
+                        <div class="key-point">AI competition shifts from model capability to engineering control systems</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Alibaba Consolidates Three Agent Products as Big Tech Shifts AI Resources to B2B</h3>
+                    <div class="news-content">
+                        <p>Alibaba is reportedly consolidating its Wukong, MuleRun, and other agent products under the QoderWork platform. Tencent's WorkBuddy is also tilting toward enterprise scenarios. The industry is shifting from broad experimentation to focused resource allocation, with <span class="highlight-bold">B2B productivity scenarios becoming the top priority</span>.</p>
+                        <p>The consolidation aligns with Alibaba's earlier move to ban Claude Code internally and promote its own Qoder tool. Tech giants aim to build unified enterprise AI development platforms that reduce tool-switching costs and strengthen data security and compliance.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Alibaba consolidates Wukong and MuleRun agent products</div>
+                        <div class="key-point">Big Tech AI resources move from consumer to B2B productivity</div>
+                        <div class="key-point">Agent competition shifts from model capability to enterprise problem-solving</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 Opens with Embodied Intelligence as a Major Highlight</h3>
+                    <div class="news-content">
+                        <p>The 2026 World Artificial Intelligence Conference opened in Shanghai on July 17, covering over <span class="highlight-bold">100,000 square meters</span> with <span class="highlight">1,100+ exhibitors</span> and more than 300 global debuts. Embodied intelligence was a major highlight, with <span class="highlight-bold">over 200 embodied AI companies exhibiting and nearly 60 humanoid robots serving on-site</span>.</p>
+                        <p>WAIC's top SAIL award recognized embodied intelligence projects including Huawei Ascend 950 super nodes and the Sharpa tactile AI dexterous hand. Zhangjiang AI Town has gathered 600+ AI companies and 30,000+ practitioners in just 10 months.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">200+ embodied AI companies and nearly 60 humanoid robots at WAIC</div>
+                        <div class="key-point">Zhangjiang AI Town has gathered 600+ AI companies</div>
+                        <div class="key-point">Embodied intelligence is moving from labs to real-world applications</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">China's First Robot Pharmacy Opens in Shanghai Pudong, Powered by Ant Lingbo</h3>
+                    <div class="news-content">
+                        <p>At WAIC 2026, a robot-powered smart pharmacy based on Ant Group's cross-embodied foundation model <span class="highlight-orange">LingBot-VLA</span> was unveiled and has already been deployed at a Guoda Pharmacy store in Shanghai's Pudong district, becoming <span class="highlight-bold">China's first robot pharmacy</span>.</p>
+                        <p>The system uses three robots of different configurations to receive orders, pick medicines, and package them. The entire process is completed in <span class="highlight-orange">under 90 seconds</span>. The pharmacy is also integrated with online medical consultation services, forming a complete closed-loop experience.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">China's first robot pharmacy lands in Shanghai Pudong</div>
+                        <div class="key-point">Powered by Ant Lingbo LingBot-VLA cross-embodied model</div>
+                        <div class="key-point">Full process completed in under 90 seconds, integrated with online consultations</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">RoboScience Achieves "30-Second Hand Swap" Breakthrough in Cross-Embodiment Dexterity</h3>
+                    <div class="news-content">
+                        <p>At WAIC, RoboScience demonstrated its general embodied foundation model <span class="highlight-orange">Visics</span>, enabling multiple dexterous hands from different brands to perform autonomous grasping under a single model. In a live demo, technicians swapped out a different-brand hand, and the new hand was <span class="highlight-bold">recognized within 30 seconds</span> and smoothly executed various grasping tasks without retraining.</p>
+                        <p>This validates Visics's generalization across embodiments, objects, and tasks, achieving true "one brain, multiple hands." The technology has already been piloted in retail and logistics scenarios, with multi-SKU grasping success rates stable at <span class="highlight-orange">over 99%</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">RoboScience enables 30-second hand swaps across different robot brands</div>
+                        <div class="key-point">Validates cross-embodiment, cross-object, and cross-task generalization</div>
+                        <div class="key-point">Retail scenario multi-SKU grasping success rate exceeds 99%</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI and global affairs landscape</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>AI Governance and Open Source Advance Together</h3>
+                            <p>WAIC 2026 established the world's first intergovernmental AI organization, while Kimi K3 set a new record for open-weight model scale at 2.8 trillion parameters.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128737;</div>
+                        <div class="trend-desc">
+                            <h3>Agent Safety Becomes Engineering Priority</h3>
+                            <p>Copilot, Claude Code, and Codex all hardened their guardrails, while "Harness Engineering" emerged as the methodology for reliable agent deployment.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127979;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied AI Accelerates Commercial Deployment</h3>
+                            <p>Robot pharmacies, cross-embodiment dexterous hands, and nearly 60 humanoid robots at WAIC show embodied AI moving from demos to real-world scenarios.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127758;</div>
+                        <div class="trend-desc">
+                            <h3>Middle East Tensions Reshape Global Energy</h3>
+                            <p>Escalating U.S.-Iran conflict has cut Hormuz Strait traffic and driven oil prices up nearly 16% in a week, raising energy security concerns worldwide.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: CCTV &middot; Sina Finance &middot; Wall Street见闻 &middot; Global Times &middot; Leiphone &middot; The Paper &middot; EveryDev.ai &middot; Tencent News</p>
+            <p class="footer-meta">Compiled: 2026-07-18 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
