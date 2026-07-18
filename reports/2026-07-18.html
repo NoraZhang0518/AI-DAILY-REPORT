@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-18</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '→';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-07-18</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">每日综合热搜 · 国际时事 · AI Coding · 具身智能</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">🇨🇳</div>
+                    <h2 class="section-title">国内综合热搜</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">习近平出席2026世界人工智能大会开幕式并发表主旨讲话</h3>
+                    <div class="news-content">
+                        <p>2026世界人工智能大会暨人工智能全球治理高级别会议7月17日在上海开幕。国家主席习近平出席开幕式并发表主旨讲话，强调要坚持<span class="highlight-bold">开放共赢、驱动创新发展</span>，鼓励开源开放、合作共享，全面促进人工智能科技创新、产业发展和场景应用。</p>
+                        <p>大会期间，《关于成立世界人工智能合作组织的协定》签署仪式举行，世界人工智能合作组织成为全球首个人工智能政府间国际组织，总部将设在上海。《全球人工智能治理指数（2026）》同日发布，<span class="highlight">中国人工智能治理指数综合排名位居世界第二</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WAIC 2026展览面积超10万平方米，1100多家企业参展</div>
+                        <div class="key-point">世界人工智能合作组织是全球首个AI政府间国际组织，总部设在上海</div>
+                        <div class="key-point">中国AI治理指数综合排名位居世界第二</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">重庆彭水县发生山体崩塌，习近平作出重要指示</h3>
+                    <div class="news-content">
+                        <p>7月17日9时10分许，重庆市彭水县汉葭街道发生一起山体崩塌，造成多人被埋失联。习近平总书记高度重视并作出重要指示，要求<span class="highlight-bold">科学组织搜救，加强监测预警和巡查排险</span>，切实保障人民群众生命财产安全。</p>
+                        <p>截至发稿时，现场已搜救出18人，其中8人死亡，另有34人失联。应急管理部启动国家地质灾害二级应急响应，国家防灾减灾救灾委员会启动国家四级救灾应急响应，多部门联合调派救援力量赶赴现场。<span class="highlight">财政部、应急管理部紧急预拨5000万元</span>中央自然灾害救灾资金。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">国家地质灾害二级应急响应和国家四级救灾应急响应已启动</div>
+                        <div class="key-point">多部门联合调派专业救援力量100余人、消防救援队伍49车206人</div>
+                        <div class="key-point">财政部、应急管理部紧急预拨5000万元救灾资金</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">铁路部门试点提前60天预约购买火车票</h3>
+                    <div class="news-content">
+                        <p>7月20日起，铁路部门将在<span class="highlight-bold">京沪高铁、京沪铁路</span>试点新增火车票预约购票服务。旅客可预约开车前第60天至第17天的车票，进一步拓展购票选择空间，优化出行安排。</p>
+                        <p>铁路部门表示，将根据试点情况逐步完善预约购票规则，适时推广至更多线路。业内人士认为，预约购票机制与现有的提前15天售票制度形成互补，能够更好地满足不同旅客的出行规划需求。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">试点线路：京沪高铁、京沪铁路</div>
+                        <div class="key-point">预约时间范围：开车前第60天至第17天</div>
+                        <div class="key-point">未来将根据试点效果适时推广</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">国内成品油价格17日24时起上调</h3>
+                    <div class="news-content">
+                        <p>7月17日24时起，国内汽、柴油零售限价每吨分别上调300元和290元。全国平均来看，<span class="highlight-bold">92号汽油、95号汽油和0号柴油每升分别上调0.24元、0.25元和0.25元</span>。</p>
+                        <p>分析人士指出，本轮油价上调主要受国际原油价格上涨推动。近期中东局势紧张导致国际油价波动加剧，布伦特原油期货价格一度突破88美元/桶，传导至国内成品油定价机制。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">92号汽油每升上调0.24元</div>
+                        <div class="key-point">95号汽油和0号柴油每升均上调0.25元</div>
+                        <div class="key-point">油价上调与国际原油价格上涨直接相关</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">上半年快递业务量超千亿件，邮政行业寄递业务量同比增长4.2%</h3>
+                    <div class="news-content">
+                        <p>国家邮政局最新数据显示，上半年我国邮政行业寄递业务量累计完成<span class="highlight-bold">1088.9亿件</span>，同比增长4.2%。其中，快递业务量超千亿件，同比增长5.0%。</p>
+                        <p>业内专家表示，快递业务量的稳健增长得益于电商促销活动的持续带动、农村寄递网络的不断完善以及跨境物流的快速发展。下半年随着传统消费旺季到来，快递业务量有望继续保持增长态势。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">上半年邮政行业寄递业务量：1088.9亿件，同比增长4.2%</div>
+                        <div class="key-point">快递业务量超千亿件，同比增长5.0%</div>
+                        <div class="key-point">农村寄递网络和跨境物流成为增长新引擎</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">9月1日起分步调整部分电池产品消费税政策</h3>
+                    <div class="news-content">
+                        <p>财政部、海关总署、税务总局近日发布公告，自9月1日起分步调整部分电池产品消费税政策。对<span class="highlight-bold">光伏电池按2%税率征收消费税</span>，对钠离子电池、固态电池等六类电池2028年底前免征消费税。</p>
+                        <p>分析人士认为，此次消费税调整体现了国家对新能源产业的精准调控：对高耗能光伏电池适度征税，鼓励企业提升能效；对钠离子电池、固态电池等新型电池免征，有利于降低新兴产业成本，加速产业化进程。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">光伏电池自2027年4月1日起按2%税率征收消费税</div>
+                        <div class="key-point">钠离子电池、固态电池等六类电池2028年底前免征</div>
+                        <div class="key-point">政策兼顾产业调控与新兴产业扶持</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">🌍</div>
+                    <h2 class="section-title">国际时事热点</h2>
+                    <span class="section-count">6 条</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">美伊冲突升级：双方互袭基础设施，霍尔木兹通行量降至三周低点</h3>
+                    <div class="news-content">
+                        <p>美军于当地时间7月17日继续对伊朗发动空袭，这是<span class="highlight-bold">美军连续第七晚</span>发动打击。伊朗方面则对美军位于科威特、叙利亚和巴林等地的设施发动大规模打击回应。双方将攻击目标扩大至基础设施，面临进一步升级风险。</p>
+                        <p>国际能源署署长法提赫·比罗尔警告，若霍尔木兹海峡石油运输几周内无法恢复，全球能源安全将面临严重威胁。<span class="highlight">霍尔木兹海峡通行量已降至三周低点</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">美军连续第七晚对伊朗发动空袭</div>
+                        <div class="key-point">伊朗首次打击叙利亚境内目标，并攻击科威特电力和海水淡化厂</div>
+                        <div class="key-point">霍尔木兹海峡通行量降至三周低点，全球能源安全风险上升</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">安迪·伯纳姆当选英国工党党首，将成为英国十年第七位首相</h3>
+                    <div class="news-content">
+                        <p>英国执政党工党7月17日召开特别大会，正式宣布<span class="highlight-bold">安迪·伯纳姆</span>为新任党首。按程序，他将于7月20日正式接替基尔·斯塔默出任英国首相，成为英国过去十年来的第七位首相。</p>
+                        <p>伯纳姆此前曾担任英国卫生大臣和大曼彻斯特市市长，以务实风格著称。英国官员评估认为，美伊战争可能在他上任首周存在升级风险，这将是其外交政策的首次考验。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">安迪·伯纳姆将于7月20日正式出任英国首相</div>
+                        <div class="key-point">他将是英国十年来的第七位首相</div>
+                        <div class="key-point">上任首周可能面临美伊冲突升级的外交考验</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">以色列议会解散，新一届议会选举将于10月27日举行</h3>
+                    <div class="news-content">
+                        <p>以色列议会于7月17日凌晨解散，<span class="highlight-bold">新一届议会选举将在10月27日举行</span>。以色列总理内塔尼亚胡领导的政府在新政府成立前将作为看守政府继续履职。</p>
+                        <p>分析人士指出，以色列提前解散议会反映出执政联盟内部矛盾激化。在美伊冲突持续升级的背景下，以色列政治不确定性增加，可能对地区安全和外交政策产生连锁影响。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">新一届以色列议会选举定于10月27日</div>
+                        <div class="key-point">内塔尼亚胡政府将作为看守政府继续履职</div>
+                        <div class="key-point">政治不确定性可能影响中东地区安全局势</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">国际油价大涨，布伦特本周累计涨近16%</h3>
+                    <div class="news-content">
+                        <p>受中东局势紧张影响，国际油价大幅上涨。7月17日，布伦特9月原油期货收涨4.59%，报<span class="highlight-bold">88.10美元/桶</span>，本周累计上涨15.90%；WTI 8月原油期货收涨4.48%，报82.49美元/桶，本周累计上涨15.51%。</p>
+                        <p>市场担忧霍尔木兹海峡长期封锁将严重扰乱全球石油供应。国际能源署警告，若该海峡石油运输持续中断，全球能源安全将面临"红灯"警报。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">布伦特原油本周累计上涨15.90%，报88.10美元/桶</div>
+                        <div class="key-point">WTI原油本周累计上涨15.51%，报82.49美元/桶</div>
+                        <div class="key-point">油价上涨主要受霍尔木兹海峡通行风险推动</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Meta洽谈向Anthropic出租算力，合同价值最高达100亿美元</h3>
+                    <div class="news-content">
+                        <p>据知情人士透露，<span class="highlight-bold">Meta正与Anthropic展开初步磋商</span>，拟向后者出租其数据中心算力。报道称这项合作可能为期两年，价值最高可达100亿美元。若达成协议，将是AI实验室之间算力共享的标志性交易。</p>
+                        <p>分析人士指出，Meta拥有庞大的数据中心基础设施，而Anthropic需要持续扩展计算能力以训练更强大的AI模型。此类合作可能改变AI行业的竞争格局，使得算力资源成为新的战略制高点。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Meta与Anthropic洽谈算力租赁，价值最高100亿美元</div>
+                        <div class="key-point">合作可能为期两年，尚处于初期阶段</div>
+                        <div class="key-point">算力资源正成为大模型竞争的关键变量</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">特朗普将出席世界杯决赛并颁发冠军奖杯</h3>
+                    <div class="news-content">
+                        <p>白宫新闻秘书表示，美国总统特朗普将出席美加墨世界杯决赛，并将与国际足联主席因凡蒂诺一起颁发世界杯冠军奖杯。本届世界杯决赛将于<span class="highlight-bold">7月19日举行</span>，对阵双方为西班牙队和阿根廷队。</p>
+                        <p>阿根廷队此前在半决赛中3-2逆转绝杀埃及队晋级，梅西贡献1球1助攻。西班牙队则2-1击败法国队晋级。特朗普出席决赛颁奖被认为是其外交公关活动的一部分。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">特朗普将出席7月19日世界杯决赛并颁发冠军奖杯</div>
+                        <div class="key-point">决赛对阵：西班牙 vs 阿根廷</div>
+                        <div class="key-point">梅西在半决赛中贡献1球1助攻，率队晋级</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">💻</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">月之暗面发布Kimi K3：2.8万亿参数，全球最大开源模型</h3>
+                    <div class="news-content">
+                        <p>7月16日，月之暗面（Moonshot AI）发布新一代模型<span class="highlight-bold">Kimi K3</span>，参数规模达2.8万亿，是目前全球参数最大的开源模型。该模型采用混合专家（MoE）架构，支持100万token上下文窗口，具备原生多模态输入能力，API已同步上线。</p>
+                        <p>据月之暗面官方数据，在盲测中开发者更偏好K3而非美国主流模型。不过第三方评测认为，其在部分任务上仍落后于GPT-5.6 Sol和Claude Fable 5。K3的定价约为每百万token 12美元，<span class="highlight">权重将于7月27日正式公开</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Kimi K3参数规模达2.8万亿，为全球最大开源模型</div>
+                        <div class="key-point">支持100万token上下文和原生多模态输入</div>
+                        <div class="key-point">权重将于7月27日公开，API已上线</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">微软加速自研MAI模型落地，已在Excel、Outlook中替代第三方模型</h3>
+                    <div class="news-content">
+                        <p>微软正加速推进自研MAI模型在核心办公产品中的落地。目前<span class="highlight-bold">Excel和Outlook中每周已有数万个AI提示词请求</span>完全由MAI自研模型处理，此前这些任务主要依赖OpenAI和Anthropic的第三方模型。</p>
+                        <p>在6月的Build大会上，微软发布了7款全新自研AI模型，其中一款编码模型可在大幅降低成本的前提下实现接近Anthropic Opus 4.6的代码生成能力。除Excel和Outlook外，<span class="highlight">MAI模型也已接入GitHub Copilot</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">MAI模型已在Excel、Outlook中承担数万次周级AI请求</div>
+                        <div class="key-point">微软目标减少对OpenAI和Anthropic的依赖，降低AI成本</div>
+                        <div class="key-point">自研编码模型具备接近Anthropic Opus 4.6的能力</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">AI编程工具集体收紧安全护栏：Copilot CLI、Claude Code、Codex齐升级</h3>
+                    <div class="news-content">
+                        <p>7月14日至16日，<span class="highlight-bold">GitHub Copilot CLI、Anthropic Claude Code和OpenAI Codex</span>相继发布安全更新，共同主题是"给AI代理戴上紧箍咒"。Copilot CLI在plan模式下硬阻断工作区变更工具调用；Claude Code修复了利用零宽字符欺骗权限预览的漏洞；OpenAI Codex改进了危险命令检测。</p>
+                        <p>这波安全升级恰逢AsyncAPI核心仓库发布管道被攻击、五个木马化npm包被推送事件。业内普遍认为，AI编程代理权限过大，一旦依赖供应链被攻击，后果不堪设想。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">三大AI编程工具一周内同时升级安全护栏</div>
+                        <div class="key-point">AsyncAPI仓库被攻击事件凸显Agent供应链风险</div>
+                        <div class="key-point">"Harness工程"成为AI Agent可靠性关键</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">北大发布《Harness Engineering——驯服Agent》手册</h3>
+                    <div class="news-content">
+                        <p>北京大学人工智能研究院等联合发布69页《Harness Engineering——驯服Agent》手册，提出<span class="highlight-bold">"Agent=Model+Harness"</span>核心公式。手册指出，模型提供智能，Harness提供可靠性，并拆解了七大工程难题与三层设计原则：约束小而明确、循环可控可恢复、质量可验证。</p>
+                        <p>该手册的发布标志着AI行业从"卷模型"转向"卷驾驭系统"。随着大模型能力快速提升，如何构建安全、可控、可验证的AI Agent系统成为产业落地的前提。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">提出"Agent=Model+Harness"核心公式</div>
+                        <div class="key-point">明确三层设计原则：约束、恢复、验证</div>
+                        <div class="key-point">标志着AI竞争从模型能力转向工程驾驭能力</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">阿里整合三款Agent产品，大厂AI资源向B端生产力场景倾斜</h3>
+                    <div class="news-content">
+                        <p>据报道，阿里正以<span class="highlight-bold">QoderWork</span>为基础整合悟空、MuleRun等Agent产品，腾讯WorkBuddy等也向企业场景倾斜。分析认为，AI行业正从"广撒网"转向资源收拢，<span class="highlight">B端生产力场景成为大厂重点押注方向</span>。</p>
+                        <p>这一趋势与阿里此前禁用Claude Code、推自研Qoder一脉相承。大厂希望通过整合内部Agent产品，形成统一的企业级AI开发平台，降低开发者在不同工具间切换的成本，同时强化数据安全和合规能力。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">阿里整合悟空、MuleRun等Agent产品</div>
+                        <div class="key-point">大厂AI资源从消费端向B端生产力场景集中</div>
+                        <div class="key-point">Agent竞争从模型能力转向企业级解决能力</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">🦾</div>
+                    <h2 class="section-title">具身智能</h2>
+                    <span class="section-count">3 条资讯</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">2026世界人工智能大会开幕，具身智能成为亮点</h3>
+                    <div class="news-content">
+                        <p>2026世界人工智能大会7月17日在上海开幕，本届大会展览面积超10万平方米，<span class="highlight-bold">1100多家企业参展</span>，超过300项全球首发。具身智能成为本届大会最大亮点之一，<span class="highlight">超过200家具身企业参展，近60台人形机器人上岗服务</span>。</p>
+                        <p>WAIC最高荣誉SAIL奖中，华为昇腾950超节点、Sharpa触觉AI灵巧手等具身智能相关项目获奖。上海张江AI小镇运营10个月已集聚600多家AI企业、3万多名从业者，AI应用商店与路演中心构成完整试验场。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">超200家具身企业、近60台人形机器人参展WAIC</div>
+                        <div class="key-point">张江AI小镇集聚600多家AI企业</div>
+                        <div class="key-point">具身智能正从实验室走向真实应用场景</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">国内首个机器人药房落地浦东，基于蚂蚁灵波跨本体具身大模型</h3>
+                    <div class="news-content">
+                        <p>在2026世界人工智能大会上，基于蚂蚁灵波跨本体具身大模型<span class="highlight-orange">LingBot-VLA</span>的机器人智慧药房亮相，并已落地上海浦东东靖路国大药房门店，成为<span class="highlight-bold">国内首个机器人智慧药房</span>。该项目部署3台不同构型机器人，协作完成接收订单、智能取药、药品打包的全流程。</p>
+                        <p>据介绍，系统还接入互联网问诊服务，打造"问诊咨询—用户购药—处方流转—智能取药—药品打包"的全流程闭环体验。<span class="highlight-orange">全部流程在90秒内完成</span>，展示了具身大模型驱动异构机器人在长程任务、精细操作中的卓越表现。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">国内首个机器人药房落地上海浦东</div>
+                        <div class="key-point">基于蚂蚁灵波LingBot-VLA跨本体具身大模型</div>
+                        <div class="key-point">全流程90秒内完成，已接入互联网问诊服务</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">RoboScience实现"30秒换手即用"，跨本体灵巧操作获突破</h3>
+                    <div class="news-content">
+                        <p>RoboScience机器科学在WAIC现场展示自研通用具身大模型<span class="highlight-orange">Visics</span>，实现多款不同品牌灵巧手搭载同一模型完成自主抓取。最引人注目的是"30秒极速换手"展示：工作人员直接更换不同品牌灵巧手硬件，无需重新适配，新灵巧手在<span class="highlight-bold">30秒内被即时识别</span>并流畅执行多类抓取任务。</p>
+                        <p>这一突破验证了Visics跨本体、跨物体、跨任务的三大维度泛化能力，意味着具身大模型首次真正做到"一脑多手"。目前该技术已在商超场景中实现多SKU抓取，<span class="highlight-orange">成功率稳定在99%以上</span>。</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">RoboScience实现30秒内不同品牌灵巧手"换手即用"</div>
+                        <div class="key-point">验证跨本体、跨物体、跨任务三大泛化能力</div>
+                        <div class="key-point">商超场景多SKU抓取成功率稳定在99%以上</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>📊 今日核心趋势</h2>
+                <p>洞察 AI 与全球时事最新风向</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🤖</div>
+                        <div class="trend-desc">
+                            <h3>AI 治理与开源并进</h3>
+                            <p>WAIC 2026推动全球首个AI政府间组织落地，Kimi K3以2.8万亿参数刷新开源模型规模纪录。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🛡️</div>
+                        <div class="trend-desc">
+                            <h3>Agent 安全成工程核心</h3>
+                            <p>Copilot、Claude Code、Codex同步加固安全护栏，"Harness Engineering"成为Agent可靠落地的方法论。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🏭</div>
+                        <div class="trend-desc">
+                            <h3>具身智能加速商业落地</h3>
+                            <p>机器人药房、跨本体灵巧手、WAIC近60台人形机器人上岗，具身智能从展示走向真实场景。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">🌍</div>
+                        <div class="trend-desc">
+                            <h3>中东局势牵动全球能源</h3>
+                            <p>美伊冲突升级导致霍尔木兹通行量下降，国际油价单周大涨近16%，能源安全风险上升。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">数据来源：央视新闻 · 新浪财经 · 华尔街见闻 · 环球网 · 雷峰网 · 澎湃新闻 · EveryDev.ai · 腾讯新闻</p>
+            <p class="footer-meta">整理时间：2026-07-18 09:40 | NEWS DAILY 自动化推送</p>
+        </footer>
+    </div>
+</body>
+</html>
