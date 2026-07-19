@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-19</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-07-19</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 Closing Day: Humanoid Robots Put to Work on Factory Floors</h3>
+                    <div class="news-content">
+                        <p>On the final day of the 2026 World Artificial Intelligence Conference in Shanghai, humanoid robots moved away from dance and backflip demonstrations and directly onto simulated factory floors, performing sorting, handling, parts assembly, and material loading. Unitsys G1, Zhiyuan Expedition A1, and Fourier GR-2 demonstrated tasks such as pouring tea, folding clothes, and delivering packages.</p>
+                        <p>Meanwhile, DeepSeek R2's reported <span class="highlight-bold">30% reduction in inference cost</span> drew intense industry attention, and Liang Wenfeng's live session was packed. The sector is transitioning from "demo is the peak" to genuine production-line commercialization.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Evaluation criteria for humanoid robots shift from "looks cool" to "creates production value"</div>
+                        <div class="key-point">Domestic supply chains for servos, force sensors, and dexterous hands are maturing</div>
+                        <div class="key-point">New-energy factories, auto parts lines, and 3C assembly plants become first pilot scenarios</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">China Railway Launches "Cold Chain Express": Xinjiang Fresh Fruit Reaches Xi'an in 36 Hours</h3>
+                    <div class="news-content">
+                        <p>On July 18, a refrigerated container train departed from Sanping Station in Urumqi, Xinjiang, heading to Xi'an, Shaanxi, marking the official launch of the <span class="highlight-bold">"Cold Chain Express"</span> service. Each container has independent refrigeration, allowing Xinjiang grapes, Hami melons, and other fresh produce to reach Xi'an and surrounding markets in as fast as 36 hours, cutting previous transport time by roughly three days.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Xinjiang fresh-fruit delivery time drops from days to 36 hours</div>
+                        <div class="key-point">Independent per-box refrigeration protects produce quality</div>
+                        <div class="key-point">China Railway accelerates cold-chain logistics and specialty agricultural transport</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">C919 to Fly First Regular International Commercial Route</h3>
+                    <div class="news-content">
+                        <p>Starting August 12, Air China will operate its Beijing Capital&#8212;Ulaanbaatar route with the <span class="highlight-bold">C919 domestic jet</span>, one daily flight. This will be the C919's first regularly scheduled international passenger service, marking an important step in the aircraft's commercial operations and international market expansion.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">C919 enters regular international commercial service for the first time</div>
+                        <div class="key-point">Beijing&#8212;Ulaanbaatar route highlights regional radiation capability</div>
+                        <div class="key-point">Domestic large-aircraft industry enters scaled delivery and operations phase</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">2026 Summer Box Office Surpasses 4 Billion Yuan</h3>
+                    <div class="news-content">
+                        <p>As of July 18, total box office for the 2026 summer movie season (including pre-sales) exceeded <span class="highlight-bold">4 billion yuan</span>. The sports-comedy film "Kung Fu Women's Soccer" has grossed over 1.1 billion yuan, emerging as a strong contender for the season's top earner. The summer box office recovery is boosting cultural consumption.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Summer box office breaks 4 billion yuan, showing strong recovery</div>
+                        <div class="key-point">"Kung Fu Women's Soccer" exceeds 1.1 billion yuan, leading the season</div>
+                        <div class="key-point">Cultural consumption becomes an important lever for expanding domestic demand</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Renowned Composer Chen Gang Passes Away at 91</h3>
+                    <div class="news-content">
+                        <p>In the early hours of July 18, celebrated composer and Shanghai Conservatory of Music professor Chen Gang died in Shanghai at the age of 91. He is best known for the violin concerto <span class="highlight-bold">"Butterfly Lovers"</span>, co-created with He Zhanhao, a landmark fusion of Chinese folk music and Western symphonic tradition that has influenced generations of Chinese musicians and audiences.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">"Butterfly Lovers" becomes a classic symbol of Chinese music</div>
+                        <div class="key-point">A successful example of blending Chinese folk elements with Western techniques</div>
+                        <div class="key-point">The arts community and social media widely mourn his passing</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Ministry of Natural Resources Deploys Nationwide Geological Hazard Inspection</h3>
+                    <div class="news-content">
+                        <p>On July 18, China's Ministry of Natural Resources, together with relevant departments, urgently deployed a nationwide inspection of geological disaster risks. The directive requires prompt verification of any deformation signs or early warning signals reported by the public or found during patrols. The National Development and Reform Commission also allocated <span class="highlight-bold">30 million yuan</span> from the central budget to support emergency recovery in the Pengshui mountain collapse disaster area in Chongqing.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Geological hazard risk inspections enter a critical period nationwide</div>
+                        <div class="key-point">Dangerous rock blocks remain at the Pengshui collapse site, with further instability likely</div>
+                        <div class="key-point">Central government funds 30 million yuan for emergency recovery</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">U.S. Launches New Wave of Strikes Against Iran as Middle East Tensions Escalate</h3>
+                    <div class="news-content">
+                        <p>On July 18, U.S. Central Command announced that U.S. forces launched a new wave of strikes against Iran at 6 p.m. Eastern Time, aimed at degrading Iran's ability to threaten commercial shipping in the Strait of Hormuz and punishing the Islamic Revolutionary Guard Corps for its attack on a U.S. base in Jordan the previous night. Two U.S. service members were killed and one remains missing in that Jordan attack, bringing the total U.S. military deaths since the February 28 strikes to <span class="highlight-bold">16</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">U.S.-Iran tit-for-tat strikes enter a new phase with U.S. casualties in Jordan</div>
+                        <div class="key-point">Strait of Hormuz shipping security remains under threat</div>
+                        <div class="key-point">Kuwait and Bahrain intercept Iranian aerial attacks, showing regional spillover risk</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Iran Suspends Obligations Under Peace Memorandum with U.S.</h3>
+                    <div class="news-content">
+                        <p>Iranian Deputy Foreign Minister Kazem Gharibabadi said on July 18 that Iran has stopped fulfilling its obligations under the peace memorandum of understanding (MoU) with the United States after Washington violated its commitments. Supreme Leader Mojtaba Khamenei said U.S. violations proved President Trump's signature is <span class="highlight-bold">"worthless and invalid."</span> Iran's Health Ministry said U.S. strikes since June 27 have killed at least 50 people and wounded nearly 500.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The June 18 U.S.-Iran peace MoU is on the brink of collapse</div>
+                        <div class="key-point">Iran shifts focus to "decisive self-defense"; negotiations are off the table</div>
+                        <div class="key-point">Conflict spillover risk rises, with Gulf states already being drawn in</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">England Beats France 6-4 to Claim World Cup Third Place</h3>
+                    <div class="news-content">
+                        <p>In the early hours of July 19, England defeated France <span class="highlight-bold">6-4</span> in the 2026 FIFA World Cup third-place match. The final will be held at 3 a.m. Beijing time on July 20, with Argentina facing Spain. The final is widely seen as Lionel Messi's last World Cup appearance, drawing massive global attention.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">England takes third place; final is Argentina vs Spain</div>
+                        <div class="key-point">Messi's likely World Cup farewell drives global viewership</div>
+                        <div class="key-point">The 2026 World Cup reaches its climax</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Hungarian President Signs Constitutional Amendment Ending His Own Mandate</h3>
+                    <div class="news-content">
+                        <p>On July 18, Hungarian President Tamas Sulyok posted a video saying he had signed the 17th amendment to the Fundamental Law, which will terminate his own mandate. The amendment was passed by Prime Minister Peter Magyar's ruling party with a two-thirds majority. Sulyok stated that although he believed the amendment violated constitutional principles, he had <span class="highlight-bold">"no constitutional means"</span> to oppose a lawfully adopted parliamentary decision. A new president will be elected within 30 days.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Hungarian president's term is ended by constitutional amendment</div>
+                        <div class="key-point">Political struggle between Prime Minister Magyar and President Sulyok becomes public</div>
+                        <div class="key-point">Political stability in Eastern Europe comes under scrutiny</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Major Data Leak at India's Largest Nuclear Power Plant</h3>
+                    <div class="news-content">
+                        <p>According to Indian reports on July 17, India's largest nuclear power plant, the <span class="highlight-bold">Kudankulam Nuclear Power Plant</span>, suffered a large-scale data leak. Nearly 19,000 documents, including engineering drawings, supplier information, and employee records, were exposed. The plant was built with assistance from Russia's Rosatom. The incident has heightened concerns over nuclear facility cybersecurity.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Nearly 19,000 nuclear plant documents leaked, including engineering and supplier data</div>
+                        <div class="key-point">Nuclear facility cybersecurity becomes a global focus</div>
+                        <div class="key-point">India's energy infrastructure information security faces serious challenge</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Iraq and Syria Sign MoU to Rebuild Oil Export Pipeline</h3>
+                    <div class="news-content">
+                        <p>On July 18, Iraq's Oil Ministry announced that Iraq and Syria signed a memorandum of understanding to rebuild a crude oil export pipeline from Iraq to the Syrian Mediterranean coast. The project aims to open a new export route for Iraqi oil and <span class="highlight-bold">reduce reliance on chokepoints such as the Strait of Hormuz</span>. Against the backdrop of heightened Middle East tensions, the deal carries significant geopolitical and economic implications.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The Iraq-Syria pipeline offers an alternative export route bypassing Hormuz</div>
+                        <div class="key-point">Middle East energy geography is being reshaped amid regional conflict</div>
+                        <div class="key-point">A key step for post-war Syrian reconstruction and energy cooperation</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Researchers Uncover "Hallucination Squatting" Attack: Open-Source Models Match Top Models at Lower Cost</h3>
+                    <div class="news-content">
+                        <p>Security researchers recently disclosed a new AI supply-chain attack called <span class="highlight-bold">"hallucination squatting."</span> Large language models sometimes invent non-existent package names, function calls, and library imports when writing code. Attackers register these hallucinated names on PyPI or npm and inject malicious code. When a developer's CI pipeline pulls the dependency, the attack succeeds.</p>
+                        <p>At the same time, Databricks released real-world coding-task tests showing that the Chinese open-source model <span class="highlight">GLM 5.2</span> matched Anthropic Opus 4.8 in task completion quality but cost only $1.28 per task, about 34% less than Opus's $1.94.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI coding assistants' hallucinations can be weaponized into supply-chain attacks</div>
+                        <div class="key-point">Enterprises must rigorously audit every dependency referenced in AI-generated code</div>
+                        <div class="key-point">Open-source models show significant cost advantages on real engineering tasks, reshaping enterprise AI procurement</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">GPT-5.6 and Grok 4.5 Released on Same Day as Large Model Competition Heats Up</h3>
+                    <div class="news-content">
+                        <p>OpenAI and SpaceXAI (xAI) released new-generation models on the same day: OpenAI's <span class="highlight-bold">GPT-5.6 series</span> (Sol/Terra/Luna) and <span class="highlight-bold">Grok 4.5</span>. Grok 4.5 was jointly developed by SpaceXAI and Cursor, which SpaceX has officially acquired for a valuation of $60 billion; the two will share data and compute. Grok 4.5 is designed for complex, long-duration tasks across law, finance, coding, and cybersecurity.</p>
+                        <p>Meanwhile, OpenAI simplified ChatGPT model selection into task-oriented tiers such as Instant, Medium, High, Extra High, Pro Standard, and Pro Extended, shifting focus from model branding to task experience.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">OpenAI and Musk's SpaceXAI release flagship models on the same day, intensifying competition</div>
+                        <div class="key-point">After acquiring Cursor, SpaceXAI deeply integrates Grok 4.5 with Cursor</div>
+                        <div class="key-point">AI product interfaces shift from "choose a model" to "choose a task experience," reducing user friction</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">July 17 Becomes "Coding Agent Day": Claude Sonnet 4.6, GPT-5.2-Codex, and Copilot Workspace All Go GA</h3>
+                    <div class="news-content">
+                        <p>On July 17, the AI coding-agent sector saw three major product launches within hours: Anthropic shipped <span class="highlight-bold">Claude Sonnet 4.6</span> with native filesystem tools and a hardened sub-agent protocol; OpenAI's <span class="highlight-bold">gpt-5.2-codex</span> became generally available, scoring 78.4% on SWE-bench Verified; and GitHub's <span class="highlight-bold">Copilot Workspace</span> exited preview, officially supporting Claude, OpenAI, and Gemini 3 Flash as planners.</p>
+                        <p>All three offer enterprise-grade SLAs, per-seat pricing under $40/month, and audit logs meeting SOC 2 requirements. The developer community dubbed the day <span class="highlight-bold">"Coding Agent Day,"</span> marking the transition from demos to enterprise procurement decisions.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Coding agents move from "does it work?" to "which one do we standardize on?"</div>
+                        <div class="key-point">Sub-agent orchestration and filesystem-tool architecture differences become key selection criteria</div>
+                        <div class="key-point">Enterprises prioritize audit logs, compliance, and real workflow integration</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">NVIDIA Partners with Industrial Software Giants as AI Agents Enter CAD and Simulation Workflows</h3>
+                    <div class="news-content">
+                        <p>NVIDIA announced that Cadence, Dassault Systèmes, Siemens, Synopsys, and other industrial software vendors are using NVIDIA <span class="highlight-bold">NeMo Claw / OpenShell</span> to build long-task agents for design, simulation, EDA, manufacturing, and engineering workflows. AI agents are moving beyond chat, writing, and coding to take over CAD operations, mesh generation, simulation setup, debugging, and report generation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">AI agents move from consumer tools to industrial core workflows</div>
+                        <div class="key-point">Industrial software vendors partner with NVIDIA to build engineering-domain agents</div>
+                        <div class="key-point">Safety, permissions, auditability, and domain validation become critical for industrial AI adoption</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">WAIC 2026 Humanoid Robots Shift from Stage Shows to Production-Line Commercialization</h3>
+                    <div class="news-content">
+                        <p>At the 2026 World Artificial Intelligence Conference, the humanoid robot sector reached an inflection point: machines that once wowed audiences with backflips and dances were replaced by units replicating real factory workflows such as sorting, handling, parts assembly, and material loading. The competition is no longer about flashy moves but about whether robots can perform repetitive industrial tasks reliably over long periods.</p>
+                        <p>According to MIIT data, <span class="highlight-orange">China's annual humanoid robot production is expected to exceed 100,000 units in 2026</span>, completing the climb to ten-thousand-unit capacity and opening the era of scaled commercial deployment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Evaluation criteria shift from "performance" to "production value"</div>
+                        <div class="key-point">Mature hardware supply chains plus embodied foundation models let robots adapt to line variations</div>
+                        <div class="key-point">China's 2026 humanoid robot production expected to exceed 100,000 units</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Year of the Agentic Phone: Honor Robot Phone and Step AOS Debut at WAIC</h3>
+                    <div class="news-content">
+                        <p>At a WAIC 2026 sub-forum, Honor unveiled the world's first robot phone, <span class="highlight-orange">Robot Phone</span>, integrating a four-degree-of-freedom gimbal that becomes an agent actuator via the OpenClaw open platform, enabling multimodal embodied interaction such as swaying to music. Honor also elevated MagicOS to <span class="highlight-orange">Agentic OS</span>, the industry's first companion-style multimodal agent operating system.</p>
+                        <p>Stepfun launched the world's first agent-native operating system, <span class="highlight-orange">Step AOS</span>. Chairman Yin Qi argued that agents must break through memory, decision, and action walls to become "natives" rather than "visitors" of the OS.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Smartphones evolve from passive tools to proactive agents</div>
+                        <div class="key-point">OS architecture shifts from scheduling processes/threads to scheduling intents and tasks</div>
+                        <div class="key-point">Honor and Stepfun represent two paths: hardware-embodied interaction vs agent-native OS</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">High-Tech Manufacturing Output Rises 13.3%, Embodied Intelligence Becomes a New Growth Pole</h3>
+                    <div class="news-content">
+                        <p>National Bureau of Statistics data shows that in the first half of 2026, value-added output of high-tech manufacturing grew <span class="highlight-orange">13.3%</span> year-on-year, 7.9 percentage points faster than all above-scale industry. Industrial robot output rose 28.0%, 3D printing equipment output jumped 48.5%, and aerospace and electronic/communication equipment manufacturing grew 16.3% and 17%, respectively. Embodied intelligence and robotics have become important engines of high-tech manufacturing growth.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">High-tech manufacturing continues to lead, with robot output growing rapidly</div>
+                        <div class="key-point">Embodied intelligence becomes a key driver of manufacturing transformation</div>
+                        <div class="key-point">Original innovations such as domestic large models, rocket recovery, and novel drugs emerge intensively</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Humanoid Robots Move from Stage to Factory Floor</h3>
+                            <p>WAIC 2026 marks the sector's shift from demo units to production-line commercialization, with the 100,000-unit annual production target becoming reality.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128187;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Enters the "Agent Procurement Era"</h3>
+                            <p>Claude, OpenAI, and GitHub launched enterprise coding agents on the same day; selection logic shifts from raw model capability to workflow integration.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9888;&#65039;</div>
+                        <div class="trend-desc">
+                            <h3>AI Supply-Chain Security Comes to the Fore</h3>
+                            <p>Model hallucinations are being weaponized as a new software supply-chain attack, requiring stricter dependency review for AI-generated code.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128241;</div>
+                        <div class="trend-desc">
+                            <h3>Agentic Phones Become a New Battleground</h3>
+                            <p>Honor and Stepfun demonstrate hardware-embodied interaction and agent-native OS, signaling a paradigm shift in smartphone OS architecture.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: CCTV News &middot; Xinhua &middot; Sina Finance &middot; People's Daily &middot; Tencent News &middot; NetEase Tech &middot; 21st Century Business Herald</p>
+            <p class="footer-meta">Compiled: 2026-07-19 09:40 | AI Daily Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
