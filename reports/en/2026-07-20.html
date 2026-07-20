@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-20</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-07-20</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">World AI Cooperation Organization Agreement Signed in Shanghai</h3>
+                    <div class="news-content">
+                        <p>During WAIC (July 17&#8211;20), the agreement establishing the <span class="highlight-bold">World AI Cooperation Organization</span> was formally signed. China will work with founding members to launch operations, focusing on three priorities: inclusive AI technology sharing, safety governance standards, and cross-border data cooperation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The most significant institutional outcome of WAIC &#8212; China-led AI governance mechanism enters operational phase</div>
+                        <div class="key-point">Xi Jinping's keynote outlined four principles including "strengthen risk awareness, ensure safety and controllability"</div>
+                        <div class="key-point">Multiple outcomes released including AI Cooperation Development Action Plan and International AI Ethics Governance Action Plan</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">2026 China AI Gala Names Top 10 AI Figures; Cai Lei Receives Special Contribution Award</h3>
+                    <div class="news-content">
+                        <p>The 2026 China AI Gala released its top 10 annual AI figures during WAIC, including Unitree's Wang Xingxing and银河通用's Wang He. ALS activist <span class="highlight-bold">Cai Lei</span> was named "Annual AI Special Contribution Person." Selection criteria shifted from "model parameters" to "social value."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Cai Lei's award highlights AI's real social value in medical assistance</div>
+                        <div class="key-point">From "whose model is bigger" to "whose AI is more useful" &#8212; evaluation criteria are being rewritten</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">China Reform Holdings &amp; China Chengtong Major Stake Increases Exceed 50 Billion Yuan</h3>
+                    <div class="news-content">
+                        <p>Two state-owned capital operators jointly entered the market, signaling national-level market stabilization. Separately, CSRC confiscated <span class="highlight-bold">157 million yuan</span> in illegal gains from market manipulation and imposed a 3x fine, totaling <span class="highlight-bold">627 million yuan</span> in penalties.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">50 billion yuan stake increase is the year's largest single state capital market entry</div>
+                        <div class="key-point">State buying + punishing manipulation: a "stabilize the market" combo punch</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">2026 Annual Box Office Surpasses 20 Billion Yuan</h3>
+                    <div class="news-content">
+                        <p>As of July 19, <span class="highlight-bold">2026 annual box office</span> (including presales) surpassed 20 billion yuan. Summer blockbusters continued to drive growth, with domestic films leading the charge.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Former China Development Bank President Ouyang Weimin Under Investigation</h3>
+                    <div class="news-content">
+                        <p>Central Commission for Discipline Inspection announced that <span class="highlight-bold">former CDB deputy party secretary and president Ouyang Weimin</span> is under investigation for serious discipline and law violations, another major case in the ongoing financial anti-corruption campaign.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Guangxi Persistent Heavy Rain + Four Ministries Deploy Geological Hazard Inspections</h3>
+                    <div class="news-content">
+                        <p>July 19&#8211;21: Persistent heavy rain in northern and eastern Guangxi triggered a <span class="highlight-bold">Level IV flood emergency response</span>. Four ministries jointly deployed geological hazard risk inspections. Western China faces record-breaking heat with temperatures exceeding 40&#176;C in Xinjiang and Sichuan.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Southern floods + northern heat: dual disaster pattern returns</div>
+                        <div class="key-point">Four-ministry joint deployment signals upgraded disaster prevention response</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Spain Wins World Cup! Ferran Torres 106th-Minute Extra-Time Winner Against Argentina</h3>
+                    <div class="news-content">
+                        <p>In the July 20 World Cup final, Spain and Argentina drew 0&#8211;0 after 90 minutes. In the 106th minute of extra time, <span class="highlight-bold">Ferran Torres fired a first-time volley into the roof of the net</span>, giving Spain a 1&#8211;0 victory over defending champions Argentina &#8212; their second World Cup title, 16 years after 2010.</p>
+                        <p>Messi became the first player to appear in three World Cup finals. Enzo Fern&#225;ndez received a second yellow in added time. Mbapp&#233; won the Golden Boot; Rodri won the Golden Ball. Spain conceded just one goal throughout the tournament, a new World Cup record.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Torres' 106th-minute winner! Spain dominated possession; Mart&#237;nez made 12 saves but couldn't stop it</div>
+                        <div class="key-point">Messi's third final appearance is a historic first, but his title defense dream shatters</div>
+                        <div class="key-point">65-year-old De la Fuente becomes oldest World Cup-winning coach; Spain's 1-goal-conceded record stands alone</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Strait of Hormuz Traffic Drops to Zero as Iran Announces Full Blockade</h3>
+                    <div class="news-content">
+                        <p>Iran's Fars News reported on July 19 that <span class="highlight-bold">traffic through the Strait of Hormuz has fallen to zero</span>. A source from Iran's IRGC Navy stated no vessels are passing through, and any attempt to transit will be attacked. The strait will remain closed as long as the U.S. continues "hostile and provocative actions."</p>
+                        <p>About one-third of global maritime oil passes through Hormuz. Zero traffic means the global oil supply chain faces its most severe challenge. Iran struck Kuwaiti power and desalination plants; Iraq's largest Kurdish gas field shut down due to threat.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">~1/3 of global seaborne oil passes Hormuz &#8212; zero traffic = maximum supply chain disruption risk</div>
+                        <div class="key-point">U.S. intercepted 6 vessels in 3 days after restarting blockade; maritime confrontation fully escalated</div>
+                        <div class="key-point">Kuwait power plants hit 3 days running; Iraq's largest gas field shut down</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">U.S. Strikes Iran for 9th Consecutive Night, Hits Under-Construction Nuclear Plant</h3>
+                    <div class="news-content">
+                        <p>The U.S. launched a new round of airstrikes on Iran on July 19 &#8212; the <span class="highlight-bold">ninth consecutive night</span>. Iran's Atomic Energy Organization condemned the strike on the Darkhovin under-construction nuclear plant as a "terrorist attack." U.S. casualties mount: <span class="highlight-bold">1 KIA + 1 missing in Jordan</span>, <span class="highlight-bold">1 KIA + 1 injured in Iraq</span>. Iran's armed forces warned of "devastating retaliation."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Striking an under-construction nuclear plant crosses the civilian infrastructure red line; IAEA launches investigation</div>
+                        <div class="key-point">U.S. casualties escalate: Jordan 1 KIA/1 MIA + Iraq 1 KIA/1 WIA</div>
+                        <div class="key-point">Iran warns of entering "full offensive and destruction" phase</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Brent Crude Breaks $91; Gold Falls Below $4,000 &#8212; Rare Safe-Haven/Risk Divergence</h3>
+                    <div class="news-content">
+                        <p>Geopolitical tensions pushed <span class="highlight-bold">Brent crude above $91/barrel</span> (first since June 11), WTI above $84, both up over 3%. Meanwhile, <span class="highlight-bold">spot gold fell below $4,000/oz</span>, silver dropped ~0.5%. The divergence between safe-haven assets and oil reflects dual market concerns over geopolitical risk and inflation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Hormuz blockade + U.S.-Iran conflict: oil surges ~16% in a week</div>
+                        <div class="key-point">U.S. plans to send dozens more refuelers to Israel, further stoking military escalation expectations</div>
+                        <div class="key-point">Gold-oil divergence is rare; risk appetite is splitting violently</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">England 6&#8211;4 France for World Cup 3rd Place &#8212; Best Result Since 1966</h3>
+                    <div class="news-content">
+                        <p>In the July 18 bronze medal match, <span class="highlight-bold">England defeated France 6&#8211;4</span>, achieving their best World Cup result since winning it all in 1966. Saka, Bellingham and a new generation of stars shone. France's Mbapp&#233; claimed the Golden Boot.</p>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Thai PM Paetongtarn Makes First Official China Visit, Attends WAIC Before Beijing</h3>
+                    <div class="news-content">
+                        <p>Thai Prime Minister Paetongtarn visited China July 16&#8211;20 in her <span class="highlight-bold">first official visit</span> since taking office. Before arriving in Beijing, she attended WAIC and the AI Global Governance High-Level Meeting in Shanghai, and visited Sichuan province. The itinerary highlights Southeast Asian interest in China's AI governance framework.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Thai PM's first visit includes WAIC attendance &#8212; AI cooperation is the new diplomatic bond</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Musk Declares War on Kimi: 2T-Parameter Grok 4.6 Training Finishes Next Week, "Might Exceed Kimi K3"</h3>
+                    <div class="news-content">
+                        <p>On July 16, Moonshot AI released <span class="highlight-bold">Kimi K3</span> (2.8T parameters, world's largest open-weight model), topping Code Arena globally. Musk initially called it "Impressive," but just 48 hours later announced that xAI's <span class="highlight-bold">2T-parameter Grok 4.6</span> would complete initial training next week, claiming it is "better than the 1.5T in every way" and "might exceed Kimi."</p>
+                        <p>Kimi's official account cheekily responded: "Welcome to the 2-trillion club, Elon." Kimi founder Yang Zhilin's CMU advisor Russ challenged Musk: "If you want to compare with Kimi, open-source your model like Kimi does."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Musk went from "impressed" to "declaring war" in 48 hours &#8212; his unusually cautious wording seen as high praise for Chinese AI</div>
+                        <div class="key-point">Chinese open-source model becomes the benchmark being chased globally for the first time</div>
+                        <div class="key-point">Grok 4.6 expected August; U.S.-China AI race enters the "2-trillion parameter era"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">WAIC Closes: Three Major Coding Agents Tighten Security &#8212; From "Let It Run" to "Add Brakes"</h3>
+                    <div class="news-content">
+                        <p>GitHub Copilot CLI hard-blocks file edits during plan mode, Claude Code patched bidirectional-control and zero-width character exploits that could spoof approval prompts, and OpenAI's Codex tightened dangerous-command detection &#8212; <span class="highlight-bold">all three shipped security patches in the same week</span>.</p>
+                        <p>The backdrop: AsyncAPI's four core repositories were compromised, with attackers pushing five trojanized packages to npm. An agent that installs dependencies on behalf of developers is exactly the blast radius that kind of compromise reaches.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Three coding agents adding guardrails in one week: industry consensus &#8212; autonomy needs safety brakes</div>
+                        <div class="key-point">Supply chain attack exposes the biggest agent security risk: package installation permissions are the attack surface</div>
+                        <div class="key-point">From "let agents run free" to "lock down agents" &#8212; a fundamental safety paradigm shift</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Meta Ships Muse Spark 1.1: Zuckerberg's First X Post in 3 Years, All-In on Agentic Coding</h3>
+                    <div class="news-content">
+                        <p>Meta officially released <span class="highlight-bold">Muse Spark 1.1</span>, positioning it as "the most capable model for agentic tasks and coding." CEO Mark Zuckerberg <span class="highlight-bold">posted on X for the first time in 3 years</span> to endorse Spark, calling it "an extremely low-cost but powerful agent and coding model" excelling at tool use and computer operation.</p>
+                        <p>1M-token context window, free tier available. AI chief Wang claimed Spark outperforms competitors on multi-app computer use workflows.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Zuck breaks 3-year posting silence for Spark &#8212; Meta goes all-in on agentic coding</div>
+                        <div class="key-point">1M tokens + free tier: Meta targets AI coding market with aggressive pricing</div>
+                        <div class="key-point">From Llama to Spark: Meta pivots from open foundation models to Agent/coding vertical</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">AI One-Person Company Raises Millions: Solo Founder Gets 8-Figure Funding in 3 Months</h3>
+                    <div class="news-content">
+                        <p>At WAIC, an <span class="highlight-bold">OPC (One-Person Company) founder</span> achieved commercial breakthrough using AI technology, securing eight-figure funding in just 3 months with 40+ financial institution clients. This demonstrates AI's extreme empowerment of individual entrepreneurship &#8212; one person + AI tools = a company.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">One-person company raises millions &#8212; AI compresses "minimum viable team" from 3&#8211;5 people to 1</div>
+                        <div class="key-point">40+ financial institution clients validate: AI-empowered solo entrepreneurship is real business, not just a concept</div>
+                        <div class="key-point">From "find a team" to "find AI" &#8212; the startup paradigm is being disrupted</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 Closes: 200+ Embodied Companies, 300+ Live Robots &#8212; Industry Shifts From "Show Off" to "Get to Work"</h3>
+                    <div class="news-content">
+                        <p>At WAIC (July 17&#8211;20), embodied intelligence exhibitors surged from <span class="highlight-orange">~80 to 200+</span> year-over-year, with 208 terminals and 300+ live robots. The biggest shift: evaluation criteria moved from "how fast can it run" to <span class="highlight-orange">"can it work 8 hours straight" and "can it scale"</span>.</p>
+                        <p>Agibot co-founder Peng Zhihui: "The most obvious change at WAIC 2026 is that embodied intelligence has shifted from 'showcasing capability' to deployment-state and productivity release." Fourier Intelligence demonstrated a "Embodied Home" solution &#8212; the robot understands "I'm thirsty" and autonomously fetches water.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">200+ companies, 300+ live robots: exhibition area grew 2.5x year-over-year</div>
+                        <div class="key-point">Industry consensus: 2026 is the "deployment-state inaugural year"; metric shifts from locomotion to industrial reliability</div>
+                        <div class="key-point">Fourier GR-3 understands "I'm thirsty" and fetches water &#8212; a milestone in real-world understanding</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Agibot Launches 5 New Products + Jingdong Logistics Deploys G2 Max in Real Warehouse: 24/7 Unmanned Operations</h3>
+                    <div class="news-content">
+                        <p>Agibot released five new products at WAIC: <span class="highlight-orange">Yuanzheng A3 Ultra, Genie G2 Max, Lingxi X2 EDU, OmniHand 3 Ultra-M</span>, and Kuto cycling robot. The <span class="highlight-orange">Genie G2 Max partnered with JD Logistics</span> to complete the first-ever humanoid robot deployment in a real warehouse production scenario &#8212; 24/7 continuous picking and palletizing with no human night shift needed.</p>
+                        <p>Agibot's GO-2 self-developed embodied foundation model introduces an innovative action chain-of-thought and asynchronous dual-system architecture. Yuanzheng A3 Ultra was named one of WAIC's ten "Flagship Exhibits."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Genie G2 Max in JD's real warehouse = first humanoid robot in actual logistics production</div>
+                        <div class="key-point">Yuanzheng A3 Ultra selected as WAIC flagship exhibit; 174cm height matches human workstation standards</div>
+                        <div class="key-point">OmniHand 3 Ultra-M: 20 DOF + fingertip visual-tactile sensors for precision manipulation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Xiaomi Robot Factory Report: Nut-Tightening Success Rate Rises from 90.2% to 98%, Just 1% Shy of Human Standard</h3>
+                    <div class="news-content">
+                        <p>Xiaomi's Robotics Division reported 4-month training progress at its auto factory: <span class="highlight-orange">self-tapping nut installation success rate improved from 90.2% to 98%</span>, just 1% below human qualification standards. The robot also unlocked two new tasks &#8212; center console cover sorting and bin folding &#8212; both achieving <span class="highlight-orange">90% stable success rates</span>. Transition from basic trial runs to complex flexible industrial operations is complete.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">90.2% &#8594; 98%, just 1% shy of human standard &#8212; humanoid robot industrial work approaches production-grade reliability</div>
+                        <div class="key-point">Two new task types at 90% stable rate prove cross-task generalization improvement</div>
+                        <div class="key-point">Auto production lines have become the core industrial deployment scenario for humanoid robots</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>AI Race Enters "2-Trillion Parameter Era"</h3>
+                            <p>Musk's 2T model declares war on Kimi K3. Chinese open-source model becomes the global benchmark for the first time. The world's largest open-weight model now comes from China.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#127942;</div>
+                        <div class="trend-desc">
+                            <h3>"8 Hours of Work" Becomes the New Standard</h3>
+                            <p>WAIC 2026's biggest signal isn't more robots but higher bars &#8212; from "can walk" to "can work." The industry inflection point has passed.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9878;</div>
+                        <div class="trend-desc">
+                            <h3>Hormuz Zero Traffic Shocks Global Energy</h3>
+                            <p>Zero traffic = maximum global oil supply chain disruption risk. Oil breaks $91, gold falls below $4,000 &#8212; rare safe-haven/risk divergence.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128274;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Agents Collectively "Lock Down"</h3>
+                            <p>Three major coding agents tightened safety guardrails in the same week. The autonomy-safety balance becomes the industry's new central question.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua &middot; CCTV News &middot; National Business Daily &middot; Tencent News &middot; AI Frontline &middot; RobotToday &middot; FIFA</p>
+            <p class="footer-meta">Compiled: 2026-07-20 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
