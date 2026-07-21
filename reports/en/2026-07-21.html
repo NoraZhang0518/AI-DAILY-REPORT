@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-21</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-07-21</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Seven Major State-Owned Enterprises Rally to Support A-Shares: Combined Investment Over 60 Billion Yuan, Over 100 Companies Announce Buybacks</h3>
+                    <div class="news-content">
+                        <p>On July 19, China New and China Chengtong &#8212; two state-owned capital operating companies &#8212; simultaneously announced A-share purchases, with <span class="highlight-bold">combined investment exceeding 60 billion yuan</span>. China New has deployed over 50 billion yuan using stock buyback relending and matching funds; China Chengtong has invested nearly 10 billion yuan in state-owned enterprise stocks. Over 100 listed companies rapidly followed suit: China Aluminum 1-2 billion yuan, Three Gorges Energy 1.5-3 billion yuan, NARI 5-1 billion yuan buyback. Insurance giants also announced increased equity investment.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Total ETF net inflows reached 304.26 billion yuan over two weeks; the three-tier buffer system &#8212; "national team stabilizes index, precise holdings guard core" &#8212; has become institutionalized</div>
+                        <div class="key-point">This round of buybacks focuses on share cancellation, directly boosting per-share earnings and optimizing capital structure</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Per-Capita Disposable Income Across 31 Provinces: 13 Provinces Exceed 20,000 Yuan, Shanghai Leads at 48,791</h3>
+                    <div class="news-content">
+                        <p>National Bureau of Statistics released 2026 first-half per-capita disposable income data for 31 provinces. <span class="highlight-bold">National per-capita disposable income reached 22,981 yuan</span>, up 5.2% nominally and 4.2% in real terms, both recovering 0.2-0.3 percentage points from Q1. <span class="highlight-bold">Shanghai topped the nation at 48,791 yuan</span>, with 13 provinces exceeding 20,000 yuan.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Both nominal and real growth rates recovered from Q1, signaling stabilized income growth</div>
+                        <div class="key-point">Urban-rural income gap continues to narrow; multiple localities rolled out grassroots income-support policies</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Central Government Subsidizes Childbirth with 110 Billion Yuan: "Social Co-Raising" Nature Clarified</h3>
+                    <div class="news-content">
+                        <p>The central government disbursed 99.9 billion yuan in 2026 childcare subsidies. Combined with local matching funds, <span class="highlight-bold">total societal childcare subsidy investment is expected to reach approximately 110 billion yuan</span>. Demographer Huang Wenzheng argues this marks a genuine "social co-raising" nature &#8212; <span class="highlight-bold">raising children is also work, and deserves decent income</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">110 billion yuan represents the largest-ever fiscal investment in childcare subsidies</div>
+                        <div class="key-point">"Leave-hacking formula" trending: 3 days off for Mid-Autumn + National Day = 13-day mega vacation</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">"Qinglang &#8212; Minor Online Protection" Special Campaign Launched: 4-Month Crackdown on AI-Mocking and Other Abuses</h3>
+                    <div class="news-content">
+                        <p>The Cyberspace Administration of China launched a nationwide 4-month <span class="highlight-bold">"Qinglang &#8212; Minor Online Protection" special campaign</span>. Phase 1 targets AI-generated mockeries of classic animations, toxic cartoons, and amplified violence. Phase 2 focuses on regulating platform recommendation algorithms and educational content sections.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">The campaign covers toxic cartoons,窒息challenges, and "child prodigy" persona packaging</div>
+                        <div class="key-point">A Henan father sued four gaming companies after his 18-year-old son swallowed 18 fever pills, arguing anti-addiction systems are ineffective</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">9 Departments Issue 19 Policy Measures to Support Domestic Services Industry: Addressing Labor Shortages and Service Standardization</h3>
+                    <div class="news-content">
+                        <p>The Ministry of Commerce and 8 other departments released comprehensive policy measures for high-quality development of the domestic services industry, proposing <span class="highlight-bold">19 measures across 5 areas: enterprise support, institutional innovation, vocational training, credit platform improvement, and foundational development</span>. The policies aim to resolve chronic pain points including labor shortages, unstandardized services, and inadequate social security for workers.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Policy objective: unlock domestic services consumption potential and drive industry quality upgrading</div>
+                        <div class="key-point">Comprehensive improvements to worker social security, training, and standardization systems</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">12306 60-Day Advance Ticket Reservation Fully Deployed: Over 200 High-Speed Trains on Beijing-Shanghai Line</h3>
+                    <div class="news-content">
+                        <p>Railway&#8217;s 60-day advance ticket reservation pilot has fully deployed. <span class="highlight-bold">Over 200 high-speed trains along the Beijing-Shanghai corridor now support 60-day advance booking requests</span>, easing summer travel ticket pressure. Tianjin activated flood prevention Level 4 emergency response; Jizhou District issued yellow-level mountain flood hazard warnings.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">60-day reservation provides greater flexibility for peak summer travel</div>
+                        <div class="key-point">12306 currently only auto-prioritizes lower bunk assignments for passengers aged 60+</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">US Military Strikes Iran for Ninth Consecutive Night: Trump Threatens "Multipled Retaliation," Iran Declares "Full War"</h3>
+                    <div class="news-content">
+                        <p>US Central Command confirmed a <span class="highlight-bold">ninth consecutive night of military operations against Iran</span>. Trump posted on social media: <span class="highlight-bold">"For every US soldier Iran kills, they will pay a multiplied price"</span>. Iran&#8217;s Revolutionary Guard Corps claimed attacks on US targets in Bahrain and Kuwait. Iranian President Pezeshkian stated that <span class="highlight-bold">Iran is currently in a "full war"</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">2 US personnel confirmed killed in Jordan by Iranian missile/drone attack on July 17; 1 missing; another killed in Iraq on July 18</div>
+                        <div class="key-point">US plans F-16 and F-35 deployments from European bases plus aerial refueling aircraft; diplomatic solution not fully excluded</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Andy Burnham Officially Becomes UK Prime Minister: Seventh PM in a Decade, Facing Inflation and Energy Crises</h3>
+                    <div class="news-content">
+                        <p>On July 20, <span class="highlight-bold">Labour Party leader Andy Burnham officially became UK Prime Minister</span>, delivering an inaugural speech after receiving the King&#8217;s appointment. Burnham becomes Britain&#8217;s seventh prime minister in a decade, prioritizing inflation and energy shortage as twin民生challenges. UK defense spending increased by 15 billion pounds.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Burnham previously served as Mayor of Manchester, known for pragmatic governance style</div>
+                        <div class="key-point">Britain&#8217;s decade of seven PMs raises international concerns about political stability</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Spain Wins World Cup; Argentine Fan Riots in Buenos Aires, at Least 15 Arrested</h3>
+                    <div class="news-content">
+                        <p>On July 19, <span class="highlight-bold">Spain defeated Argentina 1-0 to claim the 2026 World Cup title</span>. Post-match riots erupted in Buenos Aires with at least 15 arrested. Argentina&#8217;s entire team left the stadium without attending the mixed zone press area, potentially facing sanctions.</p>
+                        <p>Chinese sponsors "won big": TCL sponsored Spain, Argentina, and Germany simultaneously; Yili, Cotti, Luckin, and Vatti&#8217;s bets nearly all hit.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Rodri won Golden Ball; Mbapp&#233; retained Golden Boot (10 goals); Unai Sim&#243;n won Golden Glove</div>
+                        <div class="key-point">2030 World Cup will be co-hosted by Spain, Portugal, and Morocco</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">US Stock Indices Dive: Middle East Tensions Roil Markets, Brent Oil Breaks $90</h3>
+                    <div class="news-content">
+                        <p>On July 21 Beijing time, <span class="highlight-bold">all three major US indices dove from gains to losses</span>. Nasdaq fell 0.05%, S&amp;P 500 fell 0.19%, Dow fell 0.59%. <span class="highlight-bold">Brent crude futures settled up 1.27% above $90/barrel</span>, WTI up 0.9%. Escalating Middle East tensions continued to roil financial markets.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">SpaceX fell over 3%, Apple and Tesla over 2%; semiconductor index rose 0.6%</div>
+                        <div class="key-point">Market concerns about inflation upside risks intensified</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">China Warns Japan: Modifying "Three Non-Nuclear Principles" Will Exact a "Heavy Price"</h3>
+                    <div class="news-content">
+                        <p>Foreign Ministry spokesperson Lin Jian warned regarding Japan&#8217;s ruling coalition proposal to discuss modifying the "Three Non-Nuclear Principles": <span class="highlight-bold">If Japan persists in modifying these principles and deploying allied nuclear weapons, it will ultimately pay a heavy price</span>. Japanese local assemblies have strongly called for maintaining the principles, reflecting popular desire for peace.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Modifying the "Three Non-Nuclear Principles" constitutes a severe provocation against the post-WWII international order and nuclear non-proliferation regime</div>
+                        <div class="key-point">It violates Japan&#8217;s own peace commitments and contradicts domestic popular will</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">Russia Extends Visa-Free Entry for Chinese Citizens Through 2027: Putin Signs Presidential Decree</h3>
+                    <div class="news-content">
+                        <p>Russian President Putin signed a decree <span class="highlight-bold">extending the current visa-free entry policy for Chinese citizens through December 31, 2027</span>. The same day, Moscow Oblast governor reported that Ukrainian drone strikes injured 10 people, including 3 Chinese citizens. The visa extension provides greater便利 for China-Russia personnel exchanges and economic cooperation.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Visa extension provides greater便利 for bilateral personnel exchanges and trade cooperation</div>
+                        <div class="key-point">"Reverse cross-border shopping" booming: expanding visa-free list fueled foreign tourist shopping in China</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">4 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Kimi K3 Tops International Front-End Coding Rankings: 2.8T-Parameter World&#8217;s Largest Open Model, Weights Coming July 27</h3>
+                    <div class="news-content">
+                        <p>Moonshot AI officially launched <span class="highlight-bold">Kimi K3</span> on July 16 &#8212; a 2.8 trillion-parameter model, the world&#8217;s largest open-weight model, with native vision support and a 1-million-token context window. Within hours it <span class="highlight">shot to #1 on Arena&#8217;s front-end coding leaderboard</span>, marking the first time a Chinese model topped the ranking.</p>
+                        <p>Kimi K3 uses self-developed Kimi Delta Attention and Attention Residuals architecture, with MoE activating 16/896 experts via Stable LatentMoE framework. Overall scaling efficiency improved approximately <span class="highlight">2.5x</span> over K2. <span class="highlight-bold">Full model weights will be released on July 27</span>, making it the world&#8217;s first 3T-class open model.</p>
+                        <p>Outstanding coding ability: can sustain long engineering sessions with minimal human oversight, navigate massive repositories. Built MiniTriton GPU compiler from scratch with performance comparable to Triton. API cache-hit pricing as low as <span class="highlight">2 yuan/million tokens</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">2.8T parameters &#8212; world&#8217;s largest open model, first Chinese model to top international coding rankings</div>
+                        <div class="key-point">Weights releasing July 27 puts Opus-class capability within reach of anyone willing to run it</div>
+                        <div class="key-point">MiniTriton proves K3 can build a complete compiler end-to-end, not just code snippets</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">AI Coding Tools Jointly Tighten Safety Guardrails: Copilot/Claude Code/Codex All Fortify Defenses in Same Week</h3>
+                    <div class="news-content">
+                        <p>July 14-16, three major coding Agents simultaneously released security hardening updates: <span class="highlight-bold">GitHub Copilot CLI hard-blocked file edits during plan mode</span>, moving the阻止 mechanism to the runtime layer; <span class="highlight-bold">Claude Code fixed invisible-character spoofing of approval prompts</span>, blocking bidirectional override and zero-width character forgery; <span class="highlight-bold">OpenAI Codex strengthened dangerous-command detection</span>, catching more forced rm patterns.</p>
+                        <p>The same week, attackers compromised four core AsyncAPI repositories and pushed five trojanized npm packages &#8212; an Agent that installs dependencies on behalf of a developer is exactly the blast radius that kind of compromise reaches.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Three Agents spent a release in the same week tightening automation permissions; security shifting from "prompt constraints" to "runtime hard constraints"</div>
+                        <div class="key-point">Agent&#8217;s ability to autonomously install dependencies is becoming a new entry point for supply chain attacks</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">AI Coding Goes Model-Agnostic: qwen-code/OpenOcta/SquillaRouter Turn Models into Pluggable Components</h3>
+                    <div class="news-content">
+                        <p>Three July 2026 stories point to the same trend &#8212; <span class="highlight-bold">AI Coding Agents are shifting their core competitive advantage from "what model is behind" to "framework and engineering capability"</span>:</p>
+                        <p><span class="highlight">qwen-code v0.19.8</span>: 25,000 GitHub stars, Apache 2.0, supports OpenAI/Anthropic/Gemini/Qwen protocols simultaneously, one command to switch models. <span class="highlight">OpenOcta v1.0.5 desktop edition</span>: 30MB install package, double-click to run, native support for DeepSeek/Doubao/Qwen etc. <span class="highlight">SquillaRouter intelligent routing layer</span>: auto-selects models by task difficulty, reducing total cost 60-80%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Model-locking business model is crumbling: choosing an Agent no longer等于 choosing a model vendor</div>
+                        <div class="key-point">Chinese models&#8217; coding ability has caught up while token prices dropped to 1/10 of closed-source; "multi-protocol" is becoming the sharpest commercial weapon</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Microsoft Develops AI Vulnerability Detection Tool Project Perception: Multi-Model Integration, July Release</h3>
+                    <div class="news-content">
+                        <p>Per The Information, <span class="highlight-bold">Microsoft is developing an AI-based vulnerability detection tool called "Project Perception"</span>, potentially releasing this July. The product uses "model routing" technology to integrate models from Microsoft, OpenAI, and Anthropic, automatically identifying and fixing software vulnerabilities at <span class="highlight">lower cost with security capabilities comparable to Anthropic Mythos</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Model routing enables task specialization: low-cost models for initial screening, high-cost models for deep analysis</div>
+                        <div class="key-point">AI security detection pivoting from "single-model service" to "multi-model collaboration" paradigm</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">WAIC 2026 Concludes: 200+ Embodied AI Companies, 300+ Real Robots, Industry Pivot from "Showmanship" to "Real Work" Confirmed</h3>
+                    <div class="news-content">
+                        <p>The 2026 World Artificial Intelligence Conference concluded in Shanghai. Embodied AI exhibitors surged from last year&#8217;s 80+ to <span class="highlight-orange">200+ companies, 208 terminal models, over 300 real robots</span>. The core evaluation标准 shifted this year: not backflips or calligraphy, but <span class="highlight-orange">whether robots can work continuously for 8 hours, complete closed-loop tasks from模糊指令, and achieve规模化 deployment</span>.</p>
+                        <p>Agibot released five new products including远征 A3 Ultra (700TOPS embodied processor) and精灵 G2 Max; Unitree exhibited GD01 &#8212; the "real-life Gundam"载人变形mecha;启元 T1 launched as the first convertible consumer robot targeting home scenarios; Ant Lingbo open-sourced LingBot model series, one brain adapting to nine mainstream dual-arm robots.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">WAIC 2026意向 procurement amount ~20.36 billion yuan, +25% year-over-year</div>
+                        <div class="key-point">Industry consensus: VLA and world models are "co-evolving" not "choose-one"</div>
+                        <div class="key-point">Embodied AI doesn&#8217;t lack炫技 demos &#8212; it lacks billion-hour-scale real physical data (currently only ~500K hours)</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Xiaomi Robot&#8217;s 4-Month Factory Report: Nut-Insertion Success Rate 90.2% &#8594; 98%, Only 1% Behind Human Workers</h3>
+                    <div class="news-content">
+                        <p>Xiaomi&#8217;s robot division released four-month factory training progress: since entering Xiaomi&#8217;s auto factory earlier this year, <span class="highlight-orange">self-tapping nut insertion bilateral operation success rate rose from initial 90.2% to 98%</span>, only 1% below human standard. Two new positions unlocked &#8212; center console side cover sorting and bin folding/recycling, both at 90% stable success rate.</p>
+                        <p>Transitioning from basic trial runs to complex flexible industrial operations; workstation stability approaching mass production standards. Automotive production lines have become the core落地 scenario for humanoid robots.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">98% success rate only 1% behind humans &#8212; mass production门槛 is近在咫尺</div>
+                        <div class="key-point">Auto production lines have become the most important real-world training ground for humanoid robots</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Embodied AI Mass Production Year: Tash-Zhihang&#8217;s 1000-Unit Industrial Project Launches, Digua Robot S600 Enters Production Verification</h3>
+                    <div class="news-content">
+                        <p>2026 is widely regarded as the <span class="highlight-orange">embodied AI mass production year</span>. Tash-Zhihang partnered with Digua Robot to launch <span class="highlight-orange">China&#8217;s first千台级 industrial embodied robot project</span>; the Xuri S600 computing platform has reached deep collaboration with 20+ leading customers, entering mass production verification phase.</p>
+                        <p>Tash-Zhihang co-founder Chen Tongqing提出了 three hurdles from POC to production line &#8212; generalization, success rate, and deployment cost. <span class="highlight-orange">A common industry幻觉: conflating技术验证 (POC) with商业验证</span>. Mass production&#8217;s core is not one success out of ten runs, but stable performance of every unit across千台-scale delivery.</p>
+                        <p>Joyson Electronics released dexterous hands, solid-liquid hybrid batteries, electronic skin and other core components at WAIC.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Mass production year: "确定性" replacing "可能性" &#8212; stability, controllability, reproducibility成为核心指标</div>
+                        <div class="key-point">Human-centric data paradigm: robots learn operation intent and contact strategies from real human task execution</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Open Models Challenge Closed-Source Dominance</h3>
+                            <p>Kimi K3 tops coding rankings, weights即将 public; 2.8T-parameter Opus-class capability accessible to everyone, forcing reassessment of closed-source高价 business models.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128737;</div>
+                        <div class="trend-desc">
+                            <h3>AI Agent Security Shifts from "Prompts" to "Hard Constraints"</h3>
+                            <p>Copilot/Claude Code/Codex all moved safety防线 from prompt layer to runtime layer in the same week; Agent autonomy权限 is being systematically收紧.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128295;</div>
+                        <div class="trend-desc">
+                            <h3>Embodied AI Pivots from "Showmanship" to "Real Work"</h3>
+                            <p>WAIC 300+ real robots on site; Xiaomi robot at 98% success rate only 1% behind humans; evaluation标准 shifting from backflips to 8-hour stable operations.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128176;</div>
+                        <div class="trend-desc">
+                            <h3>State-Owned Enterprise Market Support Becomes Institutionalized</h3>
+                            <p>China New/Chengtong 60B yuan purchases, over 100 companies密集 buyback cancellations; "national team &#8212; PBOC relending &#8212; SOE platform" three-tier buffer已成常态化.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: Xinhua &middot; CCTV News &middot; Sina Finance &middot; Securities Times &middot; IT Home &middot; National Business Daily &middot; The Information &middot; Axios &middot; Gasgoo</p>
+            <p class="footer-meta">Compiled: 2026-07-21 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
