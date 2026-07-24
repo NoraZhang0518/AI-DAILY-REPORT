@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEWS DAILY | 2026-07-24</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 {
+            font-size: 56px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #00aaff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        /* Section Layout */
+        .sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .sections {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 32px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-ai-coding {
+            border-top: 4px solid #0066ff;
+        }
+
+        .section-robotics {
+            border-top: 4px solid #ff6b35;
+        }
+
+        .section-china {
+            border-top: 4px solid #e63946;
+        }
+
+        .section-intl {
+            border-top: 4px solid #f4a261;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-ai-coding .section-icon {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .section-icon {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .section-icon {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .section-icon {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .section-count {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* News Cards */
+        .news-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .news-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .news-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        .news-number {
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .section-ai-coding .news-number {
+            background: linear-gradient(135deg, #0066ff, #00aaff);
+        }
+
+        .section-robotics .news-number {
+            background: linear-gradient(135deg, #ff6b35, #ff9f6b);
+        }
+
+        .section-china .news-number {
+            background: linear-gradient(135deg, #e63946, #ff6b6b);
+        }
+
+        .section-intl .news-number {
+            background: linear-gradient(135deg, #f4a261, #e9c46a);
+        }
+
+        .news-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #fff;
+            line-height: 1.4;
+        }
+
+        .news-content {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .news-content p {
+            margin-bottom: 10px;
+        }
+
+        .news-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight {
+            color: #00aaff;
+            font-weight: 500;
+        }
+
+        .highlight-orange {
+            color: #ff9f6b;
+            font-weight: 500;
+        }
+
+        .highlight-bold {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        /* Key Points */
+        .key-points {
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .key-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 6px;
+        }
+
+        .key-point:last-child {
+            margin-bottom: 0;
+        }
+
+        .key-point::before {
+            content: '\2192';
+            color: #00aaff;
+            font-weight: bold;
+        }
+
+        .section-robotics .key-point::before {
+            color: #ff9f6b;
+        }
+
+        .section-china .key-point::before {
+            color: #ff6b6b;
+        }
+
+        .section-intl .key-point::before {
+            color: #e9c46a;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-sources {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        .footer-meta {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Trend Summary */
+        .trend-section {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(255, 107, 53, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .trend-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .trend-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .trend-header p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+
+        .trends-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .trends-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 36px;
+            }
+
+            .sections {
+                gap: 24px;
+            }
+
+            .section {
+                padding: 24px;
+            }
+        }
+
+        .trend-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .trend-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .trend-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .trend-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .trend-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.6;
+        }
+
+        .trend-card-body {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .trend-desc {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="date-badge">2026-07-24</div>
+            <h1>NEWS DAILY</h1>
+            <p class="subtitle">China Hot News &middot; International Affairs &middot; AI Coding &middot; Embodied Intelligence</p>
+        </header>
+
+        <!-- Hot News Sections (Top) -->
+        <div class="sections">
+            <!-- China Domestic Hot News -->
+            <section class="section section-china">
+                <div class="section-header">
+                    <div class="section-icon">&#127464;&#127475;</div>
+                    <h2 class="section-title">China Hot News</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Chinese Mathematicians Deng Yu and Wang Hong Win Fields Medal, a Historic First</h3>
+                    <div class="news-content">
+                        <p>On July 23, at the 2026 International Congress of Mathematicians in Philadelphia, young Chinese mathematicians <span class="highlight-bold">Deng Yu and Wang Hong</span> were awarded the Fields Medal &#8212; the first time mathematicians of Chinese nationality have received this honor. The Fields Medal, often called the "Nobel Prize of Mathematics," is awarded every four years to outstanding mathematicians under 40.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">First Chinese nationals to win the Fields Medal since its establishment in 1936</div>
+                        <div class="key-point">Wang Hong specializes in geometric analysis; Deng Yu in partial differential equations</div>
+                        <div class="key-point">A milestone marking China's transition from follower to leader in fundamental mathematics</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">State Council Issues National Fitness Plan (2026-2030)</h3>
+                    <div class="news-content">
+                        <p>The CPC Central Committee and the State Council issued the <span class="highlight-bold">"Opinions on Strengthening Social Work in the New Era,"</span> outlining requirements for improving the Party's leadership system for social work. The State Council simultaneously issued the National Fitness Plan (2026-2030), deploying 10 major tasks including fitness facility construction and mass sports events.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Fitness infrastructure will be further expanded during the 15th Five-Year Plan period</div>
+                        <div class="key-point">Party building in emerging sectors integrated into social work framework</div>
+                        <div class="key-point">Sports powerhouse construction enters a new phase</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">China and U.S. Advancing $30 Billion Mutual Tariff Reduction Framework</h3>
+                    <div class="news-content">
+                        <p>On July 23, China's Ministry of Commerce reported that economic teams from both sides are in close communication regarding the architecture and operations of a trade council, and are exploring a <span class="highlight-bold">$30 billion mutual tariff reduction framework</span>. This signals a substantive easing of tariff tensions between the world's two largest economies.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">$30 billion reciprocal tariff reduction framework under negotiation</div>
+                        <div class="key-point">Trade council architecture and operating model are core discussion topics</div>
+                        <div class="key-point">China-U.S. economic relations may enter a "managed competition" phase</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Anti-Corruption Drive Intensifies: Three Senior Officials Dismissed in One Day</h3>
+                    <div class="news-content">
+                        <p>The Central Commission for Discipline Inspection announced that <span class="highlight-bold">Tian Xuebin</span> (former Vice Minister of Water Resources), <span class="highlight-bold">Wang Jun</span> (former Deputy Director of Tibet People's Congress), and <span class="highlight-bold">Guo Xueyi</span> (former Vice President of Central South University) have been expelled from the Party and dismissed from their posts for serious disciplinary violations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Three centrally-managed officials dismissed in a single day sends a strong signal</div>
+                        <div class="key-point">Cases span water resources, local government, and higher education sectors</div>
+                        <div class="key-point">Anti-corruption campaign continues to deepen across all sectors</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Chongqing Landslide Disaster: 11 Dead, 50 Missing</h3>
+                    <div class="news-content">
+                        <p>The landslide disaster in Pengshui County, Chongqing has entered deep rescue operations. The disaster has caused <span class="highlight-bold">10 injuries, 11 deaths, and 50 people missing</span>. China's Central Meteorological Observatory issued four simultaneous warnings on July 24 (typhoon, rainstorm, heat, and severe convection), highlighting increased disaster prevention pressure during the summer season.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Severe casualties; rescue operations are ongoing</div>
+                        <div class="key-point">Four simultaneous weather warnings issued by national meteorological authorities</div>
+                        <div class="key-point">Summer high season for natural disasters increases prevention challenges</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">NEV Penetration Hits 62.8%; Anhui Overtakes Hunan in GDP Top 10</h3>
+                    <div class="news-content">
+                        <p>According to Ministry of Commerce data, China's new energy vehicle retail penetration reached <span class="highlight-bold">62.8%</span> in June. In the first half of 2026, newly established foreign enterprises increased 5.3% year-on-year, with nearly 4,800 foreign companies increasing investment in China. In regional economic news, <span class="highlight-bold">Anhui Province overtook Hunan</span> with GDP of 2.737 trillion yuan, entering the top 10 provincial economies.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">NEV penetration breaks 60% threshold, accelerating industrial transformation</div>
+                        <div class="key-point">Foreign investors remain bullish on China market</div>
+                        <div class="key-point">Anhui's GDP surpasses Hunan, reshaping regional economic landscape</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- International News -->
+            <section class="section section-intl">
+                <div class="section-header">
+                    <div class="section-icon">&#127758;</div>
+                    <h2 class="section-title">International Affairs</h2>
+                    <span class="section-count">6 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Trump Considers Renewed Major Military Operations Against Iran</h3>
+                    <div class="news-content">
+                        <p>On July 23, President Trump stated he is seriously considering renewed major military operations against Iran, claiming the scale would exceed the previous <span class="highlight-bold">"Epic Fury" operation</span>. The U.S. has notified Israel of plans to expand strikes and deploy heavy bombers for the first time in joint operations. Iran's armed forces spokesperson responded that Iran will never stop producing missiles and drones.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">U.S.-Iran conflict faces further escalation risk</div>
+                        <div class="key-point">U.S.-Israel joint operations may deploy heavy bombers for the first time</div>
+                        <div class="key-point">Iran maintains hardline stance on continued missile and drone production</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Houthis Impose Maritime Blockade on Saudi Arabia; Brent Crude Breaks $100</h3>
+                    <div class="news-content">
+                        <p>On July 23, Yemen's Houthi forces announced a <span class="highlight-bold">maritime blockade</span> on Saudi Arabia and attacked oil tankers in the Red Sea. London Brent crude futures broke <span class="highlight-bold">$100 per barrel</span>. RBC warned that if the conflict escalates fully, oil prices could challenge the 2008 historical peak of $146; Goldman Sachs predicts prices may exceed $120 in Q4.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Brent crude breaks $100, reaching new year-to-date highs</div>
+                        <div class="key-point">Both Strait of Hormuz and Bab el-Mandeb under simultaneous pressure</div>
+                        <div class="key-point">Goldman Sachs forecasts Q4 oil prices could exceed $120</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">U.S. Announces New Tariffs on Dozens of Countries Under Section 301</h3>
+                    <div class="news-content">
+                        <p>The U.S. Trade Representative's office announced new tariffs of 10% to 12.5% on dozens of countries and regions under <span class="highlight-bold">Section 301</span> of the 1974 Trade Act, citing alleged "forced labor." The new tariffs took effect on July 24. Meanwhile, the U.S. House of Representatives again passed a resolution calling for a halt to military operations against Iran.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">U.S. maintains high tariff pressure through Section 301</div>
+                        <div class="key-point">New tariffs cover dozens of countries and regions</div>
+                        <div class="key-point">Clear divergence between executive and legislative branches on Iran policy</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">ECB Warns Middle East Conflict Will Push Inflation Into 2027</h3>
+                    <div class="news-content">
+                        <p>The ECB held rates steady on July 24, but President Lagarde warned that energy shocks will push eurozone inflation into <span class="highlight-bold">the first half of 2027</span>. Deutsche Bank predicts the ECB will resume rate hikes in September. Eurozone and U.S. government bond yields surged across the board, with German 10-year yields hitting 2011 highs and U.S. 10-year yields approaching 4.69%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Full impact of Middle East energy shock on global inflation not yet transmitted</div>
+                        <div class="key-point">ECB may resume rate hikes in September</div>
+                        <div class="key-point">Global bond markets betting on "higher for longer" rates</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">World AI Cooperation Organization Receives International Praise</h3>
+                    <div class="news-content">
+                        <p>The World AI Cooperation Organization agreement has received high praise from international experts. The Sejong Institute stated this marks the formal entry of global AI governance into a new phase of <span class="highlight-bold">institutionalized construction and substantive cooperation</span>. Experts from Brazil's China Innovation Economy Research Institute noted that China's push for inclusive and beneficial AI development will bring tangible benefits to the Global South.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Global AI governance enters phase of institutionalized cooperation</div>
+                        <div class="key-point">China promotes greater representation for Global South in AI governance</div>
+                        <div class="key-point">Chengdu Declaration and series of outcome documents released</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">6</span>
+                    <h3 class="news-title">South Korea Returns Pair of Qing Dynasty Stone Lions to China</h3>
+                    <div class="news-content">
+                        <p>On July 23, South Korea returned a pair of Qing Dynasty stone lions to China. China's National Cultural Heritage Administration formally received them from the National Museum of Korea. This represents a new achievement in China-South Korea cultural exchange and reflects mutual trust in <span class="highlight-bold">cultural heritage protection</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">New progress in China-South Korea cultural heritage cooperation</div>
+                        <div class="key-point">Historical and cultural value of Qing stone lions recognized by both sides</div>
+                        <div class="key-point">People-to-people exchanges inject positive energy into bilateral relations</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- AI & Tech Sections -->
+        <div class="sections">
+            <!-- AI Coding Section -->
+            <section class="section section-ai-coding">
+                <div class="section-header">
+                    <div class="section-icon">&#128187;</div>
+                    <h2 class="section-title">AI Coding</h2>
+                    <span class="section-count">5 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">AI Coding Tools Shift from "Model Competition" to "Entrypoint &amp; Data Competition"</h3>
+                    <div class="news-content">
+                        <p>Over the past three weeks, the AI coding tools sector has undergone a major strategic pivot. OpenSquilla, OpenOcta, and qwen-code have all relaxed model restrictions, GitHub Copilot added <span class="highlight-bold">Kimi K2.7 Code</span> as its first open-source model option, and OpenAI merged the standalone Codex app into the ChatGPT desktop client. Industry analysis indicates competition is shifting from model capability arms races to ecosystem battles over distribution channels, workflow habits, and data loops.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Focus shifts from " smartest model" to "who controls the entrypoint"</div>
+                        <div class="key-point">Developer access habits and behavioral data become the real competitive assets</div>
+                        <div class="key-point">AI coding tools evolve from "model consumers" to "platform operators"</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">Tencent Cloud Launches CodeBuddy NPC Cloud Agent</h3>
+                    <div class="news-content">
+                        <p>On July 23, Tencent Cloud officially launched <span class="highlight-bold">CodeBuddy NPC</span>, a cloud agent built on the CNB R&amp;D platform that autonomously completes solution planning, code development, PR submission, testing, and iterative refinement using repository context, Issues, PRs, and CI/CD pipelines. Multi-NPC role-based teams are supported, with first-round token consumption dropping from over 20,000 to approximately 2,000 &#8212; a reduction of over 90%.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">No toolchain modification required, lowering enterprise deployment barriers</div>
+                        <div class="key-point">Token cost reduction exceeds 90%, dramatically improving economics</div>
+                        <div class="key-point">Multi-NPC team collaboration simulates real R&amp;D team workflows</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Grok Build Hits 22K Stars in 10 Days; xAI Open-Source Coding Agent Gains Traction</h3>
+                    <div class="news-content">
+                        <p>xAI released its terminal-native Coding Agent <span class="highlight-bold">Grok Build</span> (written in Rust) on July 14, reaching 22,080 GitHub stars in 10 days &#8212; surpassing both Claude Code and Codex CLI in the same period. Its three-layer runtime architecture with modular crates is seen as a signal that coding agents are evolving from "CLI tools" to "platforms."</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Rust-native architecture delivers significant performance advantages</div>
+                        <div class="key-point">Open-source strategy rapidly builds developer ecosystem</div>
+                        <div class="key-point">xAI accelerates its push into the developer tools market</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">4</span>
+                    <h3 class="news-title">Kimi K3 Open Weights Coming July 27; DeepSeek V4 Launches Today</h3>
+                    <div class="news-content">
+                        <p>Moonshot AI announced that <span class="highlight-bold">Kimi K3 (2.8 trillion parameters)</span> will release open weights on July 27 &#8212; the world's largest open-source model to do so. Simultaneously, <span class="highlight-bold">DeepSeek V4</span> officially launched on July 24 with peak 2x pricing and DSpark acceleration of 60-85%. Industry observers say the final week of July will see the densest open model releases in history.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">2.8 trillion parameter open model will reshape self-hosting economics</div>
+                        <div class="key-point">DeepSeek V4 same-day launch intensifies open-source model competition</div>
+                        <div class="key-point">High-quality open models create "floor pricing" pressure on closed API services</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">5</span>
+                    <h3 class="news-title">Google: 75% of Code Now AI-Generated, Marking Paradigm Shift in Programming</h3>
+                    <div class="news-content">
+                        <p>At Google Cloud Next 2026, Sundar Pichai revealed that <span class="highlight-bold">75% of code</span> at Google is now AI-generated and engineer-approved, up from 25% in 2024. Google also demonstrated AI agents completing complex code migration tasks six times faster than human engineers. However, a GitLab report notes that while 78% of developers report faster code output, overall software delivery velocity has not accelerated.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">75% AI-generated code marks a fundamental paradigm shift in programming</div>
+                        <div class="key-point">AI agents complete complex migrations 6x faster than humans</div>
+                        <div class="key-point">Faster typing is solved; faster shipping remains an organizational challenge</div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- Robotics/Embodied AI Section -->
+            <section class="section section-robotics">
+                <div class="section-header">
+                    <div class="section-icon">&#129530;</div>
+                    <h2 class="section-title">Embodied Intelligence</h2>
+                    <span class="section-count">3 stories</span>
+                </div>
+
+                <article class="news-card">
+                    <span class="news-number">1</span>
+                    <h3 class="news-title">Hyundai Completes Full Acquisition of Boston Dynamics; Auto Giants Flock to Embodied AI</h3>
+                    <div class="news-content">
+                        <p>On July 16, Hyundai Motor Group announced the full acquisition of Boston Dynamics, purchasing the remaining 9.65% stake from SoftBank to achieve <span class="highlight-orange">100% ownership</span>. When Hyundai acquired 80% five years ago for approximately 1 trillion won, Boston Dynamics was valued at just $1.1 billion; today its valuation has soared to $3.4 billion. Almost simultaneously, Hyundai workers at the Ulsan plant staged a partial strike, demanding written employment guarantees in the face of humanoid robot deployment &#8212; the <span class="highlight-orange">world's first auto factory strike triggered by robots</span>.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">Hyundai achieves 100% ownership of Boston Dynamics; valuation tripled in three years</div>
+                        <div class="key-point">World's first "anti-robot" auto factory strike signals human-machine relationship restructuring</div>
+                        <div class="key-point">Toyota, XPeng and other auto giants are all entering the humanoid robot race</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">2</span>
+                    <h3 class="news-title">China's Embodied AI Industry Exceeds 1.2 Trillion Yuan; 2026 Named Mass Production Year</h3>
+                    <div class="news-content">
+                        <p>China's AI core industry has surpassed <span class="highlight-orange">1.2 trillion yuan</span>, with over 6,200 enterprises. In 2025, China shipped 14,400 humanoid robots, accounting for 84.7% of global output, with 2026 production expected to exceed <span class="highlight-orange">100,000 units</span>. KPMG China's WAIC report notes that world models are the key to breaking through embodied AI bottlenecks, and Chinese manufacturers are poised to continue leading global industrialization.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">China's AI core industry at 1.2 trillion yuan; embodied AI is the fastest-growing segment</div>
+                        <div class="key-point">2026 is defined as the "humanoid robot mass production year"</div>
+                        <div class="key-point">First-half embodied AI funding reached 46 billion yuan across 226 companies</div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <span class="news-number">3</span>
+                    <h3 class="news-title">Xiaomi Robot "Factory Report Card": Nut Assembly Success Rate Reaches 98%</h3>
+                    <div class="news-content">
+                        <p>Xiaomi's robotics division reported on July 14 that after four months of factory training, its humanoid robot's self-tapping nut assembly success rate has improved from 90.2% to <span class="highlight-orange">98%</span>, just 1% shy of human-level performance. The robot has also unlocked new roles including center console sorting and material box recycling, both achieving 90% stability. This marks Xiaomi's transition from basic trial runs to complex flexible industrial operations.</p>
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point">98% success rate approaches human level; mass production standards within reach</div>
+                        <div class="key-point">Automotive assembly lines become the core landing scenario for humanoid robots</div>
+                        <div class="key-point">From single-station trials to multi-scenario industrial operations</div>
+                    </div>
+                </article>
+            </section>
+        </div>
+
+        <!-- Trend Summary -->
+        <section class="trend-section">
+            <div class="trend-header">
+                <h2>&#128202; Key Trends Today</h2>
+                <p>Insights on the latest AI landscape shifts</p>
+            </div>
+            <div class="trends-grid">
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129518;</div>
+                        <div class="trend-desc">
+                            <h3>Chinese Mathematics Reaches World Summit</h3>
+                            <p>Deng Yu and Wang Hong win the Fields Medal, earning China's first international top recognition in fundamental research.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#9876;&#65039;</div>
+                        <div class="trend-desc">
+                            <h3>Middle East Conflict Spirals Upward</h3>
+                            <p>Escalating U.S.-Iran confrontation plus Houthi blockade on Saudi Arabia sends oil past $100, impacting the global economy.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#128187;</div>
+                        <div class="trend-desc">
+                            <h3>AI Coding Enters "Post-Model Era"</h3>
+                            <p>Tool competition shifts from model benchmarking to entrypoint control, data acquisition, and ecosystem building.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="trend-card">
+                    <div class="trend-card-body">
+                        <div class="trend-icon">&#129302;</div>
+                        <div class="trend-desc">
+                            <h3>Auto Giants Collectively Pivot to "Making People"</h3>
+                            <p>Hyundai's full acquisition of Boston Dynamics and worker strikes mark embodied AI's shift from demos to mass production.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-sources">Sources: CCTV News &middot; Tencent News &middot; Sina Finance &middot; Wall Street Journal &middot; TMTPost &middot; China Economic Net &middot; Leiphone &middot; Gasgoo</p>
+            <p class="footer-meta">Compiled: 2026-07-24 09:40 | NEWS DAILY Automated Report</p>
+        </footer>
+    </div>
+</body>
+</html>
